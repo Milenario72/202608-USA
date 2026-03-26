@@ -5,182 +5,476 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>USA Road Trip · Agosto 2026</title>
 <style>
-:root{--bl:#2c5f8a;--bld:#1a3d5c;--blm:#3d7ab5;--bll:#deedf8;--blx:#f0f7fd;--gr:#16a34a;--grl:#f0fdf4;--grd:#15803d;--or:#c96800;--orl:#fff7ed;--sl:#111827;--slm:#374151;--sll:#6b7280;--bg:#f1f5f9;--wh:#fff;--bd:#d1d5db;--r:14px;--rs:10px;--sh:0 2px 12px rgba(30,41,59,.10)}
+/* ═══════════════════════════════════════════
+   VARIABLES & RESET
+═══════════════════════════════════════════ */
+:root{
+  --bl:#2c5f8a;--bld:#1a3d5c;--blm:#3d7ab5;--bll:#deedf8;--blx:#f0f7fd;
+  --gr:#16a34a;--grl:#f0fdf4;--grd:#15803d;
+  --or:#c96800;--orl:#fff7ed;
+  --sl:#111827;--slm:#374151;--sll:#6b7280;
+  --bg:#f1f5f9;--wh:#fff;--bd:#d1d5db;
+  --r:14px;--rs:10px;
+  --sh:0 2px 12px rgba(30,41,59,.10);
+  --content-max:700px;   /* max width for day-page content */
+  --sidebar-w:260px;     /* sidebar width on desktop */
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:var(--bg)}
-body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;color:var(--sl);line-height:1.65;font-size:17px;-webkit-text-size-adjust:100%}
-button{background:none;border:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;text-align:left;display:block;width:100%}
+html{background:#1a3d5c}
+body{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  color:var(--sl);line-height:1.65;font-size:16px;
+  background:var(--bg);
+  -webkit-text-size-adjust:100%;
+}
+button{background:none;border:none;padding:0;margin:0;font:inherit;color:inherit;
+  cursor:pointer;-webkit-appearance:none;appearance:none;text-align:left;display:block;width:100%}
 a{color:inherit;text-decoration:none}
+button:hover{opacity:.88}
 
-/* PAGE SYSTEM */
-.pg{display:none;max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg)}
+/* ═══════════════════════════════════════════
+   PAGE SYSTEM — mobile-first, max 430px column
+═══════════════════════════════════════════ */
+.pg{display:none;min-height:100vh;background:var(--bg)}
 .pg.on{display:block}
 
-/* TOPBAR */
-.tb{background:var(--bld);color:#fff;display:flex;align-items:center;gap:8px;padding:12px 14px;min-height:56px;position:sticky;top:0;z-index:100}
-.tbb{width:42px;height:42px;flex-shrink:0;background:rgba(255,255,255,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff}
+/* ═══════════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════════ */
+.tb{
+  background:var(--bld);color:#fff;
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;min-height:56px;
+  position:sticky;top:0;z-index:100;
+}
+.tbb{
+  width:42px;height:42px;flex-shrink:0;
+  background:rgba(255,255,255,.18);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:#fff;
+}
 .tbt{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-/* HOME HEADER */
-.hdr{background:linear-gradient(160deg,#8b2500 0%,#c1440e 50%,#e8843a 100%);color:#fff;padding:36px 20px 26px;position:relative;overflow:hidden}
-.hdr::after{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+/* ═══════════════════════════════════════════
+   HOME HEADER
+═══════════════════════════════════════════ */
+.hdr{
+  background:linear-gradient(160deg,#8b2500 0%,#c1440e 50%,#e8843a 100%);
+  color:#fff;padding:36px 20px 28px;position:relative;overflow:hidden;
+}
+.hdr::after{
+  content:'';position:absolute;top:-50px;right:-50px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.05);pointer-events:none;
+}
 .hdr-ey{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
 .hdr-t{font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:6px}
 .hdr-s{font-size:16px;color:rgba(255,255,255,.8);font-style:italic;margin-bottom:16px}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 13px;font-size:13px;color:#fff}
 
-/* CONTENT */
-.ct{padding:18px 16px calc(90px + env(safe-area-inset-bottom,0px))}
+/* ═══════════════════════════════════════════
+   CONTENT WRAPPER
+═══════════════════════════════════════════ */
+.ct{padding:16px 14px calc(80px + env(safe-area-inset-bottom,0px))}
 
-/* LABEL */
-.lbl{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--slm);margin:24px 0 10px 2px}
+/* ═══════════════════════════════════════════
+   LABEL
+═══════════════════════════════════════════ */
+.lbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--slm);margin:22px 0 9px 2px}
 .lbl:first-child{margin-top:0}
 
-/* SUMMARY TABLE */
+/* ═══════════════════════════════════════════
+   SUMMARY TABLE (days list on home)
+═══════════════════════════════════════════ */
 .stw{background:var(--wh);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .sr{display:flex;align-items:stretch;width:100%;border-bottom:2px solid var(--bg);background:var(--wh)}
 .sr:last-child{border-bottom:none}
-.sr:active{background:var(--blx)}
+.sr:hover{background:var(--blx)}
 .sdb{width:62px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 4px;color:#fff}
 .sdb-n{font-size:22px;font-weight:800;line-height:1}
 .sdb-d{font-size:11px;font-weight:600;opacity:.85;text-transform:uppercase;margin-top:3px}
 .sdb-f{font-size:11px;opacity:.75;margin-top:2px}
-.srb{flex:1;padding:13px 10px;display:flex;flex-direction:column;gap:4px}
-.sr-t{font-size:16px;font-weight:700;color:var(--sl);line-height:1.25}
+.srb{flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:4px}
+.sr-t{font-size:15px;font-weight:700;color:var(--sl);line-height:1.25}
 .sr-s{font-size:13px;color:var(--slm);line-height:1.4}
 .sr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
 .tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:10px;background:var(--bll);color:var(--bl)}
 .tag.g{background:#dcfce7;color:var(--grd)}.tag.o{background:#fef3c7;color:#92400e}
 .sa{color:var(--sll);font-size:20px;align-self:center;padding-right:14px;flex-shrink:0}
 
-/* ALERT */
+/* ═══════════════════════════════════════════
+   ALERT (collapsible)
+═══════════════════════════════════════════ */
 .ac{border-radius:var(--rs);overflow:hidden;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .ach{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;font-size:15px;font-weight:700;color:#fff;width:100%}
 .ac.warn .ach{background:#b45309}.ac.info .ach{background:var(--bl)}.ac.ok .ach{background:var(--gr)}
 .arr{font-size:20px;transition:transform .2s}.arr.open{transform:rotate(180deg)}
-.acb{display:none;padding:14px 16px;font-size:15px;line-height:1.65}
+.acb{display:none;padding:14px 16px;font-size:14px;line-height:1.65}
 .acb.open{display:block}
 .ac.warn .acb{background:#fffbeb;color:#78350f}
 .ac.info .acb{background:var(--blx);color:var(--slm)}
 .ac.ok .acb{background:var(--grl);color:#14532d}
 .acb ul{margin:8px 0 0 16px}.acb li{margin-bottom:7px}
 
-/* RESERVAS */
+/* ═══════════════════════════════════════════
+   RESERVAS LIST
+═══════════════════════════════════════════ */
 .rlc{background:var(--wh);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .rlh{background:var(--bl);color:#fff;padding:12px 16px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
-.rr{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--bd)}
+.rr{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)}
 .rr:last-child{border-bottom:none}.rr:nth-child(even){background:#f8fafc}
 .rdot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 .rdot.d{background:var(--gr)}.rdot.p{background:#d97706}.rdot.n{background:var(--sll)}
 .ri{flex:1;min-width:0}
 .rw{font-size:12px;color:var(--sll);margin-bottom:2px}
-.rn{font-size:15px;font-weight:600;color:var(--sl)}
+.rn{font-size:14px;font-weight:600;color:var(--sl)}
 .rb{font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;white-space:nowrap;flex-shrink:0;display:inline-block}
 .rb.d{background:#dcfce7;color:var(--grd)}.rb.p{background:#fef3c7;color:#92400e}.rb.n{background:#f1f5f9;color:var(--sll)}
 a.rb.c{background:#fff7ed;color:#c2410c;border:1px solid #fdba74}
 a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
 
-/* DAY HERO */
+/* ═══════════════════════════════════════════
+   DAY HERO CARD
+═══════════════════════════════════════════ */
 .dh{background:linear-gradient(135deg,var(--bld) 0%,var(--blm) 100%);border-radius:var(--r);padding:20px;color:#fff;margin-bottom:18px;box-shadow:var(--sh)}
 .dh-n{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:5px}
-.dh-t{font-size:22px;font-weight:900;letter-spacing:-.5px;line-height:1.15;margin-bottom:5px}
-.dh-s{font-size:14px;color:rgba(255,255,255,.78);font-style:italic;margin-bottom:14px}
+.dh-t{font-size:20px;font-weight:900;letter-spacing:-.5px;line-height:1.15;margin-bottom:5px}
+.dh-s{font-size:13px;color:rgba(255,255,255,.78);font-style:italic;margin-bottom:14px}
 .dh-chips{display:flex;flex-wrap:wrap;gap:6px}
 .dh-chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:4px 11px;font-size:12px;color:#fff}
 
-/* METEO */
-.mb{display:flex;align-items:center;gap:12px;background:#e0f2fe;border:1px solid #7dd3fc;border-radius:var(--rs);padding:13px 16px;font-size:15px;font-weight:600;color:#0c4a6e;margin-bottom:10px}
-.mb-i{font-size:22px;flex-shrink:0}.mb-t{flex:1}.mb-a{color:#0ea5e9;font-size:18px}
+/* ═══════════════════════════════════════════
+   METEO BUTTON
+═══════════════════════════════════════════ */
+.mb{display:flex;align-items:center;gap:12px;background:#e0f2fe;border:1px solid #7dd3fc;border-radius:var(--rs);padding:12px 16px;font-size:14px;font-weight:600;color:#0c4a6e;margin-bottom:10px}
+.mb-i{font-size:20px;flex-shrink:0}.mb-t{flex:1}.mb-a{color:#0ea5e9;font-size:18px}
 .mbr{display:flex;gap:8px;margin-bottom:10px}
-.mbr .mb{margin-bottom:0;flex:1;padding:12px 10px}
+.mbr .mb{margin-bottom:0;flex:1;padding:11px 10px}
 
-/* TRANSPORT */
+/* ═══════════════════════════════════════════
+   TRANSPORT TABLE
+═══════════════════════════════════════════ */
 .tc{background:var(--wh);border-radius:var(--rs);overflow:hidden;border:1px solid var(--bd);margin-bottom:10px}
-.tr{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #f3f4f6;font-size:14px;line-height:1.4}
+.tr{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #f3f4f6;font-size:13px;line-height:1.4}
 .tr:last-child{border-bottom:none;background:#eef2f7;font-weight:700;color:var(--bl)}
 .tf{flex:1;color:var(--sl)}
 .tt{font-size:13px;color:var(--bl);font-weight:700;background:var(--blx);padding:3px 8px;border-radius:5px;white-space:nowrap}
 .tk{font-size:12px;color:var(--sll);white-space:nowrap}
 
-/* ACTION BUTTONS */
-.ab{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--rs);font-size:15px;font-weight:600;margin-bottom:10px;width:100%}
+/* ═══════════════════════════════════════════
+   ACTION BUTTONS
+═══════════════════════════════════════════ */
+.ab{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:var(--rs);font-size:14px;font-weight:600;margin-bottom:10px;width:100%}
 .ab:active{opacity:.75}
-.ab-i{font-size:22px;flex-shrink:0}.ab-t{flex:1}.ab-a{font-size:16px;opacity:.6}
+.ab-i{font-size:20px;flex-shrink:0}.ab-t{flex:1}.ab-a{font-size:16px;opacity:.6}
 .ab.maps{background:var(--grl);border:1px solid #86efac;color:#14532d}
 .ab.wil{background:#fff7ed;border:1px solid #fdba74;color:#9a3412}
 .ab.web{background:var(--blx);border:1px solid #93c5fd;color:#1e40af}
 .ab.call{background:var(--grl);border:1px solid #86efac;color:var(--grd)}
 
-/* SCHEDULE */
+/* ═══════════════════════════════════════════
+   SCHEDULE
+═══════════════════════════════════════════ */
 .sc{background:var(--wh);border-radius:var(--rs);overflow:hidden;border:1px solid var(--bd)}
-.si{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-bottom:1px solid #f3f4f6;font-size:15px;line-height:1.5}
+.si{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-bottom:1px solid #f3f4f6;font-size:14px;line-height:1.5}
 .si:last-child{border-bottom:none}
 .si.hi{background:#fffbeb}.si.br{background:#f0fdf4}.si.wa{background:#fff7ed}
 .st{font-size:12px;font-weight:700;color:var(--bl);min-width:50px;flex-shrink:0;padding-top:2px}
 .si-i{font-size:18px;flex-shrink:0;padding-top:1px}.si-t{flex:1;line-height:1.5;color:var(--sl)}
 
-/* REST CARDS */
+/* ═══════════════════════════════════════════
+   RESTAURANT / ALOJAMIENTO CARDS
+═══════════════════════════════════════════ */
 .rc{background:var(--wh);border-radius:var(--rs);border:1px solid var(--bd);overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
 .rc.res{border-left:5px solid var(--gr)}.rc.pend{border-left:5px solid #d97706}.rc.neu{border-left:5px solid var(--bl)}
 .rct{padding:14px 16px 0}
 .rcs{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .rcs.g{color:var(--grd)}.rcs.o{color:#b45309}.rcs.b{color:var(--bl)}
-.rcn{font-size:17px;font-weight:800;color:var(--sl);margin-bottom:5px}
-.rcd{font-size:14px;color:var(--slm);line-height:1.6;padding:0 16px 14px}
+.rcn{font-size:16px;font-weight:800;color:var(--sl);margin-bottom:5px}
+.rcd{font-size:13px;color:var(--slm);line-height:1.6;padding:0 16px 14px}
 .rca{display:flex;gap:8px;padding:0 16px 14px;flex-wrap:wrap}
-.rab{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:20px;font-size:14px;font-weight:600}
+.rab{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600}
 .rab.call{background:var(--bl);color:#fff}.rab.callg{background:var(--gr);color:#fff}.rab.webr{background:var(--bll);color:#1e40af}
 
-/* INFO BOXES */
-.ib{border-radius:var(--rs);padding:14px 16px;font-size:15px;line-height:1.65;margin-bottom:12px}
-.ibt{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
+/* ═══════════════════════════════════════════
+   INFO BOXES
+═══════════════════════════════════════════ */
+.ib{border-radius:var(--rs);padding:14px 16px;font-size:14px;line-height:1.65;margin-bottom:12px}
+.ibt{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
 .ib.warn{background:#fffbeb;border:1px solid #fcd34d}.ib.warn .ibt{color:#92400e}
 .ib.info{background:var(--blx);border:1px solid #93c5fd}.ib.info .ibt{color:#1e40af}
 .ib.ok{background:var(--grl);border:1px solid #86efac}.ib.ok .ibt{color:#14532d}
 .ib ul{margin:8px 0 0 16px}.ib li{margin-bottom:6px}
 
-/* PHOTO */
-.pb{background:#1c1c2e;border-radius:var(--rs);padding:16px;font-size:14px;color:#d0e4f0;line-height:1.7}
+/* ═══════════════════════════════════════════
+   PHOTO BLOCK
+═══════════════════════════════════════════ */
+.pb{background:#1c1c2e;border-radius:var(--rs);padding:16px;font-size:13px;color:#d0e4f0;line-height:1.7}
 .pbt{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7eb3d8;margin-bottom:10px}
 .pi{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
 .pi:last-child{margin:0;padding:0;border:none}
-.pio{font-weight:700;color:#90cbf0;font-size:14px}.pia{color:#94a3b8;font-size:13px;font-style:italic}
+.pio{font-weight:700;color:#90cbf0;font-size:13px}.pia{color:#94a3b8;font-size:12px;font-style:italic}
 
-/* CARD BLOCK */
-.cb{background:var(--wh);border-radius:var(--rs);border:1px solid var(--bd);padding:14px 16px;margin-bottom:10px;font-size:15px;line-height:1.65;color:var(--slm)}
+/* ═══════════════════════════════════════════
+   CARD BLOCK (info text card)
+═══════════════════════════════════════════ */
+.cb{background:var(--wh);border-radius:var(--rs);border:1px solid var(--bd);padding:14px 16px;margin-bottom:10px;font-size:14px;line-height:1.65;color:var(--slm)}
 .cb strong{color:var(--sl)}
 
-/* CHECKLIST */
+/* ═══════════════════════════════════════════
+   CHECKLIST
+═══════════════════════════════════════════ */
 .chs{background:var(--wh);border-radius:var(--rs);border:1px solid var(--bd);padding:15px 16px;margin-bottom:12px}
-.chs h4{font-size:13px;font-weight:700;color:var(--bl);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bd)}
-.chs ul{margin:0 0 0 16px}.chs li{font-size:15px;margin-bottom:7px;line-height:1.5}
+.chs h4{font-size:12px;font-weight:700;color:var(--bl);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bd)}
+.chs ul{margin:0 0 0 16px}.chs li{font-size:14px;margin-bottom:7px;line-height:1.5}
 
-/* PHOTO ROW */
+/* ═══════════════════════════════════════════
+   PHOTO ROW (resumen fotográfico)
+═══════════════════════════════════════════ */
 .pr{background:var(--wh);border-radius:8px;border-left:4px solid var(--bl);padding:12px 14px;margin-bottom:10px}
-.pro{font-size:15px;font-weight:700;color:var(--bl)}.prs{font-size:14px;color:var(--slm);margin:3px 0;line-height:1.5}.pra{font-size:13px;color:var(--sll);font-style:italic}
+.pro{font-size:14px;font-weight:700;color:var(--bl)}.prs{font-size:13px;color:var(--slm);margin:3px 0;line-height:1.5}.pra{font-size:12px;color:var(--sll);font-style:italic}
 
-/* PREV/NEXT */
+/* ═══════════════════════════════════════════
+   PREV / NEXT ROW
+═══════════════════════════════════════════ */
 .pnrow{display:flex;gap:10px;margin-top:24px}
 .pnrow .ab{flex:1;justify-content:center}
 
-/* INFO LINKS */
+/* ═══════════════════════════════════════════
+   INFO LINKS
+═══════════════════════════════════════════ */
 .info-links{background:var(--wh);border-radius:var(--rs);border:1px solid var(--bd);overflow:hidden;margin-bottom:12px}
 .info-links-h{background:#f8fafc;padding:11px 16px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--slm);border-bottom:1px solid var(--bd)}
-.il{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #f3f4f6;font-size:15px;color:var(--sl);text-decoration:none}
+.il{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #f3f4f6;font-size:14px;color:var(--sl);text-decoration:none}
 .il:last-child{border-bottom:none}
-.il:active{background:var(--blx)}
+.il:hover{background:var(--blx)}
 .il-ico{font-size:20px;flex-shrink:0}
 .il-body{flex:1}
 .il-t{font-weight:600;color:var(--sl)}
 .il-s{font-size:13px;color:var(--sll);margin-top:1px}
 .il-arr{color:var(--sll);font-size:18px;flex-shrink:0}
 
-/* BOTTOM NAV */
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(26,61,92,.97);display:flex;justify-content:space-around;align-items:center;padding:9px 4px calc(9px + env(safe-area-inset-bottom,0px));z-index:200;box-shadow:0 -2px 12px rgba(0,0,0,.25)}
-.nb{display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(255,255,255,.7);font-size:10px;font-weight:600;padding:5px 6px;border-radius:10px;min-width:36px;width:auto}
-.nb span:first-child{font-size:18px}
+/* ═══════════════════════════════════════════
+   BOTTOM NAV — mobile default
+═══════════════════════════════════════════ */
+.bnav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(26,61,92,.97);
+  display:flex;justify-content:space-around;align-items:center;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  z-index:200;box-shadow:0 -2px 12px rgba(0,0,0,.25);
+}
+.nb{display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(255,255,255,.7);font-size:10px;font-weight:600;padding:5px 8px;border-radius:10px;min-width:44px}
+.nb span:first-child{font-size:20px}
 .nb.on{background:rgba(255,255,255,.2);color:#fff}
+
+/* ═══════════════════════════════════════════
+   ── TABLET  (≥ 680px)
+═══════════════════════════════════════════ */
+@media(min-width:680px){
+  body{font-size:16px}
+
+  /* Page column widens */
+  .pg{max-width:680px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.15)}
+
+  /* Header scales up */
+  .hdr{padding:44px 28px 32px}
+  .hdr-t{font-size:42px}
+  .hdr-s{font-size:18px}
+
+  /* Content breathing room */
+  .ct{padding:22px 22px calc(88px + env(safe-area-inset-bottom,0px))}
+
+  /* Day hero bigger */
+  .dh{padding:26px;margin-bottom:22px}
+  .dh-t{font-size:26px}
+  .dh-s{font-size:15px}
+
+  /* Days list: 2-column grid on tablet */
+  .stw{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r)}
+  .sr{border-bottom:2px solid var(--bg)}
+  .sr:nth-child(odd){border-right:2px solid var(--bg)}
+
+  /* Reservas grid */
+  .rlc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rlc-grid .rlc{margin-top:0}
+
+  /* Checklist: 2 columns */
+  .chs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .chs-grid .chs{margin-bottom:0}
+
+  /* Photo rows: 2 columns */
+  .pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pr-grid .pr{margin-bottom:0}
+
+  /* Action buttons in pairs */
+  .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ab-grid .ab{margin-bottom:0}
+
+  /* Schedule wider */
+  .si{padding:13px 18px}
+  .st{min-width:58px}
+
+  /* Topbar */
+  .tb{padding:14px 22px}
+  .tbt{font-size:17px}
+
+  /* Bottom nav bigger touch targets */
+  .bnav{padding:10px 8px calc(10px + env(safe-area-inset-bottom,0px))}
+  .nb{min-width:60px;font-size:11px;padding:6px 10px}
+  .nb span:first-child{font-size:22px}
+}
+
+/* ═══════════════════════════════════════════
+   ── DESKTOP  (≥ 1080px)
+   Sidebar nav + main content side by side
+═══════════════════════════════════════════ */
+@media(min-width:1080px){
+  html{background:#e8edf2}
+  body{font-size:15px}
+
+  /* Full-width page, no column limit */
+  .pg{max-width:none;box-shadow:none;background:transparent;display:none}
+  .pg.on{display:flex;flex-direction:column;min-height:100vh}
+
+  /* ── Desktop top header bar (for home) */
+  .hdr{
+    padding:52px 0 38px;
+    display:flex;align-items:center;gap:0;
+  }
+  .hdr-inner{
+    max-width:1200px;margin:0 auto;width:100%;
+    padding:0 40px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+  }
+  .hdr-text{flex:1}
+  .hdr-t{font-size:52px}
+  .hdr-s{font-size:18px}
+  .hdr-ey{font-size:13px}
+
+  /* ── Desktop topbar (day pages) */
+  .tb{
+    padding:0 40px;min-height:60px;
+    justify-content:flex-start;gap:16px;
+    position:sticky;top:0;
+  }
+  .tbt{font-size:18px}
+
+  /* ── Desktop layout: sidebar + main */
+  .desktop-layout{
+    display:flex;
+    flex:1;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+    padding:28px 40px 40px;
+    gap:28px;
+    align-items:flex-start;
+  }
+
+  /* Sidebar (left) */
+  .desktop-sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    position:sticky;
+    top:88px; /* below topbar */
+    max-height:calc(100vh - 108px);
+    overflow-y:auto;
+    scrollbar-width:thin;
+  }
+  .desktop-sidebar::-webkit-scrollbar{width:4px}
+  .desktop-sidebar::-webkit-scrollbar-thumb{background:var(--bd);border-radius:4px}
+
+  .sidebar-section{
+    background:var(--wh);border-radius:var(--r);
+    box-shadow:var(--sh);margin-bottom:14px;overflow:hidden;
+  }
+  .sidebar-title{
+    background:var(--bld);color:#fff;
+    padding:10px 14px;font-size:11px;font-weight:700;
+    letter-spacing:1.5px;text-transform:uppercase;
+  }
+  .sidebar-link{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 14px;border-bottom:1px solid #f3f4f6;
+    font-size:13px;font-weight:600;color:var(--sl);
+    cursor:pointer;transition:background .15s;
+  }
+  .sidebar-link:last-child{border-bottom:none}
+  .sidebar-link:hover{background:var(--blx)}
+  .sidebar-link.on{background:var(--bll);color:var(--bl)}
+  .sidebar-link .sl-num{
+    width:26px;height:26px;border-radius:6px;
+    background:var(--bg);display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;color:var(--bl);flex-shrink:0;
+  }
+  .sidebar-link.on .sl-num{background:var(--bl);color:#fff}
+  .sidebar-link .sl-date{font-size:11px;color:var(--sll);margin-left:auto;flex-shrink:0}
+
+  /* Main content (right) */
+  .desktop-main{
+    flex:1;min-width:0;
+  }
+
+  /* Content padding (no bottom-nav offset on desktop) */
+  .ct{padding:0}
+
+  /* Hide bottom nav, show sidebar instead */
+  .bnav{display:none}
+
+  /* Home page special desktop layout */
+  #pg-ph .desktop-layout{padding-top:0}
+  #pg-ph .desktop-main .stw{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r)}
+  #pg-ph .desktop-main .sr{border-bottom:2px solid var(--bg)}
+  #pg-ph .desktop-main .sr:nth-child(odd){border-right:2px solid var(--bg)}
+
+  /* Reservas grid desktop */
+  .rlc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .rlc-grid .rlc{margin-top:0}
+
+  /* Checklist 2 cols */
+  .chs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .chs-grid .chs{margin-bottom:0}
+
+  /* Photo rows 2 cols */
+  .pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .pr-grid .pr{margin-bottom:0}
+
+  /* AB buttons in 2 cols */
+  .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ab-grid .ab{margin-bottom:0}
+
+  /* Day hero bigger */
+  .dh{padding:28px 32px;margin-bottom:24px}
+  .dh-t{font-size:28px}
+  .dh-s{font-size:15px}
+
+  /* Schedule wider font */
+  .si{padding:13px 20px;font-size:14px}
+  .st{min-width:60px}
+
+  /* Prev/next becomes a centered bar */
+  .pnrow{justify-content:flex-start;gap:12px;margin-top:28px}
+  .pnrow .ab{flex:0 0 auto;width:200px}
+
+  /* Topbar back/home buttons thinner on desktop */
+  .tbb{width:38px;height:38px;font-size:18px}
+
+  /* Labels slightly smaller */
+  .lbl{font-size:11px;margin:20px 0 8px 2px}
+}
+
+/* ═══════════════════════════════════════════
+   ── LARGE DESKTOP  (≥ 1400px)
+═══════════════════════════════════════════ */
+@media(min-width:1400px){
+  :root{--sidebar-w:290px}
+  .desktop-layout{padding:32px 60px 60px}
+  .hdr-inner{padding:0 60px}
+  .tb{padding:0 60px}
+  .dh-t{font-size:30px}
+}
 </style>
 </head>
 <body>
@@ -188,16 +482,45 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
 <!-- ══════════════ PAGE: HOME ══════════════ -->
 <div class="pg on" id="pg-ph">
 <div class="hdr">
-  <div class="hdr-ey">Itinerario · Madrid → Las Vegas → Yellowstone</div>
-  <div class="hdr-t">USA<br>ROAD TRIP</div>
-  <div class="hdr-s">Verano 2026 · 4 adultos</div>
-  <div class="chips">
-    <span class="chip">✈ 9–19 Agosto</span>
-    <span class="chip">📅 11 días</span>
-    <span class="chip">🚗 ~1.500 km</span>
-    <span class="chip">🌋 Yellowstone</span>
+  <div class="hdr-inner">
+    <div class="hdr-text">
+      <div class="hdr-ey">Itinerario · Madrid → Las Vegas → Yellowstone</div>
+      <div class="hdr-t">USA<br>ROAD TRIP</div>
+      <div class="hdr-s">Verano 2026 · 4 adultos</div>
+      <div class="chips">
+        <span class="chip">✈ 9–19 Agosto</span>
+        <span class="chip">📅 11 días</span>
+        <span class="chip">🚗 ~1.500 km</span>
+        <span class="chip">🌋 Yellowstone</span>
+      </div>
+    </div>
   </div>
 </div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link on" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="lbl">⚠ Avisos del viaje</div>
   <div class="ac warn">
@@ -293,7 +616,9 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   <button class="ab web" data-go="pg-pk"><span class="ab-i">💰</span><span class="ab-t">Resumen de costes</span><span class="ab-a">›</span></button>
   <a class="ab maps" href="https://maps.google.com/maps/dir/Las+Vegas,NV/Hoover+Dam/Grand+Canyon+West/St.+George,UT/Alpine,WY/Grand+Teton+National+Park/Yellowstone+Lake/Bozeman,MT" target="_blank"><span class="ab-i">🗺</span><span class="ab-t">Ruta completa del road trip en Maps</span><span class="ab-a">↗</span></a>
   <a class="ab web" href="https://www.nps.gov/yell/index.htm" target="_blank"><span class="ab-i">🌋</span><span class="ab-t">Yellowstone NPS — web oficial del parque</span><span class="ab-a">↗</span></a>
-</div>
+</div><!-- /ct -->
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 <nav class="bnav">
   <button class="nb on" data-go="pg-ph"><span>🏠</span><span>Inicio</span></button>
   <button class="nb" data-go="pg-p1"><span>1</span><span>Dom</span></button>
@@ -307,6 +632,31 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
 <!-- ══════════════ PAGE: DÍA 1 ══════════════ -->
 <div class="pg" id="pg-p1">
 <div class="tb"><button class="tbb" data-go="pg-ph">‹</button><span class="tbt">Día 1 · Madrid → Las Vegas</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link on" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh"><div class="dh-n">Día 1 · Domingo, 9 de Agosto 2026</div><div class="dh-t">MADRID → LAS VEGAS ✈</div><div class="dh-s">Vuelo transatlántico · Check-in MGM Grand</div><div class="dh-chips"><span class="dh-chip">✈ ~12h de vuelo</span><span class="dh-chip">🏨 MGM Grand</span><span class="dh-chip">✓ Reservado</span></div></div>
   <div class="ib warn"><div class="ibt">⚠ Antes de salir de casa</div><ul>
@@ -332,11 +682,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-ph"><span class="ab-i">⌂</span><span class="ab-t">Inicio</span></button><button class="ab maps" data-go="pg-p2"><span class="ab-t">Día 2 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 2 ══════════════ -->
 <div class="pg" id="pg-p2">
 <div class="tb"><button class="tbb" data-go="pg-p1">‹</button><span class="tbt">Día 2 · Las Vegas Strip Norte</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link on" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#7b2d8b 0%,#a855f7 100%)"><div class="dh-n">Día 2 · Lunes, 10 de Agosto 2026</div><div class="dh-t">LAS VEGAS · STRIP NORTE 🎰</div><div class="dh-s">Bellagio · Caesars · Fremont Street · Show</div><div class="dh-chips"><span class="dh-chip">Sin coche</span><span class="dh-chip">🎭 Reservar show</span><span class="dh-chip">🏨 MGM Grand</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/las-vegas_estados-unidos_5506956" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión del tiempo — Las Vegas</span><span class="mb-a">↗</span></a>
@@ -373,11 +750,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p1"><span class="ab-t">‹ Día 1</span></button><button class="ab maps" data-go="pg-p3"><span class="ab-t">Día 3 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 3 ══════════════ -->
 <div class="pg" id="pg-p3">
 <div class="tb"><button class="tbb" data-go="pg-p2">‹</button><span class="tbt">Día 3 · Strip Sur + Recogida Coche</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link on" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#7b2d8b 0%,#a855f7 100%)"><div class="dh-n">Día 3 · Martes, 11 de Agosto 2026</div><div class="dh-t">LAS VEGAS · STRIP SUR 🚗</div><div class="dh-s">Mañana libre · Recogida coche 15:00h Aeropuerto LAS</div><div class="dh-chips"><span class="dh-chip">🚗 Alamo 15:00h</span><span class="dh-chip">🏨 Última noche MGM</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/las-vegas_estados-unidos_5506956" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Las Vegas</span><span class="mb-a">↗</span></a>
@@ -406,11 +810,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p2"><span class="ab-t">‹ Día 2</span></button><button class="ab maps" data-go="pg-p4"><span class="ab-t">Día 4 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 4 ══════════════ -->
 <div class="pg" id="pg-p4">
 <div class="tb"><button class="tbb" data-go="pg-p3">‹</button><span class="tbt">Día 4 · Hoover Dam · Grand Canyon</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link on" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#8b2500 0%,#c1440e 100%)"><div class="dh-n">Día 4 · Miércoles, 12 de Agosto 2026</div><div class="dh-t">HOOVER DAM · GRAND CANYON WEST · ST. GEORGE 🏜</div><div class="dh-s">Vegas → Hoover Dam → West Rim → St. George (UT) · ~6,5h conducción</div><div class="dh-chips"><span class="dh-chip">🚗 ~6,5h total</span><span class="dh-chip">🏜 Desierto 42°C</span><span class="dh-chip">Utah</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/grand-canyon_estados-unidos_5294399" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Grand Canyon área</span><span class="mb-a">↗</span></a>
@@ -454,11 +885,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p3"><span class="ab-t">‹ Día 3</span></button><button class="ab maps" data-go="pg-p5"><span class="ab-t">Día 5 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 5 ══════════════ -->
 <div class="pg" id="pg-p5">
 <div class="tb"><button class="tbb" data-go="pg-p4">‹</button><span class="tbt">Día 5 · St. George → Alpine (WY)</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link on" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#2d5a3d 0%,#4a8c42 100%)"><div class="dh-n">Día 5 · Jueves, 13 de Agosto 2026</div><div class="dh-t">ST. GEORGE → BEAR LAKE → ALPINE (WY) 🏔</div><div class="dh-s">St. George → Logan → Bear Lake → Snake River → Alpine · ~9h</div><div class="dh-chips"><span class="dh-chip">🚗 ~9h conducción</span><span class="dh-chip">🏔 Wyoming</span><span class="dh-chip">Ruta escénica</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/logan_estados-unidos_5772534" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Logan, Utah</span><span class="mb-a">↗</span></a>
@@ -498,11 +956,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p4"><span class="ab-t">‹ Día 4</span></button><button class="ab maps" data-go="pg-p6"><span class="ab-t">Día 6 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 6 ══════════════ -->
 <div class="pg" id="pg-p6">
 <div class="tb"><button class="tbb" data-go="pg-p5">‹</button><span class="tbt">Día 6 · Grand Teton → Yellowstone</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link on" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#1e4d8c 0%,#3a7cb8 100%)"><div class="dh-n">Día 6 · Viernes, 14 de Agosto 2026</div><div class="dh-t">ALPINE → GRAND TETON → YELLOWSTONE LAKE ⛰</div><div class="dh-s">Alpine → Jenny Lake → Yellowstone Lake Hotel · ~3h</div><div class="dh-chips"><span class="dh-chip">🚗 ~3h</span><span class="dh-chip">⛰ Grand Teton</span><span class="dh-chip">✓ Xanterra reservado</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/moose_estados-unidos_5597476" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Grand Teton / Moose</span><span class="mb-a">↗</span></a>
@@ -540,11 +1025,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p5"><span class="ab-t">‹ Día 5</span></button><button class="ab maps" data-go="pg-p7"><span class="ab-t">Día 7 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 7 ══════════════ -->
 <div class="pg" id="pg-p7">
 <div class="tb"><button class="tbb" data-go="pg-p6">‹</button><span class="tbt">Día 7 · Cañón + Hayden Valley</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link on" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#4a6741 0%,#6b9e5e 100%)"><div class="dh-n">Día 7 · Sábado, 15 de Agosto 2026</div><div class="dh-t">YELLOWSTONE · CAÑÓN + HAYDEN VALLEY 🌋</div><div class="dh-s">Artist Point · Lower Falls · Fauna del parque</div><div class="dh-chips"><span class="dh-chip">Sin desplazamiento</span><span class="dh-chip">🦬 Fauna</span><span class="dh-chip">📷 Artist Point</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/yellowstone-national-park_estados-unidos_5843642" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Yellowstone</span><span class="mb-a">↗</span></a>
@@ -577,11 +1089,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p6"><span class="ab-t">‹ Día 6</span></button><button class="ab maps" data-go="pg-p8"><span class="ab-t">Día 8 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 8 ══════════════ -->
 <div class="pg" id="pg-p8">
 <div class="tb"><button class="tbb" data-go="pg-p7">‹</button><span class="tbt">Día 8 · Old Faithful + Grand Prismatic</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link on" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#4a6741 0%,#6b9e5e 100%)"><div class="dh-n">Día 8 · Domingo, 16 de Agosto 2026</div><div class="dh-t">YELLOWSTONE · OLD FAITHFUL + GRAND PRISMATIC 🌈</div><div class="dh-s">Géiseres · Aguas termales multicolor</div><div class="dh-chips"><span class="dh-chip">Sin desplazamiento</span><span class="dh-chip">🌋 Géiseres</span><span class="dh-chip">🌈 Termas</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/yellowstone-national-park_estados-unidos_5843642" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Yellowstone</span><span class="mb-a">↗</span></a>
@@ -613,11 +1152,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p7"><span class="ab-t">‹ Día 7</span></button><button class="ab maps" data-go="pg-p9"><span class="ab-t">Día 9 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 9 ══════════════ -->
 <div class="pg" id="pg-p9">
 <div class="tb"><button class="tbb" data-go="pg-p8">‹</button><span class="tbt">Día 9 · Norris + Mammoth</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link on" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#4a6741 0%,#6b9e5e 100%)"><div class="dh-n">Día 9 · Lunes, 17 de Agosto 2026</div><div class="dh-t">YELLOWSTONE · NORRIS + MAMMOTH HOT SPRINGS 🏔</div><div class="dh-s">Norte del parque · Terrazas de travertino</div><div class="dh-chips"><span class="dh-chip">Sin desplazamiento base</span><span class="dh-chip">Norte del parque</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/mammoth_estados-unidos_5646093" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Mammoth Hot Springs</span><span class="mb-a">↗</span></a>
@@ -648,11 +1214,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p8"><span class="ab-t">‹ Día 8</span></button><button class="ab maps" data-go="pg-p10"><span class="ab-t">Día 10 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 10 ══════════════ -->
 <div class="pg" id="pg-p10">
 <div class="tb"><button class="tbb" data-go="pg-p9">‹</button><span class="tbt">Día 10 · Lamar Valley + Beartooth</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link on" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#4a6741 0%,#6b9e5e 100%)"><div class="dh-n">Día 10 · Martes, 18 de Agosto 2026</div><div class="dh-t">YELLOWSTONE · LAMAR VALLEY + BEARTOOTH HWY 🦬</div><div class="dh-s">El Serengeti americano · Carretera más espectacular de EE.UU.</div><div class="dh-chips"><span class="dh-chip">🌅 Madruga</span><span class="dh-chip">🦬 Fauna rara</span><span class="dh-chip">🛣 Beartooth 3.350m</span></div></div>
   <a class="mb" href="https://www.meteoblue.com/es/tiempo/semana/cooke-city_estados-unidos_5282400" target="_blank"><span class="mb-i">🌤</span><span class="mb-t">Previsión — Cooke City / Beartooth</span><span class="mb-a">↗</span></a>
@@ -687,11 +1280,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p9"><span class="ab-t">‹ Día 9</span></button><button class="ab maps" data-go="pg-p11"><span class="ab-t">Día 11 ›</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: DÍA 11 ══════════════ -->
 <div class="pg" id="pg-p11">
 <div class="tb"><button class="tbb" data-go="pg-p10">‹</button><span class="tbt">Día 11 · Regreso a Madrid</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link on" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="dh" style="background:linear-gradient(135deg,#1a3d5c 0%,#2c5f8a 100%)"><div class="dh-n">Día 11 · Miércoles, 19 de Agosto 2026</div><div class="dh-t">YELLOWSTONE → BOZEMAN → MADRID ✈</div><div class="dh-s">Yellowstone Lake Hotel → Bozeman (BZN) → Madrid · ~3h coche</div><div class="dh-chips"><span class="dh-chip">🚗 ~3h</span><span class="dh-chip">✈ Vuelo BZN</span><span class="dh-chip">🏠 ¡Hasta la próxima!</span></div></div>
   <div class="ib warn"><div class="ibt">⚠ Checklist de salida</div><ul>
@@ -721,11 +1341,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </div>
   <div class="pnrow"><button class="ab maps" data-go="pg-p10"><span class="ab-t">‹ Día 10</span></button><button class="ab maps" data-go="pg-ph"><span class="ab-i">⌂</span><span class="ab-t">Inicio</span></button></div>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: CHECKLIST ══════════════ -->
 <div class="pg" id="pg-pc">
 <div class="tb"><button class="tbb" data-go="pg-ph">‹</button><span class="tbt">Checklist Equipamiento</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link on" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="chs"><h4>📄 Documentos y viaje</h4><ul>
     <li>✓ Pasaporte vigente (mínimo 6 meses)</li>
@@ -778,11 +1425,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   </ul></div>
   <button class="ab maps" data-go="pg-ph"><span class="ab-i">⌂</span><span class="ab-t">Volver al inicio</span></button>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: FOTOS ══════════════ -->
 <div class="pg" id="pg-pf">
 <div class="tb"><button class="tbb" data-go="pg-ph">‹</button><span class="tbt">Resumen Fotográfico</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link on" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="ib info"><div class="ibt">💡 Recordatorio general</div><strong>Trípode:</strong> Imprescindible Vegas nocturno, cascadas, Oxbow Bend, Grand Prismatic.<br><strong>Teleobjetivo:</strong> Fauna Yellowstone, mínimo 300mm (400mm ideal).<br><strong>Filtro CPL:</strong> Bear Lake, Grand Prismatic, Snake River, Grand Teton.<br><strong>Baterías:</strong> Cargar cada noche — frío Yellowstone reduce autonomía 40–50%.</div>
   <div class="pr"><div class="pro">📷 Las Vegas (días 1–3)</div><div class="prs">Gran angular 16–24mm: Strip nocturno, Bellagio, Welcome Sign. Trípode para exposiciones largas de neones (4–8s). ISO bajo + f/8 + trípode para travellings de faros.</div><div class="pra">ISO 200–800 noche con trípode · ISO 1600–3200 sin trípode · f/8–f/11</div></div>
@@ -795,11 +1469,38 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   <div class="pr"><div class="pro">🦬 Lamar Valley & Beartooth (día 10)</div><div class="prs">Lamar: amanecer, niebla, siluetas de bisontes, 300–400mm. Beartooth Top of World: gran angular 360°, CPL cielo azul intenso de altitud, tarde.</div><div class="pra">Amanecer obligatorio Lamar · 300–400mm fauna · CPL Beartooth</div></div>
   <button class="ab maps" data-go="pg-ph"><span class="ab-i">⌂</span><span class="ab-t">Volver al inicio</span></button>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <!-- ══════════════ PAGE: COSTES ══════════════ -->
 <div class="pg" id="pg-pk">
 <div class="tb"><button class="tbb" data-go="pg-ph">‹</button><span class="tbt">Resumen de Costes</span><button class="tbb" data-go="pg-ph">⌂</button></div>
+<div class="desktop-layout">
+<aside class="desktop-sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Días del viaje</div>
+    <div class="sidebar-link" data-go="pg-ph"><span class="sl-num">🏠</span>Inicio</div>
+    <div class="sidebar-link" data-go="pg-p1"><span class="sl-num">1</span>Madrid → Vegas <span class="sl-date">Dom 9</span></div>
+    <div class="sidebar-link" data-go="pg-p2"><span class="sl-num">2</span>Strip Norte <span class="sl-date">Lun 10</span></div>
+    <div class="sidebar-link" data-go="pg-p3"><span class="sl-num">3</span>Strip Sur + Coche <span class="sl-date">Mar 11</span></div>
+    <div class="sidebar-link" data-go="pg-p4"><span class="sl-num">4</span>Hoover · Canyon <span class="sl-date">Mié 12</span></div>
+    <div class="sidebar-link" data-go="pg-p5"><span class="sl-num">5</span>Bear Lake · Alpine <span class="sl-date">Jue 13</span></div>
+    <div class="sidebar-link" data-go="pg-p6"><span class="sl-num">6</span>Grand Teton <span class="sl-date">Vie 14</span></div>
+    <div class="sidebar-link" data-go="pg-p7"><span class="sl-num">7</span>Cañón · Hayden <span class="sl-date">Sáb 15</span></div>
+    <div class="sidebar-link" data-go="pg-p8"><span class="sl-num">8</span>Old Faithful <span class="sl-date">Dom 16</span></div>
+    <div class="sidebar-link" data-go="pg-p9"><span class="sl-num">9</span>Norris · Mammoth <span class="sl-date">Lun 17</span></div>
+    <div class="sidebar-link" data-go="pg-p10"><span class="sl-num">10</span>Lamar · Beartooth <span class="sl-date">Mar 18</span></div>
+    <div class="sidebar-link" data-go="pg-p11"><span class="sl-num">11</span>Regreso Madrid <span class="sl-date">Mié 19</span></div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Extras</div>
+    <div class="sidebar-link" data-go="pg-pc"><span class="sl-num">✅</span>Checklist</div>
+    <div class="sidebar-link" data-go="pg-pf"><span class="sl-num">📷</span>Fotos</div>
+    <div class="sidebar-link on" data-go="pg-pk"><span class="sl-num">💰</span>Costes</div>
+  </div>
+</aside>
+<div class="desktop-main">
 <div class="ct">
   <div class="ib info"><div class="ibt">💰 Estimación total — 4 adultos</div>Costes confirmados y estimados. Tipo de cambio €/$ aproximado. Los gastos diarios adicionales son estimaciones para comidas, entradas y extras.</div>
   <div class="lbl">Transporte</div>
@@ -822,10 +1523,12 @@ a.rb.w{background:var(--bll);color:var(--bl);border:1px solid #93c5fd}
   <div class="ib ok" style="margin-top:16px"><div class="ibt">💰 Total estimado</div><strong style="font-size:22px">~12.078 €</strong> — 4 adultos<br><br>No incluye: shows de Vegas (~$200/persona), America the Beautiful Pass (~$80), souvenirs, propinas EE.UU. (15–20% obligatorio), incidentales.</div>
   <button class="ab maps" data-go="pg-ph"><span class="ab-i">⌂</span><span class="ab-t">Volver al inicio</span></button>
 </div>
+</div><!-- /desktop-main -->
+</div><!-- /desktop-layout -->
 </div>
 
 <script>
-// ── Minimal router: show/hide full page divs ──────────────
+// ── Router ─────────────────────────────────────────────────
 var cur = 'pg-ph';
 
 function goPage(id) {
@@ -836,9 +1539,13 @@ function goPage(id) {
   to.classList.add('on');
   cur = id;
   window.scrollTo(0, 0);
-  // update bottom nav
+  // Bottom nav active state
   document.querySelectorAll('.nb').forEach(function(nb){
     nb.classList.toggle('on', nb.dataset.go === id);
+  });
+  // Sidebar active state (all sidebars)
+  document.querySelectorAll('.sidebar-link').forEach(function(sl){
+    sl.classList.toggle('on', sl.dataset.go === id);
   });
 }
 
