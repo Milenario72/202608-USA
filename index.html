@@ -308,6 +308,24 @@ img{max-width:100%}
 @media(min-width:1180px){
   .cards{grid-template-columns:1fr 1fr 1fr}
 }
+
+/* ---------- SABER MÁS — acordeón de lugares ---------- */
+.block.places{background:#f0f5f0;border-color:#c4d8c4}
+.block.places .bh{color:#2a5a2a}
+.pl-acc{border:1px solid #c4d8c4;border-radius:10px;overflow:hidden;margin-top:8px}
+.pl-acc:first-of-type{margin-top:2px}
+.pl-btn{width:100%;background:#f7fbf7;border:none;text-align:left;cursor:pointer;
+  padding:10px 13px;display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:700;color:var(--ink);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.pl-btn *{pointer-events:none}
+.pl-btn .pl-arr{font-size:15px;color:var(--brand2);transition:transform .18s;flex-shrink:0;margin-left:8px}
+.pl-btn.open .pl-arr{transform:rotate(180deg)}
+.pl-body{display:none;padding:10px 13px 13px;font-size:13px;
+  color:var(--ink-soft);line-height:1.65;border-top:1px solid #d8ecd8;background:#fff}
+.pl-body.open{display:block}
+.pl-body a{color:var(--brand2);font-weight:600;font-size:12px;display:inline-block;margin-top:8px;
+  background:#eef3f8;border-radius:20px;padding:4px 10px}
 </style>
 </head>
 <body>
@@ -424,6 +442,12 @@ const DAYS = [
     food:"Primera noche tranquila. Opciones GF cerca del MGM.",
     photo:null, warn:"Vuelo emitido ✓ (BA operado por American). Llegada 19:56 hora local: noche solo para descansar, nada de conducir. Ojo al jet lag (+9h respecto a Madrid).",
     temp:"~40°C / 27°C · Vegas, muy caluroso y seco",
+    places:[
+      ["Las Vegas Strip","El Strip es una sección de 6,7km de Las Vegas Boulevard con la mayor concentración de hoteles-casino del mundo. El concepto nació en los años 40 cuando el Flamingo de Bugsy Siegel abrió fuera de los límites municipales para escapar de las restricciones de juego. Hoy los hoteles compiten en escala y espectáculo: el MGM Grand tiene 5.000 habitaciones y es uno de los hoteles más grandes del mundo.",
+        [["Wikipedia — Las Vegas Strip","https://es.wikipedia.org/wiki/Las_Vegas_Strip"]]],
+      ["MGM Grand Las Vegas","Inaugurado en 1993, el MGM Grand fue el hotel más grande del mundo en el momento de su apertura. El edificio verde con el león de la entrada es uno de los iconos del Strip. El casino ocupa 15.000 m² y tiene más de 2.500 máquinas tragaperras. El complejo incluye varios restaurantes de chefs con estrellas Michelin, un spa, arena de boxeo y cinco piscinas.",
+        [["Wikipedia — MGM Grand","https://en.wikipedia.org/wiki/MGM_Grand_Las_Vegas"]]]
+    ],
     links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Estado vuelo AA","https://www.aa.com/travelInformation/flights/status"],["Las Vegas (Wikipedia)","https://es.wikipedia.org/wiki/Las_Vegas"]]
   },
 
@@ -438,6 +462,14 @@ const DAYS = [
     photo:"📸 Fuentes del Bellagio de noche (18-150mm, exposición corta). Fremont: neón y marquesina LED (18-50mm, ISO alto, sin trípode; hay mucha luz).",
     warn:"Fremont es gratis y sin entradas. Si vais en coche otro día, garaje propio en 4th & Carson (~$4/h). Reservar el show MJ Live si aún no está hecho.",
     temp:"~40°C / 27°C · calor extremo a mediodía",
+    places:[
+      ["Fuentes del Bellagio","El lago artificial frente al Bellagio tiene 3,2 hectáreas y alberga un sistema de más de 1.200 boquillas que pueden lanzar agua hasta 140 metros de altura. El espectáculo fue diseñado por WET Design, los mismos creadores de la fuente del Epcot Center. Hay más de 30 coreografías diferentes sincronizadas con música que van desde Sinatra hasta Andrea Bocelli. Es completamente gratuito y visible desde la acera.",
+        [["Wikipedia — Fuentes Bellagio","https://es.wikipedia.org/wiki/Fuentes_del_Bellagio"]]],
+      ["MSG Sphere","Inaugurada en 2023 con una inversión de 2.300 millones de dólares, la Sphere es el edificio esférico más grande del mundo: 111 metros de altura y 157 metros de diámetro. La pantalla exterior (Exosphere) tiene 54.000 m² de LEDs y es visible a más de 15km. El interior tiene la pantalla de alta resolución más grande del mundo (16.000 m²) y un sistema de sonido con 160.000 altavoces. El espectáculo interior 'Postcard from Earth' de Darren Aronofsky es único.",
+        [["Wikipedia — MSG Sphere","https://en.wikipedia.org/wiki/Sphere_(venue)"]]],
+      ["Fremont Street Experience","El Downtown original de Las Vegas, anterior al Strip moderno. El Fremont Street Experience es una cubierta de 460 metros de longitud con la pantalla LED más grande del mundo suspendida sobre la calle peatonal a 27 metros de altura. Los espectáculos de luz y sonido son gratuitos y se emiten cada hora de noche. El ambiente es más local y auténtico que el Strip: bandas en directo, artistas callejeros y casinos clásicos de los años 50.",
+        [["Wikipedia — Fremont Street","https://en.wikipedia.org/wiki/Fremont_Street_Experience"]]]
+    ],
     links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Fremont Street","https://vegasexperience.com/"],["Fuentes Bellagio (Wiki)","https://es.wikipedia.org/wiki/Fuentes_del_Bellagio"]]
   },
 
@@ -452,64 +484,118 @@ const DAYS = [
     photo:"📸 Cartel Welcome: mejor a primera hora o al atardecer (18-50mm). Panorámica nocturna del Strip: 18-150mm desde mirador elevado. Cargar baterías LP-E6 esta noche.",
     warn:"Documentación Alamo: carnet de conducir español + Permiso Internacional de Conducción (IDP) + tarjeta crédito a nombre del conductor + confirmación reserva. Fotografiar el coche en todos los ángulos antes de salir del garaje.",
     temp:"~40°C / 27°C · calor seco",
+    places:[
+      ["Welcome to Fabulous Las Vegas Sign","Diseñado en 1959 por Betty Willis, quien cedió el diseño al dominio público sin cobrar derechos — por eso es una de las imágenes más reproducidas de EEUU sin que nadie pague royalties. El letrero tiene forma de diamante con 35 bombillas incandescentes que originalmente se iluminaban en secuencia. Está en el extremo sur del Strip, en el separador central de Las Vegas Boulevard, con un pequeño parking dedicado en ambos lados.",
+        [["Wikipedia — Welcome Sign","https://en.wikipedia.org/wiki/Welcome_to_Fabulous_Las_Vegas_sign"]]],
+      ["High Roller (The LINQ)","Con 167 metros de altura, la High Roller fue la noria más alta del mundo entre 2014 y 2022, cuando fue superada por la Ain Dubai. Las 28 cabinas de cristal tienen capacidad para 40 personas cada una y completan una vuelta en 30 minutos a velocidad constante. Desde arriba se ve el Strip completo, el desierto del Mojave y, en días claros, las montañas de Spring Valley nevadas al noroeste.",
+        [["Wikipedia — High Roller","https://en.wikipedia.org/wiki/High_Roller_(Ferris_wheel)"]]]
+    ],
     links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Alamo (reserva)","https://www.alamo.es/"],["Welcome Sign","https://es.wikipedia.org/wiki/Welcome_to_Fabulous_Las_Vegas"],["Whole Foods Town Square","https://www.wholefoodsmarket.com/"]]
   },
 
   { n:4, date:"Mié 12 Ago", zone:"zi", tag:"Ruta", title:"Las Vegas → Kolob Canyons (Zion NP) → Salt Lake City",
-    quote:"Salida 07:30h. Kolob a ~25°C frente a 40°C del cañón principal. Sin shuttle, sin masas.",
-    drive:[{t:"~6h conducción"},{t:"Salida 07:30"},{t:"Llegada ~16:30 SLC"}],
+    quote:"Salida 07:30h. Cañones rojos, fuerte mormón en ruta y tarde-noche en SLC.",
+    drive:[{t:"~5h30m conducción"},{t:"Salida 07:30"},{t:"Llegada ~15:30 SLC"}],
     hotel:"Holiday Inn Express SLC Downtown", hotelStatus:["ok","Reservado ✓"],
-    tl:[["Mañana","07:30 Whole Foods Town Square (provisiones GF: picnic Kolob + agua 6L). 08:15 I-15 Norte. ~09:00 Virgin River Gorge (Arizona): parada foto espontánea 10min — cañones rojos sobre la autopista. ~10:00 Kolob Canyons Exit 40 I-15."],
-        ["Mediodía","Kolob Canyons Scenic Drive (8km entre cañones de arenisca roja). Timber Creek Overlook Trail (1km i/v, +60m, 45min): las mejores vistas. Picnic GF en mirador. Sin shuttle, sin timed entry. ~25°C."],
-        ["Tarde","12:45 vuelta a I-15 Norte. Parada gasolina en Fillmore o Nephi (mitad de camino). ~16:15 Whole Foods SLC (restock opcional). ~16:30 check-in Holiday Inn. 17:30 paseo Temple Square."]],
-    food:"SLC noche — PENDIENTE RESERVAR: Zest Kitchen (100% GF ⭐) · Copper Onion · Current Fish & Oyster. Reservar en OpenTable desde España.",
-    photo:"📸 Kolob: Timber Creek Overlook Trail (18-150mm para cañones en profundidad, filtro polarizador). Virgin River Gorge: 18-50mm desde el arcén de descanso. Mejor luz en Kolob a media mañana (sol frontal sobre las paredes rojas).",
-    warn:"America the Beautiful Pass ($80): comprar online antes o al entrar a Kolob. Cubre este parque + Grand Teton + Yellowstone. Se amortiza desde el primer uso. Kolob es la decisión correcta: Exit 40 I-15, cero desvío, ~25°C vs 40°C en Zion Canyon principal.",
-    temp:"Kolob ~25°C / 15°C · SLC ~33°C / 19°C",
-    links:[["Tiempo Kolob/Zion","https://forecast.weather.gov/MapClick.php?CityName=Kolob+Canyons&state=UT&site=SLC&textField1=37.4350&textField2=-113.2016"],["Kolob Canyons (NPS)","https://www.nps.gov/zion/planyourvisit/kolob-canyons.htm"],["Tiempo Salt Lake City","https://forecast.weather.gov/MapClick.php?CityName=Salt+Lake+City&state=UT&site=SLC&textField1=40.7608&textField2=-111.8910"],["America Beautiful Pass","https://store.usgs.gov/america-the-beautiful-passes"]]
+    tl:[["Mañana","07:30 Whole Foods Town Square (provisiones GF: picnic Kolob + agua 6L, abren 07:00h). 07:55 I-15 Norte. ~08:45 Virgin River Gorge (Arizona): área de descanso habilitada — paredes rojas y naranjas de 300m a ambos lados de la autopista, uno de los cañones más espectaculares visibles desde una autopista en EEUU. Parada 10min, luz lateral perfecta a esa hora. ~09:10 St. George, UT: parada opcional baño/café si necesario (gasolinera I-15). ~09:40 Kolob Canyons Exit 40 I-15: entrada al parque con America the Beautiful Pass. Kolob Canyons Road (8km): cuatro miradores intermedios — Lee Pass, Box Canyon Overlook, Middle Fork Overlook y Timber Creek. ~11:00 Timber Creek Overlook Trail (1km i/v, +60m, 40min): mejor punto fotográfico, vistas de los Finger Canyons completos. ~11:45 picnic GF en las mesas del mirador final (~25°C, sombra de pinos, sin masas)."],
+        ["Tarde en ruta","12:30 salida Kolob, I-15 Norte. ~13:00 Cove Fort (Exit 135): fuerte mormón de basalto negro perfectamente restaurado de 1867 — 12 habitaciones originales amuebladas, torres de vigilancia, entrada gratuita. Uno de los sitios más infravalorados de la I-15, los voluntarios lo explican bien. 30min. ~13:45 Fillmore: gasolina. ~15:30 llegada Salt Lake City. ~15:45 check-in Holiday Inn Express SLC Downtown."],
+        ["Tarde-noche SLC","~16:30 Temple Square (45min): Tabernáculo mormón con cúpula elíptica de madera y acústica perfecta, jardines y Centro de Visitantes — gratuito, sin presión. ~17:15 Utah State Capitol (30min, a pie cuesta arriba): edificio de granito de 1916 con vistas panorámicas del valle de SLC y los Wasatch Mountains — una de las mejores vistas de la ciudad, gratuito, abierto hasta 20:00h. ~17:50 Granary District (paseo 30min): barrio industrial reconvertido al sur del centro, murales enormes, ambiente joven, terrazas. ~19:00 cena GF en el centro."]],
+    food:"Picnic GF del coche en Kolob (comprado en Whole Foods 07:30h). Cena SLC — PENDIENTE RESERVAR: Zest Kitchen & Bar (100% GF ⭐, 275 S 200 W, todo el menú seguro) · Copper Onion (americana temporada, 111 E Broadway, reservar OpenTable) · Current Fish & Oyster (mariscos GF, 279 E 300 S). Todos a menos de 10min a pie del hotel.",
+    photo:"📸 Virgin River Gorge: 18-50mm desde el área de descanso, luz lateral a las 08:45h. Kolob: 18-150mm con polarizador para los Finger Canyons en profundidad — mejor luz a media mañana con sol frontal. Utah State Capitol: 18-50mm para las vistas panorámicas del valle al atardecer.",
+    warn:"America the Beautiful Pass ($80): comprar online antes o al entrar a Kolob. Cubre Kolob + Grand Teton + Yellowstone — se amortiza en el primer parque. Kolob: sin shuttle, sin timed entry, sin masas, ~25°C vs 40°C del cañón principal. Cove Fort: salida 135 I-15, cero desvío real, entrada gratuita.",
+    temp:"Kolob ~25°C / 15°C · SLC ~33°C / 19°C · noche SLC ~22°C agradable",
+    places:[
+      ["Virgin River Gorge","La I-15 atraviesa durante 15km uno de los cañones más espectaculares visibles desde una autopista en EEUU. Las paredes de caliza y arenisca roja suben 300 metros a ambos lados y el río Virgin corre turquesa al fondo. Técnicamente es Arizona — el único momento del viaje en que el coche pisa un tercer estado entre Nevada y Utah.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Virgin_River_Gorge"]]],
+      ["Kolob Canyons (Zion NP)","La sección norte de Zion NP, con acceso directo desde la I-15 (Exit 40). Los Finger Canyons son paredes de arenisca de Navajo de 700m — la misma roca que Zion pero sin masas, sin shuttle y a 25°C en agosto. La arenisca de Navajo son dunas fósiles del Jurásico solidificadas hace 190 millones de años.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Kolob_Canyons"],["NPS","https://www.nps.gov/zion/planyourvisit/kolob-canyons.htm"]]],
+      ["Cove Fort","Fuerte pionero mormón de 1867 construido en basalto negro por orden de Brigham Young como parada en la ruta SLC–St. George. Doce habitaciones originales amuebladas, torres de vigilancia. Entrada gratuita, gestado por voluntarios sin ninguna presión religiosa. Está en la salida 135 de la I-15 — cero desvío real.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Cove_Fort"],["NPS","https://www.nps.gov/covo/index.htm"]]],
+      ["Temple Square","El centro espiritual de la Iglesia SUD ocupa una manzana entera en el corazón de SLC. El Tabernáculo tiene una bóveda elíptica de madera de 76 metros sin columnas interiores y acústica extraordinaria. El famoso Coro del Tabernáculo actúa los domingos por la mañana (acceso gratuito y abierto al público). Jardines y Centro de Visitantes de acceso libre.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Temple_Square"]]],
+      ["Utah State Capitol","Inaugurado en 1916 en granito de las Wasatch Mountains. Sobre una colina al norte del centro de SLC, desde la explanada exterior hay una de las mejores vistas panorámicas de la ciudad: el valle entre dos cadenas montañosas y el Gran Lago Salado al noroeste. Gratuito, abierto hasta las 20:00h.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Utah_State_Capitol"]]],
+      ["Granary District","El barrio industrial más antiguo de SLC reconvertido en estudios, cervecerías artesanales y restaurantes. El más parecido a un barrio europeo de toda la ciudad — murales de gran formato, vida en la calle y bares que funcionan con normalidad completa (las leyes de alcohol de Utah son peculiares pero aquí no se nota).",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Granary_District,_Salt_Lake_City"]]]
+    ],
+    links:[["Tiempo Kolob/Zion","https://forecast.weather.gov/MapClick.php?CityName=Kolob+Canyons&state=UT&site=SLC&textField1=37.4350&textField2=-113.2016"],["Kolob Canyons (NPS)","https://www.nps.gov/zion/planyourvisit/kolob-canyons.htm"],["Cove Fort (NPS)","https://www.nps.gov/covo/index.htm"],["Tiempo Salt Lake City","https://forecast.weather.gov/MapClick.php?CityName=Salt+Lake+City&state=UT&site=SLC&textField1=40.7608&textField2=-111.8910"],["Temple Square","https://www.churchofjesuschrist.org/feature/templesquare"],["Utah State Capitol","https://utahstatecapitol.utah.gov/"]]
   },
 
-  { n:5, date:"Jue 13 Ago", zone:"cache", tag:"Cache", title:"Salt Lake City → Logan Canyon → Star Valley → Alpine (WY)",
-    quote:"US-89 escénico sin turismo masivo. 'Little Switzerland of Wyoming' al atardecer.",
-    drive:[{t:"~5h30m coche"},{t:"Salida 08:30"},{t:"Llegada ~15:00 Alpine"}],
+  { n:5, date:"Jue 13 Ago", zone:"cache", tag:"Cache", title:"Salt Lake City → Logan Canyon → Bear Lake → Star Valley → Alpine (WY)",
+    quote:"Día de ruta escénica puro. Cañón, lago turquesa, queso artesanal y 'Little Switzerland of Wyoming'.",
+    drive:[{t:"~5h30m conducción"},{t:"Salida 08:30"},{t:"Llegada ~16:30 Alpine"}],
     hotel:"Flying Saddle Resort, Alpine", hotelStatus:["pend","Reservado, sin pagar"],
-    tl:[["Mañana","08:30 check-out SLC. Cargar nevera GF. I-15 Norte → I-84 Este → US-89 Norte. ~10:30 Logan, UT (parada gasolina + café). Logan Canyon National Scenic Byway hacia el norte: desfiladero con paredes de fósiles, el paisaje más bonito de Utah sin turistas."],
-        ["Mediodía","~12:30 Montpelier, ID o Afton, WY: picnic GF del coche. Opciones GF en diner local muy escasas — mejor llevar comida preparada."],
-        ["Tarde","US-89 por el Star Valley ('Little Switzerland of Wyoming'): granjas, montañas nevadas, río Salt Fork. Conducir despacio. ~15:00 check-in Flying Saddle Resort (confluencia río Snake y río Greys). Paseo por Alpine y el Snake River Junction al atardecer."]],
-    food:"Llevar picnic GF sólido del coche — escasas opciones GF en la ruta. Cena en Alpine: Flying Saddle Resort (confirmar GF al check-in) o Driftwood Pizzeria (pizza GF ⭐). ⚠️ Yankee Doodle's solo hasta las 16h.",
-    photo:"📸 Logan Canyon: 18-50mm para las paredes del desfiladero. Star Valley: 18-150mm para el valle con montañas nevadas al fondo. Alpine: 100-400mm para fauna fluvial (águilas pescadoras, nutrias) en la confluencia del Snake.",
-    warn:"⚠️ Flying Saddle Resort — PENDIENTE DE PAGAR. Confirmar pago antes de salir de España. Al check-in: preguntar qué opciones son seguras para alergia al trigo, pedir hablar con el cocinero si necesario. Ruta Logan Canyon es más lenta que la I-15 directa pero infinitamente más bonita.",
-    temp:"Star Valley/Alpine ~28°C / 10°C · mañanas frescas",
-    links:[["Tiempo Alpine WY","https://forecast.weather.gov/MapClick.php?CityName=Jackson&state=WY&site=RIW&textField1=43.4799&textField2=-110.7624"],["Carreteras Utah (UDOT)","https://www.udottraffic.utah.gov/"],["Logan Canyon Byway","https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/logan-canyon-national-scenic-byway"],["Flying Saddle Resort","https://www.flyingsaddleresort.com/"]]
+    tl:[["Mañana","08:30 check-out SLC. Cargar nevera GF. I-15 Norte → US-89 Norte hacia Brigham City. ~09:45 Brigham City: parada opcional café/baño si apetece. ~10:30 Logan, UT: parada gasolina obligatoria (última grande antes de 70km de cañón y montaña) + café en Main Street 10min. Campus de Utah State University sobre la colina visible desde la carretera. ~11:00 inicio Logan Canyon Scenic Byway (US-89): paredes de caliza de 600m con estratos de fósiles del Jurásico, río Logan turquesa abajo, bosques de álamos y abetos. Conducir a 60km/h y disfrutar. ~15km: Ricks Spring — manantial que brota directamente de la roca caliza al borde de la carretera, parking pequeño, 5min, curioso. Varios arcenes habilitados para parar y hacer fotos."],
+        ["Mediodía","~12:20 Bear Lake Overlook (cima del cañón): al coronar aparece de repente el lago entero — turquesa intenso por carbonato cálcico en suspensión, vista aérea perfecta para foto. Parada 20min. ~12:40 bajada 5km a Garden City, UT, a orillas del lago. Picnic GF del coche en una mesa con vistas al lago — la opción más segura y más bonita (opciones GF en diners locales muy limitadas). Si hay ganas: playa pública pequeña en el lado sur de Garden City — 15-20min con los pies en el agua turquesa antes de seguir. ~13:30 salida Garden City hacia el norte por US-89."],
+        ["Tarde","~14:30 Montpelier, ID: parada 15min si necesario — última parada cómoda antes de Wyoming, gasolina si baja de mitad. ~15:00 entrada en Star Valley, WY (US-89): valle agrícola amplio rodeado de montañas de hasta 3.000m — el apodo 'Little Switzerland of Wyoming' es bastante acertado. ~15:15 Afton, WY: parada 10-15min — arco de cuernos de alce más grande del mundo en la calle principal (foto obligatoria) + Star Valley Cheese (quesería artesanal local desde 1940, queso 100% GF, merece una cata rápida). ~15:40 Freedom, WY: pueblo minúsculo en la frontera Idaho-Wyoming — el saloon tiene la línea estatal pintada en el suelo (anecdótico pero divertido). ~16:15 arcén panorámico Snake River Canyon: embalse de Palisades y confluencia de ríos — agua turquesa encajonada entre paredes rocosas, última foto del día. ~16:30 llegada Flying Saddle Resort, Alpine."]],
+    food:"Picnic GF sólido del coche para el mediodía en Bear Lake (comprado en SLC la noche anterior o por la mañana). Star Valley Cheese en Afton: queso artesanal GF, ideal para picar en el coche. Cena en Alpine: Flying Saddle Resort (confirmar GF al check-in) o Driftwood Pizzeria (pizza GF ⭐). ⚠️ Yankee Doodle's solo hasta las 16h — descartado para cena.",
+    photo:"📸 Bear Lake Overlook: 18-150mm para el azul-turquesa desde altura — luz de mediodía con sol frontal saca el color más intenso. Logan Canyon: 18-50mm para las paredes del desfiladero y el río desde los arcenes. Star Valley: 18-150mm para el valle con montañas nevadas al fondo. Snake River Canyon: 18-150mm desde el arcén panorámico. Alpine: 100-400mm para fauna fluvial (águilas pescadoras, nutrias) en la confluencia del Snake y el Greys.",
+    warn:"⚠️ Flying Saddle Resort — PENDIENTE DE PAGAR. Confirmar pago antes de salir de España. Al check-in: preguntar opciones seguras para alergia al trigo. Logan Canyon es carretera de montaña con RVs y camiones — media real de 60km/h, no 90. No agobiarse con los tiempos, el paisaje es el objetivo del día.",
+    temp:"Logan Canyon ~22°C / 12°C · Bear Lake ~26°C / 12°C · Star Valley/Alpine ~28°C / 10°C",
+    places:[
+      ["Logan Canyon Scenic Byway","La US-89 sigue el río Logan durante 66km a través de un desfiladero de caliza con paredes de hasta 600m, prácticamente desconocido para el turismo internacional. Las capas de roca expuestas muestran estratos del Jurásico y el Cretácico con fósiles visibles en algunos cortes. El río Logan tiene un color turquesa intenso por la pureza del agua y el fondo de caliza blanca.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Logan_Canyon"]]],
+      ["Bear Lake","Conocido como el 'Caribe de las Montañas Rocosas' por su color turquesa idéntico al de los lagos alpinos de los Dolomitas — carbonato cálcico en suspensión que absorbe las longitudes de onda rojas. Con 32km de longitud es el segundo lago más grande de Utah. El Bear Lake Overlook en la cima del cañón Logan da la vista más dramática: el lago aparece de repente al coronar la montaña como un espejo azul en medio del desierto.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Bear_Lake_(Idaho%E2%80%93Utah)"]]],
+      ["Star Valley — 'Little Switzerland of Wyoming'","Valle agrícola de 60km en el suroeste de Wyoming, encajonado entre montañas de hasta 3.000m. El apodo lo puso un colono suizo del siglo XIX y sigue siendo acertado: praderas verdes con rebaños y granjas con montañas nevadas de fondo. Fue colonizado por mormones en los años 1880 que escapaban de la persecución federal, y la arquitectura de los pueblos refleja esa historia.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Star_Valley,_Wyoming"]]],
+      ["Afton — Arco de cuernos de alce","El arco de cuernos de alce más grande del mundo en la calle principal de Afton, WY. Miles de cornamentas naturales entrelazadas acumuladas desde principios del siglo XX — los alces mudan la cornamenta cada año y se recogen del bosque. Junto al arco, la Star Valley Cheese es una quesería artesanal fundada en 1938 por colonos suizos con técnicas de elaboración de queso alpino. 100% GF.",
+        [["Wikipedia — Afton WY","https://en.wikipedia.org/wiki/Afton,_Wyoming"]]],
+      ["Freedom, WY — el pueblo en dos estados","Un pueblo de 300 habitantes exactamente en la frontera Wyoming/Idaho. Fundado en 1879 por colonos mormones que escapaban de la persecución federal cruzando al estado vecino (de ahí el nombre). El saloon local tiene pintada la línea divisoria entre los dos estados en el suelo — puedes estar en Wyoming e Idaho al mismo tiempo.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Freedom,_Wyoming"]]]
+    ],
+    links:[["Tiempo Logan UT","https://forecast.weather.gov/MapClick.php?CityName=Logan&state=UT&site=SLC&textField1=41.7355&textField2=-111.8343"],["Logan Canyon Byway","https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/logan-canyon-national-scenic-byway"],["Bear Lake (NPS)","https://stateparks.utah.gov/parks/bear-lake/"],["Tiempo Alpine WY","https://forecast.weather.gov/MapClick.php?CityName=Jackson&state=WY&site=RIW&textField1=43.4799&textField2=-110.7624"],["Flying Saddle Resort","https://www.flyingsaddleresort.com/"]]
   },
 
   { n:6, date:"Vie 14 Ago", zone:"tet", tag:"Tetons", title:"Alpine → Grand Teton NP → Lake Yellowstone Hotel",
-    quote:"06:00 salida. Mormon Row 07:15h con luz rasante. Cena reservada a las 20:00h.",
-    drive:[{t:"~3h 40m total"},{t:"Salida 06:00 ⚡",crit:true},{t:"Llegada ~16:30 Lake YS"}],
+    quote:"10 horas en Grand Teton. Mormon Row 07:15h. Willow Flats al atardecer. Cena 20:30h.",
+    drive:[{t:"~2h total conducción"},{t:"Salida 06:00 ⚡",crit:true},{t:"Salida Teton 17:45"},{t:"Llegada ~19:45 Lake YS"}],
     hotel:"Lake Yellowstone Hotel (Xanterra)", hotelStatus:["ok","Reservado Xanterra ✓"],
-    tl:[["Mañana","06:00 salida Alpine → South Entrance Grand Teton (~1h10). 07:15 Mormon Row: graneros Moulton Barns con Teton Range — la foto más icónica del viaje (luz rasante dura ~45min). 08:30 Jenny Lake (sendero orilla sur, reflejos). 10:00 Schwabacher Landing (meandro del Snake con Tetons reflejados). 11:00 Signal Mountain Summit Road (panorámica 360°)."],
-        ["Mediodía","12:00 picnic GF en Colter Bay. 13:00 J.D. Rockefeller Parkway hacia la South Entrance de Yellowstone."],
-        ["Tarde","~14:15 South Entrance Yellowstone. ~15:30 West Thumb Geyser Basin opcional (boardwalk 1,5km sobre géiseres en el propio lago — único en el mundo). ~16:30 check-in Lake Yellowstone Hotel."]],
-    food:"Picnic GF del coche para todo el día (comprado en Alpine/SLC). Llevar snacks y agua abundante.",
-    dinner:"🍽️ CENA RESERVADA · Lake Yellowstone Hotel Dining Room · 20:00h · Xanterra ✅. Llegar puntual. Al ser atendidos: avisar alergia al trigo/gluten y pedir carta de alérgenos.",
-    photo:"📸 FILTRO POLARIZADOR imprescindible hoy: Jenny Lake y Schwabacher tienen reflejos que se potencian enormemente. Mormon Row: 18-50mm f/2.8 (gran angular) + 100-400mm (comprimir cadena Teton). Schwabacher: 18-50mm + 100-400mm fauna fluvial (castores, garzas). Signal Mountain: 18-50mm panorámica 360°.",
-    warn:"Aparcamientos críticos: Jenny Lake se llena antes de las 09h en agosto. Hacer primero Mormon Row (07:15) → Jenny Lake (08:30) garantiza plaza. America the Beautiful Pass en la South Entrance de Grand Teton.",
-    temp:"Grand Teton ~23°C / 7°C · mañana fría al amanecer (~10°C)",
-    links:[["Tiempo Grand Teton","https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218"],["Grand Teton NP · estado","https://www.nps.gov/grte/planyourvisit/conditions.htm"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"],["NPS Grand Teton Weather","https://www.nps.gov/grte/planyourvisit/weather.htm"]]
+    tl:[["Mañana","06:00 salida Alpine (~90km, ~1h10 hasta Mormon Row). 07:15 Mormon Row / Antelope Flats: graneros Moulton Barns con el Teton Range al fondo — luz rasante dura ~45min, no sustituible. Paseo corto entre los graneros (~1km). Pronghorns frecuentes en Antelope Flats desde el coche. 08:05 Schwabacher Landing (10min en coche): camino de tierra 800m hasta el meandro del Snake — reflejos perfectos de los Tetons, posible niebla baja, castores y garzas. Polarizador aquí. 08:45 Jenny Lake: aparcar en South Jenny Lake antes de que se llene. Sendero de tierra por la orilla sur (~2km i/v, completamente plano). Reflejos del Grand Teton en el agua."],
+        ["Mediodía","09:50 Signal Mountain Summit Road (opcional): 8km de asfalto hasta la cima en coche, panorámica 360° de todo Jackson Hole. Saltarlo si el grupo está cansado — el resto del día compensa. 10:30 Oxbow Bend (de camino al norte, justo al norte de Moran Junction): meandro del Snake con reflejo del Monte Moran. Fauna habitual: pelícanos blancos, garzas, nutrias, alces. Parada 25min en el arcén habilitado. 11:00 Colter Bay: picnic GF tranquilo en las mesas frente al lago Jackson con los Tetons al fondo. ~1h15min comiendo sin prisa."],
+        ["Tarde","12:15 Willow Flats (frente a Jackson Lake Lodge): humedal con alisos y sauces donde los alces bajan a beber. Paseo tranquilo por la orilla de Colter Bay (sendero circular 3km, llano, sin desnivel) o conducir despacio la Teton Park Road parando en los miradores que se suelen saltar: Cathedral Group Turnout, Mount Moran Turnout, Potholes Turnout. 15:00–17:30 de vuelta en Willow Flats / zona norte: la mejor ventana del día para alces (luz bajando, temperatura más suave). 100-400mm desde el arcén de Jackson Lake Lodge — avistamiento frecuente en agosto. 17:45 salida desde Colter Bay hacia Yellowstone (J.D. Rockefeller Pkwy → South Entrance YS → Lake Village, ~2h con margen para fauna en la carretera)."]],
+    food:"Picnic GF del coche para todo el día (comprado en Alpine o SLC la noche anterior). Mediodía en Colter Bay: mesas con vistas directas al lago Jackson, o Jackson Lake Lodge (5min): <b>Blue Heron Lounge</b> (terraza exterior informal, sin reserva, cócteles y bocados con los Tetons de frente — confirmar opciones GF antes) o <b>Mural Room</b> (restaurante formal interior, ventanales enormes, carta completa — requiere reserva anticipada). Si hay dudas GF, el picnic en Colter Bay es la opción más segura.",
+    dinner:"🍽️ CENA RESERVADA · Lake Yellowstone Hotel Dining Room · 20:30h · Xanterra ✅. Llegar puntual — ~19:45h check-in, tiempo para dejar equipaje y frescos. Al ser atendidos: avisar alergia al trigo/gluten y pedir carta de alérgenos.",
+    photo:"📸 FILTRO POLARIZADOR imprescindible: Schwabacher Landing y Jenny Lake tienen reflejos que se potencian enormemente. Mormon Row: 18-50mm f/2.8 gran angular + 100-400mm para comprimir la cadena Teton. Schwabacher: 18-50mm + 100-400mm fauna fluvial. Oxbow Bend: 100-400mm para fauna y reflejo Monte Moran. Willow Flats tarde: 100-400mm para alces — mejor luz entre 15:00-17:30h.",
+    warn:"Aparcamientos críticos: Jenny Lake South se llena antes de las 09h en agosto — llegar antes garantiza plaza. Signal Mountain es opcional: saltarlo si el grupo está cansado. West Thumb eliminado del trayecto — NO es necesario el Día 6 con 4 días completos en Yellowstone por delante. Directo al hotel desde South Entrance.",
+    temp:"Grand Teton ~23°C / 7°C · amanecer ~10°C (capas) · tarde agradable",
+    places:[
+      ["Mormon Row / Antelope Flats","Una hilera de graneros históricos de colonos mormones de los años 1890-1910, con el Teton Range de fondo. Los graneros Moulton Barns son los más fotografiados de EEUU — la combinación de arquitectura pionera con la cadena montañosa más escarpada de las Rocosas es única. John Moulton y su hermano Thomas construyeron sus granjas aquí en 1908 y la familia los mantuvo hasta los años 1980. El NPS los restauró y protegió.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Mormon_Row_Historic_District"]]],
+      ["Schwabacher Landing","Un acceso al río Snake a través de un camino de tierra de 800m desde la Teton Park Road. El río forma meandros con reflejos perfectos de los Tetons al amanecer — cuando hay niebla baja sobre el agua y el Grand Teton (4.199m) reflejado en el río, es una de las fotografías de naturaleza más célebres de EEUU. Castores activos en el río, garzas y patos buceadores frecuentes.",
+        [["NPS — Schwabacher Landing","https://www.nps.gov/grte/planyourvisit/schwabacher.htm"]]],
+      ["Jenny Lake","El lago más fotogénico del parque, formado por un glaciar hace 12.000 años al pie del Grand Teton. Tiene 2,5km de largo y una profundidad máxima de 57 metros. El sendero de la orilla sur (2km, llano) ofrece los mejores reflejos de la cadena Teton en el agua a primera hora. Un ferry cruza el lago hasta el lado oeste donde están Hidden Falls e Inspiration Point.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Jenny_Lake"]]],
+      ["Oxbow Bend","Un meandro del río Snake al norte de Moran Junction donde el río describe una curva pronunciada. El reflejo del Monte Moran (3.842m) en el agua tranquila del meandro es uno de los iconos fotográficos del parque. Fauna habitual: pelícanos blancos americanos, garzas reales, nutrias, alces y ocasionalmente osos negros bajando a beber al río.",
+        [["NPS — Oxbow Bend","https://www.nps.gov/grte/planyourvisit/oxbow.htm"]]],
+      ["Willow Flats","Una zona de humedales dominada por alisos y sauces frente a Jackson Lake Lodge. Los alces norteamericanos (Cervus canadensis) son los mamíferos terrestres más grandes de América del Norte después del bisonte — los machos adultos pesan hasta 500kg y sus cuernas pueden alcanzar 1,8m de envergadura. En agosto el velvet (terciopelo que recubre las cuernas en crecimiento) está en su punto máximo.",
+        [["Wikipedia — Alce americano","https://es.wikipedia.org/wiki/Cervus_canadensis"]]]
+    ],
+    links:[["Tiempo Grand Teton","https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218"],["Grand Teton NP · estado","https://www.nps.gov/grte/planyourvisit/conditions.htm"],["NPS Grand Teton Weather","https://www.nps.gov/grte/planyourvisit/weather.htm"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"]]
   },
 
   { n:7, date:"Sáb 15 Ago", zone:"yell", tag:"Cañón", title:"Yellowstone — Gran Cañón (mañana) + Hayden Valley (tarde)",
-    quote:"Itinerario completo del Cañón por la mañana. Bisontes en rut al atardecer. Cena 20:00h.",
+    quote:"Itinerario completo del Cañón por la mañana. Bisontes en rut al atardecer. Cena 20:30h.",
     drive:[{t:"~2h30 internas"},{t:"Base: lago"}],
     hotel:"Lake Yellowstone Hotel (Xanterra)", hotelStatus:["ok","Reservado ✓"],
     tl:[["Mañana — North Rim (07:15–09:30h)","① Brink of Lower Falls Trail: bajar hasta el borde de la cascada — perspectiva única desde arriba, con el estruendo del río. ② Lookout Point: Lower Falls (94m) de frente con luz lateral. ③ Red Rock Point: bajar 80 escalones hasta el borde del cañón — la vista más dramática e íntima (30min i/v, subida exigente — hacerlo temprano). ④ Grand View + Inspiration Point: panorámica más ancha del cañón, al final de la North Rim Drive (sentido único). North Rim completo: 2–3 horas."],
         ["Mañana — South Rim (09:30–11:30h)","⑤ Artist Point (09:45h exactas): LA foto icónica — Lower Falls entre paredes amarillas. El sol ilumina la cascada directamente a esa hora. Llegar antes para conseguir posición en el borde. Opción: trail a Point Sublime (+1h). ⑥ Uncle Tom's Trail parking: Uncle Tom's Trail (si está abierto) — escaleras de metal hasta la base de Upper Falls. Canyon Overlook + Sunset Point opcional. ⑦ Brink of the Upper Falls: parking grande, menos gente — buen sitio para mediodía. Añade 20-30min."],
         ["Tarde (13:00–19:30h)","13:00 pausa estratégica: descanso en el hotel, volcar fotos al SSD, cargar LP-E6 (los animales también descansan a mediodía). 16:30 Hayden Valley: bisontes en rut de agosto, coyotes, garzas, pelícanos desde arcenes habilitados. 17:30 Alum Creek (paseo 2km, bear spray obligatorio). 19:00 Fishing Bridge: última luz dorada sobre el río Yellowstone."]],
     food:"Llevar picnic GF completo del coche para todo el día. Pausa estratégica 13–16h en el hotel.",
-    dinner:"🍽️ CENA RESERVADA · Lake Yellowstone Hotel Dining Room · 20:00h · Xanterra ✅. Llegar puntual. Avisar alergia al trigo. ⚠️ Después de cenar: preparar maletas — check-out mañana antes de 07:00h.",
+    dinner:"🍽️ CENA RESERVADA · Lake Yellowstone Hotel Dining Room · 20:30h · Xanterra ✅. Llegar puntual. Avisar alergia al trigo al sentarse, pedir carta de alérgenos. ⚠️ Después de cenar: preparar maletas — check-out mañana antes de 07:00h.",
     photo:"📸 MAÑANA: Artist Point 09:45h exactas (18-150mm, encuadre completo falls+paredes). Red Rock Point (18-150mm, perspectiva íntima). North Rim: 100-400mm para aislar cascada con paredes al fondo. TARDE: 100-400mm + bean bag ventanilla en Hayden (bisontes rut: manadas grandes, machos persiguiendo hembras, polvo levantado). Fishing Bridge 19:00h: 18-150mm luz dorada.",
     warn:"⚠️ Aparcar en Canyon antes de las 08h — se llena completamente después. Pausa de mediodía (13–16h) no es tiempo perdido: los animales se retiran al frescor y las baterías necesitan carga. Bear spray SIEMPRE accesible fuera del coche. Preparar maletas esta noche: mañana check-out 06:30h.",
     temp:"Yellowstone ~24°C / 5°C · mañanas frías",
+    places:[
+      ["Gran Cañón de Yellowstone","El río Yellowstone ha excavado un cañón de 38km de longitud, 400m de profundidad y hasta 1.200m de anchura en las rocas volcánicas del parque. El color amarillo y naranja de las paredes (que dio nombre al río y al estado) viene del azufre y los óxidos de hierro en la roca hidrotérmicamente alterada. Las Lower Falls (94m) son casi el doble de altura que las cataratas del Niágara.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Grand_Canyon_of_the_Yellowstone"]]],
+      ["Artist Point","El mirador más famoso de Yellowstone, desde el que Thomas Moran pintó en 1871 el cuadro 'Grand Canyon of the Yellowstone' que convencería al Congreso de EEUU de crear el primer parque nacional del mundo en 1872. El punto exacto donde Moran colocó su caballete está marcado en el suelo. A las 09:45h el sol ilumina directamente la Lower Falls desde el frente — la misma luz que captó Moran.",
+        [["Wikipedia — Thomas Moran","https://en.wikipedia.org/wiki/Thomas_Moran"]]],
+      ["Hayden Valley","Un amplio valle fluvial en el centro del parque, con el río Yellowstone serpenteando por praderas de hierba sedge. Es la zona con mayor densidad de fauna megafauna de Yellowstone: bisontes, alces, cisnes trompeteros, pelícanos blancos, grullas, coyotes y una alta probabilidad de osos grizzly. En agosto es la época del rut del bisonte — los machos persiguen a las hembras levantando nubes de polvo.",
+        [["Wikipedia — Hayden Valley","https://en.wikipedia.org/wiki/Hayden_Valley"]]],
+      ["Bisonte americano (Bison bison)","El símbolo de las praderas americanas casi se extinguió: de 60 millones de individuos en el siglo XIX quedaron menos de 1.000 en 1889 por la caza masiva. Yellowstone tiene hoy la única población de bisontes que ha vivido en libertad continua desde la prehistoria en EEUU — unos 5.000 animales. Un bisonte adulto pesa entre 700 y 900kg y puede correr a 50km/h. El rut de agosto es el momento de mayor actividad.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Bisonte_americano"]]]
+    ],
     links:[["Tiempo Lake Village","https://forecast.weather.gov/MapClick.php?lat=44.5636&lon=-110.4003"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Yellowstone Cañón (Wiki)","https://en.wikipedia.org/wiki/Grand_Canyon_of_the_Yellowstone"]]
   },
 
@@ -524,6 +610,14 @@ const DAYS = [
     photo:"📸 Old Faithful: 100-400mm para aislar la columna de agua; 18-50mm para contexto con el boardwalk. Posicionarse lado sur para luz de espaldas. Grand Prismatic: 18-50mm desde el borde; Fairy Falls Overlook (800m extra) para la vista aérea que sale en todas las revistas.",
     warn:"⚠️ DÍA MUY EXIGENTE. Salir ANTES de las 07:00h sin excepción. Aparcamiento de Grand Prismatic se llena antes de las 10h — aparcar en Fairy Falls TH (800m a pie) que además da la mejor foto. Llevar las dos LP-E6 cargadas y la SD vacía.",
     temp:"Old Faithful ~23°C / 5°C · Gardiner ~29°C / 11°C",
+    places:[
+      ["Old Faithful","El géiser más famoso del mundo no es el más alto ni el más regular, pero es el más predecible de los géiseres grandes: erupciona cada 60-110 minutos (media ~90min) y lleva más de 150 años haciéndolo sin interrupción registrada. El agua sale a 93°C (el punto de ebullición a esa altitud) y la columna alcanza entre 40 y 56 metros. El nombre lo puso el explorador Henry Washburn en 1870 por su regularidad.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Old_Faithful"]]],
+      ["Grand Prismatic Spring","La piscina termal más grande de EEUU (113m de diámetro) y la tercera más grande del mundo. Los colores concéntricos —azul profundo en el centro (el agua pura más caliente), verde, amarillo, naranja y rojo en los bordes (bacterias termófilas que viven a diferentes temperaturas)— son producidos por comunidades de microbios que solo pueden sobrevivir en agua hirviendo. Vista desde el borde, los colores no se aprecian bien — el Fairy Falls Overlook da la perspectiva aérea completa.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Gran_Fuente_Prism%C3%A1tica"]]],
+      ["Gardiner, Montana","El único acceso a Yellowstone abierto todo el año (North Entrance), fundado en 1880 durante la construcción del parque. El arco de Roosevelt en la entrada norte fue colocado en 1903 durante la visita del presidente Theodore Roosevelt, quien es considerado el padre de la conservación en EEUU. La piedra del arco tiene inscrita la frase del Congreso de 1872: 'For the Benefit and Enjoyment of the People'.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Gardiner,_Montana"]]]
+    ],
     links:[["Tiempo Old Faithful","https://forecast.weather.gov/MapClick.php?lat=44.4605&lon=-110.8281"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/kiosk/weather.html"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"],["Grand Prismatic (Wiki)","https://es.wikipedia.org/wiki/Gran_Fuente_Prism%C3%A1tica"]]
   },
 
@@ -538,6 +632,14 @@ const DAYS = [
     photo:"📸 Mammoth: 18-150mm (gran variedad de escala, filtro polarizador para el agua). Wapitis: 100-400mm. Trout Lake Trail (2km circular, entre Mammoth y Lamar): reflejos de montaña, osos frecuentes — 100-400mm. Lamar tarde: 100-400mm + bean bag ventanilla.",
     warn:"⚠️ VUELTA DE LAMAR MÁXIMO 20:15h. Los bisontes no reflejan los faros — conducción nocturna en Yellowstone es peligrosa. Sin excepción. Preparar maletas y coche la noche del Día 9 — mañana check-out express a las 05:00h.",
     temp:"Gardiner ~29°C / 12°C · Mammoth ~25°C / 8°C",
+    places:[
+      ["Mammoth Hot Springs","Un sistema de terrazas de travertino en cascada formado por agua caliente que asciende a través de grietas en la roca caliza y deposita carbonato cálcico al enfriarse. Se depositan hasta 2 toneladas de travertino al día, lo que hace que las terrazas cambien de forma visible mes a mes. Las formaciones más activas son Canary Spring (amarillo intenso por bacterias) y Minerva Terrace. El pueblo de Mammoth tiene wapitis que pastan entre los edificios históricos del antiguo Fort Yellowstone.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]],
+      ["Lamar Valley — El Serengeti americano","Un valle fluvial de 20km en el noreste de Yellowstone, el mejor lugar de EEUU (y posiblemente del mundo) para observar depredadores salvajes desde el coche. La reintroducción de lobos grises en 1995 (8 lobos de Alberta, Canadá) transformó el ecosistema: los lobos limitaron el pastoreo de alces en los ríos, lo que permitió recuperar la vegetación de ribera, lo que atrajo castores, lo que creó humedales... un efecto cascada trófica estudiado en todo el mundo.",
+        [["Wikipedia — Lamar Valley","https://en.wikipedia.org/wiki/Lamar_Valley"],["Wikipedia — Reintroducción lobos","https://en.wikipedia.org/wiki/Wolf_reintroduction_to_Yellowstone"]]],
+      ["Lobo gris (Canis lupus)","Los lobos de Yellowstone son los más estudiados del mundo. Actualmente hay unas 10 manadas con ~100 individuos en el parque. Los Rangers con telescopios en Lamar Valley por la mañana son la señal más fiable de avistamiento. La probabilidad de ver lobos en Lamar es mayor al amanecer y al atardecer, especialmente en agosto cuando las manadas tienen cachorros ya crecidos que acompañan a los adultos en las cacerías.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Canis_lupus"]]]
+    ],
     links:[["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
   },
 
@@ -552,6 +654,14 @@ const DAYS = [
     photo:"📸 Lamar amanecer: 100-400mm + bean bag ventanilla (apagar motor, bajar ventanilla, esperar). Para lobos: usar prismáticos primero para localizar, luego cámara. Beartooth: 18-50mm para tundra y panorámicas 360°; 100-400mm para marmotas y cabras montesas. Rodeo: ISO 3200-6400, Av f/5.6, 1/500s mínimo para congelar el movimiento con luz artificial.",
     warn:"⛽ GASOLINA EN COOKE CITY OBLIGATORIO — no hay gasolinera en 95km hasta Red Lodge. Revisar Beartooth en wyoroad.info y mdt.mt.gov 24-48h antes (puede cerrar por nieve/viento incluso en agosto). Forro polar + cortavientos accesibles desde el asiento (no en la maleta). Rodeo entradas: codyniterodeo.com, ~$25/persona.",
     temp:"Lamar amanecer ~5°C 🥶 · Beartooth Pass ~8-12°C 🥶 · Cody ~28°C / 11°C",
+    places:[
+      ["Beartooth Highway","Declarada por el periodista Charles Kuralt como 'la carretera más bella de América', la US-212 asciende desde Cooke City (2.200m) hasta el Beartooth Pass (3.333m) en 30km de curvas espectaculares. Es la carretera asfaltada más alta de Wyoming y Montana. Atraviesa la tundra ártica alpina con lagos glaciales, nieve permanente en agosto y fauna de alta montaña: marmotas de vientre amarillo, cabras montesas y ptarmigan (perdiz ártica). Solo abre de mayo a octubre.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Beartooth_Highway"]]],
+      ["Cody, Wyoming","Fundada en 1896 por el legendario Buffalo Bill Cody (William Frederick Cody), el showman que creó el concepto del Lejano Oeste como espectáculo. El Buffalo Bill Center of the West es considerado el mejor museo del Oeste americano — cinco museos en uno que cubren armas históricas, arte del Oeste, historia de los nativos americanos y la vida de Buffalo Bill. Cody está a 80km de la East Entrance de Yellowstone.",
+        [["Wikipedia — Cody WY","https://en.wikipedia.org/wiki/Cody,_Wyoming"],["Wikipedia — Buffalo Bill","https://es.wikipedia.org/wiki/Buffalo_Bill"]]],
+      ["Cody Nite Rodeo","El rodeo más antiguo de América en funcionamiento continuo desde 1938, cada noche de junio a agosto. El rodeo americano tiene sus raíces en las competiciones entre vaqueros del siglo XIX — las pruebas originales (doma de toros, lazo de terneros, carrera de barriles) son exactamente las mismas que se practicaban en los ranchos hace 150 años. Cody es la 'Rodeo Capital of the World' por decreto del Congreso de EEUU.",
+        [["Wikipedia — Rodeo","https://es.wikipedia.org/wiki/Rodeo_(deporte)"],["Cody Nite Rodeo","https://codyniterodeo.com/"]]]
+    ],
     links:[["Beartooth · Wyoming (WYDOT)","https://www.wyoroad.info/"],["Beartooth · Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Tiempo Cody","https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565"],["Cody Nite Rodeo","https://codyniterodeo.com/"],["Beartooth Hwy (Wiki)","https://en.wikipedia.org/wiki/Beartooth_Highway"]]
   },
 
@@ -566,6 +676,12 @@ const DAYS = [
     photo:null,
     warn:"🚨 TIMING CRÍTICO: Salir Cody MAX 09:15h. ~3h45m hasta BZN. Margen 2h+ antes del vuelo 16:15. La escala en Dallas (~1h20) es el punto más vulnerable del viaje. Si hay retraso en BZN, American se encarga de la conexión (mismo PNR). Verificar en BZN que el SSD tiene todas las fotos antes de facturar las SD en bodega.",
     temp:"Cody ~28°C / 11°C · Bozeman ~28°C / 12°C",
+    places:[
+      ["Bozeman, Montana","Ciudad universitaria de 55.000 habitantes (Montana State University) a los pies de las Bridger Mountains. Es el hub de entrada al suroeste de Montana y una ciudad con vida propia — Main Street tiene restaurantes, cervecerías artesanales y tiendas de outdoor de calidad. El aeropuerto Bozeman Yellowstone International (BZN) es uno de los de mayor crecimiento de EEUU, con conexiones directas a todas las ciudades principales.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Bozeman,_Montana"]]],
+      ["Yellowstone como primer parque nacional","El Congreso de EEUU creó Yellowstone el 1 de marzo de 1872 como 'public pleasuring ground' — el primer parque nacional del mundo. La idea surgió de la expedición Washburn-Langford-Doane de 1870, que regresó con descripciones de géiseres y aguas termales tan extraordinarias que nadie las creyó hasta que el fotógrafo William Henry Jackson y el pintor Thomas Moran acompañaron la siguiente expedición y trajeron imágenes. El modelo de parque nacional se exportó luego a todo el mundo.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Parque_nacional_de_Yellowstone"]]]
+    ],
     links:[["Tiempo Bozeman","https://forecast.weather.gov/MapClick.php?lat=45.677&lon=-111.0429"],["Carreteras Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Estado vuelo AA947","https://www.aa.com/travelInformation/flights/status"],["Aeropuerto Bozeman (BZN)","https://bozemanairport.com/"]]
   }
 ];
@@ -678,7 +794,7 @@ const HOTELS = [
   ["MGM Grand Las Vegas","Días 1-3 · 3 noches","ok","Reservado ✓","3799 Las Vegas Blvd S, Las Vegas, NV","Base para Las Vegas. Piscina para recuperar del vuelo. Coche se recoge en Alamo (aeropuerto) el día 3."],
   ["Holiday Inn Express SLC Downtown","Día 4 · 1 noche","ok","Reservado ✓","Salt Lake City (IHG)","Punto medio de la ruta hacia el norte. Céntrico para cenar en SLC. Sustituye al plan St. George."],
   ["Flying Saddle Resort","Día 5 · 1 noche","pend","Reservado, sin pagar","Alpine, WY","Parada antes de Grand Teton. Restaurante propio (confirmar opciones GF). Broulim's cerca para provisiones."],
-  ["Lake Yellowstone Hotel (Sandpiper Lodge)","Días 6-7 · 2 noches","ok","Reservado Xanterra ✓","Lake Village, Yellowstone NP","El hotel más elegante del parque — edificio colonial de 1891 con vistas directas al lago. Sandpiper Lodge: mejor aislamiento acústico que el edificio principal, menos acceso al lobby histórico. Cenas reservadas 20:00h los días 14 y 15 Ago ✓ (Lake Yellowstone Hotel Dining Room)."],
+  ["Lake Yellowstone Hotel (Sandpiper Lodge)","Días 6-7 · 2 noches","ok","Reservado Xanterra ✓","Lake Village, Yellowstone NP","El hotel más elegante del parque — edificio colonial de 1891 con vistas directas al lago. Sandpiper Lodge: mejor aislamiento acústico que el edificio principal, menos acceso al lobby histórico. Cenas reservadas en Lake Yellowstone Hotel Dining Room: 20:30h (14 Ago) y 20:30h (15 Ago) ✓ Xanterra."],
   ["Yellowstone Village Inn & Suites","Días 8-9 · 2 noches","ok","Reservado ✓","Gardiner, MT","Base para Mammoth y Lamar al amanecer. Limpio, tranquilo, vistas a la montaña. Salida muy temprana el día 10."],
   ["Comfort Inn Buffalo Bill Village","Día 10 · 1 noche","ok","Reservado Booking ✓","Cody, WY","Última noche antes de Bozeman. Cerca del Cody Nite Rodeo. Walmart/Albertsons cerca para picnic del día 11."]
 ];
@@ -692,7 +808,7 @@ const PEND = [
   ["yel","Cody Nite Rodeo — entradas","codyniterodeo.com · ~$25/persona · 18 Ago 20:00h. Comprar con antelación."],
   ["yel","Beartooth Highway","Revisar wyoroad.info y mdt.mt.gov 24-48h antes del 18-Ago (puede cerrar por nieve/viento incluso en agosto)."],
   ["yel","Bear spray","Alquilar en Jackson Día 5 (~$10/día). Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
-  ["grn","Cenas Yellowstone (Días 6-7)","✅ CONFIRMADO. Lake Yellowstone Hotel Dining Room · 20:00h ambas noches (14 y 15 Ago) · Xanterra. Avisar alergia al trigo al llegar."],
+  ["grn","Cenas Yellowstone (Días 6-7)","✅ CONFIRMADO. Lake Yellowstone Hotel Dining Room · 20:30h ambas noches (14 y 15 Ago) · Xanterra. Avisar alergia al trigo al llegar ambas noches."],
   ["grn","Coche de alquiler","✅ CONFIRMADO. Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00, devolución 19 Ago 14:00."],
   ["grn","Alojamientos","✅ CONFIRMADOS. SLC, Lake Yellowstone Hotel (14-15 Ago), Gardiner y Cody confirmados. Flying Saddle: reservado sin pagar ⚠️."],
   ["grn","Vuelo BZN 16:15","✅ AA947 · 16:15 BZN. Salida Cody MAX 09:15h. ⚠️ Escala corta en Dallas (~1h20) — punto más vulnerable del viaje."]
@@ -817,6 +933,17 @@ function renderDays(){
     if(d.dinner) blocks+='<div class="block dinner"><div class="bh">🍽️ Cena reservada</div>'+d.dinner+'</div>';
     if(d.photo) blocks+='<div class="block photo"><div class="bh">📸 Fotografía</div>'+d.photo+'</div>';
     if(d.warn) blocks+='<div class="block warnb"><div class="bh">⚠️ Aviso</div>'+d.warn+'</div>';
+    if(d.places && d.places.length){
+      const plItems=d.places.map(p=>{
+        const pid='pl-'+d.n+'-'+p[0].replace(/\s+/g,'');
+        const links=(p[3]||[]).map(l=>'<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' ↗</a>').join(' ');
+        return '<div class="pl-acc">'+
+          '<button class="pl-btn" data-pl="'+pid+'">'+p[0]+' <span class="pl-arr">▾</span></button>'+
+          '<div class="pl-body" id="'+pid+'">'+p[1]+(links?'<br>'+links:'')+'</div>'+
+          '</div>';
+      }).join('');
+      blocks+='<div class="block places"><div class="bh">🔍 Saber más — lugares del día</div>'+plItems+'</div>';
+    }
     blocks+='<div class="block hotel"><div class="bh">🏨 Dónde duermo</div><b>'+d.hotel+'</b> '+
       statusBadge(d.hotelStatus[0],d.hotelStatus[1])+'</div>';
     // temperatura en cabecera
@@ -1014,10 +1141,18 @@ function go(id){
   document.querySelectorAll(".bnav button,.side button").forEach(b=>b.classList.toggle("on",b.dataset.go===id));
   try{ window.scrollTo(0,0); }catch(e){}
 }
-// Delegación global: cualquier toque/clic dentro de un botón de nav resuelve al botón
+// Delegación global: nav + acordeón de lugares
 document.addEventListener("click",function(e){
-  const btn=e.target.closest(".bnav button,.side button");
-  if(btn && btn.dataset.go){ e.preventDefault(); go(btn.dataset.go); }
+  const nav=e.target.closest(".bnav button,.side button");
+  if(nav && nav.dataset.go){ e.preventDefault(); go(nav.dataset.go); return; }
+  const plBtn=e.target.closest(".pl-btn");
+  if(plBtn){
+    const body=document.getElementById(plBtn.dataset.pl);
+    if(!body) return;
+    const isOpen=body.classList.contains("open");
+    body.classList.toggle("open",!isOpen);
+    plBtn.classList.toggle("open",!isOpen);
+  }
 });
 
 /* init */
