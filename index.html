@@ -258,12 +258,23 @@ img{max-width:100%}
 
 /* checklist */
 .chk-cat{margin-bottom:8px}
-.chk-cat>summary{padding:12px 14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#faf6ee;border-radius:12px}
+.chk-cat>summary{padding:12px 14px;font-weight:700;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;background:#faf6ee;border-radius:12px}
 .chk-cat>summary::-webkit-details-marker{display:none}
-.chk-cat .prog{font-size:12px;color:var(--ink-soft);font-weight:600}
+.chk-cat>summary::after{display:none}
+.chk-cat>summary .cat-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chk-cat>summary .prog-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.chk-cat .prog{font-size:12px;color:var(--ink-soft);font-weight:700;
+  background:#f0ece0;border-radius:20px;padding:2px 10px;white-space:nowrap;
+  min-width:38px;text-align:center}
+.chk-cat>summary .chk-arr{font-size:18px;color:var(--brand);font-weight:400;flex-shrink:0;
+  transition:transform .18s;display:inline-block}
+.chk-cat[open]>summary .chk-arr{transform:rotate(45deg)}
 .chk-item{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid var(--line);align-items:flex-start;cursor:pointer}
 .chk-item:last-child{border-bottom:none}
 .chk-item input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--brand)}
+.chk-item .ci{flex:1;min-width:0}
 .chk-item .ci b{font-size:14px;display:block}
 .chk-item .ci span{font-size:12px;color:var(--ink-soft)}
 .chk-item.done .ci b{text-decoration:line-through;opacity:.5}
@@ -357,6 +368,27 @@ img{max-width:100%}
 .ref-table tr:last-child td{border:none}
 .ref-table tr:nth-child(even) td{background:#f8fafc}
 
+/* ---------- LINKS ESENCIALES ---------- */
+.lnk-group{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
+.lnk-group-h{background:var(--brand);color:#fff;padding:10px 16px;
+  font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+.lnk-row{display:flex;align-items:center;gap:12px;padding:13px 16px;
+  border-bottom:1px solid #f3f4f6;text-decoration:none;color:var(--ink);
+  transition:background .12s;-webkit-tap-highlight-color:transparent}
+.lnk-row:last-child{border-bottom:none}
+.lnk-row:active,.lnk-row:hover{background:var(--blx)}
+.lnk-ico{font-size:20px;flex-shrink:0;width:28px;text-align:center}
+.lnk-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.lnk-title{font-size:14px;font-weight:700;color:var(--ink);display:block;line-height:1.3}
+.lnk-sub{font-size:12px;color:var(--ink-soft);display:block;line-height:1.4}
+.lnk-arr{color:var(--brand2);font-size:16px;flex-shrink:0}
+.lnk-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;
+  flex-shrink:0;white-space:nowrap;align-self:center}
+.lnk-badge.imp{background:#fee2e2;color:#991b1b}
+.lnk-badge.rec{background:#dcfce7;color:#166534}
+.lnk-badge.off{background:#eef3f8;color:var(--brand2)}
+
 /* ---------- SABER MÁS — acordeón de lugares ---------- */
 .block.places{background:#f0f5f0;border-color:#c4d8c4}
 .block.places .bh{color:#2a5a2a}
@@ -396,7 +428,7 @@ img{max-width:100%}
       <div class="hero">
         <div class="kicker">Road Trip · Oeste Americano</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
-        <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Naturaleza, géiseres, fauna y carretera — con margen para el calor y los descansos.</div>
+        <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
           <span>🎰 Las Vegas</span><i>›</i><span>🏜️ Kolob</span><i>›</i><span>🏙️ Salt Lake City</span><i>›</i>
           <span>🏔️ Alpine</span><i>›</i><span>🦌 Grand Teton</span><i>›</i><span>♨️ Yellowstone</span><i>›</i>
@@ -404,17 +436,13 @@ img{max-width:100%}
         </div>
       </div>
 
-      <div class="approach">
-        <p><strong>El enfoque:</strong> un planning realista, sin agobios. Días de parque temprano para evitar calor y masas, traslados medidos al minuto donde importa, y comida segura sin trigo pensada en cada parada. La fotografía (Canon R7 + 100-400mm para fauna) guía varias decisiones de ruta y horario.</p>
-      </div>
-
       <div class="stats">
         <div class="stat"><b>11</b><span>días</span></div>
         <div class="stat"><b>4</b><span>viajeros</span></div>
-        <div class="stat"><b>~2.400</b><span>km aprox.</span></div>
+        <div class="stat"><b>~2.400</b><span>km carretera</span></div>
         <div class="stat"><b>6</b><span>alojamientos</span></div>
         <div class="stat"><b>3</b><span>parques nac.</span></div>
-        <div class="stat"><b>5</b><span>pendientes</span></div>
+        <div class="stat"><b>9 Ago</b><span>salida MAD</span></div>
       </div>
 
       <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span></div>
@@ -426,7 +454,7 @@ img{max-width:100%}
     <!-- ============ DÍAS ============ -->
     <section id="dias" class="section">
       <div class="h-sec"><h2>Detalle por día</h2><span class="note">11 jornadas</span></div>
-      <div class="approach" style="margin-top:0"><p style="font-size:13px">🌡️ Las temperaturas son <strong>orientativas de agosto</strong> (máx./mín. aproximadas por zona). Conviene actualizarlas con el pronóstico real la semana antes del viaje usando los enlaces de tiempo de cada día. En parques de montaña las mañanas son frías aunque la máxima sea suave.</p></div>
+      <div class="approach" style="margin-top:0"><p style="font-size:13px">🌡️ Temperaturas orientativas de agosto por zona. Actualizarlas con los links de tiempo de cada día la semana antes de salir. Dentro de Yellowstone no hay cobertura móvil — descargar mapas y la app NPS en offline antes de entrar al parque.</p></div>
       <div class="day-detail" id="dayDetail"></div>
     </section>
 
@@ -463,6 +491,9 @@ img{max-width:100%}
       <div class="info-block" id="chkBlock"></div>
 
       <div class="foot">Los cambios del checklist se guardan localmente en este navegador.</div>
+
+      <div class="h-sec" style="margin-top:20px"><h2>🔗 Links esenciales del viaje</h2><span class="note">Guardar en favoritos antes de salir</span></div>
+      <div class="info-block" id="linksBlock"></div>
 
       <div class="h-sec" style="margin-top:20px"><h2>🆘 Emergencias y contactos</h2><span class="note">Acceso rápido offline</span></div>
       <div class="info-block" id="emerBlock"></div>
@@ -1228,8 +1259,13 @@ function renderChecklist(){
   Object.keys(CHECKLIST).forEach(cat=>{
     const items=CHECKLIST[cat];
     const doneCount=items.filter((it,i)=>saved[cat+"|"+i]).length;
-    html+='<details class="acc chk-cat"><summary><span>'+cat+'</span>'+
-      '<span class="prog" data-cat="'+cat+'">'+doneCount+'/'+items.length+'</span></summary><div class="inner">';
+    html+='<details class="acc chk-cat"><summary>'+
+      '<span class="cat-title">'+cat+'</span>'+
+      '<span class="prog-wrap">'+
+        '<span class="prog" data-cat="'+cat+'">'+doneCount+'/'+items.length+'</span>'+
+        '<span class="chk-arr">+</span>'+
+      '</span>'+
+      '</summary><div class="inner">';
     items.forEach((it,i)=>{
       const key=cat+"|"+i; const on=!!saved[key];
       html+='<label class="chk-item'+(on?" done":"")+'" data-key="'+key+'" data-cat="'+cat+'">'+
@@ -1427,6 +1463,70 @@ function renderConversores(){
   '</div>';
 }
 
+/* --- links esenciales --- */
+function renderLinks(){
+  const G=(title,color,rows)=>{
+    const r=rows.map(([ico,title,sub,url,badge,bclass])=>
+      '<a class="lnk-row" href="'+url+'" target="_blank" rel="noopener">'+
+        '<span class="lnk-ico">'+ico+'</span>'+
+        '<span class="lnk-body"><span class="lnk-title">'+title+'</span>'+
+          (sub?'<span class="lnk-sub">'+sub+'</span>':'')+'</span>'+
+        (badge?'<span class="lnk-badge '+(bclass||'off')+'">'+badge+'</span>':'')+
+        '<span class="lnk-arr">↗</span>'+
+      '</a>'
+    ).join('');
+    return '<div class="lnk-group">'+
+      '<div class="lnk-group-h" style="background:'+color+'">'+title+'</div>'+r+'</div>';
+  };
+
+  document.getElementById('linksBlock').innerHTML=
+
+  G('🌋 Yellowstone National Park','#4a6741',[
+    ['🏛️','NPS Yellowstone — web oficial','Mapas, alertas, noticias y entradas','https://www.nps.gov/yell/index.htm','Oficial','off'],
+    ['⚠️','Alertas y condiciones actuales','Cierres de carretera, avistamientos, incidencias','https://www.nps.gov/yell/planyourvisit/conditions.htm','⚡ Revisar antes de entrar','imp'],
+    ['🛣️','Estado de carreteras Yellowstone','Qué está abierto/cerrado dentro del parque','https://www.nps.gov/yell/planyourvisit/parkroads.htm','Diario','off'],
+    ['🌡️','Tiempo en vivo — Yellowstone NPS','El más fiable para el interior del parque','https://www.nps.gov/features/yell/kiosk/weather.html','⭐ Mejor fuente','rec'],
+    ['🦬','Observaciones de fauna en tiempo real','Avistamientos reportados por rangers y visitantes','https://www.nps.gov/yell/planyourvisit/wildlife-watching.htm','','off'],
+    ['🏨','Xanterra Parks — gestión reservas','Gestionar cenas y reservas Yellowstone Lake Hotel','https://www.yellowstonenationalparklodges.com','Tu reserva aquí','rec'],
+  ])+
+
+  G('⛰️ Grand Teton National Park','#3a7cb8',[
+    ['🏛️','NPS Grand Teton — web oficial','Mapas, información y planificación','https://www.nps.gov/grte/index.htm','Oficial','off'],
+    ['⚠️','Condiciones Grand Teton','Alertas, cierres y estado del parque','https://www.nps.gov/grte/planyourvisit/conditions.htm','Revisar','imp'],
+    ['🌡️','Tiempo Grand Teton — NWS','Pronóstico para Moose / Jackson Hole','https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218','Por coordenadas','rec'],
+    ['🐻','Aviso de fauna — Grand Teton','Cierres por osos y actividad de fauna','https://www.nps.gov/grte/planyourvisit/bears.htm','','off'],
+  ])+
+
+  G('🛣️ Estado de carreteras','#b45309',[
+    ['🚗','wyoroad.info — Wyoming','Estado Beartooth Highway (US-212) y carreteras WY','https://www.wyoroad.info/','⚡ Revisar Día 10','imp'],
+    ['🚗','MDT Montana — carreteras MT','Estado tramo Montana de la Beartooth (US-212)','https://www.mdt.mt.gov/travinfo/','⚡ Revisar Día 10','imp'],
+    ['🚗','UDOT Utah — I-15 y carreteras UT','Estado I-15 entre Las Vegas y Salt Lake City','https://www.udottraffic.utah.gov/','Días 3-4','off'],
+    ['🚗','511 Wyoming — información vial','Incidencias y cámaras en tiempo real en Wyoming','https://www.wyoming511.com/','','off'],
+  ])+
+
+  G('🌤️ Tiempo por destino','#0c4a6e',[
+    ['🌡️','Las Vegas — NWS Las Vegas','Pronóstico diario 7 días para el Strip','https://forecast.weather.gov/MapClick.php?CityName=Las+Vegas&state=NV&site=VEF&textField1=36.1699&textField2=-115.1398','Días 1-3','off'],
+    ['🌡️','Salt Lake City — NWS SLC','Pronóstico para la noche del Día 4','https://forecast.weather.gov/MapClick.php?CityName=Salt+Lake+City&state=UT&site=SLC&textField1=40.7608&textField2=-111.8910','Día 4','off'],
+    ['🌡️','Yellowstone — NPS Weather Live','⭐ El mejor para el interior del parque','https://www.nps.gov/features/yell/kiosk/weather.html','Días 6-10','rec'],
+    ['🌡️','Beartooth Pass — NWS','Pronóstico específico para el pass (3.333m)','https://forecast.weather.gov/MapClick.php?lon=-109.4572&lat=44.9883','⚡ Día 10','imp'],
+    ['🌡️','Gardiner MT — NWS','Para los días base en Gardiner','https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036','Días 8-9','off'],
+    ['🌡️','Cody WY — NWS','Para la noche del rodeo','https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565','Día 10','off'],
+  ])+
+
+  G('✈️ Vuelos y coche','#1a3d5c',[
+    ['✈️','American Airlines — estado vuelo','AA947 BZN→DFW y AA8631 DFW→MAD','https://www.aa.com/travelInformation/flights/status','Día 11','off'],
+    ['🚗','Alamo — gestionar reserva','Check-in online y modificar reserva del coche','https://www.alamo.com/en_US/car-rental/reservation/review-modify-cancel.html','Reserva activa','rec'],
+    ['🎫','Recreation.gov — entradas parques','Reservas de timed entry para parques NPS','https://www.recreation.gov/','Por si acaso','off'],
+  ])+
+
+  G('📱 Apps imprescindibles — descargar antes de salir','#374151',[
+    ['📱','App NPS (National Park Service)','Mapas offline, alertas y info de Yellowstone y Teton','https://www.nps.gov/subjects/digital/nps-apps.htm','⭐ Descargar offline','rec'],
+    ['🗺️','AllTrails — trails offline','Descargar los trails de Yellowstone y Grand Teton','https://www.alltrails.com/parks/us/wyoming/yellowstone-national-park','Offline en el parque','rec'],
+    ['🌾','Find Me Gluten Free','Restaurantes GF por ubicación actual','https://www.findmeglutenfree.com/','Sin gluten','rec'],
+    ['📻','Zello — radio por internet','Útil como walkie-talkie cuando hay WiFi pero no cobertura','https://zello.com/','Wyoming rural','off'],
+  ]);
+}
+
 /* ============ ROUTER ============ */
 function go(id){
   if(!id) return;
@@ -1490,6 +1590,7 @@ renderPhoto();
 renderChecklist();
 renderEmergencias();
 renderConversores();
+renderLinks();
 </script>
 </body>
 </html>
