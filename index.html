@@ -1215,7 +1215,7 @@ function renderFoodFilters(){
 }
 function renderMarkets(){
   document.getElementById("marketBlock").innerHTML=
-    '<details class="acc" open><summary><span>Ver supermercados por zona</span><span class="acc-arr">+</span></summary><div class="inner">'+
+    '<details class="acc"><summary><span>Ver supermercados por zona</span><span class="acc-arr">+</span></summary><div class="inner">'+
     MARKETS.map(m=>'<div class="ftrail"><b>'+m[0]+'</b> · <span style="color:var(--ink-soft)">'+m[1]+'</span>'+
       '<div class="fm"><span>📍 '+m[2]+'</span><span>🕐 '+m[3]+'</span></div>'+
       '<p>'+m[4]+'</p></div>').join("")+
@@ -1298,7 +1298,7 @@ function renderCar(){
 
 function renderPend(){
   document.getElementById("pendBlock").innerHTML=
-    '<details class="acc" open><summary><span>Estado de pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
+    '<details class="acc"><summary><span>Estado de pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
     PEND.map(p=>'<div class="pend-item"><span class="dot '+p[0]+'"></span>'+
       '<div class="pt"><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>').join("")+
     '</div></details>';
@@ -1307,7 +1307,7 @@ function renderPend(){
 /* --- photo/trails --- */
 function renderPhoto(){
   document.getElementById("photoBlock").innerHTML=
-    '<details class="acc" open><summary><span>Trails recomendados (sencillos, sin masas)</span><span class="acc-arr">+</span></summary><div class="inner">'+
+    '<details class="acc"><summary><span>Trails recomendados (sencillos, sin masas)</span><span class="acc-arr">+</span></summary><div class="inner">'+
     TRAILS.map(t=>'<div class="ftrail"><b>'+t[0]+'</b> · <span style="color:var(--ink-soft)">'+t[1]+'</span>'+
       '<div class="fm"><span>'+t[2]+'</span><span class="lens">'+t[3]+'</span></div>'+
       '<p>'+t[4]+'</p></div>').join("")+
@@ -1360,6 +1360,7 @@ function renderChecklist(){
 /* --- emergencias --- */
 function renderEmergencias(){
   document.getElementById("emerBlock").innerHTML=
+  '<details class="acc"><summary><span>Contactos de emergencia</span><span class="acc-arr">+</span></summary><div class="inner" style="padding:14px 16px">'+
   '<div class="emer-warn">'+
     '⚠️ <strong>En caso de emergencia médica grave en EE.UU.: llamar al 911 primero.</strong> '+
     'Después contactar con el seguro (CIGNA) para que gestionen la asistencia y evitar pagar de bolsillo. '+
@@ -1443,12 +1444,14 @@ function renderEmergencias(){
       '</div>'+
     '</div>'+
 
-  '</div>';
+  '</div>'+
+  '</div></details>';
 }
 
 /* --- conversores --- */
 function renderConversores(){
   document.getElementById("convBlock").innerHTML=
+  '<details class="acc"><summary><span>Conversores de unidades</span><span class="acc-arr">+</span></summary><div class="inner" style="padding:14px 16px">'+
   '<div class="conv-grid">'+
 
     '<div class="cvcard">'+
@@ -1526,7 +1529,8 @@ function renderConversores(){
       '<tr><td>95°F</td><td>35°C</td><td>Las Vegas mediodía (agosto normal)</td></tr>'+
       '<tr><td>104°F</td><td>40°C</td><td>Las Vegas extremo — permanecer en interior</td></tr>'+
     '</table>'+
-  '</div>';
+  '</div>'+
+  '</div></details>';
 }
 
 /* --- links esenciales --- */
@@ -1546,6 +1550,7 @@ function renderLinks(){
   };
 
   document.getElementById('linksBlock').innerHTML=
+  '<details class="acc"><summary><span>Links esenciales del viaje</span><span class="acc-arr">+</span></summary><div class="inner" style="padding:14px 16px">'+
 
   G('🌋 Yellowstone National Park','#4a6741',[
     ['🏛️','NPS Yellowstone — web oficial','Mapas, alertas, noticias y entradas','https://www.nps.gov/yell/index.htm','Oficial','off'],
@@ -1591,7 +1596,8 @@ function renderLinks(){
     ['🗺️','AllTrails — trails offline','Descargar los trails de Yellowstone y Grand Teton','https://www.alltrails.com/parks/us/wyoming/yellowstone-national-park','Offline en el parque','rec'],
     ['🌾','Find Me Gluten Free','Restaurantes GF por ubicación actual','https://www.findmeglutenfree.com/','Sin gluten','rec'],
     ['📻','Zello — radio por internet','Útil como walkie-talkie cuando hay WiFi pero no cobertura','https://zello.com/','Wyoming rural','off'],
-  ]);
+  ])+
+  '</div></details>';
 }
 
 /* ============ ROUTER ============ */
