@@ -309,6 +309,54 @@ img{max-width:100%}
   .cards{grid-template-columns:1fr 1fr 1fr}
 }
 
+/* ---------- EMERGENCIAS ---------- */
+.emer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:520px){.emer-grid{grid-template-columns:1fr}}
+.ecard{background:var(--card);border-radius:12px;border:1px solid var(--line);
+  padding:13px 14px;box-shadow:var(--shadow)}
+.ecard.red{border-left:4px solid #dc2626;background:#fff8f8}
+.ecard.blue{border-left:4px solid var(--brand2)}
+.ecard.amber{border-left:4px solid #d97706;background:#fffbeb}
+.ecard.green{border-left:4px solid var(--ok);background:#f0fdf4}
+.ecard.purple{border-left:4px solid #7c3aed;background:#faf5ff}
+.ect{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--ink-soft);margin-bottom:5px}
+.ecn{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.etel{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.etel a{font-size:15px;font-weight:800;color:var(--brand);background:var(--bll);
+  border-radius:20px;padding:5px 13px;display:inline-block}
+.ecard.red .etel a{background:#fee2e2;color:#991b1b}
+.ecard.amber .etel a{background:#fef3c7;color:#92400e}
+.ecard.green .etel a{background:#dcfce7;color:#166534}
+.ecard.purple .etel a{background:#ede9fe;color:#5b21b6}
+.enote{font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:4px}
+.emer-warn{background:#fff8f8;border:1px solid #fca5a5;border-radius:10px;
+  padding:12px 14px;font-size:13px;color:#7f1d1d;margin-bottom:14px;line-height:1.6}
+
+/* ---------- CONVERSORES ---------- */
+.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.conv-grid{grid-template-columns:1fr}}
+.cvcard{background:var(--card);border-radius:12px;border:1px solid var(--line);
+  padding:14px;box-shadow:var(--shadow)}
+.cvt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--ink-soft);margin-bottom:10px}
+.cv-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cv-inp{flex:1;border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;
+  font-size:16px;font-weight:700;background:#f8fafc;color:var(--ink);width:100%;
+  -moz-appearance:textfield}
+.cv-inp::-webkit-inner-spin-button,.cv-inp::-webkit-outer-spin-button{-webkit-appearance:none}
+.cv-inp:focus{outline:none;border-color:var(--brand2);background:#fff}
+.cv-lbl{font-size:12px;font-weight:700;color:var(--ink-soft);white-space:nowrap;min-width:28px}
+.cv-eq{font-size:18px;color:var(--ink-soft);text-align:center}
+.cv-res{font-size:18px;font-weight:800;color:var(--brand);text-align:center;
+  background:var(--blx);border-radius:8px;padding:8px 12px;min-width:90px}
+.cv-sub{font-size:11px;color:var(--sll);margin-top:6px;text-align:center;line-height:1.4}
+.ref-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.ref-table th{background:var(--brand);color:#fff;padding:6px 9px;text-align:left;font-size:11px}
+.ref-table td{padding:6px 9px;border-bottom:1px solid var(--line)}
+.ref-table tr:last-child td{border:none}
+.ref-table tr:nth-child(even) td{background:#f8fafc}
+
 /* ---------- SABER MÁS — acordeón de lugares ---------- */
 .block.places{background:#f0f5f0;border-color:#c4d8c4}
 .block.places .bh{color:#2a5a2a}
@@ -415,6 +463,13 @@ img{max-width:100%}
       <div class="info-block" id="chkBlock"></div>
 
       <div class="foot">Los cambios del checklist se guardan localmente en este navegador.</div>
+
+      <div class="h-sec" style="margin-top:20px"><h2>🆘 Emergencias y contactos</h2><span class="note">Acceso rápido offline</span></div>
+      <div class="info-block" id="emerBlock"></div>
+
+      <div class="h-sec" style="margin-top:20px"><h2>🔄 Conversores</h2><span class="note">°F · millas · galones · dólares</span></div>
+      <div class="info-block" id="convBlock"></div>
+
     </section>
 
   </main>
@@ -443,13 +498,19 @@ const DAYS = [
     photo:null, warn:"Vuelo emitido ✓ (BA operado por American). Llegada 19:56 hora local: noche solo para descansar, nada de conducir. Ojo al jet lag (+9h respecto a Madrid).",
     temp:"~40°C / 27°C · Vegas, muy caluroso y seco",
     places:[
-      ["Las Vegas — la ciudad que no existe en los mapas","Hasta 1905 Las Vegas era una parada de ferrocarril en medio del desierto de Mojave. La legalización del juego en Nevada en 1931 (durante la Gran Depresión, para recaudar impuestos) y la construcción de la presa Hoover en los años 30 atrajeron trabajadores y dinero. El Strip moderno empezó en 1941 con el El Rancho Vegas y explotó en los 50 con la mafia de Chicago y Nueva York. Hoy la ciudad recibe 40 millones de visitantes al año y genera más ingresos del juego que cualquier otro lugar del mundo.",
+      ["Aeropuerto de Madrid Barajas T4S","La Terminal 4 Satélite de Barajas, donde sale el vuelo a Charlotte, fue diseñada por Richard Rogers y está unida a la T4 por un tren subterráneo de 2 minutos. Es una de las terminales más grandes de Europa con 470.000 m². El vuelo sale de T4S — llegar con tiempo suficiente para el tren interno y los controles, que en agosto con turismo masivo pueden tardar 45 minutos.",
+        [["Wikipedia — T4 Barajas","https://es.wikipedia.org/wiki/Aeropuerto_Adolfo_Su%C3%A1rez_Madrid-Barajas"]]],
+      ["Charlotte Douglas — el hub de American","Charlotte Douglas (CLT) es el tercer hub más grande de American Airlines después de Dallas y Miami. Procesa más de 50 millones de pasajeros al año. La escala de ~2h25 es cómoda para Barajas→CLT→LAS, pero si el vuelo de Madrid llega con retraso, American está obligado a reproteger en el siguiente vuelo disponible ya que ambos tramos son el mismo billete.",
+        [["Wikipedia — Charlotte Douglas","https://en.wikipedia.org/wiki/Charlotte_Douglas_International_Airport"]]],
+      ["Las Vegas de noche — la primera impresión","La llegada nocturna a Harry Reid International es uno de los momentos más cinematográficos del viaje: desde el avión, el desierto negro y de repente el rectángulo de luz naranja-blanca del Strip visible desde 50km de distancia. El aeropuerto está a solo 5km del Strip — el traslado en taxi o Uber dura menos de 10 minutos.",
+        [["Wikipedia — Harry Reid Airport","https://en.wikipedia.org/wiki/Harry_Reid_International_Airport"]]],
+      ["Las Vegas — la ciudad que no existe en los mapas","Hasta 1905 Las Vegas era una parada de ferrocarril en medio del desierto de Mojave. La legalización del juego en Nevada en 1931 (durante la Gran Depresión, para recaudar impuestos) y la construcción de la presa Hoover atrajeron trabajadores y dinero. El Strip moderno empezó en 1941 con el El Rancho Vegas y explotó en los 50 con la mafia de Chicago y Nueva York. Hoy recibe 40 millones de visitantes al año.",
         [["Wikipedia — Las Vegas","https://es.wikipedia.org/wiki/Las_Vegas"]]],
       ["MGM Grand Las Vegas","Inaugurado en 1993, fue el hotel más grande del mundo en el momento de su apertura. El edificio verde con el león de la entrada pesa 50 toneladas. El casino ocupa 15.000 m² — más que muchos pueblos enteros. La arena del MGM ha visto las peleas de boxeo más importantes de la historia reciente, desde Mayweather vs Pacquiao hasta las veladas de UFC. Tiene su propio sistema de monorraíl interno.",
         [["Wikipedia — MGM Grand","https://en.wikipedia.org/wiki/MGM_Grand_Las_Vegas"]]],
-      ["El Bellagio y el arte del camuflaje temporal","El hotel Bellagio fue construido en 1998 en el solar del histórico Dunes, que fue dinamitado en directo en televisión. El lago artificial de 3,2 hectáreas fue excavado donde antes estaba el campo de golf del Dunes. Steve Wynn pagó 1.600 millones de dólares para construirlo, la inversión privada más grande en un hotel hasta ese momento. El casino alberga una galería de arte permanente con obras originales de Picasso, Monet y Warhol.",
+      ["El Bellagio y el arte del camuflaje temporal","El hotel Bellagio fue construido en 1998 en el solar del histórico Dunes, dinamitado en directo en televisión. El lago artificial de 3,2 hectáreas fue excavado donde antes estaba el campo de golf. Steve Wynn pagó 1.600 millones de dólares — la inversión privada más grande en un hotel hasta ese momento. El casino alberga una galería de arte permanente con obras de Picasso, Monet y Warhol.",
         [["Wikipedia — Bellagio","https://en.wikipedia.org/wiki/Bellagio_(resort)"]]],
-      ["The Venetian y The Palazzo","El complejo Venetian-Palazzo es la segunda estructura de mayor volumen del mundo (después del Boeing Everett Factory). La reproducción del Gran Canal de Venecia en el interior, con 16 metros de anchura y góndolas reales, tiene el cielo pintado a mano con nubes y luz natural simulada — en el interior siempre es mediodía. Las góndolas las manejan gondolieri entrenados que cantan ópera. El hotel tiene 7.000 suites, todas con salón separado.",
+      ["The Venetian y The Palazzo","El complejo Venetian-Palazzo es la segunda estructura de mayor volumen del mundo. La reproducción del Gran Canal de Venecia en el interior, con 16 metros de anchura y góndolas reales, tiene el cielo pintado a mano — en el interior siempre es mediodía. Las góndolas las manejan gondolieri entrenados que cantan ópera. El hotel tiene 7.000 suites, todas con salón separado.",
         [["Wikipedia — The Venetian","https://en.wikipedia.org/wiki/The_Venetian_Las_Vegas"]]]
     ],
     links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Estado vuelo AA","https://www.aa.com/travelInformation/flights/status"],["Las Vegas (Wikipedia)","https://es.wikipedia.org/wiki/Las_Vegas"]]
@@ -529,6 +590,10 @@ const DAYS = [
         [["Wikipedia","https://en.wikipedia.org/wiki/Temple_Square"]]],
       ["Utah State Capitol","Inaugurado en 1916 en granito de las Wasatch Mountains. Sobre una colina al norte del centro de SLC, desde la explanada exterior hay una de las mejores vistas panorámicas de la ciudad: el valle entre dos cadenas montañosas y el Gran Lago Salado al noroeste. Gratuito, abierto hasta las 20:00h.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Utah_State_Capitol"]]],
+      ["El Gran Lago Salado — el mar que se está evaporando","Al llegar a Salt Lake City, el Gran Lago Salado es visible desde el Capitol hacia el noroeste. Es el lago salado más grande del hemisferio occidental y el cuarto más grande del mundo, pero lleva décadas encogiendo: en los años 80 tenía 8.500 km², hoy tiene menos de 3.000 km². La salinidad ha subido tanto que el ecosistema de artemias (brine shrimp) que alimenta a millones de aves migratorias está en riesgo. Utah aprobó en 2023 el mayor plan de conservación hídrica de su historia para intentar frenarlo.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Gran_Lago_Salado"]]],
+      ["Presa Hoover — la obra que hizo posible Las Vegas","Aunque no está en la ruta del Día 4, la Presa Hoover (a 45km de Las Vegas por la US-93) es imposible de entender sin contexto: sin ella, Las Vegas no existiría. Construida entre 1931 y 1936 durante la Gran Depresión con 21.000 trabajadores, tiene 221m de altura y retiene el lago Mead — el mayor embalse de EEUU. Genera electricidad para Nevada, Arizona y California. En agosto de 2022 el lago Mead alcanzó su nivel histórico más bajo desde su llenado, exponiendo la 'marca de bañera' blanca en las paredes de roca.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Presa_Hoover"]]],
       ["Granary District","El barrio industrial más antiguo de SLC reconvertido en estudios, cervecerías artesanales y restaurantes. El más parecido a un barrio europeo de toda la ciudad — murales de gran formato, vida en la calle y bares que funcionan con normalidad completa (las leyes de alcohol de Utah son peculiares pero aquí no se nota).",
         [["Wikipedia","https://en.wikipedia.org/wiki/Granary_District,_Salt_Lake_City"]]]
     ],
@@ -574,6 +639,8 @@ const DAYS = [
     warn:"Aparcamientos críticos: Jenny Lake South se llena antes de las 09h en agosto — llegar antes garantiza plaza. Signal Mountain es opcional: saltarlo si el grupo está cansado. West Thumb eliminado del trayecto — NO es necesario el Día 6 con 4 días completos en Yellowstone por delante. Directo al hotel desde South Entrance.",
     temp:"Grand Teton ~23°C / 7°C · amanecer ~10°C (capas) · tarde agradable",
     places:[
+      ["Grand Teton — la montaña que no tiene faldas","El Grand Teton (4.199m) es geológicamente inusual: no tiene estribaciones ni contrafuertes graduales — sube casi verticalmente desde el valle de Jackson Hole (1.900m) con un desnivel de 2.100m en horizontal de solo 12km. Esta pared casi vertical se formó hace 9 millones de años cuando un bloque de corteza terrestre se levantó a lo largo de una falla activa mientras el valley se hundía. La falla sigue activa — Teton experimenta terremotos menores con regularidad. El nombre lo pusieron tramperos franceses del siglo XIX: 'les trois tétons' (los tres pezones), refiriéndose a las tres cumbres principales.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Grand_Teton"]]],
       ["Mormon Row / Antelope Flats","Una hilera de graneros históricos de colonos mormones de los años 1890–1910 con el Teton Range de fondo. Los graneros Moulton Barns son los más fotografiados de EEUU. John Moulton y su hermano Thomas construyeron sus granjas aquí en 1908 y la familia los mantuvo hasta los años 1980. El NPS los restauró y protegió como distrito histórico.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Mormon_Row_Historic_District"]]],
       ["Schwabacher Landing","Un acceso al río Snake a 800m desde la Teton Park Road. Los meandros forman reflejos perfectos de los Tetons al amanecer. Castores activos en el río, garzas y patos buceadores frecuentes. Cuando hay niebla baja sobre el agua y el Grand Teton (4.199m) reflejado en el río, es una de las fotografías de naturaleza más célebres de EEUU.",
@@ -605,6 +672,8 @@ const DAYS = [
     warn:"⚠️ Aparcar en Canyon antes de las 08h — se llena completamente después. Pausa de mediodía (13–16h) no es tiempo perdido: los animales se retiran al frescor y las baterías necesitan carga. Bear spray SIEMPRE accesible fuera del coche. Preparar maletas esta noche: mañana check-out 06:30h.",
     temp:"Yellowstone ~24°C / 5°C · mañanas frías",
     places:[
+      ["Lago Yellowstone — el lago volcánico más alto de América","El lago Yellowstone (2.357m de altitud, 341 km²) es el lago de alta altitud más grande de América del Norte. Lo que no se ve desde la orilla es que su fondo está en constante actividad geotérmica: hay géiseres y fuentes termales activas bajo el agua. En algunos puntos el fondo del lago se ha levantado más de un metro en los últimos 30 años por la presión del magma. El lago está dentro de la caldera del supervulcán de Yellowstone — la última erupción masiva fue hace 640.000 años y liberó 1.000 km³ de material volcánico.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Yellowstone_Lake"]]],
       ["Gran Cañón de Yellowstone","El río Yellowstone ha excavado un cañón de 38km de longitud, 400m de profundidad y hasta 1.200m de anchura. El color amarillo y naranja de las paredes viene del azufre y los óxidos de hierro en la roca hidrotérmicamente alterada. Las Lower Falls (94m) son casi el doble de altura que las cataratas del Niágara.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Grand_Canyon_of_the_Yellowstone"]]],
       ["Artist Point y Thomas Moran","Desde este mirador Thomas Moran pintó en 1871 'Grand Canyon of the Yellowstone', el cuadro que convenció al Congreso de EEUU de crear el primer parque nacional del mundo en 1872. El punto exacto donde Moran colocó su caballete está marcado en el suelo. A las 09:45h el sol ilumina directamente la Lower Falls — la misma luz que captó Moran.",
@@ -635,6 +704,10 @@ const DAYS = [
     warn:"⚠️ DÍA MUY EXIGENTE. Salir ANTES de las 07:00h sin excepción. Aparcamiento de Grand Prismatic se llena antes de las 10h — aparcar en Fairy Falls TH (800m a pie) que además da la mejor foto. Llevar las dos LP-E6 cargadas y la SD vacía.",
     temp:"Old Faithful ~23°C / 5°C · Gardiner ~29°C / 11°C",
     places:[
+      ["El supervulcán de Yellowstone","Yellowstone es la caldera de uno de los supervulcanes más grandes de la Tierra. La última de sus tres erupciones masivas (hace 2,1 millones, 1,3 millones y 640.000 años respectivamente) fue 2.500 veces más grande que la erupción del Monte Santa Helena de 1980. El magma sigue activo a 8–10km de profundidad y es lo que alimenta todos los géiseres y fuentes termales del parque. Los científicos del USGS monitorizan más de 2.000 terremotos al año en Yellowstone — la mayoría imperceptibles. La probabilidad de una erupción masiva en los próximos 1.000 años es de aproximadamente 1 en 730.000.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Yellowstone_caldera"]]],
+      ["Norris Geyser Basin — el más caliente e impredecible","Aunque no está en el Día 8, Norris es mencionado en el planning general y merece contexto. Es la zona termal más caliente de Yellowstone: el agua subterránea alcanza 237°C (bajo presión). El Steamboat Geyser, con erupciones de hasta 90 metros, es el géiser activo más alto del mundo — pero erupciona de forma completamente impredecible, desde días hasta décadas entre erupciones. En 2018–2019 entró en un periodo de actividad inusual con más de 40 erupciones en un año, después de décadas de inactividad. Nadie sabe por qué.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Norris_Geyser_Basin"]]],
       ["Old Faithful — geología del géiser","El géiser más famoso del mundo erupciona cada 60–110 minutos gracias a un sistema de tubos subterráneos que actúa como olla a presión. El agua a 93°C se acumula en una cámara y cuando la presión supera un umbral, sube en segundos a la superficie. El ciclo es predecible porque los tubos tienen una geometría constante. Curioso: en 1959 un terremoto de magnitud 7,5 alteró el ciclo de Old Faithful durante semanas.",
         [["Wikipedia","https://es.wikipedia.org/wiki/Old_Faithful"]]],
       ["Grand Prismatic — bacterias que pintan el agua","Los colores de la Grand Prismatic Spring no son solo minerales — son colonias de bacterias termófilas (que viven en agua hirviendo) que producen pigmentos fotosintéticos. El azul profundo del centro es agua pura a 87°C (demasiado caliente para cualquier vida). El verde, amarillo, naranja y rojo de los bordes son comunidades bacterianas que solo pueden sobrevivir a temperaturas específicas entre 50 y 70°C. Son organismos extremófilos similares a los que existían en la Tierra hace 3.500 millones de años.",
@@ -659,8 +732,14 @@ const DAYS = [
     warn:"⚠️ VUELTA DE LAMAR MÁXIMO 20:15h. Los bisontes no reflejan los faros — conducción nocturna en Yellowstone es peligrosa. Sin excepción. Preparar maletas y coche la noche del Día 9 — mañana check-out express a las 05:00h.",
     temp:"Gardiner ~29°C / 12°C · Mammoth ~25°C / 8°C",
     places:[
+      ["Fort Yellowstone — el ejército que salvó el parque","El conjunto de edificios históricos de piedra en Mammoth fue Fort Yellowstone, la sede del ejército americano que administró el parque entre 1886 y 1918. El Congreso creó Yellowstone en 1872 pero no asignó presupuesto para gestionarlo, y los primeros años el parque fue saqueado por cazadores furtivos y coleccionistas de minerales termales. En 1886 el ejército tomó el control, construyó el fuerte y estableció las primeras reglas de protección efectiva. Sin esta intervención militar, Yellowstone habría sido destruido antes de que existiera el concepto moderno de conservación.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Fort_Yellowstone"]]],
+      ["El Druid Peak Pack — la manada más famosa del mundo","La manada Druid Peak dominó el Lamar Valley desde 1996 hasta su desaparición en 2010. En su apogeo (2001) tenía 37 miembros — la mayor manada de lobos jamás documentada en estado salvaje. El macho alfa '21M' es considerado el lobo más estudiado de la historia: nunca perdió una pelea en 10 años como alfa, y fue observado en múltiples ocasiones perdonando la vida a lobos rivales derrotados, un comportamiento sin precedente documentado en su especie. El escritor Rick McIntyre lleva más de 25 años en el Lamar Valley observando lobos cada amanecer y ha publicado tres libros sobre las manadas.",
+        [["Wikipedia — Druid Peak Pack","https://en.wikipedia.org/wiki/Druid_Peak_pack"]]],
       ["Mammoth Hot Springs — travertino vivo","Las terrazas de travertino se forman a una velocidad extraordinaria: hasta 2 toneladas de carbonato cálcico al día, lo que hace que las formaciones cambien de forma visible mes a mes. A diferencia de los géiseres (agua volcánica), Mammoth usa agua que atraviesa roca caliza disolviendo carbonato. Cuando el agua caliente emerge y se enfría, el carbonato precipita formando las terrazas. El sistema es tan dinámico que algunas terrazas activas hace 5 años hoy están muertas y viceversa.",
         [["Wikipedia","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]],
+      ["Lamar Valley — por qué se llama el Serengeti americano","El apodo lo popularizó el naturalista George Schaller en los años 90 al comparar la densidad de megafauna de Lamar con la del Serengeti tanzano. La comparación es rigurosa: ambos valles tienen praderas abiertas con ríos sinuosos, grandes manadas de herbívoros migratorios, y depredadores activos y visibles. La diferencia es que el Serengeti tiene 1,5 millones de ñus; Lamar tiene bisontes, alces y pronghorns. Y donde el Serengeti tiene leones, leopardos y guepardos, Lamar tiene lobos, osos grizzly y coyotes — todos activos al mismo tiempo, en el mismo valle, visible desde la carretera. Lo que hace único a Lamar frente al Serengeti es que la cadena depredador-presa completa es observable desde un coche sin guía, sin pagar safari, a 30 metros.",
+        [["Wikipedia — Lamar Valley","https://en.wikipedia.org/wiki/Lamar_Valley"]]],
       ["Lamar Valley y la reintroducción del lobo","En enero de 1995 llegaron en cajones de madera 8 lobos grises capturados en Alberta, Canadá. Fue la mayor decisión de conservación de fauna de la historia de EEUU — y también la más polémica: los ganaderos de Wyoming protestaron durante años. El resultado científico es uno de los estudios más citados en ecología: los lobos cambiaron el comportamiento de los alces (que dejaron de pastar en los ríos), lo que permitió recuperar la vegetación de ribera, lo que creó nuevos hábitats para castores, aves y peces. El río Yellowstone literalmente cambió de curso en algunos puntos. A esto se le llama 'cascada trófica'.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Wolf_reintroduction_to_Yellowstone"]]],
       ["Lobo gris de Yellowstone (Canis lupus irremotus)","Actualmente hay unas 10 manadas con ~100 individuos en el parque. Las manadas tienen territorios de hasta 1.000 km² y sus movimientos se siguen con collares GPS. El lobo más famoso de Yellowstone fue la loba 832F del pack Lamar Canyon, conocida como 'La Reina del Lamar Valley' — fue objeto de estudios durante 6 años hasta que fue cazada legalmente fuera del parque en 2012, generando indignación mundial. Los Rangers con telescopios en el Lamar al amanecer son la señal más fiable de avistamiento.",
@@ -687,6 +766,10 @@ const DAYS = [
     warn:"⛽ GASOLINA EN COOKE CITY OBLIGATORIO — no hay gasolinera en 95km hasta Red Lodge. Revisar Beartooth en wyoroad.info y mdt.mt.gov 24-48h antes (puede cerrar por nieve/viento incluso en agosto). Forro polar + cortavientos accesibles desde el asiento (no en la maleta). Rodeo entradas: codyniterodeo.com, ~$25/persona.",
     temp:"Lamar amanecer ~5°C 🥶 · Beartooth Pass ~8-12°C 🥶 · Cody ~28°C / 11°C",
     places:[
+      ["Cooke City — el pueblo al que solo se llega pasando por Yellowstone","Cooke City (75 habitantes) es uno de los pueblos más aislados de los EEUU continentales. En invierno solo es accesible desde Yellowstone por el noreste — la Beartooth Highway cierra completamente. Sus únicos ingresos son los viajeros que pasan hacia o desde el noreste de Yellowstone y los esquiadores de backcountry. Tiene una gasolinera, tres cafeterías y dos moteles. La gasolinera es la última antes de 95km de carretera de montaña sin servicios — llenar el depósito aquí es obligatorio.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Cooke_City,_Montana"]]],
+      ["Lamar Valley al amanecer — por qué a esta hora","El Lamar Valley a las 06:30h de agosto es uno de los espectáculos naturales más accesibles del planeta. Los lobos son más activos en las dos horas después del amanecer — cazan, se comunican, marcan territorio. Los bisontes en rut empiezan a moverse antes de que el sol caliente la pradera. Los osos grizzly bajan de las laderas boscosas a las praderas abiertas del río. A las 09h la mayoría de los animales grandes ya se han retirado al frescor del bosque. La ventana de las 06:30–09:30h no es caprichosa — es el único momento del día en que todos los depredadores y presas del valle están activos simultáneamente.",
+        [["Wikipedia — Lamar Valley","https://en.wikipedia.org/wiki/Lamar_Valley"]]],
       ["Beartooth Highway — la carretera más bella de América","Declarada por el periodista Charles Kuralt como 'la carretera más bella de América', la US-212 asciende desde Cooke City (2.200m) hasta el Beartooth Pass (3.333m) en 30km. Técnicamente atraviesa el Shoshone National Forest, el bosque nacional más antiguo de EEUU (creado en 1891). Solo abre de mayo a octubre — en invierno la nieve la cubre completamente. Los quitanieves la abren cada mayo desde ambos extremos, tardando varias semanas.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Beartooth_Highway"]]],
       ["Marmota de vientre amarillo (Marmota flaviventris)","Las marmotas son uno de los animales más visibles en el Beartooth Pass. Hibernan entre 7 y 8 meses al año — el periodo de hibernación más largo de cualquier mamífero norteamericano. Durante la hibernación su temperatura corporal baja de 37°C a 5°C, el corazón late 3 veces por minuto (en lugar de 100) y no orinan ni defecacan durante meses. El grito de alarma de la marmota (un silbido agudo) es el sistema de comunicación de peligro de todo el ecosistema alpino.",
@@ -713,6 +796,8 @@ const DAYS = [
     warn:"🚨 TIMING CRÍTICO: Salir Cody MAX 09:15h. ~3h45m hasta BZN. Margen 2h+ antes del vuelo 16:15. La escala en Dallas (~1h20) es el punto más vulnerable del viaje. Si hay retraso en BZN, American se encarga de la conexión (mismo PNR). Verificar en BZN que el SSD tiene todas las fotos antes de facturar las SD en bodega.",
     temp:"Cody ~28°C / 11°C · Bozeman ~28°C / 12°C",
     places:[
+      ["Dallas/Fort Worth — el mayor hub de American Airlines","DFW es el segundo aeropuerto más grande del mundo por superficie (casi 70 km², mayor que el island de Manhattan) y el hub principal de American Airlines. Procesa más de 73 millones de pasajeros al año. La escala de ~1h20 entre AA947 (BZN→DFW) y AA8631 (DFW→MAD) es el punto más ajustado del viaje: técnicamente es tiempo suficiente si el vuelo de Bozeman llega puntual, pero cualquier retraso en BZN compromete la conexión. Al ser el mismo billete y mismo PNR, si se pierde la conexión American está obligado a reproteger en el siguiente vuelo a Madrid disponible.",
+        [["Wikipedia — DFW","https://en.wikipedia.org/wiki/Dallas/Fort_Worth_International_Airport"]]],
       ["Bozeman, Montana","Ciudad universitaria de 55.000 habitantes (Montana State University) a los pies de las Bridger Mountains. Es el hub de entrada al suroeste de Montana y una ciudad con vida propia — Main Street tiene restaurantes, cervecerías artesanales y tiendas de outdoor de calidad. El aeropuerto Bozeman Yellowstone International (BZN) es uno de los de mayor crecimiento de EEUU, con conexiones directas a todas las ciudades principales.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Bozeman,_Montana"]]],
       ["Yellowstone como primer parque nacional","El Congreso de EEUU creó Yellowstone el 1 de marzo de 1872 como 'public pleasuring ground' — el primer parque nacional del mundo. La idea surgió de la expedición Washburn-Langford-Doane de 1870, que regresó con descripciones de géiseres y aguas termales tan extraordinarias que nadie las creyó hasta que el fotógrafo William Henry Jackson y el pintor Thomas Moran acompañaron la siguiente expedición y trajeron imágenes. El modelo de parque nacional se exportó luego a todo el mundo.",
@@ -1170,6 +1255,178 @@ function renderChecklist(){
   });
 }
 
+/* --- emergencias --- */
+function renderEmergencias(){
+  document.getElementById("emerBlock").innerHTML=
+  '<div class="emer-warn">'+
+    '⚠️ <strong>En caso de emergencia médica grave en EE.UU.: llamar al 911 primero.</strong> '+
+    'Después contactar con el seguro (CIGNA) para que gestionen la asistencia y evitar pagar de bolsillo. '+
+    'Los hospitales americanos pueden pedir autorización previa antes de tratar — tener los teléfonos a mano antes de necesitarlos.'+
+  '</div>'+
+  '<div class="emer-grid">'+
+
+    '<div class="ecard red">'+
+      '<div class="ect">🚨 Emergencias EE.UU.</div>'+
+      '<div class="ecn">911</div>'+
+      '<div class="etel"><a href="tel:911">📞 911</a></div>'+
+      '<div class="enote">Policía · Bomberos · Ambulancia. Funciona desde cualquier móvil, incluso sin cobertura de datos. Dar ubicación exacta (nombre del parque, nombre de la carretera).</div>'+
+    '</div>'+
+
+    '<div class="ecard red">'+
+      '<div class="ect">🌋 Emergencias Yellowstone</div>'+
+      '<div class="ecn">Yellowstone NPS</div>'+
+      '<div class="etel"><a href="tel:+13073447381">+1 307 344 7381</a></div>'+
+      '<div class="enote">Línea de emergencias del parque 24h. Para accidentes, avistamiento de heridos, fauna agresiva o cualquier incidente dentro del parque.</div>'+
+    '</div>'+
+
+    '<div class="ecard purple">'+
+      '<div class="ect">🏥 CIGNA — Urgencias en el extranjero</div>'+
+      '<div class="ecn">CIGNA / IRIS Global</div>'+
+      '<div class="etel"><a href="tel:+34915724406">+34 91 572 44 06</a></div>'+
+      '<div class="enote">Número para urgencias médicas en el extranjero (IRIS Global, gestionado por CIGNA España). Llamar antes de acudir a urgencias para que autoricen y gestionen el pago directo. También: <a href="tel:900501278" style="font-size:12px">900 501 278</a> (gratuito desde España).</div>'+
+    '</div>'+
+
+    '<div class="ecard purple">'+
+      '<div class="ect">🏥 CIGNA — Desde EE.UU.</div>'+
+      '<div class="ecn">CIGNA Global Health</div>'+
+      '<div class="etel"><a href="tel:+18002537052">+1 800 253 7052</a></div>'+
+      '<div class="enote">Número principal de CIGNA Global Health accesible desde EE.UU. 24h. Si llamas desde dentro del país, este número es el más directo. Identificarse con el número de póliza.</div>'+
+    '</div>'+
+
+    '<div class="ecard amber">'+
+      '<div class="ect">💳 AMEX Global Assist — desde EE.UU.</div>'+
+      '<div class="ecn">American Express</div>'+
+      '<div class="etel"><a href="tel:18003332639">+1 800 333 2639</a></div>'+
+      '<div class="enote">Global Assist Hotline 24h. Asistencia médica de urgencia, reemplazo de pasaporte, referidos legales, equipaje perdido, traducción. Gratuito desde EE.UU. Tarjeta AMEX estándar.</div>'+
+    '</div>'+
+
+    '<div class="ecard amber">'+
+      '<div class="ect">💳 AMEX Premium — Platinum/Gold</div>'+
+      '<div class="ecn">AMEX Premium Global Assist</div>'+
+      '<div class="etel"><a href="tel:18003452639">+1 800 345 2639</a></div>'+
+      '<div class="enote">Para tarjetas Platinum y Gold. Incluye transporte médico de emergencia gratuito si es aprobado por AMEX. Llamada a cobro revertido desde fuera de EE.UU.: +1 715 343 7977.</div>'+
+    '</div>'+
+
+    '<div class="ecard blue">'+
+      '<div class="ect">🚗 Alamo — Asistencia en carretera</div>'+
+      '<div class="ecn">Alamo Rent A Car</div>'+
+      '<div class="etel"><a href="tel:+18443707395">+1 844 370 7395</a></div>'+
+      '<div class="enote">Teléfono de recogida LAS. Para averías o incidentes con el coche llamar a este número o al de devolución BZN: <a href="tel:+18338860855" style="font-size:12px">+1 833 886 0855</a>. Voucher: 414483892.</div>'+
+    '</div>'+
+
+    '<div class="ecard blue">'+
+      '<div class="ect">✈️ American Airlines — incidencias</div>'+
+      '<div class="ecn">American Airlines</div>'+
+      '<div class="etel"><a href="tel:+18009253535">+1 800 925 3535</a></div>'+
+      '<div class="enote">Servicio al cliente AA internacional 24h. Para cambios de vuelo, cancelaciones o cualquier incidencia con los vuelos BZN→DFW→MAD (reserva QBKBPR). Desde España: +34 91 111 1050.</div>'+
+    '</div>'+
+
+    '<div class="ecard green">'+
+      '<div class="ect">🏛️ Embajada de España en Washington</div>'+
+      '<div class="ecn">Embajada / Consulado</div>'+
+      '<div class="etel"><a href="tel:+12023552700">+1 202 355 2700</a></div>'+
+      '<div class="enote">Embajada en Washington D.C. Para pérdida de pasaporte, asistencia consular de emergencia. El consulado más cercano al viaje es Los Ángeles: <a href="tel:+13238386130" style="font-size:12px">+1 323 938 0158</a>.</div>'+
+    '</div>'+
+
+    '<div class="ecard green">'+
+      '<div class="ect">🏥 Hospital más cercano por zona</div>'+
+      '<div class="ecn">Hospitales de referencia</div>'+
+      '<div class="enote" style="margin-top:4px">'+
+        '<b>Las Vegas:</b> Sunrise Hospital · +1 702 731 8000<br>'+
+        '<b>Salt Lake City:</b> University of Utah Hospital · +1 801 581 2121<br>'+
+        '<b>Jackson WY:</b> St. John\'s Medical Center · +1 307 733 3636<br>'+
+        '<b>Yellowstone:</b> Mammoth Hot Springs Clinic · +1 307 344 7965<br>'+
+        '<b>Cody WY:</b> West Park Hospital · +1 307 527 7501<br>'+
+        '<b>Bozeman MT:</b> Bozeman Health · +1 406 585 5000'+
+      '</div>'+
+    '</div>'+
+
+  '</div>';
+}
+
+/* --- conversores --- */
+function renderConversores(){
+  document.getElementById("convBlock").innerHTML=
+  '<div class="conv-grid">'+
+
+    '<div class="cvcard">'+
+      '<div class="cvt">🌡️ Temperatura</div>'+
+      '<div class="cv-row">'+
+        '<input class="cv-inp" id="cvF" type="number" placeholder="°F" oninput="cvTemp(\'F\')">'+
+        '<span class="cv-lbl">°F</span>'+
+      '</div>'+
+      '<div class="cv-eq">⇅</div>'+
+      '<div class="cv-row" style="margin-top:6px">'+
+        '<input class="cv-inp" id="cvC" type="number" placeholder="°C" oninput="cvTemp(\'C\')">'+
+        '<span class="cv-lbl">°C</span>'+
+      '</div>'+
+      '<div class="cv-sub">32°F = 0°C · 50°F = 10°C · 95°F = 35°C · 104°F = 40°C</div>'+
+    '</div>'+
+
+    '<div class="cvcard">'+
+      '<div class="cvt">📏 Distancia</div>'+
+      '<div class="cv-row">'+
+        '<input class="cv-inp" id="cvMi" type="number" placeholder="millas" oninput="cvDist(\'mi\')">'+
+        '<span class="cv-lbl">mi</span>'+
+      '</div>'+
+      '<div class="cv-eq">⇅</div>'+
+      '<div class="cv-row" style="margin-top:6px">'+
+        '<input class="cv-inp" id="cvKm" type="number" placeholder="km" oninput="cvDist(\'km\')">'+
+        '<span class="cv-lbl">km</span>'+
+      '</div>'+
+      '<div class="cv-sub">1 milla = 1,609 km · 50 mph = 80 km/h · 75 mph = 120 km/h</div>'+
+    '</div>'+
+
+    '<div class="cvcard">'+
+      '<div class="cvt">⛽ Volumen (gasolina)</div>'+
+      '<div class="cv-row">'+
+        '<input class="cv-inp" id="cvGal" type="number" placeholder="galones" oninput="cvVol(\'gal\')">'+
+        '<span class="cv-lbl">gal</span>'+
+      '</div>'+
+      '<div class="cv-eq">⇅</div>'+
+      '<div class="cv-row" style="margin-top:6px">'+
+        '<input class="cv-inp" id="cvL" type="number" placeholder="litros" oninput="cvVol(\'l\')">'+
+        '<span class="cv-lbl">L</span>'+
+      '</div>'+
+      '<div class="cv-sub">1 galón = 3,785 L · Nissan Rogue: ~60 L (≈ 16 gal)</div>'+
+    '</div>'+
+
+    '<div class="cvcard">'+
+      '<div class="cvt">💵 Divisa (referencia)</div>'+
+      '<div class="cv-row">'+
+        '<input class="cv-inp" id="cvUsd" type="number" placeholder="USD $" oninput="cvMoney(\'usd\')">'+
+        '<span class="cv-lbl">$</span>'+
+      '</div>'+
+      '<div class="cv-eq">⇅</div>'+
+      '<div class="cv-row" style="margin-top:6px">'+
+        '<input class="cv-inp" id="cvEur" type="number" placeholder="EUR €" oninput="cvMoney(\'eur\')">'+
+        '<span class="cv-lbl">€</span>'+
+      '</div>'+
+      '<div class="cv-sub" id="cvRate">Tipo de cambio aproximado: 1 USD ≈ 0,92 € · Actualizar según tasa real del día</div>'+
+    '</div>'+
+
+  '</div>'+
+
+  '<div class="cvcard" style="margin-top:12px">'+
+    '<div class="cvt">📊 Referencia rápida — velocidades y temperaturas</div>'+
+    '<table class="ref-table">'+
+      '<tr><th>mph</th><th>km/h</th><th>Dónde</th></tr>'+
+      '<tr><td>25 mph</td><td>40 km/h</td><td>Yellowstone — fauna en carretera</td></tr>'+
+      '<tr><td>45 mph</td><td>72 km/h</td><td>Yellowstone interior / parques NP</td></tr>'+
+      '<tr><td>65 mph</td><td>105 km/h</td><td>Autopistas estatales Wyoming/Montana</td></tr>'+
+      '<tr><td>80 mph</td><td>129 km/h</td><td>I-15 Nevada/Utah (límite máximo)</td></tr>'+
+    '</table>'+
+    '<table class="ref-table" style="margin-top:10px">'+
+      '<tr><th>°F</th><th>°C</th><th>Contexto del viaje</th></tr>'+
+      '<tr><td>32°F</td><td>0°C</td><td>Posible en Beartooth Pass (agosto, con viento)</td></tr>'+
+      '<tr><td>41°F</td><td>5°C</td><td>Lamar Valley al amanecer (días 9-10)</td></tr>'+
+      '<tr><td>59°F</td><td>15°C</td><td>Tarde en Yellowstone Lake</td></tr>'+
+      '<tr><td>95°F</td><td>35°C</td><td>Las Vegas mediodía (agosto normal)</td></tr>'+
+      '<tr><td>104°F</td><td>40°C</td><td>Las Vegas extremo — permanecer en interior</td></tr>'+
+    '</table>'+
+  '</div>';
+}
+
 /* ============ ROUTER ============ */
 function go(id){
   if(!id) return;
@@ -1192,6 +1449,34 @@ document.addEventListener("click",function(e){
 });
 
 /* init */
+// converter functions — global scope
+function r(v,d){return Math.round(v*(10**d))/(10**d);}
+function cvTemp(from){
+  const F=document.getElementById("cvF"),C=document.getElementById("cvC");
+  if(from==="F"&&F.value!==""){C.value=r((parseFloat(F.value)-32)*5/9,1);}
+  else if(from==="C"&&C.value!==""){F.value=r(parseFloat(C.value)*9/5+32,1);}
+  else{if(from==="F")C.value=""; else F.value="";}
+}
+function cvDist(from){
+  const M=document.getElementById("cvMi"),K=document.getElementById("cvKm");
+  if(from==="mi"&&M.value!==""){K.value=r(parseFloat(M.value)*1.60934,1);}
+  else if(from==="km"&&K.value!==""){M.value=r(parseFloat(K.value)/1.60934,1);}
+  else{if(from==="mi")K.value=""; else M.value="";}
+}
+function cvVol(from){
+  const G=document.getElementById("cvGal"),L=document.getElementById("cvL");
+  if(from==="gal"&&G.value!==""){L.value=r(parseFloat(G.value)*3.78541,2);}
+  else if(from==="l"&&L.value!==""){G.value=r(parseFloat(L.value)/3.78541,2);}
+  else{if(from==="gal")L.value=""; else G.value="";}
+}
+function cvMoney(from){
+  const rate=0.92;
+  const U=document.getElementById("cvUsd"),E=document.getElementById("cvEur");
+  if(from==="usd"&&U.value!==""){E.value=r(parseFloat(U.value)*rate,2);}
+  else if(from==="eur"&&E.value!==""){U.value=r(parseFloat(E.value)/rate,2);}
+  else{if(from==="usd")E.value=""; else U.value="";}
+}
+
 renderSummary();
 renderDays();
 renderFoodFilters();
@@ -1203,6 +1488,8 @@ renderCar();
 renderPend();
 renderPhoto();
 renderChecklist();
+renderEmergencias();
+renderConversores();
 </script>
 </body>
 </html>
