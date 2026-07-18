@@ -18,7 +18,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
@@ -67,9 +67,9 @@ img{max-width:100%}
 .dcard .num{font-size:11px;font-weight:800;color:#fff;background:var(--brand);border-radius:20px;padding:2px 9px}
 .dcard .date{font-size:12px;color:var(--ink-soft);font-weight:600}
 .dcard .tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:2px 9px;border-radius:20px;color:#fff}
-.dcard h3{font-size:16px;margin:7px 0 3px;font-weight:700}
-.dcard .quote{font-size:13px;color:var(--ink-soft);margin-bottom:8px}
-.dcard .meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-soft)}
+.dcard h3{font-size:17px;margin:7px 0 3px;font-weight:700}
+.dcard .quote{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
+.dcard .meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-soft)}
 .dcard .meta b{color:var(--ink);font-weight:600}
 .dcard .alert{position:absolute;top:10px;right:12px;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;background:var(--red-bg);color:var(--red)}
 
@@ -92,8 +92,8 @@ img{max-width:100%}
 .dd .head .num{font-size:11px;font-weight:800;background:rgba(255,255,255,.25);border-radius:20px;padding:2px 10px;display:inline-block}
 .dd .head .tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;background:rgba(0,0,0,.22);border-radius:20px;padding:2px 10px;display:inline-block;margin-left:6px}
 .dd .head h3{font-size:20px;margin:9px 0 3px;font-weight:800}
-.dd .head .date{font-size:13px;opacity:.92;font-weight:600}
-.dd .head .quote{font-size:13px;opacity:.95;margin-top:6px;max-width:600px}
+.dd .head .date{font-size:14px;opacity:.92;font-weight:600}
+.dd .head .quote{font-size:14px;opacity:.95;margin-top:6px;max-width:600px}
 .dd .head .temp{margin-top:10px;display:inline-block;background:rgba(0,0,0,.20);border-radius:20px;
   padding:5px 12px;font-size:12.5px;font-weight:600;line-height:1.35}
 .dd .links{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
@@ -125,10 +125,10 @@ img{max-width:100%}
 .tl .slot{position:relative;padding:9px 0}
 .tl .slot::before{content:"";position:absolute;left:-23px;top:13px;width:11px;height:11px;border-radius:50%;background:var(--brand);border:2px solid #fff;box-shadow:0 0 0 2px var(--line)}
 .tl .slot .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--accent)}
-.tl .slot p{font-size:14px;margin-top:2px}
+.tl .slot p{font-size:15px;margin-top:2px}
 
 .blocks{display:grid;grid-template-columns:1fr;gap:9px;margin-top:12px}
-.block{border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:13px;background:#fcfaf5}
+.block{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;background:#fcfaf5}
 .block .bh{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-soft);margin-bottom:5px;display:flex;align-items:center;gap:6px}
 .block.food{background:#f3f8f2;border-color:#d8e8d6}
 .block.dinner{background:#ece5f6;border-color:#d4c6e8}
@@ -143,6 +143,21 @@ img{max-width:100%}
 .daynav a{flex:1;text-align:center;background:#faf6ee;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px;font-weight:600;color:var(--brand)}
 .daynav a.disabled{opacity:.35;pointer-events:none}
 
+/* ---------- SUBNAV DE SECCIÓN ---------- */
+.subnav{position:sticky;top:0;z-index:40;background:var(--bg);
+  padding:10px 4px 8px;max-width:900px;margin:0 auto;
+  display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;border-bottom:1px solid var(--line)}
+.subnav::-webkit-scrollbar{display:none}
+.snav{white-space:nowrap;background:var(--card);border:1px solid var(--line);
+  border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;
+  color:var(--ink-soft);cursor:pointer;flex-shrink:0;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  transition:background .12s,color .12s,border-color .12s}
+.snav *{pointer-events:none}
+.snav:active{background:var(--bll);color:var(--brand);border-color:var(--brand2)}
+.sec-anchor{scroll-margin-top:60px}
+
 /* ---------- FILTER PILLS ---------- */
 .filters{max-width:900px;margin:0 auto 14px;padding:0 4px;display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
@@ -153,8 +168,8 @@ img{max-width:100%}
 .cards{max-width:900px;margin:0 auto;padding:0 4px;display:grid;grid-template-columns:1fr;gap:10px}
 .fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow)}
 .fcard .fh{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.fcard h4{font-size:15px;font-weight:700}
-.fcard .price{font-size:13px;color:var(--ink-soft);font-weight:700;flex:none}
+.fcard h4{font-size:16px;font-weight:700}
+.fcard .price{font-size:14px;color:var(--ink-soft);font-weight:700;flex:none}
 .fcard .row{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0}
 .badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
 .b-dest{background:#eef3f8;color:var(--brand2)}
@@ -162,9 +177,9 @@ img{max-width:100%}
 .b-star{background:#fdf0e6;color:var(--accent)}
 .b-gf{background:var(--ok-bg);color:var(--ok)}
 .b-chk{background:var(--pend-bg);color:var(--pend)}
-.fcard .desc{font-size:13px;color:var(--ink-soft)}
-.fcard .addr{font-size:12px;color:var(--ink-soft);margin-top:6px;opacity:.85}
-.fcard .resv{font-size:12px;margin-top:5px;font-weight:600}
+.fcard .desc{font-size:14px;color:var(--ink-soft)}
+.fcard .addr{font-size:13px;color:var(--ink-soft);margin-top:6px;opacity:.85}
+.fcard .resv{font-size:13px;margin-top:5px;font-weight:600}
 
 /* ---------- CAR CARD ---------- */
 .carcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;max-width:900px;margin:0 auto}
@@ -241,11 +256,11 @@ img{max-width:100%}
 .acc[open]>summary::after{content:"–"}
 .acc .inner{padding:0 16px 14px}
 
-.pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:13px}
+.pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
 .pend-item:first-child{border-top:none}
 .pend-item .dot{width:10px;height:10px;border-radius:50%;flex:none;margin-top:4px}
 .dot.red{background:var(--red)} .dot.yel{background:var(--pend)} .dot.grn{background:var(--ok)}
-.pend-item .pt b{display:block;font-size:14px;margin-bottom:2px}
+.pend-item .pt b{display:block;font-size:15px;margin-bottom:2px}
 .pend-item .pt span{color:var(--ink-soft)}
 
 .ftrail{border-top:1px solid var(--line);padding:11px 0;font-size:13px}
@@ -275,8 +290,8 @@ img{max-width:100%}
 .chk-item:last-child{border-bottom:none}
 .chk-item input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--brand)}
 .chk-item .ci{flex:1;min-width:0}
-.chk-item .ci b{font-size:14px;display:block}
-.chk-item .ci span{font-size:12px;color:var(--ink-soft)}
+.chk-item .ci b{font-size:15px;display:block}
+.chk-item .ci span{font-size:13px;color:var(--ink-soft)}
 .chk-item.done .ci b{text-decoration:line-through;opacity:.5}
 .chk-item.done .ci span{opacity:.4}
 
@@ -340,7 +355,7 @@ img{max-width:100%}
 .ecard.amber .etel a{background:#fef3c7;color:#92400e}
 .ecard.green .etel a{background:#dcfce7;color:#166534}
 .ecard.purple .etel a{background:#ede9fe;color:#5b21b6}
-.enote{font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:4px}
+.enote{font-size:13px;color:var(--ink-soft);line-height:1.5;margin-top:4px}
 .emer-warn{background:#fff8f8;border:1px solid #fca5a5;border-radius:10px;
   padding:12px 14px;font-size:13px;color:#7f1d1d;margin-bottom:14px;line-height:1.6}
 
@@ -380,8 +395,8 @@ img{max-width:100%}
 .lnk-row:active,.lnk-row:hover{background:var(--blx)}
 .lnk-ico{font-size:20px;flex-shrink:0;width:28px;text-align:center}
 .lnk-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
-.lnk-title{font-size:14px;font-weight:700;color:var(--ink);display:block;line-height:1.3}
-.lnk-sub{font-size:12px;color:var(--ink-soft);display:block;line-height:1.4}
+.lnk-title{font-size:15px;font-weight:700;color:var(--ink);display:block;line-height:1.3}
+.lnk-sub{font-size:13px;color:var(--ink-soft);display:block;line-height:1.4}
 .lnk-arr{color:var(--brand2);font-size:16px;flex-shrink:0}
 .lnk-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;
   flex-shrink:0;white-space:nowrap;align-self:center}
@@ -396,15 +411,15 @@ img{max-width:100%}
 .pl-acc:first-of-type{margin-top:2px}
 .pl-btn{width:100%;background:#f7fbf7;border:none;text-align:left;cursor:pointer;
   padding:10px 13px;display:flex;justify-content:space-between;align-items:center;
-  font-size:13px;font-weight:700;color:var(--ink);
+  font-size:14px;font-weight:700;color:var(--ink);
   -webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .pl-btn *{pointer-events:none}
 .pl-btn .pl-arr{font-size:15px;color:var(--brand2);transition:transform .18s;flex-shrink:0;margin-left:8px}
 .pl-btn.open .pl-arr{transform:rotate(180deg)}
-.pl-body{display:none;padding:10px 13px 13px;font-size:13px;
+.pl-body{display:none;padding:10px 13px 13px;font-size:14px;
   color:var(--ink-soft);line-height:1.65;border-top:1px solid #d8ecd8;background:#fff}
 .pl-body.open{display:block}
-.pl-body a{color:var(--brand2);font-weight:600;font-size:12px;display:inline-block;margin-top:8px;
+.pl-body a{color:var(--brand2);font-weight:600;font-size:13px;display:inline-block;margin-top:8px;
   background:#eef3f8;border-radius:20px;padding:4px 10px}
 </style>
 </head>
@@ -460,47 +475,77 @@ img{max-width:100%}
 
     <!-- ============ COMER ============ -->
     <section id="comer" class="section">
-      <div class="h-sec"><h2>Comer sin trigo 🌾</h2><span class="note">Filtra por destino</span></div>
-      <div class="filters" id="foodFilters"></div>
-      <div class="cards" id="foodCards"></div>
-      <div class="h-sec"><h2>Supermercados y aprovisionamiento 🛒</h2></div>
-      <div class="info-block" id="marketBlock"></div>
+      <div class="subnav">
+        <button class="snav" onclick="goAnc('anc-rest')">🍽️ Restaurantes GF</button>
+        <button class="snav" onclick="goAnc('anc-super')">🛒 Supermercados</button>
+      </div>
+      <div id="anc-rest" class="sec-anchor">
+        <div class="h-sec"><h2>Comer sin trigo 🌾</h2><span class="note">Filtra por destino</span></div>
+        <div class="filters" id="foodFilters"></div>
+        <div class="cards" id="foodCards"></div>
+      </div>
+      <div id="anc-super" class="sec-anchor">
+        <div class="h-sec"><h2>Supermercados y aprovisionamiento 🛒</h2></div>
+        <div class="info-block" id="marketBlock"></div>
+      </div>
     </section>
 
     <!-- ============ RESERVAS ============ -->
     <section id="reservas" class="section">
-      <div class="h-sec"><h2>Vuelos ✈️</h2><span class="note">Ida y vuelta</span></div>
-      <div class="cards" id="flightCards"></div>
-
-      <div class="h-sec"><h2>Coche de alquiler 🚗</h2><span class="note">Alamo · recogida y devolución</span></div>
-      <div class="info-block" id="carBlock"></div>
-
-      <div class="h-sec"><h2>Hoteles y alojamientos 🏨</h2></div>
-      <div class="cards" id="hotelCards"></div>
+      <div class="subnav">
+        <button class="snav" onclick="goAnc('anc-vuelos')">✈️ Vuelos</button>
+        <button class="snav" onclick="goAnc('anc-coche')">🚗 Coche</button>
+        <button class="snav" onclick="goAnc('anc-hoteles')">🏨 Hoteles</button>
+      </div>
+      <div id="anc-vuelos" class="sec-anchor">
+        <div class="h-sec"><h2>Vuelos ✈️</h2><span class="note">Ida y vuelta</span></div>
+        <div class="cards" id="flightCards"></div>
+      </div>
+      <div id="anc-coche" class="sec-anchor">
+        <div class="h-sec"><h2>Coche de alquiler 🚗</h2><span class="note">Alamo · recogida y devolución</span></div>
+        <div class="info-block" id="carBlock"></div>
+      </div>
+      <div id="anc-hoteles" class="sec-anchor">
+        <div class="h-sec"><h2>Hoteles y alojamientos 🏨</h2></div>
+        <div class="cards" id="hotelCards"></div>
+      </div>
     </section>
 
     <!-- ============ INFO ============ -->
     <section id="info" class="section">
-      <div class="h-sec"><h2>Pendientes ✅</h2><span class="note">Estado operativo</span></div>
-      <div class="info-block" id="pendBlock"></div>
-
-      <div class="h-sec"><h2>Fotografía & trails 📸</h2><span class="note">Sencillos y sin masas</span></div>
-      <div class="info-block" id="photoBlock"></div>
-
-      <div class="h-sec"><h2>Checklist de equipaje 🎒</h2><span class="note">Se guarda en tu dispositivo</span></div>
-      <div class="info-block" id="chkBlock"></div>
-
-      <div class="foot">Los cambios del checklist se guardan localmente en este navegador.</div>
-
-      <div class="h-sec" style="margin-top:20px"><h2>🔗 Links esenciales del viaje</h2><span class="note">Guardar en favoritos antes de salir</span></div>
-      <div class="info-block" id="linksBlock"></div>
-
-      <div class="h-sec" style="margin-top:20px"><h2>🆘 Emergencias y contactos</h2><span class="note">Acceso rápido offline</span></div>
-      <div class="info-block" id="emerBlock"></div>
-
-      <div class="h-sec" style="margin-top:20px"><h2>🔄 Conversores</h2><span class="note">°F · millas · galones · dólares</span></div>
-      <div class="info-block" id="convBlock"></div>
-
+      <div class="subnav">
+        <button class="snav" onclick="goAnc('anc-pend')">✅ Pendientes</button>
+        <button class="snav" onclick="goAnc('anc-foto')">📸 Fotos</button>
+        <button class="snav" onclick="goAnc('anc-chk')">🎒 Checklist</button>
+        <button class="snav" onclick="goAnc('anc-links')">🔗 Links</button>
+        <button class="snav" onclick="goAnc('anc-emer')">🆘 SOS</button>
+        <button class="snav" onclick="goAnc('anc-conv')">🔄 Conversores</button>
+      </div>
+      <div id="anc-pend" class="sec-anchor">
+        <div class="h-sec"><h2>Pendientes ✅</h2><span class="note">Estado operativo</span></div>
+        <div class="info-block" id="pendBlock"></div>
+      </div>
+      <div id="anc-foto" class="sec-anchor">
+        <div class="h-sec"><h2>Fotografía & trails 📸</h2><span class="note">Sencillos y sin masas</span></div>
+        <div class="info-block" id="photoBlock"></div>
+      </div>
+      <div id="anc-chk" class="sec-anchor">
+        <div class="h-sec"><h2>Checklist de equipaje 🎒</h2><span class="note">Se guarda en tu dispositivo</span></div>
+        <div class="info-block" id="chkBlock"></div>
+        <div class="foot">Los cambios del checklist se guardan localmente en este navegador.</div>
+      </div>
+      <div id="anc-links" class="sec-anchor">
+        <div class="h-sec" style="margin-top:20px"><h2>🔗 Links esenciales del viaje</h2><span class="note">Guardar en favoritos antes de salir</span></div>
+        <div class="info-block" id="linksBlock"></div>
+      </div>
+      <div id="anc-emer" class="sec-anchor">
+        <div class="h-sec" style="margin-top:20px"><h2>🆘 Emergencias y contactos</h2><span class="note">Acceso rápido offline</span></div>
+        <div class="info-block" id="emerBlock"></div>
+      </div>
+      <div id="anc-conv" class="sec-anchor">
+        <div class="h-sec" style="margin-top:20px"><h2>🔄 Conversores</h2><span class="note">°F · millas · galones · dólares</span></div>
+        <div class="info-block" id="convBlock"></div>
+      </div>
     </section>
 
   </main>
@@ -1528,6 +1573,10 @@ function renderLinks(){
 }
 
 /* ============ ROUTER ============ */
+function goAnc(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 function go(id){
   if(!id) return;
   document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));
