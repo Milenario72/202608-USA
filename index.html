@@ -250,10 +250,14 @@ img{max-width:100%}
 /* ---------- INFO / PENDING ---------- */
 .info-block{max-width:900px;margin:0 auto 20px;padding:0 4px}
 .acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
-.acc>summary{padding:14px 16px;font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.acc>summary{padding:14px 16px;font-weight:700;font-size:15px;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
 .acc>summary::-webkit-details-marker{display:none}
-.acc>summary::after{content:"+";font-size:20px;color:var(--brand);font-weight:400}
-.acc[open]>summary::after{content:"–"}
+.acc>summary::after{display:none}
+.acc-arr{font-size:20px;color:var(--brand);font-weight:400;flex-shrink:0;
+  transition:transform .18s;display:inline-block;pointer-events:none}
+.acc[open]>summary .acc-arr{transform:rotate(45deg)}
 .acc .inner{padding:0 16px 14px}
 
 .pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
@@ -275,17 +279,14 @@ img{max-width:100%}
 .chk-cat{margin-bottom:8px}
 .chk-cat>summary{padding:12px 14px;font-weight:700;cursor:pointer;list-style:none;
   display:flex;justify-content:space-between;align-items:center;
-  gap:10px;background:#faf6ee;border-radius:12px}
+  gap:10px;background:#faf6ee;border-radius:12px;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
 .chk-cat>summary::-webkit-details-marker{display:none}
-.chk-cat>summary::after{display:none}
 .chk-cat>summary .cat-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chk-cat>summary .prog-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .chk-cat .prog{font-size:12px;color:var(--ink-soft);font-weight:700;
   background:#f0ece0;border-radius:20px;padding:2px 10px;white-space:nowrap;
   min-width:38px;text-align:center}
-.chk-cat>summary .chk-arr{font-size:18px;color:var(--brand);font-weight:400;flex-shrink:0;
-  transition:transform .18s;display:inline-block}
-.chk-cat[open]>summary .chk-arr{transform:rotate(45deg)}
 .chk-item{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid var(--line);align-items:flex-start;cursor:pointer}
 .chk-item:last-child{border-bottom:none}
 .chk-item input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--brand)}
@@ -1214,13 +1215,13 @@ function renderFoodFilters(){
 }
 function renderMarkets(){
   document.getElementById("marketBlock").innerHTML=
-    '<div class="acc" open><summary>Ver supermercados por zona</summary><div class="inner">'+
+    '<details class="acc" open><summary><span>Ver supermercados por zona</span><span class="acc-arr">+</span></summary><div class="inner">'+
     MARKETS.map(m=>'<div class="ftrail"><b>'+m[0]+'</b> · <span style="color:var(--ink-soft)">'+m[1]+'</span>'+
       '<div class="fm"><span>📍 '+m[2]+'</span><span>🕐 '+m[3]+'</span></div>'+
       '<p>'+m[4]+'</p></div>').join("")+
     '<div class="ftrail" style="background:var(--pend-bg);border-radius:10px;padding:10px;margin-top:8px"><b>⚠️ Consejo clave</b>'+
     '<p>Aprovisionarse a fondo en Jackson (Albertsons o Whole Grocer) antes de entrar a Yellowstone: pan GF, snacks, fruta y comida para 3-4 días. Dentro del parque las opciones GF son escasas y caras.</p></div>'+
-    '</div></div>';
+    '</div></details>';
 }
 
 /* --- hotels --- */
@@ -1297,22 +1298,22 @@ function renderCar(){
 
 function renderPend(){
   document.getElementById("pendBlock").innerHTML=
-    '<div class="acc" open><summary>Estado de pendientes</summary><div class="inner">'+
+    '<details class="acc" open><summary><span>Estado de pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
     PEND.map(p=>'<div class="pend-item"><span class="dot '+p[0]+'"></span>'+
       '<div class="pt"><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>').join("")+
-    '</div></div>';
+    '</div></details>';
 }
 
 /* --- photo/trails --- */
 function renderPhoto(){
   document.getElementById("photoBlock").innerHTML=
-    '<div class="acc" open><summary>Trails recomendados (sencillos, sin masas)</summary><div class="inner">'+
+    '<details class="acc" open><summary><span>Trails recomendados (sencillos, sin masas)</span><span class="acc-arr">+</span></summary><div class="inner">'+
     TRAILS.map(t=>'<div class="ftrail"><b>'+t[0]+'</b> · <span style="color:var(--ink-soft)">'+t[1]+'</span>'+
       '<div class="fm"><span>'+t[2]+'</span><span class="lens">'+t[3]+'</span></div>'+
       '<p>'+t[4]+'</p></div>').join("")+
     '<div class="ftrail" style="background:var(--pend-bg);border-radius:10px;padding:10px;margin-top:8px">'+
     '<b>🐻 Bear spray obligatorio</b><p>En todos los trails de Yellowstone y Grand Teton. Alquilar en Jackson (~$10/día). No se puede llevar en avión. Descargar AllTrails offline antes de entrar al parque.</p></div>'+
-    '</div></div>';
+    '</div></details>';
 }
 
 /* --- checklist w/ localStorage --- */
@@ -1328,7 +1329,7 @@ function renderChecklist(){
       '<span class="cat-title">'+cat+'</span>'+
       '<span class="prog-wrap">'+
         '<span class="prog" data-cat="'+cat+'">'+doneCount+'/'+items.length+'</span>'+
-        '<span class="chk-arr">+</span>'+
+        '<span class="acc-arr">+</span>'+
       '</span>'+
       '</summary><div class="inner">';
     items.forEach((it,i)=>{
