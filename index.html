@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.1</title>
+<title>USA Road Trip · Agosto 2026 · v2.2</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -429,7 +429,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.1</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.2</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -442,7 +442,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.1</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.2</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -464,7 +464,7 @@ img{max-width:100%}
       <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.1</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.2</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -760,6 +760,8 @@ const DAYS = [
     warn:"⚠️ Aparcar en Canyon antes de las 08h — se llena completamente después. Pausa de mediodía (13–16h) no es tiempo perdido: los animales se retiran al frescor y las baterías necesitan carga. Bear spray SIEMPRE accesible fuera del coche. Preparar maletas esta noche: mañana check-out 06:30h.",
     temp:"Yellowstone ~24°C / 5°C · mañanas frías",
     places:[
+      ["Yellowstone — el primer parque nacional del mundo","El Congreso de EEUU creó Yellowstone el 1 de marzo de 1872 como 'public pleasuring ground' — el primer parque nacional del mundo. La idea surgió de la expedición Washburn-Langford-Doane de 1870, que regresó con descripciones de géiseres y aguas termales tan extraordinarias que nadie las creyó hasta que el fotógrafo William Henry Jackson y el pintor Thomas Moran acompañaron la siguiente expedición y trajeron imágenes. El cuadro de Moran 'Grand Canyon of the Yellowstone' fue presentado al Congreso y fue decisivo para el voto. El modelo de parque nacional se exportó luego a todo el mundo.",
+        [["Wikipedia","https://es.wikipedia.org/wiki/Parque_nacional_de_Yellowstone"]]],
       ["Lago Yellowstone — el lago volcánico más alto de América","El lago Yellowstone (2.357m de altitud, 341 km²) es el lago de alta altitud más grande de América del Norte. Lo que no se ve desde la orilla es que su fondo está en constante actividad geotérmica: hay géiseres y fuentes termales activas bajo el agua. En algunos puntos el fondo del lago se ha levantado más de un metro en los últimos 30 años por la presión del magma. El lago está dentro de la caldera del supervulcán de Yellowstone — la última erupción masiva fue hace 640.000 años y liberó 1.000 km³ de material volcánico.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Yellowstone_Lake"]]],
       ["Gran Cañón de Yellowstone","El río Yellowstone ha excavado un cañón de 38km de longitud, 400m de profundidad y hasta 1.200m de anchura. El color amarillo y naranja de las paredes viene del azufre y los óxidos de hierro en la roca hidrotérmicamente alterada. Las Lower Falls (94m) son casi el doble de altura que las cataratas del Niágara.",
@@ -884,12 +886,10 @@ const DAYS = [
     warn:"🚨 TIMING CRÍTICO: Salir Cody MAX 09:15h. ~3h45m hasta BZN. Margen 2h+ antes del vuelo 16:15. La escala en Dallas (~1h20) es el punto más vulnerable del viaje. Si hay retraso en BZN, American se encarga de la conexión (mismo PNR). Verificar en BZN que el SSD tiene todas las fotos antes de facturar las SD en bodega.",
     temp:"Cody ~28°C / 11°C · Bozeman ~28°C / 12°C",
     places:[
-      ["Dallas/Fort Worth — el mayor hub de American Airlines","DFW es el segundo aeropuerto más grande del mundo por superficie (casi 70 km², mayor que el island de Manhattan) y el hub principal de American Airlines. Procesa más de 73 millones de pasajeros al año. La escala de ~1h20 entre AA947 (BZN→DFW) y AA8631 (DFW→MAD) es el punto más ajustado del viaje: técnicamente es tiempo suficiente si el vuelo de Bozeman llega puntual, pero cualquier retraso en BZN compromete la conexión. Al ser el mismo billete y mismo PNR, si se pierde la conexión American está obligado a reproteger en el siguiente vuelo a Madrid disponible.",
-        [["Wikipedia — DFW","https://en.wikipedia.org/wiki/Dallas/Fort_Worth_International_Airport"]]],
       ["Bozeman, Montana","Ciudad universitaria de 55.000 habitantes (Montana State University) a los pies de las Bridger Mountains. Es el hub de entrada al suroeste de Montana y una ciudad con vida propia — Main Street tiene restaurantes, cervecerías artesanales y tiendas de outdoor de calidad. El aeropuerto Bozeman Yellowstone International (BZN) es uno de los de mayor crecimiento de EEUU, con conexiones directas a todas las ciudades principales.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Bozeman,_Montana"]]],
-      ["Yellowstone como primer parque nacional","El Congreso de EEUU creó Yellowstone el 1 de marzo de 1872 como 'public pleasuring ground' — el primer parque nacional del mundo. La idea surgió de la expedición Washburn-Langford-Doane de 1870, que regresó con descripciones de géiseres y aguas termales tan extraordinarias que nadie las creyó hasta que el fotógrafo William Henry Jackson y el pintor Thomas Moran acompañaron la siguiente expedición y trajeron imágenes. El modelo de parque nacional se exportó luego a todo el mundo.",
-        [["Wikipedia","https://es.wikipedia.org/wiki/Parque_nacional_de_Yellowstone"]]]
+      ["Dallas/Fort Worth — el mayor hub de American Airlines","DFW es el segundo aeropuerto más grande del mundo por superficie (casi 70 km², mayor que el island de Manhattan) y el hub principal de American Airlines. Procesa más de 73 millones de pasajeros al año. La escala de ~1h20 entre AA947 (BZN→DFW) y AA8631 (DFW→MAD) es el punto más ajustado del viaje: técnicamente es tiempo suficiente si el vuelo de Bozeman llega puntual, pero cualquier retraso en BZN compromete la conexión. Al ser el mismo billete y mismo PNR, si se pierde la conexión American está obligado a reproteger en el siguiente vuelo a Madrid disponible.",
+        [["Wikipedia — DFW","https://en.wikipedia.org/wiki/Dallas/Fort_Worth_International_Airport"]]],
     ],
     links:[["Tiempo Bozeman","https://forecast.weather.gov/MapClick.php?lat=45.677&lon=-111.0429"],["Carreteras Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Estado vuelo AA947","https://www.aa.com/travelInformation/flights/status"],["Aeropuerto Bozeman (BZN)","https://bozemanairport.com/"]]
   }
