@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026</title>
+<title>USA Road Trip · Agosto 2026 · v2.0</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -464,7 +464,7 @@ img{max-width:100%}
       <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v11</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.0</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -571,7 +571,7 @@ const DAYS = [
     tl:[["Día","Vuelo Madrid 13:00 → Charlotte 15:55 (BA1612/AA0749). Escala ~2h25 en CLT."],
         ["Tarde","Charlotte 18:20 → Las Vegas 19:56 (BA1781/AA0596). Llegada a la T1 de Harry Reid."],
         ["Noche","Traslado al MGM Grand y check-in. Cena ligera cerca del hotel para adaptarse al jet lag."]],
-    food:"Primera noche tranquila. Opciones GF cerca del MGM.",
+    food:"Primera noche tranquila — cena ligera. Eggslut (The Cosmopolitan, 3708 LV Blvd S, 5min a pie, GF confirmado, abre hasta tarde) o servicio de habitaciones del MGM. No es noche de buscar restaurante: llegar, comer algo y dormir.",
     photo:null, warn:"Vuelo emitido ✓ (BA operado por American). Llegada 19:56 hora local: noche solo para descansar, nada de conducir. Ojo al jet lag (+9h respecto a Madrid).",
     temp:"~40°C / 27°C · Vegas, muy caluroso y seco",
     places:[
@@ -593,56 +593,67 @@ const DAYS = [
     links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Estado vuelo AA","https://www.aa.com/travelInformation/flights/status"],["Las Vegas (Wikipedia)","https://es.wikipedia.org/wiki/Las_Vegas"]]
   },
 
-  { n:2, date:"Lun 10 Ago", zone:"lv", tag:"Strip", title:"Las Vegas — Strip + Fremont + MJ Live",
-    quote:"Ciudad sin coche: fuentes del Bellagio, Fremont de noche y espectáculo.",
-    drive:[{t:"0 h conducción"},{t:"A pie / taxi / Deuce bus"}],
+  { n:2, date:"Lun 10 Ago", zone:"lv", tag:"Strip", title:"Las Vegas — Bellagio · Sphere · MJ Live · Fremont Street",
+    quote:"Sin coche. Show MJ Live 19:00h en Harrah's. Exteriores solo 09-11h y 17:30h en adelante.",
+    drive:[{t:"0 h conducción"},{t:"A pie · taxi · Deuce bus"}],
     hotel:"MGM Grand Las Vegas", hotelStatus:["ok","Reservado ✓"],
-    tl:[["Mañana","Descanso y piscina en el MGM para recuperar del viaje. ⚠️ Las horas de calor (12-17h) mejor a cubierto."],
-        ["Tarde","Strip a pie o en taxi: Bellagio (fuentes + conservatorio), Venetian (canales), The LINQ y la High Roller. Juego suave en casino."],
-        ["Noche","19:30 MJ Live en Harrah's Showroom. Después, taxi/Uber a Fremont Street (Downtown): marquesina de luz Viva Vision cada hora de 18:00 a 02:00, artistas callejeros y ambiente neón clásico. Cena ligera antes del show."]],
-    food:"Brunch: Bellagio Patisserie o The Henry. Cena: True Food Kitchen o Mon Ami Gabi (GF marcado). En Downtown, PublicUs para brunch GF-friendly.",
-    photo:"📸 Fuentes del Bellagio de noche (18-150mm, exposición corta). Fremont: neón y marquesina LED (18-50mm, ISO alto, sin trípode; hay mucha luz).",
-    warn:"Fremont es gratis y sin entradas. Si vais en coche otro día, garaje propio en 4th & Carson (~$4/h). Reservar el show MJ Live si aún no está hecho.",
+    tl:[["09:00–11:00 · Exteriores antes del calor","09:00 desayuno tranquilo (Eggslut en el Cosmopolitan, GF, abre 08h — o en el propio MGM). 10:00 paseo corto al Bellagio: Conservatorio interior (jardín botánico de temporada, gratuito, AC perfecto, 30min) + primera vista de las fuentes de día (cada 30min). 10:45 Caesars Palace: Forum Shops, el techo pintado con cielo romano en bucle y la Fontana di Trevi interior. Volver al hotel antes de las 11h — el calor ya es extremo."],
+        ["11:00–14:00 · Piscina del MGM + descanso","Piscina del MGM Grand (incluida en la reserva del hotel — cinco piscinas, zona de bar flotante). El bloque de descanso más sensato del día: el jet lag todavía está presente y el show es esta noche. Quien prefiera interior: The Venetian, canales interiores con cielo pintado, góndolas y San Marco recreado — gratuito sin consumir nada."],
+        ["14:00–16:30 · Descanso en el hotel","Pausa real. Siesta para quien la necesite. El show es a las 19h — conviene llegar frescos, no arrastrando el calor del mediodía. No hay nada que ver a estas horas que no se pueda ver antes o después."],
+        ["16:30–18:15 · Sphere + Fuentes del Bellagio","16:30 Uber al norte del Strip (~$12, 10min). MSG Sphere exterior desde Sands Avenue y el puente del Venetian: el Exosphere ya está activo con animaciones cambiantes, gratuito. 17:15 caminando de vuelta al Bellagio (10min a pie): fuentes con la luz dorada del atardecer — la mejor combinación fotográfica del día. 18:00 empezar a moverse hacia True Food Kitchen para cenar antes del show."],
+        ["18:15 · Cena rápida GF antes del show","True Food Kitchen (Fashion Show Mall, 3200 LV Blvd S, 5min a pie del Harrah's, 100% GF ⭐). Reservar con antelación. Cena rápida y concreta — 45min máximo para llegar tranquilos al Harrah's."],
+        ["19:00 · MJ Live · Harrah's Las Vegas Showroom ⭐","Harrah's Las Vegas, 3475 Las Vegas Blvd S — a 5min a pie de True Food Kitchen. Tributo a Michael Jackson con bailarines y banda en directo. Duración ~1h30m. Termina sobre las 20:30h."],
+        ["20:30 · Fremont Street — opcional según energía","Con el show terminado a las 20:30h hay margen para Fremont si el grupo tiene ganas. Deuce bus línea 202 ($6 día) o Uber (~$15, 15min). La Viva Vision emite espectáculos gratuitos cada hora hasta las 02h — la de las 21h es perfecta. Si el grupo está cansado, directamente al hotel."]],
+    food:"Desayuno GF: Eggslut (Cosmopolitan, GF confirmado, abre 08h). Comida: piscina MGM (pedir al bar flotante) o snack en The Venetian. Cena antes del show: True Food Kitchen (Fashion Show Mall, 100% GF ⭐, reservar OpenTable con antelación). Post-show si se va a Fremont: algo rápido en el Downtown.",
+    photo:"📸 Fuentes Bellagio: 18-150mm, apoyar en la barandilla, ISO 800, 1/60s para congelar el agua. Mejor luz 17:30-18:30h con el cielo aún azul. Sphere exterior: 18-50mm f/2.8 desde el puente del Venetian (gratuito). Fremont: 18-50mm ISO 1600, el techo LED es el sujeto — sin trípode, hay luz suficiente.",
+    warn:"Regla de oro: exteriores solo 09-11h y a partir de las 17:30h. De 11h a 17h nunca más de 10min al sol. Harrah's Showroom: llegar 15min antes para elegir sitio. True Food Kitchen: reservar con antelación en OpenTable.",
     temp:"~40°C / 27°C · calor extremo a mediodía",
     places:[
-      ["Fuentes del Bellagio","Más de 1.200 boquillas que lanzan agua hasta 140 metros sincronizadas con música. El sistema usa 22 millones de litros de agua (no potable — recirculada) y consume tanta electricidad como una pequeña ciudad. Fue diseñado por WET Design en 1998 con tecnología que entonces no existía y que tuvieron que inventar desde cero. Curiosidad: el sistema informático que controla las coreografías corre en servidores debajo del lago y nunca se ha reiniciado desde la inauguración.",
+      ["Fuentes del Bellagio","Más de 1.200 boquillas que lanzan agua hasta 140 metros sincronizadas con música. El sistema usa 22 millones de litros de agua recirculada. Fue diseñado por WET Design en 1998 con tecnología que tuvieron que inventar desde cero. El sistema informático que controla las coreografías corre en servidores debajo del lago y nunca se ha reiniciado desde la inauguración.",
         [["Wikipedia","https://es.wikipedia.org/wiki/Fuentes_del_Bellagio"]]],
-      ["Caesars Palace — la Roma que nunca existió","Inaugurado en 1966, Caesars Palace estableció el concepto de hotel-casino como experiencia de escapismo total. El propietario original, Jay Sarno, quería que los clientes se sintieran emperadores romanos — de ahí las estatuas, las columnas y el nombre en plural (los Césares, no el de César). En los 80 fue el epicentro de la cultura pop: aquí dio su salto en moto Evel Knievel, se rodaron escenas de Rain Man y se celebraron los combates de boxeo más famosos de la historia.",
+      ["Caesars Palace — la Roma que nunca existió","Inaugurado en 1966, estableció el concepto de hotel-casino como experiencia de escapismo total. El propietario original Jay Sarno quería que los clientes se sintieran emperadores romanos. En los 80 fue el epicentro de la cultura pop: Evel Knievel, Rain Man y los combates de boxeo más famosos de la historia.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Caesars_Palace"]]],
-      ["MSG Sphere — la pantalla más grande del mundo","Inaugurada en septiembre de 2023 con el concierto de U2 (72 noches seguidas). Costó 2.300 millones de dólares. La pantalla exterior tiene 54.000 m² de LEDs con resolución 4K que se pueden ver desde un avión. El interior tiene la pantalla envolvente más grande del mundo (16.000 m², 19.000 altavoces) y el suelo háptico más grande del planeta — puedes sentir físicamente el movimiento en los pies. El espectáculo 'Postcard from Earth' de Darren Aronofsky dura 50 minutos y no tiene precedente en ningún medio.",
+      ["MSG Sphere — la pantalla más grande del mundo","Inaugurada en 2023 con el concierto de U2 (72 noches seguidas). Costó 2.300 millones de dólares. La pantalla exterior tiene 54.000 m² de LEDs visibles desde aviones. El interior tiene la pantalla envolvente más grande del mundo y el suelo háptico más grande del planeta — puedes sentir el movimiento en los pies.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Sphere_(venue)"]]],
-      ["Fremont Street y el Vegas original","Fremont Street fue el primer casino legalizado de Las Vegas en 1906. El Horseshoe de Benny Binion (1951) introdujo aquí las apuestas sin límite — hasta entonces todos los casinos tenían límite máximo de apuesta. Los torneos mundiales de poker (WSOP) nacieron en el Binion's Horseshoe en 1970 y siguen celebrándose en Vegas cada verano. La cubierta LED de la Fremont Street Experience se construyó en 1995 para revitalizar el downtown cuando el Strip nuevo se llevó a todos los turistas.",
+      ["Fremont Street y el Vegas original","El primer casino legalizado de Las Vegas (1906). Los torneos mundiales de poker (WSOP) nacieron aquí en 1970 y siguen celebrándose en Vegas cada verano. La cubierta LED Viva Vision (460m, el más grande del mundo) se construyó en 1995 para revitalizar el downtown cuando el Strip nuevo se llevó a todos los turistas.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Fremont_Street_Experience"]]],
-      ["La historia oculta de la mafia en Las Vegas","Entre 1945 y 1983 Las Vegas fue controlada en gran parte por la mafia organizada de Chicago (Outfit), Nueva York y Kansas City. El Flamingo lo construyó Bugsy Siegel en 1946 con dinero del crimen organizado de Meyer Lansky. El FBI estimaba en los 80 que el 'skimming' (robo de efectivo de los casinos antes de contarlo) ascendía a decenas de millones al año. La película Casino (Scorsese, 1995) y el Mob Museum en Downtown cuentan esta historia con rigor y sin glamourizarla en exceso.",
-        [["Wikipedia — Historia mafia Vegas","https://en.wikipedia.org/wiki/History_of_Las_Vegas"],["The Mob Museum","https://themobmuseum.org/"]]]
+      ["MJ Live — el tributo de Las Vegas","El espectáculo de tributo a Michael Jackson más valorado de Las Vegas, en el Harrah's Showroom. Banda en directo, bailarines y proyecciones. Se lleva representando más de una década en el Strip. El Harrah's Showroom tiene 740 localidades con buena visibilidad desde cualquier asiento.",
+        [["MJ Live","https://www.harrahslasvegas.com/entertainment/mj-live.html"]]]
     ],
-    links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Fremont Street","https://vegasexperience.com/"],["Fuentes Bellagio (Wiki)","https://es.wikipedia.org/wiki/Fuentes_del_Bellagio"]]
+    links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Fuentes Bellagio (horarios)","https://www.bellagio.com/en/entertainment/fountains-of-bellagio.html"],["MJ Live — entradas","https://www.harrahslasvegas.com/entertainment/mj-live.html"],["Fremont Street","https://vegasexperience.com/"]]
   },
 
-  { n:3, date:"Mar 11 Ago", zone:"lv", tag:"Coche", title:"Las Vegas — Welcome Sign + Recogida coche Alamo",
-    quote:"La foto del cartel, recogida del Nissan Rogue y Whole Foods para provisiones GF.",
-    drive:[{t:"Coche Alamo 15:00",b:true}],
+  { n:3, date:"Mar 11 Ago", zone:"lv", tag:"Coche", title:"Las Vegas — Welcome Sign · Recogida coche · Outlets · REI",
+    quote:"Mañana libre. Coche a las 15:00h. Outlets y REI con el coche. Cena y a dormir.",
+    drive:[{t:"Coche Alamo 15:00h",b:true}],
     hotel:"MGM Grand Las Vegas", hotelStatus:["ok","Reservado ✓"],
-    tl:[["Mañana","Mañana tranquila — descanso antes de la ruta. High Roller (noria 167m, $30) o piscina MGM. 'Welcome to Fabulous Las Vegas' Sign al sur del Strip (5100 LV Blvd S): aparcamiento gratuito propio."],
-        ["Tarde","15:00 recogida coche Alamo (aeropuerto Harry Reid, Rental Car Center off-site — bus lanzadera). Fotografiar el coche en todos los ángulos antes de salir del garaje."],
-        ["Noche","17:30–19:00 Whole Foods Town Square (6689 Las Vegas Blvd S) con el coche: reconocimiento previo + primeras provisiones GF (pan, snacks, agua 6L). Cena tranquila — mañana salida 07:30h."]],
-    food:"Cena tranquila: Dare Vita Cafe (100% GF ⭐) o Esther's Kitchen (pasta GF). No trasnochar — Día 4 sale a las 07:30h.",
-    photo:"📸 Cartel Welcome: mejor a primera hora o al atardecer (18-50mm). Panorámica nocturna del Strip: 18-150mm desde mirador elevado. Cargar baterías LP-E6 esta noche.",
-    warn:"Documentación Alamo: carnet de conducir español + Permiso Internacional de Conducción (IDP) + tarjeta crédito a nombre del conductor + confirmación reserva. Fotografiar el coche en todos los ángulos antes de salir del garaje.",
+    tl:[["09:00–11:00 · Welcome Sign + mañana tranquila","09:00 desayuno tranquilo en el MGM. 09:30 Uber o a pie hasta el Welcome to Fabulous Las Vegas Sign (5100 LV Blvd S, parking gratuito propio): la foto del grupo sin cola, luz frontal perfecta a esta hora. 15 minutos. Vuelta al hotel antes de las 11h."],
+        ["11:00–14:00 · Tiempo libre sin agenda","Lo que no se haya hecho los días anteriores: The Venetian (canales interiores, cielo pintado — gratuito), High Roller (noria 167m, $30, abre 11:30h), piscina del MGM, o simplemente el casino del hotel con calma."],
+        ["12:30 · Comida","Mon Ami Gabi (terraza París Las Vegas, vistas a las fuentes del Bellagio, GF disponible) o cualquier interior del Strip. Sin prisa."],
+        ["14:00 · Traslado al aeropuerto — Alamo","Uber al Harry Reid Rental Car Center (bus lanzadera gratuito desde el terminal, cada 5-10min). Proceso completo: mostrador, seguro, garaje, inspección. Fotografiar el coche en los cuatro lados antes de salir. ~45min."],
+        ["15:15 · Primera conducción","Calma total — lado derecho, stop signs, mph. El aeropuerto está a 5min del Strip: el primer trayecto es corto y recto. Con el coche ya disponible, la tarde es completamente libre de taxis."],
+        ["15:30 · Las Vegas North Premium Outlets","875 S Grand Central Pkwy. I-15 Norte salida Charleston Blvd (Exit 42A), 10min desde el aeropuerto. Abre hasta las 20:00h. 175+ tiendas: Polo Ralph Lauren, Tommy Hilfiger, Calvin Klein, Burberry, Versace, Armani, Boss, Diesel. Complementos: Coach, Kate Spade, Michael Kors, Jimmy Choo. Descuentos 25-70%. Parking gratuito. The Cheesecake Factory y Shake Shack en el outlet si apetece algo."],
+        ["17:30 · REI Boca Park","710 S Rampart Blvd, 12min en coche desde el Outlet. Abre hasta las 21:00h. Patagonia, The North Face, Arc'teryx, Columbia, Marmot, Fjällräven. Calzado: Salomon, Merrell, Keen, La Sportiva, Hoka. Mochilas: Osprey, Gregory. Calcetines merino Darn Tough y Smartwool — imprescindibles para Yellowstone. El personal conoce bien los productos."],
+        ["19:15 · Cena tranquila y a dormir","Volver al MGM. Dare Vita Cafe (100% GF ⭐, Arts District, ~10min en coche) o cena en el propio hotel. Cargar las dos baterías LP-E6. Colocar maletas en el maletero. Confirmar Google Maps offline. Despertar 06:45h — el Día 4 sale a las 07:30h."]],
+    food:"Desayuno: MGM o Eggslut (Cosmopolitan). Comida: Mon Ami Gabi (GF disponible, terraza con vistas a las fuentes). Outlets: The Cheesecake Factory (confirmar GF) o Shake Shack. Cena: Dare Vita Cafe (100% GF ⭐) o cena ligera en el MGM. La compra de provisiones GF para la ruta se hace mañana en Whole Foods (Día 4, 07:30h).",
+    photo:"📸 Welcome Sign: 18-50mm f/2.8, mejor a las 09:30h con luz frontal y sin cola. Cargar las dos baterías LP-E6 esta noche — mañana Día 4 es el primero largo.",
+    warn:"Documentación Alamo: carnet de conducir español + Permiso Internacional de Conducción (IDP) + tarjeta crédito a nombre del conductor + confirmación de reserva. Fotografiar el coche en todos los ángulos antes de salir del garaje — si hay arañazos no reflejados en el contrato, señalarlo por escrito al empleado.",
     temp:"~40°C / 27°C · calor seco",
     places:[
-      ["Welcome to Fabulous Las Vegas Sign","Diseñado en 1959 por Betty Willis, quien cedió el diseño al dominio público sin cobrar derechos — por eso es una de las imágenes más reproducidas de EEUU sin que nadie pague royalties. El letrero tiene forma de diamante con 35 bombillas. Curiosidad: en el reverso del cartel (para los que salen de la ciudad) pone 'Drive Carefully — Come Back Soon', y ese lado nunca sale en las fotos porque los fotógrafos siempre se colocan en el carril de entrada.",
+      ["Welcome to Fabulous Las Vegas Sign","Diseñado en 1959 por Betty Willis, quien cedió el diseño al dominio público sin cobrar derechos. El letrero tiene forma de diamante con 35 bombillas. El reverso pone 'Drive Carefully — Come Back Soon' y ese lado nunca sale en las fotos porque todos se colocan en el carril de entrada.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Welcome_to_Fabulous_Las_Vegas_sign"]]],
-      ["High Roller (The LINQ)","Con 167 metros fue la noria más alta del mundo entre 2014 y 2022. Las 28 cabinas de cristal tienen capacidad para 40 personas y completan una vuelta en 30 minutos. Curiosidad: las cabinas de noche tienen bar (el 'Happy Half Hour' — barra libre los primeros 30 minutos). Desde arriba se ve perfectamente la diferencia entre Nevada (apagada y oscura) y la concentración lumínica del Strip — parece un meteorito de neón en medio del desierto.",
+      ["Las Vegas North Premium Outlets","175+ tiendas en un outlet exterior con sombra en Downtown Las Vegas, a 10 minutos del Strip. Incluye Polo Ralph Lauren, Tommy Hilfiger, Calvin Klein, Burberry, Versace, Armani, Boss y decenas de marcas de lujo con descuentos de 25-70% sobre precio de boutique. Aparcamiento gratuito. Abre 10:00h.",
+        [["Premium Outlets North","https://www.premiumoutlets.com/outlet/las-vegas-north"]]],
+      ["REI Boca Park — Las Vegas","REI (Recreational Equipment Inc.) es una cooperativa de outdoor fundada en 1938 — sus 21 millones de socios comparten beneficios. La tienda de Las Vegas Boca Park tiene el surtido completo de Patagonia, The North Face, Arc'teryx, Columbia y Marmot, además de calzado de senderismo (Salomon, Merrell, La Sportiva) y mochilas (Osprey, Gregory). El personal está entrenado específicamente en montaña y senderismo.",
+        [["REI Las Vegas","https://www.rei.com/stores/las-vegas.html"]]],
+      ["High Roller (The LINQ)","Con 167 metros fue la noria más alta del mundo entre 2014 y 2022. Las 28 cabinas de cristal tienen barra libre los primeros 30 minutos (Happy Half Hour). Desde arriba se ve perfectamente la diferencia entre Nevada apagada y la concentración lumínica del Strip — parece un meteorito de neón en el desierto.",
         [["Wikipedia","https://en.wikipedia.org/wiki/High_Roller_(Ferris_wheel)"]]],
-      ["Luxor — la pirámide negra","La pirámide de cristal negro del Luxor (1993) emite desde su cúspide el haz de luz más potente del mundo — visible a 440km de distancia y desde los vuelos comerciales que entran en el espacio aéreo de Los Ángeles. El haz usa 315.000 vatios de luz Xenón. Los ingenieros tuvieron que rediseñar la ventilación porque el calor concentrado en la cúspide mataba a los insectos y las aves que se acercaban. El interior tiene una reproducción del templo de Abu Simbel a escala real.",
+      ["Luxor — la pirámide negra","La pirámide de cristal negro del Luxor (1993) emite desde su cúspide el haz de luz más potente del mundo — visible a 440km y desde vuelos comerciales que entran en el espacio aéreo de Los Ángeles. El haz usa 315.000 vatios de luz Xenón. Los ingenieros tuvieron que rediseñar la ventilación porque el calor concentrado en la cúspide mataba a los insectos y las aves que se acercaban.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Luxor_Las_Vegas"]]],
-      ["New York-New York — Manhattan en 5 acres","Inaugurado en 1997, el hotel reproduce el skyline de Manhattan con miniaturas de 12 rascacielos icónicos (el Empire State a un tercio de su tamaño, el Chrysler Building, las torres del WTC antes del 11-S). La montaña rusa que rodea el exterior es la única del mundo que hace 360° alrededor de un rascacielos. Curiosidad: después del 11 de septiembre de 2001 los turistas espontáneamente convirtieron el exterior del hotel en un memorial — miles de flores, banderas y notas que el hotel mantuvo durante semanas.",
-        [["Wikipedia","https://en.wikipedia.org/wiki/New_York-New_York_Hotel_and_Casino"]]],
-      ["Area 15 — Meow Wolf","Area 15 es un complejo de entretenimiento inmersivo a 10 minutos del Strip que alberga Meow Wolf Omega Mart, la instalación artística interactiva más avanzada del mundo. Omega Mart empieza como un supermercado absurdo con productos imposibles y va revelando mundos paralelos ocultos detrás de las estanterías, los congeladores y los baños. Diseñado por el colectivo artístico Meow Wolf de Santa Fe, tardó 4 años en construirse.",
+      ["Area 15 — Meow Wolf","Area 15 es un complejo de entretenimiento inmersivo a 10 minutos del Strip que alberga Meow Wolf Omega Mart. Empieza como un supermercado absurdo con productos imposibles y va revelando mundos paralelos ocultos detrás de las estanterías y los congeladores. Diseñado por el colectivo artístico Meow Wolf de Santa Fe, tardó 4 años en construirse.",
         [["Wikipedia — Meow Wolf","https://en.wikipedia.org/wiki/Meow_Wolf"],["Area 15","https://area15.com/"]]]
     ],
-    links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Alamo (reserva)","https://www.alamo.es/"],["Welcome Sign","https://es.wikipedia.org/wiki/Welcome_to_Fabulous_Las_Vegas"],["Whole Foods Town Square","https://www.wholefoodsmarket.com/"]]
+    links:[["Tiempo Las Vegas","https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"],["Premium Outlets North","https://www.premiumoutlets.com/outlet/las-vegas-north/stores"],["REI Las Vegas","https://www.rei.com/stores/las-vegas.html"],["Alamo (reserva)","https://www.alamo.es/"]]
   },
 
   { n:4, date:"Mié 12 Ago", zone:"zi", tag:"Ruta", title:"Las Vegas → Kolob Canyons (Zion NP) → Salt Lake City",
