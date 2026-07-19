@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.0</title>
+<title>USA Road Trip · Agosto 2026 · v2.1</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -464,7 +464,7 @@ img{max-width:100%}
       <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.0</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.1</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -939,12 +939,43 @@ const FOOD_FILTERS = [
 ];
 
 const MARKETS = [
-  ["Broulim's Fresh Foods","Alpine (WY) · Día 5","118400 US-26, Alpine","7:00–21:00","Único super decente en Alpine. Básico pero suficiente para el picnic del día siguiente."],
-  ["Albertsons (\"Albies\")","Jackson (WY) · Día 6","105 Buffalo Way, Jackson","6:00–23:00","El más grande de Jackson. Amplia sección GF. Parada obligatoria antes de Yellowstone."],
-  ["Jackson Whole Grocer","Jackson (WY) · Día 6","Centro de Jackson","7:00–21:00","Versión local de Whole Foods. Excelente sección GF. Muy fiable para celíacos."],
-  ["General Stores (Xanterra)","Yellowstone · Días 6-8","Lake / Old Faithful / Canyon","7:30–21:30","⚠️ Conveniencia, no supermercado. Surtido limitado y caro. Solo emergencias."],
-  ["Food Farm","Gardiner (MT) · Días 8-9","107 Park St, Gardiner","8:00–20:00","Super local de Gardiner. Pequeño pero cubre lo básico. Reabastecer para Lamar."],
-  ["Walmart Supercenter","Cody (WY) · Día 10","321 Yellowstone Ave, Cody","6:00–23:00","El más completo de Cody. Amplia sección GF. Última compra antes de Bozeman."]
+  // ── LAS VEGAS (Días 1-3) ──────────────────────────────────────────
+  ["Whole Foods Town Square ⭐","Las Vegas · Días 3-4","6689 Las Vegas Blvd S (Town Square, 10min del MGM)","07:00–22:00","La mejor sección GF de Las Vegas. Parada OBLIGATORIA Día 4 a las 07:30h para cargar la nevera. Pan GF de molde, comida preparada, fruta, agua. También útil el Día 3 tarde con el coche recién recogido."],
+  ["Sprouts Farmers Market","Las Vegas · Días 1-3","3365 E Tropicana Ave (10min en coche del MGM)","07:00–22:00","Cadena especializada en productos naturales y GF a mejor precio que Whole Foods. Excelente sección bulk con frutos secos y snacks GF sin envasar. Muy buena relación calidad-precio para aprovisionar el coche."],
+  ["Smith's Food & Drug (Kroger)","Las Vegas · Días 1-3","Multiple locations Strip area","06:00–00:00","Supermercado grande de cadena Kroger con sección GF bien surtida. Abierto hasta medianoche. Opción más económica que Whole Foods si solo se necesitan básicos (agua, fruta, embutido)."],
+
+  // ── RUTA I-15: ST. GEORGE / CEDAR CITY (Día 4 en ruta) ───────────
+  ["Smith's Food & Drug","St. George UT · Día 4 (en ruta)","635 N Bluff St, St. George UT","06:00–23:00","Parada cómoda de camino a Kolob (Exit 6 desde la I-15). Si se necesita algo antes de Kolob o si el Whole Foods de Vegas no abrió a tiempo. Sección GF correcta."],
+  ["Walmart Supercenter","Cedar City UT · Día 4 (si necesario)","1330 S Main St, Cedar City UT","00:00–00:00 (24h)","Alternativa si se necesita agua o básicos en el tramo largo I-15. A mitad de camino entre Kolob y SLC. No es parada planificada pero cubre emergencias."],
+
+  // ── SALT LAKE CITY (Día 4 noche) ─────────────────────────────────
+  ["Whole Foods Market SLC ⭐","Salt Lake City · Día 4","510 S 900 E, SLC UT","07:00–22:00","Downtown SLC, a 10min del Holiday Inn. Pan GF fresco, queso, fiambre, snacks. Parada opcional al llegar si el stock baja después de Kolob."],
+  ["Trader Joe's SLC ⭐⭐","Salt Lake City · Día 4","634 E 400 S, SLC UT (centro)","09:00–21:00","A 5min a pie del Holiday Inn Express. Excelente relación calidad-precio en GF — galletas, crackers, pasta, snacks GF etiquetados con marca propia Trader Joe's. Mucho más barato que Whole Foods para el mismo nivel de calidad GF."],
+  ["Good Food GF Bakery ⭐⭐","Salt Lake City · Día 4","423 W 800 S, SLC UT","Variable — confirmar","100% sin gluten. Panadería dedicada exclusivamente GF. Si está abierta, comprar pan aquí para los días siguientes — es la única panadería certificada GF del viaje."],
+
+  // ── RUTA LOGAN CANYON / BEAR LAKE (Día 5 en ruta) ───────────────
+  ["Smith's Food & Drug Logan","Logan UT · Día 5 (en ruta)","1415 N Main St, Logan UT","06:00–23:00","Parada en Logan antes de entrar al cañón — la última ciudad grande antes de 70km de carretera de montaña. Gasolinera en el mismo aparcamiento. Sección GF correcta para restock de snacks si es necesario."],
+  ["Broulim's Fresh Foods Bear Lake","Garden City UT · Día 5","40 N Bear Lake Blvd, Garden City UT","08:00–20:00","El único supermercado en Garden City, junto al lago. Pequeño pero cubre básicos. Si se para a comer junto al lago es el sitio para comprar provisiones adicionales."],
+
+  // ── ALPINE / JACKSON (Días 5-6) ──────────────────────────────────
+  ["Broulim's Fresh Foods Alpine","Alpine WY · Día 5","118400 US-26, Alpine WY","07:00–21:00","El único supermercado decente en Alpine. Básico pero suficiente para complementar el picnic del Día 6."],
+  ["Albertsons Jackson ⭐⭐⭐","Jackson WY · Día 6","105 Buffalo Way, Jackson WY","06:00–23:00","PARADA OBLIGATORIA antes de entrar a Yellowstone. El más grande de Jackson: amplia sección GF con pan de molde, galletas, pasta, snacks. Aprovisionarse para 3-4 días completos dentro del parque donde las opciones son escasas y caras."],
+  ["Jackson Whole Grocer","Jackson WY · Día 6","Centro de Jackson WY","07:00–21:00","Versión local de Whole Foods. Excelente sección GF, comida preparada. Muy fiable para celíacos — el personal conoce bien los alérgenos. Alternativa al Albertsons si se prefiere calidad sobre precio."],
+
+  // ── YELLOWSTONE (Días 6-8) ────────────────────────────────────────
+  ["Xanterra General Stores (⚠️)","Yellowstone · Días 6-8","Lake / Old Faithful / Canyon Village","07:30–21:30","Solo conveniencia — NO es un supermercado. Surtido GF muy limitado y precios desorbitados. Agua, snacks básicos. Usar solo en emergencias. Nunca como fuente principal de alimentación GF."],
+
+  // ── GARDINER (Días 8-9) ───────────────────────────────────────────
+  ["Food Farm","Gardiner MT · Días 8-9","107 Park St, Gardiner MT","08:00–20:00","El único supermercado de Gardiner (75 km a Livingston). Pequeño pero cubre lo básico: agua, fruta, fiambre, snacks. Reabastecer aquí para el día de Lamar y la Beartooth. Cerrar antes de las 20h."],
+  ["Albertsons Livingston","Livingston MT · Días 8-9 (alternativa)","118 W Park St, Livingston MT","06:00–23:00","A 80km de Gardiner por la US-89 Norte (1h). Mucho más completo que Food Farm con sección GF amplia. Solo vale la pena si se necesita un aprovisionamiento serio — no es una parada de paso natural."],
+
+  // ── CODY (Día 10) ────────────────────────────────────────────────
+  ["Walmart Supercenter Cody","Cody WY · Día 10","321 Yellowstone Ave, Cody WY","06:00–23:00","El más completo de Cody: amplia sección GF, bebidas, snacks para el coche. Última compra grande antes de Bozeman. Útil para reponer agua y provisiones para el Día 11."],
+  ["Albertsons Cody","Cody WY · Día 10","1825 17th St, Cody WY","06:00–22:00","Alternativa al Walmart con mejor sección de frescos y comida preparada. Sección GF correcta. Abre hasta las 22h — útil si se llega tarde tras el Beartooth."],
+
+  // ── BOZEMAN (Día 11) ─────────────────────────────────────────────
+  ["Albertsons Bozeman","Bozeman MT · Día 11 (en ruta)","200 S 23rd Ave, Bozeman MT","06:00–00:00","De camino al aeropuerto BZN (5min en coche). Última oportunidad para agua y snacks GF seguros para el trayecto BZN→DFW→MAD. Abierto hasta medianoche."],
+  ["Natural Grocers Bozeman","Bozeman MT · Día 11 (opcional)","Bozeman MT","09:00–20:00","Cadena especializada en productos 100% orgánicos y GF. Mejor selección GF que el Albertsons pero horario más limitado. Solo si se llega a Bozeman con tiempo de sobra antes del vuelo."]
 ];
 
 const FLIGHTS = [
