@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.2</title>
+<title>USA Road Trip · Agosto 2026 · v2.3</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -54,6 +54,14 @@ img{max-width:100%}
 .h-sec{max-width:900px;margin:26px auto 12px;padding:0 4px;display:flex;align-items:baseline;gap:10px}
 .h-sec h2{font-size:19px;font-weight:800;color:var(--ink)}
 .h-sec .note{font-size:12px;color:var(--ink-soft)}
+.today-btn{margin-left:auto;background:var(--brand);color:#fff;border:none;border-radius:20px;
+  padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer;flex:none;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:var(--shadow)}
+.today-btn *{pointer-events:none}
+.today-btn:active{opacity:.85}
+.dcard.is-today{outline:2px solid var(--accent);outline-offset:-2px}
+.dcard .todaypin{position:absolute;top:10px;left:16px;font-size:10px;font-weight:800;
+  background:var(--accent);color:#fff;border-radius:20px;padding:2px 8px;letter-spacing:.5px}
 
 /* ---------- DAY SUMMARY CARDS ---------- */
 .days-grid{max-width:900px;margin:0 auto;padding:0 4px;display:grid;grid-template-columns:1fr;gap:11px}
@@ -156,7 +164,8 @@ img{max-width:100%}
   transition:background .12s,color .12s,border-color .12s}
 .snav *{pointer-events:none}
 .snav:active{background:var(--bll);color:var(--brand);border-color:var(--brand2)}
-.sec-anchor{scroll-margin-top:60px}
+.snav.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.sec-anchor{scroll-margin-top:62px}
 
 /* ---------- FILTER PILLS ---------- */
 .filters{max-width:900px;margin:0 auto 14px;padding:0 4px;display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -429,7 +438,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.2</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.3</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -442,7 +451,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.2</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.3</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -461,10 +470,11 @@ img{max-width:100%}
         <div class="stat"><b>9 Ago</b><span>salida MAD</span></div>
       </div>
 
-      <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span></div>
+      <div class="h-sec"><h2>Resumen día a día</h2><span class="note">Toca un día para ver el detalle</span>
+        <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.2</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.3</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -477,8 +487,8 @@ img{max-width:100%}
     <!-- ============ COMER ============ -->
     <section id="comer" class="section">
       <div class="subnav">
-        <button class="snav" onclick="goAnc('anc-rest')">🍽️ Restaurantes GF</button>
-        <button class="snav" onclick="goAnc('anc-super')">🛒 Supermercados</button>
+        <button class="snav" data-anc='anc-rest' onclick="goAnc('anc-rest')">🍽️ Restaurantes GF</button>
+        <button class="snav" data-anc='anc-super' onclick="goAnc('anc-super')">🛒 Supermercados</button>
       </div>
       <div id="anc-rest" class="sec-anchor">
         <div class="h-sec"><h2>Comer sin trigo 🌾</h2><span class="note">Filtra por destino</span></div>
@@ -486,7 +496,8 @@ img{max-width:100%}
         <div class="cards" id="foodCards"></div>
       </div>
       <div id="anc-super" class="sec-anchor">
-        <div class="h-sec"><h2>Supermercados y aprovisionamiento 🛒</h2></div>
+        <div class="h-sec"><h2>Supermercados y aprovisionamiento 🛒</h2><span class="note">Filtra por zona</span></div>
+        <div class="filters" id="marketFilters"></div>
         <div class="info-block" id="marketBlock"></div>
       </div>
     </section>
@@ -494,9 +505,9 @@ img{max-width:100%}
     <!-- ============ RESERVAS ============ -->
     <section id="reservas" class="section">
       <div class="subnav">
-        <button class="snav" onclick="goAnc('anc-vuelos')">✈️ Vuelos</button>
-        <button class="snav" onclick="goAnc('anc-coche')">🚗 Coche</button>
-        <button class="snav" onclick="goAnc('anc-hoteles')">🏨 Hoteles</button>
+        <button class="snav" data-anc='anc-vuelos' onclick="goAnc('anc-vuelos')">✈️ Vuelos</button>
+        <button class="snav" data-anc='anc-coche' onclick="goAnc('anc-coche')">🚗 Coche</button>
+        <button class="snav" data-anc='anc-hoteles' onclick="goAnc('anc-hoteles')">🏨 Hoteles</button>
       </div>
       <div id="anc-vuelos" class="sec-anchor">
         <div class="h-sec"><h2>Vuelos ✈️</h2><span class="note">Ida y vuelta</span></div>
@@ -515,12 +526,12 @@ img{max-width:100%}
     <!-- ============ INFO ============ -->
     <section id="info" class="section">
       <div class="subnav">
-        <button class="snav" onclick="goAnc('anc-pend')">✅ Pendientes</button>
-        <button class="snav" onclick="goAnc('anc-foto')">📸 Fotos</button>
-        <button class="snav" onclick="goAnc('anc-chk')">🎒 Checklist</button>
-        <button class="snav" onclick="goAnc('anc-links')">🔗 Links</button>
-        <button class="snav" onclick="goAnc('anc-emer')">🆘 SOS</button>
-        <button class="snav" onclick="goAnc('anc-conv')">🔄 Conversores</button>
+        <button class="snav" data-anc='anc-pend' onclick="goAnc('anc-pend')">✅ Pendientes</button>
+        <button class="snav" data-anc='anc-foto' onclick="goAnc('anc-foto')">📸 Fotos</button>
+        <button class="snav" data-anc='anc-chk' onclick="goAnc('anc-chk')">🎒 Checklist</button>
+        <button class="snav" data-anc='anc-links' onclick="goAnc('anc-links')">🔗 Links</button>
+        <button class="snav" data-anc='anc-emer' onclick="goAnc('anc-emer')">🆘 SOS</button>
+        <button class="snav" data-anc='anc-conv' onclick="goAnc('anc-conv')">🔄 Conversores</button>
       </div>
       <div id="anc-pend" class="sec-anchor">
         <div class="h-sec"><h2>Pendientes ✅</h2><span class="note">Estado operativo</span></div>
@@ -938,44 +949,57 @@ const FOOD_FILTERS = [
   ["cache","Jackson / Alpine / Logan"],["yell","Yellowstone"],["mam","Gardiner"],["back","Cody"]
 ];
 
+const MARKET_FILTERS = [
+  ["all","Todos"],
+  ["lv","Las Vegas"],
+  ["i15","Ruta I-15"],
+  ["slc","Salt Lake City"],
+  ["logan","Logan · Bear Lake"],
+  ["jackson","Alpine · Jackson"],
+  ["yell","Yellowstone"],
+  ["gardiner","Gardiner · Livingston"],
+  ["cody","Cody"],
+  ["bzn","Bozeman"]
+];
+
 const MARKETS = [
   // ── LAS VEGAS (Días 1-3) ──────────────────────────────────────────
-  ["Whole Foods Town Square ⭐","Las Vegas · Días 3-4","6689 Las Vegas Blvd S (Town Square, 10min del MGM)","07:00–22:00","La mejor sección GF de Las Vegas. Parada OBLIGATORIA Día 4 a las 07:30h para cargar la nevera. Pan GF de molde, comida preparada, fruta, agua. También útil el Día 3 tarde con el coche recién recogido."],
-  ["Sprouts Farmers Market","Las Vegas · Días 1-3","3365 E Tropicana Ave (10min en coche del MGM)","07:00–22:00","Cadena especializada en productos naturales y GF a mejor precio que Whole Foods. Excelente sección bulk con frutos secos y snacks GF sin envasar. Muy buena relación calidad-precio para aprovisionar el coche."],
-  ["Smith's Food & Drug (Kroger)","Las Vegas · Días 1-3","Multiple locations Strip area","06:00–00:00","Supermercado grande de cadena Kroger con sección GF bien surtida. Abierto hasta medianoche. Opción más económica que Whole Foods si solo se necesitan básicos (agua, fruta, embutido)."],
+  ["lv","Whole Foods Town Square ⭐","Las Vegas · Días 3-4","6689 Las Vegas Blvd S (Town Square, 10min del MGM)","07:00–22:00","La mejor sección GF de Las Vegas. Parada OBLIGATORIA Día 4 a las 07:30h para cargar la nevera. Pan GF de molde, comida preparada, fruta, agua. También útil el Día 3 tarde con el coche recién recogido."],
+  ["lv","Sprouts Farmers Market","Las Vegas · Días 1-3","3365 E Tropicana Ave (10min en coche del MGM)","07:00–22:00","Cadena especializada en productos naturales y GF a mejor precio que Whole Foods. Excelente sección bulk con frutos secos y snacks GF sin envasar. Muy buena relación calidad-precio para aprovisionar el coche."],
+  ["lv","Smith's Food & Drug (Kroger)","Las Vegas · Días 1-3","Multiple locations Strip area","06:00–00:00","Supermercado grande de cadena Kroger con sección GF bien surtida. Abierto hasta medianoche. Opción más económica que Whole Foods si solo se necesitan básicos (agua, fruta, embutido)."],
 
   // ── RUTA I-15: ST. GEORGE / CEDAR CITY (Día 4 en ruta) ───────────
-  ["Smith's Food & Drug","St. George UT · Día 4 (en ruta)","635 N Bluff St, St. George UT","06:00–23:00","Parada cómoda de camino a Kolob (Exit 6 desde la I-15). Si se necesita algo antes de Kolob o si el Whole Foods de Vegas no abrió a tiempo. Sección GF correcta."],
-  ["Walmart Supercenter","Cedar City UT · Día 4 (si necesario)","1330 S Main St, Cedar City UT","00:00–00:00 (24h)","Alternativa si se necesita agua o básicos en el tramo largo I-15. A mitad de camino entre Kolob y SLC. No es parada planificada pero cubre emergencias."],
+  ["i15","Smith's Food & Drug","St. George UT · Día 4 (en ruta)","635 N Bluff St, St. George UT","06:00–23:00","Parada cómoda de camino a Kolob (Exit 6 desde la I-15). Si se necesita algo antes de Kolob o si el Whole Foods de Vegas no abrió a tiempo. Sección GF correcta."],
+  ["i15","Walmart Supercenter","Cedar City UT · Día 4 (si necesario)","1330 S Main St, Cedar City UT","00:00–00:00 (24h)","Alternativa si se necesita agua o básicos en el tramo largo I-15. A mitad de camino entre Kolob y SLC. No es parada planificada pero cubre emergencias."],
 
   // ── SALT LAKE CITY (Día 4 noche) ─────────────────────────────────
-  ["Whole Foods Market SLC ⭐","Salt Lake City · Día 4","510 S 900 E, SLC UT","07:00–22:00","Downtown SLC, a 10min del Holiday Inn. Pan GF fresco, queso, fiambre, snacks. Parada opcional al llegar si el stock baja después de Kolob."],
-  ["Trader Joe's SLC ⭐⭐","Salt Lake City · Día 4","634 E 400 S, SLC UT (centro)","09:00–21:00","A 5min a pie del Holiday Inn Express. Excelente relación calidad-precio en GF — galletas, crackers, pasta, snacks GF etiquetados con marca propia Trader Joe's. Mucho más barato que Whole Foods para el mismo nivel de calidad GF."],
-  ["Good Food GF Bakery ⭐⭐","Salt Lake City · Día 4","423 W 800 S, SLC UT","Variable — confirmar","100% sin gluten. Panadería dedicada exclusivamente GF. Si está abierta, comprar pan aquí para los días siguientes — es la única panadería certificada GF del viaje."],
+  ["slc","Whole Foods Market SLC ⭐","Salt Lake City · Día 4","510 S 900 E, SLC UT","07:00–22:00","Downtown SLC, a 10min del Holiday Inn. Pan GF fresco, queso, fiambre, snacks. Parada opcional al llegar si el stock baja después de Kolob."],
+  ["slc","Trader Joe's SLC ⭐⭐","Salt Lake City · Día 4","634 E 400 S, SLC UT (centro)","09:00–21:00","A 5min a pie del Holiday Inn Express. Excelente relación calidad-precio en GF — galletas, crackers, pasta, snacks GF etiquetados con marca propia Trader Joe's. Mucho más barato que Whole Foods para el mismo nivel de calidad GF."],
+  ["slc","Good Food GF Bakery ⭐⭐","Salt Lake City · Día 4","423 W 800 S, SLC UT","Variable — confirmar","100% sin gluten. Panadería dedicada exclusivamente GF. Si está abierta, comprar pan aquí para los días siguientes — es la única panadería certificada GF del viaje."],
 
   // ── RUTA LOGAN CANYON / BEAR LAKE (Día 5 en ruta) ───────────────
-  ["Smith's Food & Drug Logan","Logan UT · Día 5 (en ruta)","1415 N Main St, Logan UT","06:00–23:00","Parada en Logan antes de entrar al cañón — la última ciudad grande antes de 70km de carretera de montaña. Gasolinera en el mismo aparcamiento. Sección GF correcta para restock de snacks si es necesario."],
-  ["Broulim's Fresh Foods Bear Lake","Garden City UT · Día 5","40 N Bear Lake Blvd, Garden City UT","08:00–20:00","El único supermercado en Garden City, junto al lago. Pequeño pero cubre básicos. Si se para a comer junto al lago es el sitio para comprar provisiones adicionales."],
+  ["logan","Smith's Food & Drug Logan","Logan UT · Día 5 (en ruta)","1415 N Main St, Logan UT","06:00–23:00","Parada en Logan antes de entrar al cañón — la última ciudad grande antes de 70km de carretera de montaña. Gasolinera en el mismo aparcamiento. Sección GF correcta para restock de snacks si es necesario."],
+  ["logan","Broulim's Fresh Foods Bear Lake","Garden City UT · Día 5","40 N Bear Lake Blvd, Garden City UT","08:00–20:00","El único supermercado en Garden City, junto al lago. Pequeño pero cubre básicos. Si se para a comer junto al lago es el sitio para comprar provisiones adicionales."],
 
   // ── ALPINE / JACKSON (Días 5-6) ──────────────────────────────────
-  ["Broulim's Fresh Foods Alpine","Alpine WY · Día 5","118400 US-26, Alpine WY","07:00–21:00","El único supermercado decente en Alpine. Básico pero suficiente para complementar el picnic del Día 6."],
-  ["Albertsons Jackson ⭐⭐⭐","Jackson WY · Día 6","105 Buffalo Way, Jackson WY","06:00–23:00","PARADA OBLIGATORIA antes de entrar a Yellowstone. El más grande de Jackson: amplia sección GF con pan de molde, galletas, pasta, snacks. Aprovisionarse para 3-4 días completos dentro del parque donde las opciones son escasas y caras."],
-  ["Jackson Whole Grocer","Jackson WY · Día 6","Centro de Jackson WY","07:00–21:00","Versión local de Whole Foods. Excelente sección GF, comida preparada. Muy fiable para celíacos — el personal conoce bien los alérgenos. Alternativa al Albertsons si se prefiere calidad sobre precio."],
+  ["jackson","Broulim's Fresh Foods Alpine","Alpine WY · Día 5","118400 US-26, Alpine WY","07:00–21:00","El único supermercado decente en Alpine. Básico pero suficiente para complementar el picnic del Día 6."],
+  ["jackson","Albertsons Jackson ⭐⭐⭐","Jackson WY · Día 6","105 Buffalo Way, Jackson WY","06:00–23:00","PARADA OBLIGATORIA antes de entrar a Yellowstone. El más grande de Jackson: amplia sección GF con pan de molde, galletas, pasta, snacks. Aprovisionarse para 3-4 días completos dentro del parque donde las opciones son escasas y caras."],
+  ["jackson","Jackson Whole Grocer","Jackson WY · Día 6","Centro de Jackson WY","07:00–21:00","Versión local de Whole Foods. Excelente sección GF, comida preparada. Muy fiable para celíacos — el personal conoce bien los alérgenos. Alternativa al Albertsons si se prefiere calidad sobre precio."],
 
   // ── YELLOWSTONE (Días 6-8) ────────────────────────────────────────
-  ["Xanterra General Stores (⚠️)","Yellowstone · Días 6-8","Lake / Old Faithful / Canyon Village","07:30–21:30","Solo conveniencia — NO es un supermercado. Surtido GF muy limitado y precios desorbitados. Agua, snacks básicos. Usar solo en emergencias. Nunca como fuente principal de alimentación GF."],
+  ["yell","Xanterra General Stores (⚠️)","Yellowstone · Días 6-8","Lake / Old Faithful / Canyon Village","07:30–21:30","Solo conveniencia — NO es un supermercado. Surtido GF muy limitado y precios desorbitados. Agua, snacks básicos. Usar solo en emergencias. Nunca como fuente principal de alimentación GF."],
 
   // ── GARDINER (Días 8-9) ───────────────────────────────────────────
-  ["Food Farm","Gardiner MT · Días 8-9","107 Park St, Gardiner MT","08:00–20:00","El único supermercado de Gardiner (75 km a Livingston). Pequeño pero cubre lo básico: agua, fruta, fiambre, snacks. Reabastecer aquí para el día de Lamar y la Beartooth. Cerrar antes de las 20h."],
-  ["Albertsons Livingston","Livingston MT · Días 8-9 (alternativa)","118 W Park St, Livingston MT","06:00–23:00","A 80km de Gardiner por la US-89 Norte (1h). Mucho más completo que Food Farm con sección GF amplia. Solo vale la pena si se necesita un aprovisionamiento serio — no es una parada de paso natural."],
+  ["gardiner","Food Farm","Gardiner MT · Días 8-9","107 Park St, Gardiner MT","08:00–20:00","El único supermercado de Gardiner (75 km a Livingston). Pequeño pero cubre lo básico: agua, fruta, fiambre, snacks. Reabastecer aquí para el día de Lamar y la Beartooth. Cerrar antes de las 20h."],
+  ["gardiner","Albertsons Livingston","Livingston MT · Días 8-9 (alternativa)","118 W Park St, Livingston MT","06:00–23:00","A 80km de Gardiner por la US-89 Norte (1h). Mucho más completo que Food Farm con sección GF amplia. Solo vale la pena si se necesita un aprovisionamiento serio — no es una parada de paso natural."],
 
   // ── CODY (Día 10) ────────────────────────────────────────────────
-  ["Walmart Supercenter Cody","Cody WY · Día 10","321 Yellowstone Ave, Cody WY","06:00–23:00","El más completo de Cody: amplia sección GF, bebidas, snacks para el coche. Última compra grande antes de Bozeman. Útil para reponer agua y provisiones para el Día 11."],
-  ["Albertsons Cody","Cody WY · Día 10","1825 17th St, Cody WY","06:00–22:00","Alternativa al Walmart con mejor sección de frescos y comida preparada. Sección GF correcta. Abre hasta las 22h — útil si se llega tarde tras el Beartooth."],
+  ["cody","Walmart Supercenter Cody","Cody WY · Día 10","321 Yellowstone Ave, Cody WY","06:00–23:00","El más completo de Cody: amplia sección GF, bebidas, snacks para el coche. Última compra grande antes de Bozeman. Útil para reponer agua y provisiones para el Día 11."],
+  ["cody","Albertsons Cody","Cody WY · Día 10","1825 17th St, Cody WY","06:00–22:00","Alternativa al Walmart con mejor sección de frescos y comida preparada. Sección GF correcta. Abre hasta las 22h — útil si se llega tarde tras el Beartooth."],
 
   // ── BOZEMAN (Día 11) ─────────────────────────────────────────────
-  ["Albertsons Bozeman","Bozeman MT · Día 11 (en ruta)","200 S 23rd Ave, Bozeman MT","06:00–00:00","De camino al aeropuerto BZN (5min en coche). Última oportunidad para agua y snacks GF seguros para el trayecto BZN→DFW→MAD. Abierto hasta medianoche."],
-  ["Natural Grocers Bozeman","Bozeman MT · Día 11 (opcional)","Bozeman MT","09:00–20:00","Cadena especializada en productos 100% orgánicos y GF. Mejor selección GF que el Albertsons pero horario más limitado. Solo si se llega a Bozeman con tiempo de sobra antes del vuelo."]
+  ["bzn","Albertsons Bozeman","Bozeman MT · Día 11 (en ruta)","200 S 23rd Ave, Bozeman MT","06:00–00:00","De camino al aeropuerto BZN (5min en coche). Última oportunidad para agua y snacks GF seguros para el trayecto BZN→DFW→MAD. Abierto hasta medianoche."],
+  ["bzn","Natural Grocers Bozeman","Bozeman MT · Día 11 (opcional)","Bozeman MT","09:00–20:00","Cadena especializada en productos 100% orgánicos y GF. Mejor selección GF que el Albertsons pero horario más limitado. Solo si se llega a Bozeman con tiempo de sobra antes del vuelo."]
 ];
 
 const FLIGHTS = [
@@ -1255,15 +1279,27 @@ function renderFoodFilters(){
     p.classList.add("on"); renderFood(p.dataset.f);
   }));
 }
-function renderMarkets(){
+function renderMarket(filter){
+  const list=filter==="all"?MARKETS:MARKETS.filter(m=>m[0]===filter);
   document.getElementById("marketBlock").innerHTML=
-    '<details class="acc"><summary><span>Ver supermercados por zona</span><span class="acc-arr">+</span></summary><div class="inner">'+
-    MARKETS.map(m=>'<div class="ftrail"><b>'+m[0]+'</b> · <span style="color:var(--ink-soft)">'+m[1]+'</span>'+
-      '<div class="fm"><span>📍 '+m[2]+'</span><span>🕐 '+m[3]+'</span></div>'+
-      '<p>'+m[4]+'</p></div>').join("")+
+    list.map(m=>
+      '<div class="ftrail"><b>'+m[1]+'</b> · <span style="color:var(--ink-soft)">'+m[2]+'</span>'+
+      '<div class="fm"><span>📍 '+m[3]+'</span><span>🕐 '+m[4]+'</span></div>'+
+      '<p>'+m[5]+'</p></div>'
+    ).join("")+
     '<div class="ftrail" style="background:var(--pend-bg);border-radius:10px;padding:10px;margin-top:8px"><b>⚠️ Consejo clave</b>'+
-    '<p>Aprovisionarse a fondo en Jackson (Albertsons o Whole Grocer) antes de entrar a Yellowstone: pan GF, snacks, fruta y comida para 3-4 días. Dentro del parque las opciones GF son escasas y caras.</p></div>'+
-    '</div></details>';
+    '<p>Aprovisionarse a fondo en Jackson (Albertsons o Whole Grocer) antes de entrar a Yellowstone: pan GF, snacks, fruta y comida para 3-4 días. Dentro del parque las opciones GF son escasas y caras.</p></div>';
+}
+function renderMarketFilters(){
+  const c=document.getElementById("marketFilters");
+  c.innerHTML=MARKET_FILTERS.map((f,i)=>
+    '<div class="pill'+(i===0?" on":"")+'" data-f="'+f[0]+'">'+f[1]+'</div>'
+  ).join("");
+  c.querySelectorAll(".pill").forEach(p=>p.addEventListener("click",()=>{
+    c.querySelectorAll(".pill").forEach(x=>x.classList.remove("on"));
+    p.classList.add("on");
+    renderMarket(p.dataset.f);
+  }));
 }
 
 /* --- hotels --- */
@@ -1667,6 +1703,77 @@ document.addEventListener("click",function(e){
   }
 });
 
+/* ============ SUBNAV ACTIVA AL HACER SCROLL ============ */
+/* Marca la pastilla de subnav correspondiente a la sección visible y la
+   desplaza a la vista dentro de su carril horizontal. */
+function initSubnavSpy(){
+  document.querySelectorAll(".section").forEach(sec=>{
+    const bar=sec.querySelector(".subnav");
+    if(!bar) return;
+    const btns=Array.from(bar.querySelectorAll(".snav"));
+    const targets=btns.map(b=>document.getElementById(b.dataset.anc)).filter(Boolean);
+    if(!targets.length) return;
+    const setActive=(id)=>{
+      btns.forEach(b=>{
+        const on=b.dataset.anc===id;
+        b.classList.toggle("on",on);
+        if(on) b.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});
+      });
+    };
+    const io=new IntersectionObserver((entries)=>{
+      // elige el target más cercano al top que esté intersectando
+      let best=null;
+      entries.forEach(en=>{ if(en.isIntersecting){
+        if(!best || en.boundingClientRect.top < best.boundingClientRect.top) best=en;
+      }});
+      if(best) setActive(best.target.id);
+    },{rootMargin:"-64px 0px -55% 0px",threshold:0});
+    targets.forEach(t=>io.observe(t));
+    setActive(btns[0].dataset.anc); // estado inicial
+  });
+}
+
+/* ============ DÍA DE HOY ============ */
+/* Día 1 = 9 Ago 2026. Se marca la tarjeta del día en curso y el botón
+   "Ir a hoy" salta a su detalle (o al Día 1 si aún no ha empezado el viaje). */
+const TRIP_START = new Date(2026,7,9); // meses 0-indexados: 7 = agosto
+function currentTripDay(){
+  const now=new Date();
+  const t0=new Date(TRIP_START.getFullYear(),TRIP_START.getMonth(),TRIP_START.getDate());
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const diff=Math.round((today-t0)/86400000)+1; // 1-indexado
+  if(diff<1) return 1;
+  if(diff>DAYS.length) return DAYS.length;
+  return diff;
+}
+function markToday(){
+  const n=currentTripDay();
+  const now=new Date();
+  const t0=new Date(TRIP_START.getFullYear(),TRIP_START.getMonth(),TRIP_START.getDate());
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const inTrip=(Math.round((today-t0)/86400000)+1)>=1 && (Math.round((today-t0)/86400000)+1)<=DAYS.length;
+  const card=document.querySelector('.dcard[data-day="'+n+'"]');
+  if(card && inTrip){
+    card.classList.add("is-today");
+    if(!card.querySelector(".todaypin")){
+      const pin=document.createElement("span");
+      pin.className="todaypin"; pin.textContent="HOY";
+      card.appendChild(pin);
+    }
+  }
+  const btn=document.getElementById("todayBtn");
+  if(btn){
+    btn.textContent = inTrip ? "📍 Ir a hoy (Día "+n+")" : "📍 Ir al Día 1";
+    btn.addEventListener("click",()=>{
+      go("dias");
+      setTimeout(()=>{
+        const el=document.getElementById("day"+n);
+        if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+      },60);
+    });
+  }
+}
+
 /* init */
 // converter functions — global scope
 function r(v,d){return Math.round(v*(10**d))/(10**d);}
@@ -1700,7 +1807,8 @@ renderSummary();
 renderDays();
 renderFoodFilters();
 renderFood("all");
-renderMarkets();
+renderMarketFilters();
+renderMarket("all");
 renderHotels();
 renderFlights();
 renderCar();
@@ -1710,6 +1818,8 @@ renderChecklist();
 renderEmergencias();
 renderConversores();
 renderLinks();
+markToday();
+initSubnavSpy();
 </script>
 </body>
 </html>
