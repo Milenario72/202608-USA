@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.4</title>
+<title>USA Road Trip · Agosto 2026 · v2.5</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -438,7 +438,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.4</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.5</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -451,7 +451,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.4</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.5</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -474,7 +474,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.4</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.5</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -821,38 +821,35 @@ const DAYS = [
     links:[["Tiempo Old Faithful","https://forecast.weather.gov/MapClick.php?lat=44.4605&lon=-110.8281"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"],["Grand Prismatic (Wiki)","https://es.wikipedia.org/wiki/Gran_Fuente_Prism%C3%A1tica"]]
   },
 
-  { n:9, date:"Lun 17 Ago", zone:"mam", tag:"Mammoth", title:"Gardiner base — Mammoth Hot Springs + Lamar Valley",
-    quote:"Terrazas de travertino de mañana. Lamar Valley al atardecer. Vuelta MAX 20:15h.",
-    drive:[{t:"~2h30 internas"},{t:"Base: Gardiner"}],
+  { n:9, date:"Lun 17 Ago", zone:"mam", tag:"Rafting", title:"Gardiner — Rafting Flying Pig · Mammoth Hot Springs · Lamar Valley",
+    quote:"09:15h rafting clase II-III con Flying Pig. Mammoth después. Lamar al atardecer. Vuelta MAX 20:15h.",
+    drive:[{t:"~2h internas"},{t:"Base: Gardiner"}],
     hotel:"Yellowstone Village Inn & Suites", hotelStatus:["ok","Reservado ✓"],
-    tl:[["Mañana","07:30 salida → Mammoth Hot Springs (8km, ~15min). 08:15 Lower Terraces: Minerva Terrace, Canary Spring, New Blue Spring — boardwalk completo antes de que lleguen los tours (10h). 09:30 Upper Terraces Scenic Drive (carretera sentido único, ~3km, perspectiva aérea). 10:15 wapitis pastando entre los edificios históricos de Fort Yellowstone."],
-        ["Mediodía","11:00–14:30 vuelta a Gardiner. Tiempo libre: Roosevelt Arch (foto histórica), río Yellowstone por el pueblo. Comida en Gardiner: The Corral (burger alce bun GF) o Follow Yer' Nose BBQ."],
-        ["Tarde","14:30 salida hacia Lamar Valley. 🥾 Parada en Trout Lake Trail (de camino, 3km al este del corazón del Lamar): trailhead bien señalizado junto a la carretera. Son 1,2 millas en total — 0,3 millas de subida empinada por bosque de Douglas-fir (300 pies de desnivel, corto pero con pendiente real), luego loop llano alrededor del lago glacial a la base del Druid Peak. Truchas cutthroat perfectamente visibles desde la orilla, águilas pescadoras frecuentes, silencio total respecto al valle principal. 1h–1h30m con el loop. Bear spray en mano desde el primer paso — zona con actividad regular de grizzly y oso negro. 17:30–20:00 Lamar Valley: bisontes en rut, coyotes, posibles osos desde arcenes habilitados. ⚠️ SALIR DE LAMAR MAX 20:15h. Conducción nocturna en Yellowstone peligrosa (bisontes sin reflectantes). ~21:00 vuelta a Gardiner. Cargar LP-E6 esta noche — mañana salida 05:00h."]],
-    food:"Comida en Gardiner: The Corral (bun GF) o Follow Yer' Nose BBQ (GF natural). Si se vuelve tarde de Lamar: provisiones GF del coche.",
-    photo:"📸 Mammoth: 18-150mm (gran variedad de escala, filtro polarizador para el agua brillante). Wapitis en Fort Yellowstone: 100-400mm. Trout Lake: 100-400mm para el osprey pescando y la trucha cutthroat desde la orilla — la subida inicial abre vistas a los Absaroka Mountains que no se ven desde la carretera. Lamar tarde: 100-400mm + bean bag ventanilla.",
-    warn:"⚠️ VUELTA DE LAMAR MÁXIMO 20:15h. Los bisontes no reflejan los faros — conducción nocturna en Yellowstone es peligrosa. Sin excepción. Preparar maletas y coche la noche del Día 9 — mañana check-out express a las 05:00h.",
-    temp:"Gardiner ~29°C / 12°C · Mammoth ~25°C / 8°C",
+    tl:[["08:30 · Preparación rafting","Desayuno temprano y ligero en el hotel o del coche — neopreno mojado y desayuno pesado no combinan bien. Llevar ropa de recambio completa y toalla en la mochila. Las cámaras en una bolsa estanca o dejar en el hotel — el río moja todo. Punto de encuentro Flying Pig: 511 Scott St W, Gardiner MT (a pie desde el hotel, 5min)."],
+        ["09:15 · Rafting con Flying Pig Adventure ⭐","Salida desde Gardiner. Tramo Black Canyon del Yellowstone River, clase II-III. Rápidos nombrados: Yankee Jim Canyon, Big Rock, Carbella. El río discurre entre paredes de basalto de hasta 300m con el parque a ambos lados. Fauna frecuente desde el agua: águilas calvas, garzas, nutrias. ~2h en el agua + traslado de vuelta a Gardiner. Fin estimado: ~12:00–12:15h."],
+        ["12:30 · Comida en Gardiner + cambio ropa","Comida GF en Gardiner: The Corral (bun GF) o Follow Yer' Nose BBQ (GF natural). Ducharse y cambiarse en el hotel antes de continuar."],
+        ["13:30 · Mammoth Hot Springs","8km desde Gardiner (~15min). Lower Terraces: Minerva Terrace, Canary Spring, New Blue Spring — boardwalk completo. Upper Terraces Scenic Drive (sentido único, ~3km, perspectiva aérea). Wapitis pastando entre los edificios históricos de Fort Yellowstone. Los tours organizados ya están de salida a esta hora — menos masificado que por la mañana."],
+        ["15:30 · Vuelta a Gardiner — pausa breve","Descanso en el hotel. Cargar baterías, beber agua. Trout Lake como parada opcional de camino a Lamar si hay energía (ver aviso)."],
+        ["16:30 · Lamar Valley — tarde-atardecer ⭐","Bisontes en rut, coyotes, posibles osos desde arcenes habilitados. El parque se vacía después de las 17h. 100-400mm + bean bag ventanilla — apagar motor, bajar ventanilla, esperar. ⚠️ SALIR DE LAMAR MAX 20:15h. Conducción nocturna en Yellowstone peligrosa (bisontes sin reflectantes). ~21:00 vuelta a Gardiner. Cargar LP-E6 esta noche — mañana salida 05:00h."]],
+    food:"Desayuno: ligero del coche (antes del rafting). Comida post-rafting: The Corral (burger alce bun GF ⭐) o Follow Yer' Nose BBQ (carnes GF natural, cierra 20h). Cena si se vuelve tarde de Lamar: The Corral (hasta 22h) o provisiones GF del coche.",
+    photo:"📸 Rafting: dejar la Canon R7 en el hotel — el río moja todo. Llevar GoPro o móvil en funda estanca si se quiere foto. Mammoth: 18-150mm + polarizador para las terrazas. Wapitis en Fort Yellowstone: 100-400mm. Lamar tarde: 100-400mm + bean bag ventanilla.",
+    warn:"⚠️ Flying Pig: reserva confirmada 09:15h, 17 Ago. Llevar ropa de recambio completa y toalla. No desayunar pesado antes. Las cámaras fotográficas dejarlas en el hotel — el agua del cañón es fría y los rápidos clase III mojan todo. Trout Lake: solo si hay energía después de Mammoth — no forzarlo. VUELTA DE LAMAR MAX 20:15h sin excepción. Preparar maletas esta noche: check-out mañana 05:00h.",
+    temp:"Gardiner ~29°C / 12°C · Río Yellowstone ~10-14°C (neopreno incluido) · Mammoth ~25°C / 8°C",
     places:[
-      ["Fort Yellowstone — el ejército que salvó el parque","El conjunto de edificios históricos de piedra en Mammoth fue Fort Yellowstone, la sede del ejército americano que administró el parque entre 1886 y 1918. El Congreso creó Yellowstone en 1872 pero no asignó presupuesto para gestionarlo, y los primeros años el parque fue saqueado por cazadores furtivos y coleccionistas de minerales termales. En 1886 el ejército tomó el control, construyó el fuerte y estableció las primeras reglas de protección efectiva. Sin esta intervención militar, Yellowstone habría sido destruido antes de que existiera el concepto moderno de conservación.",
+      ["Flying Pig Adventure Company — rafting en Yellowstone River","La empresa de rafting más establecida de Gardiner, fundada en 1991. Opera en el tramo del Black Canyon del Yellowstone River, que discurre por el límite norte del parque con paredes de basalto de hasta 300m. Los rápidos clase II-III incluyen el Yankee Jim Canyon — un paso estrecho entre rocas donde el río se comprime y acelera — y varios rápidos nombrados con olas de 1-2 metros. El trip de medio día incluye neopreno, casco, chaleco y guía certificado. Fauna frecuente desde el agua: águila calva, garza real, nutria de río.",
+        [["Flying Pig","https://www.flyingpigrafting.com/"]]],
+      ["Rápidos clase II y III — la escala internacional","Los rápidos se clasifican del I al VI según la dificultad técnica. Clase II: corriente rápida con olas pequeñas, obstáculos obvios, sin maniobras especiales — accesible sin experiencia. Clase III: olas irregulares de tamaño moderado, corrientes más fuertes, requieren maniobras activas para evitar rocas — exigen atención pero son seguros con guía para personas en buena forma. La clase VI es peligrosa incluso para expertos. El Yellowstone River en el tramo de Gardiner mezcla tramos clase II con algunos III en los pasos más estrechos del cañón.",
+        [["Wikipedia — Clasificación rápidos","https://en.wikipedia.org/wiki/International_scale_of_river_difficulty"]]],
+      ["Fort Yellowstone — el ejército que salvó el parque","El conjunto de edificios históricos de piedra en Mammoth fue Fort Yellowstone, la sede del ejército americano que administró el parque entre 1886 y 1918. El Congreso creó Yellowstone en 1872 pero no asignó presupuesto para gestionarlo, y los primeros años el parque fue saqueado por cazadores furtivos. En 1886 el ejército tomó el control y estableció las primeras reglas de protección efectiva.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Fort_Yellowstone"]]],
-      ["El Druid Peak Pack — la manada más famosa del mundo","La manada Druid Peak dominó el Lamar Valley desde 1996 hasta su desaparición en 2010. En su apogeo (2001) tenía 37 miembros — la mayor manada de lobos jamás documentada en estado salvaje. El macho alfa '21M' es considerado el lobo más estudiado de la historia: nunca perdió una pelea en 10 años como alfa, y fue observado en múltiples ocasiones perdonando la vida a lobos rivales derrotados, un comportamiento sin precedente documentado en su especie. El escritor Rick McIntyre lleva más de 25 años en el Lamar Valley observando lobos cada amanecer y ha publicado tres libros sobre las manadas.",
-        [["Wikipedia — Druid Peak Pack","https://en.wikipedia.org/wiki/Druid_Peak_pack"]]],
-      ["Mammoth Hot Springs — travertino vivo","Las terrazas de travertino se forman a una velocidad extraordinaria: hasta 2 toneladas de carbonato cálcico al día, lo que hace que las formaciones cambien de forma visible mes a mes. A diferencia de los géiseres (agua volcánica), Mammoth usa agua que atraviesa roca caliza disolviendo carbonato. Cuando el agua caliente emerge y se enfría, el carbonato precipita formando las terrazas. El sistema es tan dinámico que algunas terrazas activas hace 5 años hoy están muertas y viceversa.",
+      ["Mammoth Hot Springs — travertino vivo","Las terrazas de travertino se forman a hasta 2 toneladas de carbonato cálcico al día — cambian de forma visible mes a mes. A diferencia de los géiseres (agua volcánica), Mammoth usa agua que atraviesa roca caliza. El sistema es tan dinámico que algunas terrazas activas hace 5 años hoy están muertas y viceversa.",
         [["Wikipedia","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]],
-      ["Lamar Valley — por qué se llama el Serengeti americano","El apodo lo popularizó el naturalista George Schaller en los años 90 al comparar la densidad de megafauna de Lamar con la del Serengeti tanzano. La comparación es rigurosa: ambos valles tienen praderas abiertas con ríos sinuosos, grandes manadas de herbívoros migratorios, y depredadores activos y visibles. La diferencia es que el Serengeti tiene 1,5 millones de ñus; Lamar tiene bisontes, alces y pronghorns. Y donde el Serengeti tiene leones, leopardos y guepardos, Lamar tiene lobos, osos grizzly y coyotes — todos activos al mismo tiempo, en el mismo valle, visible desde la carretera. Lo que hace único a Lamar frente al Serengeti es que la cadena depredador-presa completa es observable desde un coche sin guía, sin pagar safari, a 30 metros.",
-        [["Wikipedia — Lamar Valley","https://en.wikipedia.org/wiki/Lamar_Valley"]]],
-      ["Lamar Valley y la reintroducción del lobo","En enero de 1995 llegaron en cajones de madera 8 lobos grises capturados en Alberta, Canadá. Fue la mayor decisión de conservación de fauna de la historia de EEUU — y también la más polémica: los ganaderos de Wyoming protestaron durante años. El resultado científico es uno de los estudios más citados en ecología: los lobos cambiaron el comportamiento de los alces (que dejaron de pastar en los ríos), lo que permitió recuperar la vegetación de ribera, lo que creó nuevos hábitats para castores, aves y peces. El río Yellowstone literalmente cambió de curso en algunos puntos. A esto se le llama 'cascada trófica'.",
-        [["Wikipedia","https://en.wikipedia.org/wiki/Wolf_reintroduction_to_Yellowstone"]]],
-      ["Lobo gris de Yellowstone (Canis lupus irremotus)","Actualmente hay unas 10 manadas con ~100 individuos en el parque. Las manadas tienen territorios de hasta 1.000 km² y sus movimientos se siguen con collares GPS. El lobo más famoso de Yellowstone fue la loba 832F del pack Lamar Canyon, conocida como 'La Reina del Lamar Valley' — fue objeto de estudios durante 6 años hasta que fue cazada legalmente fuera del parque en 2012, generando indignación mundial. Los Rangers con telescopios en el Lamar al amanecer son la señal más fiable de avistamiento.",
-        [["Wikipedia","https://en.wikipedia.org/wiki/Wolves_in_Yellowstone_National_Park"]]],
-      ["Oso negro americano (Ursus americanus)","A diferencia del grizzly, el oso negro puede ser negro, marrón, canela o incluso gris. Yellowstone tiene entre 500 y 600 osos negros. Son excelentes trepadores (los grizzly adultos no trepan) y más tímidos que el grizzly. En agosto los osos negros frecuentan los bordes del bosque en las cercanías de Mammoth buscando bayas y carroña. Pesan entre 60 y 150kg — considerablemente menos que el grizzly — pero siguen siendo peligrosos y requieren la misma distancia de 100 metros.",
-        [["Wikipedia","https://en.wikipedia.org/wiki/American_black_bear"]]],
-      ["Trout Lake Trail","Un lago glacial de montaña a 3km al este del Lamar Valley, accesible desde un trailhead junto a la carretera. Son 1,2 millas en total — subida empinada de 0,3 millas por bosque de Douglas-fir hasta el lago, luego loop llano alrededor del agua. El lago queda en la base del Druid Peak con los Absaroka Mountains de fondo. Conocido por las truchas cutthroat de gran tamaño (algunas superan los 45cm) que se ven perfectamente desde la orilla, y por las águilas pescadoras que cazan aquí regularmente. La zona tiene actividad documentada de grizzly y oso negro — bear spray obligatorio.",
-        [["NPS — Trout Lake","https://www.nps.gov/thingstodo/yell-trail-trout-lake.htm"],["AllTrails","https://www.alltrails.com/trail/us/wyoming/trout-lake-trail--2"]]],
-      ["Águila pescadora / Osprey (Pandion haliaetus)","El osprey es el único rapaz del mundo especializado exclusivamente en peces — tiene almohadillas con espinas en las garras para no soltar las presas resbaladizas. Puede ver bajo el agua por tener una película nictitante translúcida y se zambulle de pies desde hasta 40 metros de altura. A diferencia del águila calva, siempre captura su propio pescado en lugar de robarlo.",
-        [["Wikipedia","https://en.wikipedia.org/wiki/Osprey"]]]
+      ["Lamar Valley — el Serengeti americano","El apodo lo popularizó el naturalista George Schaller en los años 90. Bisontes, alces y pronghorns como herbívoros. Lobos, osos grizzly y coyotes como depredadores. La cadena depredador-presa completa observable desde el coche, sin guía, a 30 metros. En agosto el rut del bisonte llena el valle de actividad.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Lamar_Valley"]]],
+      ["Trout Lake Trail","Lago glacial a 3km al este del corazón del Lamar. 1,2 millas: subida empinada 0,3mi por bosque de Douglas-fir, luego loop llano. Truchas cutthroat visibles desde la orilla, águilas pescadoras frecuentes. Bear spray obligatorio. Solo si hay energía después de Mammoth.",
+        [["NPS","https://www.nps.gov/thingstodo/yell-trail-trout-lake.htm"]]]
     ],
-    links:[["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
+    links:[["Flying Pig Rafting","https://www.flyingpigrafting.com/"],["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
   },
 
   { n:10, date:"Mar 18 Ago", zone:"lamar", tag:"Lamar", title:"Gardiner → Lamar amanecer → Beartooth Hwy → Cody ⭐",
@@ -1072,6 +1069,7 @@ const PEND = [
   ["yel","Cody Nite Rodeo — entradas","codyniterodeo.com · ~$25/persona · 18 Ago 20:00h. Comprar con antelación."],
   ["yel","Beartooth Highway","Revisar wyoroad.info y mdt.mt.gov 24-48h antes del 18-Ago (puede cerrar por nieve/viento incluso en agosto)."],
   ["yel","Bear spray","Alquilar en Jackson Día 5 (~$10/día). Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
+  ["grn","Rafting Flying Pig (Día 9)","✅ CONFIRMADO. Flying Pig Adventure, Gardiner MT. 17 Ago, 09:15h. Tramo Black Canyon, clase II-III. Incluye neopreno, casco y guía."],
   ["grn","Cenas Yellowstone (Días 6-7)","✅ CONFIRMADO. Lake Yellowstone Hotel Dining Room · 20:30h ambas noches (14 y 15 Ago) · Xanterra. Avisar alergia al trigo al llegar ambas noches."],
   ["grn","Coche de alquiler","✅ CONFIRMADO. Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00, devolución 19 Ago 14:00."],
   ["grn","Alojamientos","✅ CONFIRMADOS. SLC, Lake Yellowstone Hotel (14-15 Ago), Gardiner y Cody confirmados. Flying Saddle: reservado sin pagar ⚠️."],
