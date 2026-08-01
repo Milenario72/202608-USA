@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.13</title>
+<title>USA Road Trip · Agosto 2026 · v2.14</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -445,7 +445,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.13</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.14</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -458,7 +458,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.13</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.14</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -481,7 +481,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.13</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.14</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -709,7 +709,7 @@ const DAYS = [
   { n:5, date:"Jue 13 Ago", zone:"cache", tag:"Cache", title:"Salt Lake City → Logan Canyon → Bear Lake → Star Valley → Alpine (WY)",
     quote:"Día de ruta escénica puro. Cañón, lago turquesa, queso artesanal y 'Little Switzerland of Wyoming'.",
     drive:[{t:"~5h30m conducción"},{t:"Salida 08:30"},{t:"Llegada ~16:30 Alpine"}],
-    hotel:"Flying Saddle Resort, Alpine", hotelStatus:["pend","Reservado, sin pagar"],
+    hotel:"Flying Saddle Resort, Alpine", hotelStatus:["ok","Reservado ✓"],
     tl:[["Mañana","08:30 check-out SLC. Cargar nevera GF. I-15 Norte → US-89 Norte hacia Brigham City. ~09:45 Brigham City: parada opcional café/baño si apetece. ~10:30 Logan, UT: parada gasolina obligatoria (última grande antes de 70km de cañón y montaña) + café en Main Street 10min. Campus de Utah State University sobre la colina visible desde la carretera. ~11:00 inicio Logan Canyon Scenic Byway (US-89): paredes de caliza de 600m con estratos de fósiles del Jurásico, río Logan turquesa abajo, bosques de álamos y abetos. Conducir a 60km/h y disfrutar. ~15km: Ricks Spring — manantial que brota directamente de la roca caliza al borde de la carretera, parking pequeño, 5min, curioso. Varios arcenes habilitados para parar y hacer fotos."],
         ["Mediodía","~12:20 Bear Lake Overlook (cima del cañón): al coronar aparece de repente el lago entero — turquesa intenso por carbonato cálcico en suspensión, vista aérea perfecta para foto. Parada 20min. ~12:40 bajada 5km a Garden City, UT, a orillas del lago. Picnic GF del coche en una mesa con vistas al lago — la opción más segura y más bonita (opciones GF en diners locales muy limitadas). Si hay ganas: playa pública pequeña en el lado sur de Garden City — 15-20min con los pies en el agua turquesa antes de seguir. ~13:30 salida Garden City hacia el norte por US-89."],
         ["Tarde","~14:30 Montpelier, ID: parada 15min si necesario — última parada cómoda antes de Wyoming, gasolina si baja de mitad. ~15:00 entrada en Star Valley, WY (US-89): valle agrícola amplio rodeado de montañas de hasta 3.000m — el apodo 'Little Switzerland of Wyoming' es bastante acertado. ~15:15 Afton, WY: parada 10-15min — arco de cuernos de alce más grande del mundo en la calle principal (foto obligatoria) + Star Valley Cheese (quesería artesanal local desde 1940, queso 100% GF, merece una cata rápida). ~15:40 Freedom, WY: pueblo minúsculo en la frontera Idaho-Wyoming — el saloon tiene la línea estatal pintada en el suelo (anecdótico pero divertido). ~16:15 arcén panorámico Snake River Canyon: embalse de Palisades y confluencia de ríos — agua turquesa encajonada entre paredes rocosas, última foto del día. ~16:30 llegada Flying Saddle Resort, Alpine."]],
@@ -1061,7 +1061,7 @@ const CAR = {
 const HOTELS = [
   ["MGM Grand Las Vegas","Días 1-3 · 3 noches","ok","Reservado ✓","3799 Las Vegas Blvd S, Las Vegas, NV","❌ Sin desayuno incluido. Numerosas opciones en el hotel y alrededores. Piscina incluida. Coche se recoge en Alamo (aeropuerto Harry Reid) el día 3 a las 15:00h."],
   ["Holiday Inn Express SLC Downtown","Día 4 · 1 noche","ok","Reservado ✓ (IHG)","Salt Lake City, UT","✅ Desayuno incluido (buffet continental con opciones GF — confirmar al check-in qué opciones son seguras para alergia al trigo). Céntrico para cenar en SLC. A 5min a pie del Trader Joe's."],
-  ["Flying Saddle Resort","Día 5 · 1 noche","pend","Reservado, sin pagar","Alpine, WY","❌ Sin desayuno incluido. Restaurante propio en el resort (confirmar opciones GF al check-in). Broulim's cercano para provisiones. Pendiente de pagar ⚠️."],
+  ["Flying Saddle Resort","Día 5 · 1 noche","ok","Reservado ✓","Alpine, WY","❌ Sin desayuno incluido. Restaurante propio en el resort (confirmar opciones GF al check-in). Broulim's cercano para provisiones. Pago en el hotel al check-in."],
   ["Lake Yellowstone Hotel and Cottages","Días 6-7 · 2 noches","ok","Reservado Xanterra ✓","Lake Village, Yellowstone NP","❌ Sin desayuno incluido. Desayuno disponible en el Dining Room (no incluido — reservar aparte). Llevar provisiones GF del coche para la mañana. Cenas reservadas 20:30h ambas noches ✓ Xanterra. Avisar alergia al trigo al llegar."],
   ["Yellowstone Village Inn & Suites","Días 8-9 · 2 noches","ok","Reservado ✓","Gardiner, MT","❌ Sin desayuno incluido. Opciones GF en Gardiner: Follow Yer' Nose BBQ, The Corral. Provisiones del coche para las salidas muy tempranas. Base estratégica para Mammoth (8km) y Lamar."],
   ["Holiday Inn Cody Convention Center","Día 10 · 1 noche","ok","Reservado ✓ (IHG)","Cody, WY","✅ Desayuno incluido (buffet — confirmar opciones GF al check-in para alergia al trigo). Cerca del Cody Nite Rodeo y de Walmart/Albertsons. Última noche antes de Bozeman."]
@@ -1069,7 +1069,6 @@ const HOTELS = [
 
 const PEND = [
   // ── PENDIENTES (orden cronológico del viaje) ──────────────────────
-  ["yel","Flying Saddle Resort — pagar (Día 5 · 13 Ago)","Reserva hecha pero sin pagar ⚠️. Confirmar y liquidar antes de salir de España."],
   ["yel","America the Beautiful Pass (Día 4 · 12 Ago)","Pase anual para 4 adultos + vehículo. Cubre Zion/Kolob + Grand Teton + Yellowstone. Comprar online en store.usgs.gov antes de salir o al entrar a Kolob."],
   ["yel","Bear spray — alquilar (Día 5 · 13 Ago)","Alquilar en Jackson. Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
   ["yel","Cody Nite Rodeo — entradas (Día 10 · 18 Ago)","codyniterodeo.com · 18 Ago 20:00h. Comprar con antelación."],
@@ -1079,7 +1078,7 @@ const PEND = [
   ["grn","Vuelos MAD↔BZN","BA1781 MAD→LAS (9 Ago) · AA947 BZN→MAD (19 Ago, 16:15h). Emitidos ✓."],
   ["grn","Coche de alquiler (Días 3-11)","Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00h, devolución 19 Ago 14:00h."],
   ["grn","MJ Live · Harrah's (Día 2 · 10 Ago)","Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom, lunes 10 Ago."],
-  ["grn","Alojamientos (Días 1-11)","MGM Grand LV · Holiday Inn Express SLC · Lake Yellowstone Hotel and Cottages · Yellowstone Village Inn Gardiner · Holiday Inn Cody Convention Center. Flying Saddle Alpine: reservado sin pagar ⚠️."],
+  ["grn","Alojamientos (Días 1-11)","MGM Grand LV · Holiday Inn Express SLC · Flying Saddle Resort Alpine · Lake Yellowstone Hotel and Cottages · Yellowstone Village Inn Gardiner · Holiday Inn Cody Convention Center. Todos confirmados ✓."],
   ["grn","Cenas Yellowstone (Días 6-7 · 14-15 Ago)","Lake Yellowstone Hotel Dining Room · 20:30h ambas noches · Xanterra. Avisar alergia al trigo al llegar."],
   ["grn","Rafting Flying Pig (Día 9 · 17 Ago)","Flying Pig Adventure, Gardiner MT. 8-Mile Raft Trip · 09:15h · 4 adultos. Booking #368122032 · Check-in 08:45h (30min antes). 511 Scott Street, Gardiner MT."]
 ];
