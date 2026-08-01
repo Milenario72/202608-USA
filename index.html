@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.7</title>
+<title>USA Road Trip · Agosto 2026 · v2.8</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -269,12 +269,17 @@ img{max-width:100%}
 .acc[open]>summary .acc-arr{transform:rotate(45deg)}
 .acc .inner{padding:0 16px 14px}
 
-.pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px;align-items:flex-start}
 .pend-item:first-child{border-top:none}
-.pend-item .dot{width:10px;height:10px;border-radius:50%;flex:none;margin-top:4px}
-.dot.red{background:var(--red)} .dot.yel{background:var(--pend)} .dot.grn{background:var(--ok)}
 .pend-item .pt b{display:block;font-size:15px;margin-bottom:2px}
 .pend-item .pt span{color:var(--ink-soft)}
+.pend-cb{width:18px;height:18px;border-radius:4px;border:2px solid;flex:none;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+.pend-cb.yel{border-color:var(--pend);background:var(--pend-bg);color:var(--pend)}
+.pend-cb.grn{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.pend-item.grn-row .pt b{color:var(--ok)}
+.pend-separator{font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--ink-soft);padding:10px 0 4px;border-top:1px solid var(--line);margin-top:4px}
 
 .ftrail{border-top:1px solid var(--line);padding:11px 0;font-size:13px}
 .ftrail:first-child{border-top:none}
@@ -438,7 +443,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.7</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.8</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -451,7 +456,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.7</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.8</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -474,7 +479,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.7</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.8</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1061,19 +1066,20 @@ const HOTELS = [
 ];
 
 const PEND = [
+  // ── PENDIENTES (orden cronológico del viaje) ──────────────────────
+  ["yel","Flying Saddle Resort — pagar (Día 5 · 13 Ago)","Reserva hecha pero sin pagar ⚠️. Confirmar y liquidar antes de salir de España."],
+  ["yel","America the Beautiful Pass (Día 4 · 12 Ago)","Pase anual para 4 adultos + vehículo (~$250). Cubre Zion/Kolob + Grand Teton + Yellowstone. Comprar online en store.usgs.gov antes de salir o al entrar a Kolob."],
+  ["yel","Bear spray — alquilar (Día 5 · 13 Ago)","Alquilar en Jackson (~$10/día). Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
+  ["yel","Cody Nite Rodeo — entradas (Día 10 · 18 Ago)","codyniterodeo.com · ~$25/persona · 18 Ago 20:00h. Comprar con antelación."],
+  ["yel","Beartooth Highway — revisar estado (Día 10 · 18 Ago)","Revisar wyoroad.info y mdt.mt.gov 24-48h antes del 18-Ago. Puede cerrar por nieve/viento incluso en agosto."],
+  // ── CONFIRMADOS (orden cronológico del viaje) ─────────────────────
   ["grn","ESTA / Permisos EEUU","✅ COMPLETADO. ESTA aprobada para los 4 viajeros. Pasaportes con validez suficiente."],
-  ["grn","MJ Live · Harrah's (Día 2)","✅ CONFIRMADO. Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom, lunes 10 Ago."],
-  ["yel","Flying Saddle Resort (Alpine)","Reserva hecha pero sin pagar ⚠️. Confirmar y liquidar antes de salir de España."],
-  ["yel","Cena SLC (Día 4 noche)","Elegir y reservar en OpenTable: Zest Kitchen (100% GF ⭐), Copper Onion o Current Fish & Oyster. Agosto: se agotan."],
-  ["yel","America the Beautiful Pass","Pase anual no-residente (~$80). Cubre Zion/Kolob + Grand Teton + Yellowstone. Se amortiza en el primer parque. Comprar online antes."],
-  ["yel","Cody Nite Rodeo — entradas","codyniterodeo.com · ~$25/persona · 18 Ago 20:00h. Comprar con antelación."],
-  ["yel","Beartooth Highway","Revisar wyoroad.info y mdt.mt.gov 24-48h antes del 18-Ago (puede cerrar por nieve/viento incluso en agosto)."],
-  ["yel","Bear spray","Alquilar en Jackson Día 5 (~$10/día). Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
-  ["grn","Rafting Flying Pig (Día 9)","✅ CONFIRMADO. Flying Pig Adventure, Gardiner MT. 17 Ago, 09:15h. Tramo Black Canyon, clase II-III. Incluye neopreno, casco y guía."],
-  ["grn","Cenas Yellowstone (Días 6-7)","✅ CONFIRMADO. Lake Yellowstone Hotel Dining Room · 20:30h ambas noches (14 y 15 Ago) · Xanterra. Avisar alergia al trigo al llegar ambas noches."],
-  ["grn","Coche de alquiler","✅ CONFIRMADO. Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00, devolución 19 Ago 14:00."],
-  ["grn","Alojamientos","✅ CONFIRMADOS. MGM Grand Las Vegas (sin desayuno) · Holiday Inn Express SLC (desayuno incluido) · Lake Yellowstone Hotel and Cottages (sin desayuno) · Yellowstone Village Inn Gardiner (sin desayuno) · Holiday Inn Cody Convention Center (desayuno incluido). Flying Saddle Alpine: reservado sin pagar ⚠️."],
-  ["grn","Vuelo BZN 16:15","✅ AA947 · 16:15 BZN. Salida Cody MAX 09:15h. ⚠️ Escala corta en Dallas (~1h20) — punto más vulnerable del viaje."]
+  ["grn","Vuelos MAD↔BZN","✅ CONFIRMADOS. BA1781 MAD→LAS (9 Ago) · AA947 BZN→MAD (19 Ago, 16:15h). Emitidos ✓."],
+  ["grn","Coche de alquiler (Días 3-11)","✅ CONFIRMADO. Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00h, devolución 19 Ago 14:00h."],
+  ["grn","MJ Live · Harrah's (Día 2 · 10 Ago)","✅ CONFIRMADO. Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom, lunes 10 Ago."],
+  ["grn","Alojamientos (Días 1-11)","✅ CONFIRMADOS. MGM Grand LV · Holiday Inn Express SLC · Lake Yellowstone Hotel and Cottages · Yellowstone Village Inn Gardiner · Holiday Inn Cody Convention Center. Flying Saddle Alpine: reservado sin pagar ⚠️."],
+  ["grn","Cenas Yellowstone (Días 6-7 · 14-15 Ago)","✅ CONFIRMADO. Lake Yellowstone Hotel Dining Room · 20:30h ambas noches · Xanterra. Avisar alergia al trigo al llegar."],
+  ["grn","Rafting Flying Pig (Día 9 · 17 Ago)","✅ CONFIRMADO. Flying Pig Adventure, Gardiner MT. 09:15h. Black Canyon, clase II-III. Incluye neopreno, casco y guía."]
 ];
 
 const TRAILS = [
@@ -1384,10 +1390,20 @@ function renderCar(){
 }
 
 function renderPend(){
+  const pending  = PEND.filter(p=>p[0]==="yel");
+  const done     = PEND.filter(p=>p[0]==="grn");
+  const mkItem   = p=>{
+    const isDone = p[0]==="grn";
+    const cb = '<span class="pend-cb '+p[0]+'">'+(isDone?"✓":"")+'</span>';
+    return '<div class="pend-item'+(isDone?" grn-row":"")+'">'+cb+
+      '<div class="pt"><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>';
+  };
   document.getElementById("pendBlock").innerHTML=
-    '<details class="acc"><summary><span>Estado de pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
-    PEND.map(p=>'<div class="pend-item"><span class="dot '+p[0]+'"></span>'+
-      '<div class="pt"><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>').join("")+
+    '<details class="acc"><summary><span>Estado de reservas y pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
+    '<div class="pend-separator">⏳ Pendientes</div>'+
+    pending.map(mkItem).join("")+
+    '<div class="pend-separator" style="margin-top:10px">✅ Confirmados</div>'+
+    done.map(mkItem).join("")+
     '</div></details>';
 }
 
