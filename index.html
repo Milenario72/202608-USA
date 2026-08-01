@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Road Trip · Agosto 2026 · v2.9</title>
+<title>USA Road Trip · Agosto 2026 · v2.10</title>
 <style>
 :root{
   --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
@@ -269,15 +269,17 @@ img{max-width:100%}
 .acc[open]>summary .acc-arr{transform:rotate(45deg)}
 .acc .inner{padding:0 16px 14px}
 
-.pend-item{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px;align-items:flex-start}
+.pend-item{padding:11px 0;border-top:1px solid var(--line);font-size:14px}
 .pend-item:first-child{border-top:none}
-.pend-item .pt b{display:block;font-size:15px;margin-bottom:2px}
-.pend-item .pt span{color:var(--ink-soft)}
-.pend-cb{width:18px;height:18px;border-radius:4px;border:2px solid;flex:none;margin-top:3px;
+.pend-item .pt{flex:1;min-width:0}
+.pt-title{display:flex;align-items:center;gap:9px;margin-bottom:3px}
+.pt-title b{font-size:15px;flex:1;min-width:0}
+.pt-desc{display:block;font-size:13px;color:var(--ink-soft);padding-left:27px;line-height:1.5}
+.pend-cb{width:18px;height:18px;border-radius:4px;border:2px solid;flex:none;
   display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
 .pend-cb.yel{border-color:var(--pend);background:var(--pend-bg);color:var(--pend)}
 .pend-cb.grn{border-color:var(--ok);background:var(--ok);color:#fff}
-.pend-item.grn-row .pt b{color:var(--ok)}
+.pend-item.grn-row .pt-title b{color:var(--ok)}
 .pend-separator{font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
   color:var(--ink-soft);padding:10px 0 4px;border-top:1px solid var(--line);margin-top:4px}
 
@@ -443,7 +445,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.9</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.10</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -456,7 +458,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.9</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.10</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -479,7 +481,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.9</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.10</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1395,8 +1397,11 @@ function renderPend(){
   const mkItem   = p=>{
     const isDone = p[0]==="grn";
     const cb = '<span class="pend-cb '+p[0]+'">'+(isDone?"✓":"")+'</span>';
-    return '<div class="pend-item'+(isDone?" grn-row":"")+'">'+cb+
-      '<div class="pt"><b>'+p[1]+'</b><span>'+p[2]+'</span></div></div>';
+    return '<div class="pend-item'+(isDone?" grn-row":"")+'">'+
+      '<div class="pt">'+
+        '<div class="pt-title">'+cb+'<b>'+p[1]+'</b></div>'+
+        '<span class="pt-desc">'+p[2]+'</span>'+
+      '</div></div>';
   };
   document.getElementById("pendBlock").innerHTML=
     '<details class="acc"><summary><span>Estado de reservas y pendientes</span><span class="acc-arr">+</span></summary><div class="inner">'+
