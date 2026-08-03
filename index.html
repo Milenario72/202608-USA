@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.17</title>
+<title>2026 USA · v2.18</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -438,6 +439,17 @@ img{max-width:100%}
 .lnk-badge.off{background:#eef3f8;color:var(--brand2)}
 
 /* ---------- SABER MÁS — acordeón de lugares ---------- */
+/* ---------- DAY MAP ---------- */
+.map-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.map-block .bh{padding:10px 13px 8px;font-weight:700;font-size:13px;color:var(--ink);
+  background:var(--card);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.map-block .bh a{font-size:11px;font-weight:700;color:var(--brand);background:var(--ok-bg);
+  padding:3px 10px;border-radius:20px;border:1px solid var(--ok);text-decoration:none;white-space:nowrap}
+.day-map{height:260px;width:100%}
+.lf-num{background:var(--brand);color:#fff;border-radius:50%;width:22px;height:22px;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;
+  border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+/* ---------- PLACES ---------- */
 .block.places{background:#f0f5f0;border-color:#c4d8c4}
 .block.places .bh{color:#2a5a2a}
 .pl-acc{border:1px solid #c4d8c4;border-radius:10px;overflow:hidden;margin-top:8px}
@@ -461,7 +473,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.17</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.18</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -475,7 +487,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.17</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.18</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -498,7 +510,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.17</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.18</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -780,6 +792,19 @@ const DAYS = [
       ["Willow Flats — alce norteamericano (Cervus canadensis)","El alce (wapiti) es el segundo cérvido más grande del mundo después del alce europeo/siberiano. Los machos adultos pesan entre 300 y 500kg y sus cuernas pueden alcanzar 1,8 metros de envergadura — las mudan y regeneran completas cada año. En agosto el terciopelo (velvet) que recubre las cuernas en crecimiento está en su punto máximo: las cuernas tienen vasos sanguíneos activos, están calientes al tacto y crecen hasta 2,5cm al día. Es el tejido de mayor crecimiento del reino animal.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Elk"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Mormon Row", lat:43.6607, lng:-110.6650, note:"07:15h · Luz rasante · graneros Moulton"},
+        {n:2, label:"Schwabacher Landing", lat:43.7116, lng:-110.6704, note:"08:05h · Reflejos Snake River · posible niebla"},
+        {n:3, label:"Jenny Lake", lat:43.7515, lng:-110.7255, note:"08:45h · Sendero orilla sur · reflejos Teton"},
+        {n:4, label:"Signal Mountain (opc.)", lat:43.8489, lng:-110.5672, note:"09:50h · Panorámica 360° · opcional"},
+        {n:5, label:"Oxbow Bend", lat:43.8627, lng:-110.5488, note:"10:30h · Pelícanos · Monte Moran"},
+        {n:6, label:"Colter Bay · picnic", lat:43.9047, lng:-110.6408, note:"11:00h · Picnic junto al lago Jackson"},
+        {n:7, label:"Willow Flats / J.L. Lodge", lat:43.8773, lng:-110.5775, note:"15:00h · Alces · salida 17:45h"},
+        {n:8, label:"Lake Yellowstone Hotel", lat:44.5498, lng:-110.4003, note:"~19:45h · Check-in · cena 20:30h"}
+      ],
+      mapsUrl:"https://maps.apple.com/?saddr=43.6607,-110.6650&daddr=43.7116,-110.6704+to:43.7515,-110.7255+to:43.8489,-110.5672+to:43.8627,-110.5488+to:43.9047,-110.6408+to:43.8773,-110.5775+to:44.5498,-110.4003&dirflg=d"
+    },
     links:[["Tiempo Grand Teton","https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218"],["Grand Teton NP · estado","https://www.nps.gov/grte/planyourvisit/conditions.htm"],["NPS Grand Teton Weather","https://www.nps.gov/grte/planyourvisit/weather.htm"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"]]
   },
 
@@ -1267,6 +1292,17 @@ function renderDays(){
     if(d.dinner) blocks+='<div class="block dinner"><div class="bh">🍽️ Cena reservada</div>'+d.dinner+'</div>';
     if(d.photo) blocks+='<div class="block photo"><div class="bh">📸 Fotografía</div>'+d.photo+'</div>';
     if(d.warn) blocks+='<div class="block warnb"><div class="bh">⚠️ Aviso</div>'+d.warn+'</div>';
+    if(d.map){
+      const mapId='map-day'+d.n;
+      blocks='<div class="map-block">'+
+        '<div class="bh">🗺️ Ruta del día · '+d.map.stops.length+' paradas'+
+        '<a href="'+d.map.mapsUrl+'" target="_blank" rel="noopener">📍 Abrir en Maps</a></div>'+
+        '<div class="day-map" id="'+mapId+'"></div>'+
+        '</div>'+blocks;
+      // defer map init until Leaflet ready
+      window._pendingMaps = window._pendingMaps||[];
+      window._pendingMaps.push({id:mapId, stops:d.map.stops});
+    }
     if(d.places && d.places.length){
       const plItems=d.places.map(p=>{
         const pid='pl-'+d.n+'-'+p[0].replace(/\s+/g,'');
@@ -1906,6 +1942,41 @@ function updateThemeIcons(dark){
     document.documentElement.setAttribute("data-dark","1");
     updateThemeIcons(true);
   }
+})();
+
+function initMaps(){
+  if(!window._pendingMaps || !window._pendingMaps.length) return;
+  window._pendingMaps.forEach(function(cfg){
+    const el=document.getElementById(cfg.id);
+    if(!el||el._lfInit) return;
+    el._lfInit=true;
+    const stops=cfg.stops;
+    const lats=stops.map(s=>s.lat), lngs=stops.map(s=>s.lng);
+    const bounds=L.latLngBounds(stops.map(s=>[s.lat,s.lng]));
+    const map=L.map(el,{zoomControl:true,attributionControl:false}).fitBounds(bounds,{padding:[22,22]});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:15}).addTo(map);
+    // draw route line
+    L.polyline(stops.map(s=>[s.lat,s.lng]),{color:'#3d5a73',weight:2.5,opacity:.7,dashArray:'6,4'}).addTo(map);
+    // numbered markers
+    stops.forEach(function(s){
+      const icon=L.divIcon({
+        className:'',
+        html:'<div class="lf-num">'+s.n+'</div>',
+        iconSize:[22,22], iconAnchor:[11,11]
+      });
+      L.marker([s.lat,s.lng],{icon:icon})
+        .addTo(map)
+        .bindPopup('<b>'+s.label+'</b><br><span style="font-size:12px;color:#666">'+s.note+'</span>',{maxWidth:200});
+    });
+  });
+}
+// Load Leaflet JS once, then init maps
+(function(){
+  if(window.L){initMaps();return;}
+  const s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+  s.onload=function(){initMaps();};
+  document.head.appendChild(s);
 })();
 </script>
 </body>
