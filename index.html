@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.20</title>
+<title>2026 USA · v2.21</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -474,7 +474,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.20</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.21</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -488,7 +488,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.20</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.21</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -511,7 +511,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.20</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.21</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -734,6 +734,19 @@ const DAYS = [
       ["Granary District","El barrio industrial más antiguo de SLC reconvertido en estudios, cervecerías artesanales y restaurantes. El más parecido a un barrio europeo de toda la ciudad — murales de gran formato, vida en la calle y bares que funcionan con normalidad completa (las leyes de alcohol de Utah son peculiares pero aquí no se nota).",
         [["Wikipedia","https://en.wikipedia.org/wiki/Granary_District,_Salt_Lake_City"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Whole Foods Town Square LV", lat:36.0516, lng:-115.1739, note:"07:30h · Provisiones GF + agua 6L"},
+        {n:2, label:"Virgin River Gorge", lat:36.9167, lng:-113.8333, note:"~08:45h · Paredes 300m · parada 10min"},
+        {n:3, label:"Kolob Canyons Exit 40", lat:37.4350, lng:-113.2016, note:"~09:40h · Entrada con America Pass · 8km scenic road"},
+        {n:4, label:"Timber Creek Overlook ⭐", lat:37.4583, lng:-113.1917, note:"~11:00h · Finger Canyons · picnic GF"},
+        {n:5, label:"Cove Fort (Exit 135)", lat:38.6233, lng:-112.5583, note:"~13:00h · Fuerte mormón 1867 · gratuito · 30min"},
+        {n:6, label:"Temple Square SLC", lat:40.7706, lng:-111.8910, note:"~16:30h · Tabernáculo · 45min"},
+        {n:7, label:"Utah State Capitol", lat:40.7775, lng:-111.8883, note:"~17:15h · Vistas panorámicas del valle"},
+        {n:8, label:"Holiday Inn Express SLC", lat:40.7608, lng:-111.8888, note:"~15:30h check-in · cena GF en el centro"}
+      ],
+      mapsUrl:"https://www.google.com/maps/dir/36.0516,-115.1739/36.9167,-113.8333/37.4350,-113.2016/37.4583,-113.1917/38.6233,-112.5583/40.7706,-111.8910/40.7608,-111.8888"
+    },
     links:[["Tiempo Kolob/Zion","https://forecast.weather.gov/MapClick.php?CityName=Kolob+Canyons&state=UT&site=SLC&textField1=37.4350&textField2=-113.2016"],["Kolob Canyons (NPS)","https://www.nps.gov/zion/planyourvisit/kolob-canyons.htm"],["Cove Fort (NPS)","https://www.nps.gov/covo/index.htm"],["Tiempo Salt Lake City","https://forecast.weather.gov/MapClick.php?CityName=Salt+Lake+City&state=UT&site=SLC&textField1=40.7608&textField2=-111.8910"],["Temple Square","https://www.churchofjesuschrist.org/feature/templesquare"],["Utah State Capitol","https://utahstatecapitol.utah.gov/"]]
   },
 
@@ -760,6 +773,19 @@ const DAYS = [
       ["Freedom, WY — el pueblo en dos estados","Un pueblo de 300 habitantes exactamente en la frontera Wyoming/Idaho. Fundado en 1879 por colonos mormones que escapaban de la persecución federal cruzando al estado vecino (de ahí el nombre). El saloon local tiene pintada la línea divisoria entre los dos estados en el suelo — puedes estar en Wyoming e Idaho al mismo tiempo.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Freedom,_Wyoming"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Salt Lake City · salida", lat:40.7608, lng:-111.8888, note:"08:30h · Check-out Holiday Inn"},
+        {n:2, label:"Logan UT · gasolina ⛽", lat:41.7355, lng:-111.8343, note:"~10:30h · Última gasolina grande antes del cañón"},
+        {n:3, label:"Logan Canyon Byway", lat:41.7650, lng:-111.7250, note:"~11:00h · 66km de desfiladero · 60km/h"},
+        {n:4, label:"Bear Lake Overlook ⭐", lat:41.9417, lng:-111.4667, note:"~12:20h · Vista aérea del lago turquesa · 20min"},
+        {n:5, label:"Garden City · picnic", lat:41.9333, lng:-111.4083, note:"~12:40h · Picnic GF junto al lago Bear Lake"},
+        {n:6, label:"Afton WY · Arco + Queso", lat:42.7272, lng:-110.9322, note:"~15:15h · Arco cuernos alce · Star Valley Cheese GF"},
+        {n:7, label:"Freedom WY · frontera", lat:42.9667, lng:-111.0500, note:"~15:40h · Frontera Wyoming/Idaho en el suelo · anecdótico"},
+        {n:8, label:"Flying Saddle Resort Alpine", lat:43.1667, lng:-111.0333, note:"~16:30h · Check-in · cena en el resort"}
+      ],
+      mapsUrl:"https://www.google.com/maps/dir/40.7608,-111.8888/41.7355,-111.8343/41.9417,-111.4667/41.9333,-111.4083/42.7272,-110.9322/43.1667,-111.0333"
+    },
     links:[["Tiempo Logan UT","https://forecast.weather.gov/MapClick.php?CityName=Logan&state=UT&site=SLC&textField1=41.7355&textField2=-111.8343"],["Logan Canyon Byway","https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/logan-canyon-national-scenic-byway"],["Bear Lake (NPS)","https://stateparks.utah.gov/parks/bear-lake/"],["Tiempo Alpine WY","https://forecast.weather.gov/MapClick.php?CityName=Jackson&state=WY&site=RIW&textField1=43.4799&textField2=-110.7624"],["Flying Saddle Resort","https://www.flyingsaddleresort.com/"]]
   },
 
