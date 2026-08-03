@@ -4,22 +4,35 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.16</title>
+<title>2026 USA · v2.17</title>
 <style>
 :root{
-  --bg:#f4efe6; --card:#ffffff; --ink:#241a10; --ink-soft:#5c4f40;
-  --line:#e4dccd; --brand:#1f4e78; --brand2:#2e6da4; --accent:#c8622b;
-  --ok:#2f7d3a; --ok-bg:#e2f0e2; --pend:#a7791b; --pend-bg:#fbf1d5;
+  --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
+  --line:#dddad3; --brand:#3d5a73; --brand2:#4e7a99; --accent:#b87333;
+  --ok:#2f7d3a; --ok-bg:#dde8d8; --pend:#8a6a1a; --pend-bg:#f5edce;
   --red:#a12b2b; --red-bg:#f6dede; --violet:#6b4f9e; --violet-bg:#ece5f6;
-  --shadow:0 2px 10px rgba(40,28,12,.08); --shadow2:0 6px 24px rgba(40,28,12,.12);
+  --shadow:0 2px 10px rgba(30,42,53,.07); --shadow2:0 6px 24px rgba(30,42,53,.11);
   --radius:16px; --nav-h:64px;
-  --d-lv:#e08a4a; --d-zi:#cf6a3e; --d-slc:#4a83b8; --d-cache:#6a9d54;
-  --d-tet:#3f8f5f; --d-yell:#c79a2e; --d-mam:#b06a3a; --d-lamar:#7a5a2a; --d-back:#7c5aa6;
+  --d-lv:#c87d3a; --d-zi:#b86040; --d-slc:#4a83b8; --d-cache:#5a8f4a;
+  --d-tet:#3a7f58; --d-yell:#b08a28; --d-mam:#9a5e32; --d-lamar:#6a4e22; --d-back:#6b4f9e;
+}
+[data-dark="1"]{
+  --bg:#141b22; --card:#1e2a35; --ink:#e8e4dc; --ink-soft:#8a9baa;
+  --line:#2a3a4a; --brand:#6a9dbf; --brand2:#82b3d4; --accent:#d4924a;
+  --ok:#4aab5a; --ok-bg:#1a3020; --pend:#c8a84a; --pend-bg:#2a2010;
+  --red:#d45050; --red-bg:#2a1010; --violet:#9a7fd4; --violet-bg:#1e1530;
+  --shadow:0 2px 10px rgba(0,0,0,.3); --shadow2:0 6px 24px rgba(0,0,0,.4);
+  --d-lv:#d4894a; --d-zi:#c4704e; --d-slc:#6a9dd4; --d-cache:#6aa05a;
+  --d-tet:#4a9068; --d-yell:#c09a38; --d-mam:#aa6e42; --d-lamar:#7a5e32; --d-back:#8a6fd4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;transition:background .25s,color .25s}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s}
+[data-dark="1"] .daynav a{background:#1e2a35}
+[data-dark="1"] .approach p{background:var(--card)}
+[data-dark="1"] .block{background:#1e2a35}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
@@ -32,8 +45,9 @@ img{max-width:100%}
 .wrapmax{max-width:900px;margin:0 auto}
 
 /* ---------- HERO ---------- */
-.hero{background:linear-gradient(150deg,#1f4e78,#2e6da4 60%,#c8622b);
+.hero{background:linear-gradient(150deg,#3d5a73,#4e7a99 60%,#b87333);
   color:#fff;border-radius:0 0 26px 26px;padding:34px 20px 26px;box-shadow:var(--shadow2)}
+[data-dark="1"] .hero{background:linear-gradient(150deg,#1e3348,#2a4d6a 60%,#8a5520)}
 .hero .kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.85;font-weight:700}
 .hero h1{font-size:27px;line-height:1.15;margin:8px 0 6px;font-weight:800}
 .hero .sub{font-size:15px;opacity:.94;max-width:560px}
@@ -317,6 +331,7 @@ img{max-width:100%}
 .bnav{position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);background:rgba(255,255,255,.97);
   backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;z-index:50;
   box-shadow:0 -2px 12px rgba(40,28,12,.06)}
+[data-dark="1"] .bnav{background:rgba(20,27,34,.97);box-shadow:0 -2px 12px rgba(0,0,0,.3)}
 .bnav button{flex:1;border:none;background:none;display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:3px;font-size:10px;font-weight:600;color:var(--ink-soft);cursor:pointer;padding:6px 2px;
   -webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -446,12 +461,13 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.16</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.17</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
     <button data-go="reservas"><span class="ico">🎫</span> Reservas</button>
     <button data-go="info"><span class="ico">ℹ️</span> Info & Pendientes</button>
+    <button onclick="toggleDark()" style="margin-top:auto"><span class="ico" id="themeIcoSide">🌙</span> Modo oscuro</button>
   </nav>
 
   <main class="main">
@@ -459,7 +475,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.16</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.17</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -482,7 +498,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.16</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.17</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -578,6 +594,7 @@ img{max-width:100%}
   <button data-go="comer"><span class="ico">🌾</span>Comer</button>
   <button data-go="reservas"><span class="ico">🎫</span>Reservas</button>
   <button data-go="info"><span class="ico">ℹ️</span>Info</button>
+  <button id="themeBtn" onclick="toggleDark()"><span class="ico" id="themeIco">🌙</span>Tema</button>
 </nav>
 
 <script>
@@ -1866,6 +1883,30 @@ renderConversores();
 renderLinks();
 markToday();
 initSubnavSpy();
+
+function toggleDark(){
+  const isDark=document.documentElement.getAttribute("data-dark")==="1";
+  const next=isDark?"0":"1";
+  document.documentElement.setAttribute("data-dark",next);
+  try{localStorage.setItem("dark",next);}catch(e){}
+  updateThemeIcons(next==="1");
+}
+function updateThemeIcons(dark){
+  const ico=dark?"☀️":"🌙";
+  const lbl=dark?"Modo claro":"Modo oscuro";
+  const a=document.getElementById("themeIco");
+  const b=document.getElementById("themeIcoSide");
+  if(a) a.textContent=ico;
+  if(b){b.textContent=ico;b.nextSibling&&(b.nextSibling.textContent=" "+lbl);}
+}
+(function(){
+  let saved="0";
+  try{saved=localStorage.getItem("dark")||"0";}catch(e){}
+  if(saved==="1"){
+    document.documentElement.setAttribute("data-dark","1");
+    updateThemeIcons(true);
+  }
+})();
 </script>
 </body>
 </html>
