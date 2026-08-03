@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.18</title>
+<title>2026 USA · v2.19</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -473,7 +473,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.18</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.19</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -487,7 +487,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.18</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.19</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -510,7 +510,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.18</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.19</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -803,7 +803,7 @@ const DAYS = [
         {n:7, label:"Willow Flats / J.L. Lodge", lat:43.8773, lng:-110.5775, note:"15:00h · Alces · salida 17:45h"},
         {n:8, label:"Lake Yellowstone Hotel", lat:44.5498, lng:-110.4003, note:"~19:45h · Check-in · cena 20:30h"}
       ],
-      mapsUrl:"https://maps.apple.com/?saddr=43.6607,-110.6650&daddr=43.7116,-110.6704+to:43.7515,-110.7255+to:43.8489,-110.5672+to:43.8627,-110.5488+to:43.9047,-110.6408+to:43.8773,-110.5775+to:44.5498,-110.4003&dirflg=d"
+      mapsUrl:"https://www.google.com/maps/dir/43.6607,-110.6650/43.7116,-110.6704/43.7515,-110.7255/43.8489,-110.5672/43.8627,-110.5488/43.9047,-110.6408/43.8773,-110.5775/44.5498,-110.4003"
     },
     links:[["Tiempo Grand Teton","https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218"],["Grand Teton NP · estado","https://www.nps.gov/grte/planyourvisit/conditions.htm"],["NPS Grand Teton Weather","https://www.nps.gov/grte/planyourvisit/weather.htm"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"]]
   },
@@ -840,6 +840,20 @@ const DAYS = [
       ["Cisne trompetero (Cygnus buccinator)","El cisne trompetero es el ave acuática más pesada de América del Norte — los machos adultos pesan hasta 12kg y tienen una envergadura de hasta 2,4 metros. Estuvo al borde de la extinción en los años 30 (quedaban menos de 70 individuos) y Yellowstone fue uno de los refugios que permitió su recuperación. Hayden Valley es uno de los mejores lugares de los EEUU para fotografiarlos. Su trompeteo grave es inconfundible.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Trumpeter_swan"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Brink of Lower Falls", lat:44.7196, lng:-110.4972, note:"07:15h · Caída 94m · mejor luz de mañana"},
+        {n:2, label:"Lookout + Red Rock Point", lat:44.7183, lng:-110.5011, note:"07:45h · Vistas al cañón dorado"},
+        {n:3, label:"Grand View / Inspiration Point", lat:44.7239, lng:-110.4944, note:"08:30h · Panorámica completa del cañón"},
+        {n:4, label:"Artist Point ⭐", lat:44.7167, lng:-110.4833, note:"09:45h EXACTO · La foto icónica del cañón"},
+        {n:5, label:"Uncle Tom's Trail", lat:44.7178, lng:-110.4972, note:"10:15h · 328 escalones · vista inferior"},
+        {n:6, label:"Brink of Upper Falls", lat:44.7228, lng:-110.5036, note:"11:00h · Caída 33m sobre el río"},
+        {n:7, label:"Hayden Valley", lat:44.6583, lng:-110.4783, note:"16:30h · Bisontes en rut · atardecer"},
+        {n:8, label:"Alum Creek", lat:44.6417, lng:-110.4650, note:"18:30h · Opcional · 500m llanos"},
+        {n:9, label:"Lake Yellowstone Hotel", lat:44.5498, lng:-110.4003, note:"~20:00h · Cena reservada 20:30h"}
+      ],
+      mapsUrl:"https://www.google.com/maps/dir/44.7196,-110.4972/44.7239,-110.4944/44.7167,-110.4833/44.6583,-110.4783/44.5498,-110.4003"
+    },
     links:[["Tiempo Lake Village","https://forecast.weather.gov/MapClick.php?lat=44.5636&lon=-110.4003"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Yellowstone Cañón (Wiki)","https://en.wikipedia.org/wiki/Grand_Canyon_of_the_Yellowstone"]]
   },
 
@@ -899,6 +913,16 @@ const DAYS = [
       ["Trout Lake Trail","Lago glacial a 3km al este del corazón del Lamar. 1,2 millas: subida empinada 0,3mi por bosque de Douglas-fir, luego loop llano. Truchas cutthroat visibles desde la orilla, águilas pescadoras frecuentes. Bear spray obligatorio. Solo si hay energía después de Mammoth.",
         [["NPS","https://www.nps.gov/thingstodo/yell-trail-trout-lake.htm"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Flying Pig · check-in", lat:45.0317, lng:-110.7064, note:"08:45h · 511 Scott St, Gardiner MT"},
+        {n:2, label:"Black Canyon rafting", lat:45.0583, lng:-110.6250, note:"09:15h · Clase II-III · ~2h en el agua"},
+        {n:3, label:"Mammoth Hot Springs", lat:44.9769, lng:-110.7014, note:"13:30h · Lower + Upper Terraces · Fort YS"},
+        {n:4, label:"Lamar Valley", lat:44.8983, lng:-110.2217, note:"16:30h · Bisontes · posibles lobos · MAX 20:15h"},
+        {n:5, label:"Yellowstone Village Inn", lat:45.0317, lng:-110.7036, note:"~21:00h · Vuelta a Gardiner"}
+      ],
+      mapsUrl:"https://www.google.com/maps/dir/45.0317,-110.7064/44.9769,-110.7014/44.8983,-110.2217/45.0317,-110.7036"
+    },
     links:[["Flying Pig Rafting","https://www.flyingpigrafting.com/"],["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
   },
 
@@ -929,6 +953,17 @@ const DAYS = [
       ["Cody Nite Rodeo — las pruebas originales","El rodeo moderno preserva exactamente las habilidades que los vaqueros del siglo XIX necesitaban para trabajar. El lazo de terneros (team roping) era la forma de atrapar ganado para curarlo. La doma de potros (saddle bronc) era el proceso de domar caballos salvajes. El bull riding no tenía uso práctico pero se convirtió en la prueba más peligrosa y popular — los toros de rodeo pesan entre 700 y 900kg y puntúan más alto cuanto más violentos son. El jinete necesita aguantar 8 segundos con una mano en el aire.",
         [["Wikipedia","https://es.wikipedia.org/wiki/Rodeo_(deporte)"],["Cody Nite Rodeo","https://codyniterodeo.com/"]]]
     ],
+    map:{
+      stops:[
+        {n:1, label:"Lamar Valley amanecer", lat:44.8983, lng:-110.2217, note:"06:30h · Lobos y bisontes · hasta 09:30h"},
+        {n:2, label:"Cooke City ⛽", lat:45.0194, lng:-109.9381, note:"Gasolina OBLIGATORIA antes de la Beartooth"},
+        {n:3, label:"Beartooth Pass Summit", lat:45.0028, lng:-109.4583, note:"3.333m · Tundra ártica · MAX 30min"},
+        {n:4, label:"Red Lodge MT", lat:45.1872, lng:-109.2450, note:"Comida GF · parada ~45min"},
+        {n:5, label:"Chief Joseph Hwy (WY-296)", lat:44.6917, lng:-109.7583, note:"Desvío escénico → Cody"},
+        {n:6, label:"Cody WY · Hotel", lat:44.5236, lng:-109.0565, note:"~16:30h · Holiday Inn · Rodeo 20:00h"}
+      ],
+      mapsUrl:"https://www.google.com/maps/dir/44.8983,-110.2217/45.0194,-109.9381/45.0028,-109.4583/45.1872,-109.2450/44.5236,-109.0565"
+    },
     links:[["Beartooth · Wyoming (WYDOT)","https://www.wyoroad.info/"],["Beartooth · Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Tiempo Cody","https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565"],["Cody Nite Rodeo","https://codyniterodeo.com/"],["Beartooth Hwy (Wiki)","https://en.wikipedia.org/wiki/Beartooth_Highway"]]
   },
 
@@ -1787,6 +1822,7 @@ function go(id){
   document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));
   document.querySelectorAll(".bnav button,.side button").forEach(b=>b.classList.toggle("on",b.dataset.go===id));
   try{ window.scrollTo(0,0); }catch(e){}
+  setTimeout(refreshMapsVisible,100);
 }
 // Delegación global: nav + acordeón de lugares
 document.addEventListener("click",function(e){
@@ -1944,30 +1980,43 @@ function updateThemeIcons(dark){
   }
 })();
 
+function initMapForEl(cfg){
+  const el=document.getElementById(cfg.id);
+  if(!el||el._lfInit) return;
+  el._lfInit=true;
+  const stops=cfg.stops;
+  const bounds=L.latLngBounds(stops.map(s=>[s.lat,s.lng]));
+  const lmap=L.map(el,{zoomControl:true,attributionControl:false,scrollWheelZoom:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:16}).addTo(lmap);
+  lmap.fitBounds(bounds,{padding:[28,28]});
+  // force redraw after paint
+  setTimeout(function(){lmap.invalidateSize();lmap.fitBounds(bounds,{padding:[28,28]});},300);
+  L.polyline(stops.map(s=>[s.lat,s.lng]),{color:'#3d5a73',weight:2.5,opacity:.75,dashArray:'6,4'}).addTo(lmap);
+  stops.forEach(function(s){
+    const icon=L.divIcon({
+      className:'',
+      html:'<div class="lf-num">'+s.n+'</div>',
+      iconSize:[22,22],iconAnchor:[11,11]
+    });
+    L.marker([s.lat,s.lng],{icon:icon}).addTo(lmap)
+      .bindPopup('<b>'+s.label+'</b><br><span style="font-size:12px;color:#666">'+s.note+'</span>',{maxWidth:200});
+  });
+  el._lfMap=lmap;
+}
 function initMaps(){
-  if(!window._pendingMaps || !window._pendingMaps.length) return;
+  if(!window.L||!window._pendingMaps) return;
+  window._pendingMaps.forEach(function(cfg){ initMapForEl(cfg); });
+}
+// Re-init when a day section becomes visible (clicking nav or day card)
+function refreshMapsVisible(){
+  if(!window.L||!window._pendingMaps) return;
   window._pendingMaps.forEach(function(cfg){
     const el=document.getElementById(cfg.id);
-    if(!el||el._lfInit) return;
-    el._lfInit=true;
-    const stops=cfg.stops;
-    const lats=stops.map(s=>s.lat), lngs=stops.map(s=>s.lng);
-    const bounds=L.latLngBounds(stops.map(s=>[s.lat,s.lng]));
-    const map=L.map(el,{zoomControl:true,attributionControl:false}).fitBounds(bounds,{padding:[22,22]});
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:15}).addTo(map);
-    // draw route line
-    L.polyline(stops.map(s=>[s.lat,s.lng]),{color:'#3d5a73',weight:2.5,opacity:.7,dashArray:'6,4'}).addTo(map);
-    // numbered markers
-    stops.forEach(function(s){
-      const icon=L.divIcon({
-        className:'',
-        html:'<div class="lf-num">'+s.n+'</div>',
-        iconSize:[22,22], iconAnchor:[11,11]
-      });
-      L.marker([s.lat,s.lng],{icon:icon})
-        .addTo(map)
-        .bindPopup('<b>'+s.label+'</b><br><span style="font-size:12px;color:#666">'+s.note+'</span>',{maxWidth:200});
-    });
+    if(el&&el._lfMap&&el.offsetParent!==null){
+      setTimeout(function(){el._lfMap.invalidateSize();},50);
+    } else if(el&&!el._lfInit&&el.offsetParent!==null){
+      initMapForEl(cfg);
+    }
   });
 }
 // Load Leaflet JS once, then init maps
