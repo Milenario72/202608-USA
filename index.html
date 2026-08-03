@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.19</title>
+<title>2026 USA · v2.20</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -439,16 +438,18 @@ img{max-width:100%}
 .lnk-badge.off{background:#eef3f8;color:var(--brand2)}
 
 /* ---------- SABER MÁS — acordeón de lugares ---------- */
-/* ---------- DAY MAP ---------- */
-.map-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}
-.map-block .bh{padding:10px 13px 8px;font-weight:700;font-size:13px;color:var(--ink);
-  background:var(--card);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.map-block .bh a{font-size:11px;font-weight:700;color:var(--brand);background:var(--ok-bg);
-  padding:3px 10px;border-radius:20px;border:1px solid var(--ok);text-decoration:none;white-space:nowrap}
-.day-map{height:260px;width:100%}
-.lf-num{background:var(--brand);color:#fff;border-radius:50%;width:22px;height:22px;
-  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;
-  border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+/* ---------- MAP LINK BLOCK ---------- */
+.map-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px;background:var(--card)}
+.map-block .bh{padding:12px 14px;font-weight:700;font-size:14px;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.map-block .map-btn{font-size:12px;font-weight:700;color:var(--brand);background:var(--ok-bg);
+  padding:5px 12px;border-radius:20px;border:1px solid var(--ok);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.map-stops{padding:0 14px 12px;display:flex;flex-direction:column;gap:4px}
+.map-stop{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+.map-stop .sn{background:var(--brand);color:#fff;border-radius:50%;width:18px;height:18px;
+  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;
+  position:relative;top:1px}
+.map-stop b{color:var(--ink);font-weight:600}
 /* ---------- PLACES ---------- */
 .block.places{background:#f0f5f0;border-color:#c4d8c4}
 .block.places .bh{color:#2a5a2a}
@@ -473,7 +474,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.19</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.20</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -487,7 +488,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.19</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.20</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -510,7 +511,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.19</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.20</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1328,15 +1329,14 @@ function renderDays(){
     if(d.photo) blocks+='<div class="block photo"><div class="bh">📸 Fotografía</div>'+d.photo+'</div>';
     if(d.warn) blocks+='<div class="block warnb"><div class="bh">⚠️ Aviso</div>'+d.warn+'</div>';
     if(d.map){
-      const mapId='map-day'+d.n;
+      const stopItems=d.map.stops.map(s=>
+        '<div class="map-stop"><span class="sn">'+s.n+'</span><span><b>'+s.label+'</b> · '+s.note+'</span></div>'
+      ).join('');
       blocks='<div class="map-block">'+
         '<div class="bh">🗺️ Ruta del día · '+d.map.stops.length+' paradas'+
-        '<a href="'+d.map.mapsUrl+'" target="_blank" rel="noopener">📍 Abrir en Maps</a></div>'+
-        '<div class="day-map" id="'+mapId+'"></div>'+
+        '<a class="map-btn" href="'+d.map.mapsUrl+'" target="_blank" rel="noopener">📍 Abrir en Google Maps ↗</a></div>'+
+        '<div class="map-stops">'+stopItems+'</div>'+
         '</div>'+blocks;
-      // defer map init until Leaflet ready
-      window._pendingMaps = window._pendingMaps||[];
-      window._pendingMaps.push({id:mapId, stops:d.map.stops});
     }
     if(d.places && d.places.length){
       const plItems=d.places.map(p=>{
@@ -1822,7 +1822,6 @@ function go(id){
   document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));
   document.querySelectorAll(".bnav button,.side button").forEach(b=>b.classList.toggle("on",b.dataset.go===id));
   try{ window.scrollTo(0,0); }catch(e){}
-  setTimeout(refreshMapsVisible,100);
 }
 // Delegación global: nav + acordeón de lugares
 document.addEventListener("click",function(e){
@@ -1980,53 +1979,6 @@ function updateThemeIcons(dark){
   }
 })();
 
-function initMapForEl(cfg){
-  const el=document.getElementById(cfg.id);
-  if(!el||el._lfInit) return;
-  el._lfInit=true;
-  const stops=cfg.stops;
-  const bounds=L.latLngBounds(stops.map(s=>[s.lat,s.lng]));
-  const lmap=L.map(el,{zoomControl:true,attributionControl:false,scrollWheelZoom:false});
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:16}).addTo(lmap);
-  lmap.fitBounds(bounds,{padding:[28,28]});
-  // force redraw after paint
-  setTimeout(function(){lmap.invalidateSize();lmap.fitBounds(bounds,{padding:[28,28]});},300);
-  L.polyline(stops.map(s=>[s.lat,s.lng]),{color:'#3d5a73',weight:2.5,opacity:.75,dashArray:'6,4'}).addTo(lmap);
-  stops.forEach(function(s){
-    const icon=L.divIcon({
-      className:'',
-      html:'<div class="lf-num">'+s.n+'</div>',
-      iconSize:[22,22],iconAnchor:[11,11]
-    });
-    L.marker([s.lat,s.lng],{icon:icon}).addTo(lmap)
-      .bindPopup('<b>'+s.label+'</b><br><span style="font-size:12px;color:#666">'+s.note+'</span>',{maxWidth:200});
-  });
-  el._lfMap=lmap;
-}
-function initMaps(){
-  if(!window.L||!window._pendingMaps) return;
-  window._pendingMaps.forEach(function(cfg){ initMapForEl(cfg); });
-}
-// Re-init when a day section becomes visible (clicking nav or day card)
-function refreshMapsVisible(){
-  if(!window.L||!window._pendingMaps) return;
-  window._pendingMaps.forEach(function(cfg){
-    const el=document.getElementById(cfg.id);
-    if(el&&el._lfMap&&el.offsetParent!==null){
-      setTimeout(function(){el._lfMap.invalidateSize();},50);
-    } else if(el&&!el._lfInit&&el.offsetParent!==null){
-      initMapForEl(cfg);
-    }
-  });
-}
-// Load Leaflet JS once, then init maps
-(function(){
-  if(window.L){initMaps();return;}
-  const s=document.createElement('script');
-  s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
-  s.onload=function(){initMaps();};
-  document.head.appendChild(s);
-})();
 </script>
 </body>
 </html>
