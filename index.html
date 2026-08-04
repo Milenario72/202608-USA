@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.38</title>
+<title>2026 USA · v2.39</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -480,7 +480,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.38</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.39</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -494,7 +494,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.38</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.39</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -515,7 +515,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.38</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.39</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1195,19 +1195,25 @@ const HOTELS = [
 const PEND = [
   // ── PENDIENTES (orden cronológico del viaje) ──────────────────────
   ["yel","America the Beautiful Pass (Día 4 · 12 Ago)","Pase anual para 4 adultos + vehículo. Cubre Zion/Kolob + Grand Teton + Yellowstone. Comprar online en store.usgs.gov antes de salir o al entrar a Kolob."],
-  ["grn","Grizzly Steakhouse (Día 5 · 13 Ago)","The Grizzly Steakhouse · Flying Saddle Resort, Alpine WY · 20:00h · 4 personas · Confirmación #426 · OpenTable."],
   ["yel","Bear spray — alquilar (Día 5 · 13 Ago)","Alquilar en Jackson. Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
   ["yel","Cody Nite Rodeo — entradas (Día 10 · 18 Ago)","codyniterodeo.com · 18 Ago 20:00h. Comprar con antelación."],
   ["yel","Beartooth Highway — revisar estado (Día 10 · 18 Ago)","Revisar wyoroad.info y mdt.mt.gov 24-48h antes del 18-Ago. Puede cerrar por nieve/viento incluso en agosto."],
   // ── CONFIRMADOS (orden cronológico del viaje) ─────────────────────
-  ["grn","ESTA / Permisos EEUU","ESTA aprobada para los 4 viajeros. Pasaportes con validez suficiente."],
-  ["grn","Vuelos MAD↔BZN","BA1781 MAD→LAS (9 Ago) · AA947 BZN→MAD (19 Ago, 16:15h). Emitidos ✓."],
-  ["grn","Coche de alquiler (Días 3-11)","Alamo one-way LV→Bozeman (voucher 414483892). Recogida 11 Ago 15:00h, devolución 19 Ago 14:00h."],
-  ["grn","Zest Kitchen & Bar SLC (Día 4 · 12 Ago)","Zest Kitchen & Bar · 275 S 200 W, Salt Lake City · 19:45h · 4 personas · Confirmado ✓. Menú 100% GF y vegano."],
-  ["grn","MJ Live · Harrah's (Día 2 · 10 Ago)","Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom, lunes 10 Ago."],
-  ["grn","Alojamientos (Días 1-11)","MGM Grand LV · Holiday Inn Express SLC · Flying Saddle Resort Alpine · Lake Yellowstone Hotel and Cottages · Yellowstone Village Inn Gardiner · Holiday Inn Cody Convention Center. Todos confirmados ✓."],
-  ["grn","Cenas Yellowstone (Días 6-7 · 14-15 Ago)","Lake Yellowstone Hotel Dining Room · 20:15h ambas noches · Xanterra. Avisar alergia al trigo al llegar."],
-  ["grn","Rafting Flying Pig (Día 9 · 17 Ago)","Flying Pig Adventure, Gardiner MT. 8-Mile Raft Trip · 09:15h · 4 adultos. Booking #368122032 · Check-in 08:45h (30min antes). 511 Scott Street, Gardiner MT."]
+  ["grn","ESTA · Pasaportes (antes del viaje)","ESTA aprobada para los 4 viajeros. Pasaportes con validez suficiente."],
+  ["grn","Vuelos MAD→LAS · BA1781 (9 Ago)","Salida Madrid 13:00h → Las Vegas 19:56h. Emitido ✓."],
+  ["grn","MGM Grand Las Vegas (Días 1-3 · 9-11 Ago)","3 noches. Reservado ✓."],
+  ["grn","MJ Live · Harrah's (Día 2 · 10 Ago)","Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom."],
+  ["grn","Coche Alamo (Días 3-11 · 11-19 Ago)","Alamo one-way LV→Bozeman. Voucher 414483892. Recogida 11 Ago 15:00h, devolución 19 Ago 14:00h."],
+  ["grn","Zest Kitchen & Bar SLC (Día 4 · 12 Ago)","275 S 200 W, Salt Lake City · 19:45h · 4 personas · Confirmado ✓. Menú 100% GF y vegano."],
+  ["grn","Holiday Inn Express SLC (Día 4 · 12 Ago)","1 noche. Reservado ✓ (IHG). Desayuno incluido."],
+  ["grn","Grizzly Steakhouse · Alpine (Día 5 · 13 Ago)","Flying Saddle Resort, Alpine WY · 20:00h · 4 personas · Confirmación #426 · OpenTable."],
+  ["grn","Flying Saddle Resort · Alpine (Día 5 · 13 Ago)","1 noche. Reservado ✓. Desayuno incluido 07:00h. Pago en el hotel."],
+  ["grn","Lake Yellowstone Hotel (Días 6-7 · 14-15 Ago)","2 noches. Reservado Xanterra ✓."],
+  ["grn","Cenas Yellowstone (Días 6-7 · 14-15 Ago)","Lake Yellowstone Hotel Dining Room · 20:15h ambas noches · Xanterra ✓. Avisar alergia al trigo."],
+  ["grn","Yellowstone Village Inn · Gardiner (Días 8-9 · 16-17 Ago)","2 noches. Reservado ✓."],
+  ["grn","Rafting Flying Pig (Día 9 · 17 Ago)","Flying Pig Adventure, Gardiner MT · 09:15h · 4 adultos. Booking #368122032 · Check-in 08:45h · 511 Scott Street, Gardiner MT."],
+  ["grn","Holiday Inn Cody Convention Center (Día 10 · 18 Ago)","1 noche. Reservado ✓ (IHG). Desayuno incluido."],
+  ["grn","Vuelo BZN→MAD · AA947 (19 Ago)","Salida Bozeman 16:15h → Dallas → Madrid. Emitido ✓. Salida Cody MAX 09:15h."]
 ];
 
 const TRAILS = [
