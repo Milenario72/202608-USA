@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.35</title>
+<title>2026 USA · v2.36</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -310,7 +310,7 @@ img{max-width:100%}
 .chk-cat{margin-bottom:8px}
 .chk-cat>summary{padding:12px 14px;font-weight:700;cursor:pointer;list-style:none;
   display:flex;justify-content:space-between;align-items:center;
-  gap:10px;background:#faf6ee;border-radius:12px;
+  gap:10px;background:var(--card);border-radius:12px;
   -webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
 .chk-cat>summary::-webkit-details-marker{display:none}
 .chk-cat>summary .cat-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -318,11 +318,15 @@ img{max-width:100%}
 .chk-cat .prog{font-size:12px;color:var(--ink-soft);font-weight:700;
   background:#f0ece0;border-radius:20px;padding:2px 10px;white-space:nowrap;
   min-width:38px;text-align:center}
-.chk-item{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid var(--line);align-items:flex-start;cursor:pointer}
+.chk-item{display:flex;gap:10px;padding:10px 8px;border-bottom:1px solid var(--line);align-items:flex-start;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .chk-item:last-child{border-bottom:none}
-.chk-item input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--brand)}
+.chk-item input{display:none}
+.chk-box{width:18px;height:18px;border-radius:4px;border:2px solid var(--line);flex:none;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;
+  background:var(--card);color:var(--brand);flex-shrink:0;transition:background .15s,border-color .15s}
+.chk-item.done .chk-box{background:var(--ok);border-color:var(--ok);color:#fff}
 .chk-item .ci{flex:1;min-width:0}
-.chk-item .ci b{font-size:15px;display:block}
+.chk-item .ci b{font-size:15px;display:block;color:var(--ink)}
 .chk-item .ci span{font-size:13px;color:var(--ink-soft)}
 .chk-item.done .ci b{text-decoration:line-through;opacity:.5}
 .chk-item.done .ci span{opacity:.4}
@@ -474,7 +478,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.35</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.36</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -488,7 +492,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.35</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.36</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -509,7 +513,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.35</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.36</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1588,6 +1592,7 @@ function renderChecklist(){
       const key=cat+"|"+i; const on=!!saved[key];
       html+='<label class="chk-item'+(on?" done":"")+'" data-key="'+key+'" data-cat="'+cat+'">'+
         '<input type="checkbox" '+(on?"checked":"")+'>'+
+        '<span class="chk-box">'+(on?"✓":"")+'</span>'+
         '<span class="ci"><b>'+it[0]+'</b><span>'+it[1]+'</span></span></label>';
     });
     html+='</div></details>';
@@ -1597,9 +1602,10 @@ function renderChecklist(){
     inp.addEventListener("change",e=>{
       const label=e.target.closest(".chk-item");
       const key=label.dataset.key, cat=label.dataset.cat;
+      const box=label.querySelector(".chk-box");
       let s={}; try{ s=JSON.parse(localStorage.getItem("usa2026chk")||"{}"); }catch(x){ s={}; }
-      if(e.target.checked){ s[key]=1; label.classList.add("done"); }
-      else { delete s[key]; label.classList.remove("done"); }
+      if(e.target.checked){ s[key]=1; label.classList.add("done"); if(box) box.textContent="✓"; }
+      else { delete s[key]; label.classList.remove("done"); if(box) box.textContent=""; }
       localStorage.setItem("usa2026chk",JSON.stringify(s));
       const items=CHECKLIST[cat];
       const done=items.filter((it,i)=>s[cat+"|"+i]).length;
