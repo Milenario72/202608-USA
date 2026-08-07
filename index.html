@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.46</title>
+<title>2026 USA · v2.47</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -316,7 +316,7 @@ img{max-width:100%}
   font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-soft)}
 
 /* ---------- TEMP SLIDER ---------- */
-.temp-slider-wrap{padding:14px 16px}
+.temp-slider-wrap{padding:0}
 .temp-slider-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .temp-slider-row label{font-size:13px;font-weight:600;color:var(--ink-soft);white-space:nowrap;min-width:30px}
 .temp-slider-row input[type=range]{flex:1;accent-color:var(--brand)}
@@ -468,8 +468,7 @@ img{max-width:100%}
   padding:12px 14px;font-size:13px;color:var(--red);margin-bottom:14px;line-height:1.6}
 
 /* ---------- CONVERSORES ---------- */
-.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:520px){.conv-grid{grid-template-columns:1fr}}
+.conv-grid{display:grid;grid-template-columns:1fr;gap:12px}
 .cvcard{background:var(--card);border-radius:12px;border:1px solid var(--line);
   padding:14px;box-shadow:var(--shadow)}
 .cvt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
@@ -551,7 +550,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.46</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.47</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -565,7 +564,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.46</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.47</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -608,7 +607,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.46</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.47</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1820,7 +1819,7 @@ function renderConversores(){
   '<details class="acc"><summary><span>Conversores de unidades</span><span class="acc-arr">+</span></summary><div class="inner" style="padding:14px 16px">'+
   '<div class="conv-grid">'+
 
-    '<div class="cvcard" style="grid-column:span 2">'+
+    '<div class="cvcard">'+
       '<div class="cvt">🌡️ Temperatura — desliza para convertir</div>'+
       '<div class="temp-slider-wrap">'+
         '<div class="temp-slider-row">'+
@@ -1856,10 +1855,10 @@ function renderConversores(){
           '<div class="temp-box"><b id="tbKm">80</b><span>Kilómetros</span></div>'+
         '</div>'+
         '<div class="temp-ref">'+
-          '<span class="temp-ref-pill" onclick="setDistMi(25)">25mi · 40km 🐻 fauna YS</span>'+
-          '<span class="temp-ref-pill" onclick="setDistMi(45)">45mi · 72km interior YS</span>'+
-          '<span class="temp-ref-pill" onclick="setDistMi(65)">65mi · 105km autopista</span>'+
-          '<span class="temp-ref-pill" onclick="setDistMi(80)">80mi · 129km I-15 máx</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(25)">25mi · 40km fauna</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(45)">45mi · 72km parque</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(65)">65mi · 105km auto</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(80)">80mi · 129km I-15</span>'+
         '</div>'+
       '</div>'+
     '</div>'+
@@ -1877,13 +1876,13 @@ function renderConversores(){
           '<div class="temp-box"><b id="tbLit">38</b><span>Litros</span></div>'+
         '</div>'+
         '<div class="temp-ref">'+
-          '<span class="temp-ref-pill" onclick="setVolGal(16)">16 gal · Depósito completo Rogue</span>'+
-          '<span class="temp-ref-pill" onclick="setVolGal(8)">8 gal · Medio depósito</span>'+
+          '<span class="temp-ref-pill" onclick="setVolGal(16)">16 gal · depósito lleno</span>'+
+          '<span class="temp-ref-pill" onclick="setVolGal(8)">8 gal · medio depósito</span>'+
         '</div>'+
       '</div>'+
     '</div>'+
 
-    '<div class="cvcard" style="grid-column:span 2">'+
+    '<div class="cvcard">'+
       '<div class="cvt">💵 Divisa — desliza para convertir (referencia)</div>'+
       '<div class="temp-slider-wrap">'+
         '<div class="temp-slider-row">'+
@@ -1896,9 +1895,9 @@ function renderConversores(){
           '<div class="temp-box"><b id="tbEur">46</b><span>EUR €</span></div>'+
         '</div>'+
         '<div class="temp-ref">'+
-          '<span class="temp-ref-pill" onclick="setMoneyUsd(20)">$20 · propina/día restaurante</span>'+
-          '<span class="temp-ref-pill" onclick="setMoneyUsd(100)">$100 · billete grande</span>'+
-          '<span class="temp-ref-pill" onclick="setMoneyUsd(250)">$250 · America Pass 4p</span>'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(20)">$20 · propina/día</span>'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(100)">$100 · billete</span>'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(250)">$250 · America Pass</span>'+
         '</div>'+
         '<div class="cv-sub" style="margin-top:8px">Tipo de cambio aproximado: 1 USD ≈ 0,92 € · Verificar tasa real del día</div>'+
       '</div>'+
