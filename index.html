@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.45</title>
+<title>2026 USA · v2.46</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -551,7 +551,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.45</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.46</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -565,7 +565,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.45</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.46</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -608,7 +608,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.45</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.46</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -746,13 +746,14 @@ const DAYS = [
     tl:[["09:00–11:00 · Exteriores antes del calor","09:00 desayuno tranquilo (Eggslut en el Cosmopolitan, GF, abre 08h — o en el propio MGM). 10:00 paseo corto al Bellagio: Conservatorio interior (jardín botánico de temporada, gratuito, AC perfecto, 30min) + primera vista de las fuentes de día (cada 30min). 10:45 Caesars Palace: Forum Shops, el techo pintado con cielo romano en bucle y la Fontana di Trevi interior. Volver al hotel antes de las 11h — el calor ya es extremo."],
         ["11:00–14:00 · Piscina del MGM + descanso","Piscina del MGM Grand (incluida en la reserva del hotel — cinco piscinas, zona de bar flotante). El bloque de descanso más sensato del día: el jet lag todavía está presente y el show es esta noche. Quien prefiera interior: The Venetian, canales interiores con cielo pintado, góndolas y San Marco recreado — gratuito sin consumir nada."],
         ["14:00–16:30 · Descanso en el hotel","Pausa real. Siesta para quien la necesite. El show es a las 19h — conviene llegar frescos, no arrastrando el calor del mediodía. No hay nada que ver a estas horas que no se pueda ver antes o después."],
-        ["16:30–18:15 · Sphere + Fuentes del Bellagio","16:30 Uber al norte del Strip (~10min). MSG Sphere exterior desde Sands Avenue y el puente del Venetian: el Exosphere ya está activo con animaciones cambiantes, gratuito. 17:15 caminando de vuelta al Bellagio (10min a pie): fuentes con la luz dorada del atardecer — la mejor combinación fotográfica del día. 18:00 empezar a moverse hacia True Food Kitchen para cenar antes del show."],
-        ["18:15 · Cena rápida GF antes del show","True Food Kitchen (Fashion Show Mall, 3200 LV Blvd S, 5min a pie del Harrah's, 100% GF ⭐). Reservar con antelación. Cena rápida y concreta — 45min máximo para llegar tranquilos al Harrah's."],
-        ["19:00 · MJ Live · Harrah's Las Vegas Showroom ⭐","Harrah's Las Vegas, 3475 Las Vegas Blvd S — a 5min a pie de True Food Kitchen. Tributo a Michael Jackson con bailarines y banda en directo. Duración ~1h30m. Termina sobre las 20:30h."],
-        ["20:30 · Fremont Street — opcional según energía","Con el show terminado a las 20:30h hay margen para Fremont si el grupo tiene ganas. Deuce bus línea 202 o Uber (~15min). La Viva Vision emite espectáculos gratuitos cada hora hasta las 02h — la de las 21h es perfecta. Si el grupo está cansado, directamente al hotel."]],
-    food:"❌ MGM sin desayuno incluido. Desayuno GF de pago: Eggslut (Cosmopolitan, GF confirmado, abre 08h) o cafetería del MGM. Comida: piscina MGM (pedir al bar flotante) o snack en The Venetian. Cena antes del show: True Food Kitchen (Fashion Show Mall, 100% GF ⭐, reservar OpenTable con antelación). Post-show si se va a Fremont: algo rápido en el Downtown.",
+        ["16:30–18:45 · Sphere + Fuentes del Bellagio","16:30 Uber al norte del Strip (~10min). MSG Sphere exterior desde Sands Avenue y el puente del Venetian: el Exosphere ya está activo con animaciones cambiantes, gratuito. 17:15 caminando de vuelta al Bellagio (10min a pie): fuentes con la luz dorada del atardecer — la mejor combinación fotográfica del día. 18:30 empezar a moverse hacia el Harrah's — snack ligero si hace falta, la cena es después del show."],
+        ["19:00 · MJ Live · Harrah's Las Vegas Showroom ⭐","Harrah's Las Vegas, 3475 Las Vegas Blvd S. Tributo a Michael Jackson con bailarines y banda en directo. Duración ~1h30m. Termina sobre las 20:30h."],
+        ["20:45 · Cena True Food Kitchen ✅","Fashion Show Mall, 3200 Las Vegas Blvd S (10min en Uber desde el Harrah's). Reserva confirmada 20:45h · 4 personas · 100% GF ⭐. Carta amplia GF, cocina rápida y buena — la cena de después del show sin prisa."],
+        ["22:00 · Fremont Street — opcional según energía","Con la cena terminada hay margen para Fremont si el grupo tiene ganas. Uber ~15min desde el Fashion Show Mall. La Viva Vision emite espectáculos gratuitos cada hora hasta las 02h. Si el grupo está cansado, directamente al hotel."]],
+    food:"❌ MGM sin desayuno incluido. Desayuno GF de pago: Eggslut (Cosmopolitan, GF confirmado, abre 08h) o cafetería del MGM. Comida: piscina MGM (pedir al bar flotante) o snack en The Venetian. Cena ✅ True Food Kitchen (Fashion Show Mall, 100% GF ⭐) 20:45h — después del show, sin prisa.",
+    dinner:"🍽️ CENA RESERVADA · True Food Kitchen · Fashion Show Mall, 3200 Las Vegas Blvd S · 20:45h · 4 personas · Confirmado ✓. 100% GF — la opción más segura del Strip. Después del show MJ Live.",
     photo:"📸 Fuentes Bellagio: 18-150mm, apoyar en la barandilla, ISO 800, 1/60s para congelar el agua. Mejor luz 17:30-18:30h con el cielo aún azul. Sphere exterior: 18-50mm f/2.8 desde el puente del Venetian (gratuito). Fremont: 18-50mm ISO 1600, el techo LED es el sujeto — sin trípode, hay luz suficiente.",
-    warn:"Regla de oro: exteriores solo 09-11h y a partir de las 17:30h. De 11h a 17h nunca más de 10min al sol. Harrah's Showroom: llegar 15min antes para elegir sitio. True Food Kitchen: reservar con antelación en OpenTable.",
+    warn:"Regla de oro: exteriores solo 09-11h y a partir de las 17:30h. De 11h a 17h nunca más de 10min al sol. Harrah's Showroom: llegar 15min antes para elegir sitio. True Food Kitchen confirmado 20:45h — tiempo de sobra tras el show.",
     temp:"~40°C / 27°C · calor extremo a mediodía",
     places:[
       ["Fuentes del Bellagio","Más de 1.200 boquillas que lanzan agua hasta 140 metros sincronizadas con música. El sistema usa 22 millones de litros de agua recirculada. Fue diseñado por WET Design en 1998 con tecnología que tuvieron que inventar desde cero. El sistema informático que controla las coreografías corre en servidores debajo del lago y nunca se ha reiniciado desde la inauguración.",
@@ -997,7 +998,7 @@ const DAYS = [
         ["Tarde","13:00 Grand Loop Norte → Mammoth → Gardiner (~135km, ~2h). Tramo Mammoth-Gardiner (8km): bisontes y wapitis frecuentes — conducir a 25mph. ~15:30 check-in Yellowstone Village Inn, Gardiner."]],
     food:"❌ Yellowstone Village Inn sin desayuno incluido. Desayuno: provisiones GF del coche (lo más práctico con la salida a las 06:30h) o cafetería en Gardiner si da tiempo. Comida propia todo el día (picnic GF en Madison Junction). Cena en Gardiner: Follow Yer' Nose BBQ (GF natural, cierra 20h) o The Corral (burger alce bun GF, hasta 22h).",
     photo:"📸 Old Faithful: 100-400mm para aislar la columna de agua; 18-50mm para contexto con el boardwalk. Posicionarse lado sur para luz de espaldas. Grand Prismatic: 18-50mm desde el borde; Fairy Falls Overlook (800m extra) para la vista aérea que sale en todas las revistas.",
-    warn:"⚠️ DÍA MUY EXIGENTE. Salir ANTES de las 07:00h sin excepción. Aparcamiento de Grand Prismatic se llena antes de las 10h — aparcar en Fairy Falls TH (800m a pie) que además da la mejor foto. Llevar las dos LP-E6 cargadas y la SD vacía.",
+    warn:"⚠️ DÍA MUY EXIGENTE. Salir ANTES de las 07:00h sin excepción. Aparcamiento de Grand Prismatic se llena antes de las 10h — aparcar en Fairy Falls TH (800m a pie) que además da la mejor foto. Llevar las dos LP-E6 cargadas y la SD vacía. 🚧 Obras en el Old Faithful Overpass (7:00-19:00h, un carril cortado, hasta 15min de retraso) — prevista finalización 14 Ago, revisar estado actualizado antes de salir.",
     temp:"Old Faithful ~23°C / 5°C · Gardiner ~29°C / 11°C",
     places:[
       ["El supervulcán de Yellowstone","Yellowstone es la caldera de uno de los supervulcanes más grandes de la Tierra. La última de sus tres erupciones masivas (hace 2,1 millones, 1,3 millones y 640.000 años respectivamente) fue 2.500 veces más grande que la erupción del Monte Santa Helena de 1980. El magma sigue activo a 8–10km de profundidad y es lo que alimenta todos los géiseres y fuentes termales del parque. Los científicos del USGS monitorizan más de 2.000 terremotos al año en Yellowstone — la mayoría imperceptibles. La probabilidad de una erupción masiva en los próximos 1.000 años es de aproximadamente 1 en 730.000.",
@@ -1013,7 +1014,7 @@ const DAYS = [
       ["Gardiner y el Arco de Roosevelt","El presidente Theodore Roosevelt colocó la piedra angular del Arco Norte de Yellowstone en 1903 — el único presidente en visitar el parque antes de la era del automóvil. La inscripción 'For the Benefit and Enjoyment of the People' fue añadida por el Congreso. Roosevelt es considerado el padre de la conservación americana: durante su presidencia creó 150 bosques nacionales, 51 refugios de fauna, 5 parques nacionales y 18 monumentos nacionales.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Gardiner,_Montana"]]]
     ],
-    links:[["Tiempo Old Faithful","https://forecast.weather.gov/MapClick.php?lat=44.4605&lon=-110.8281"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"],["Grand Prismatic (Wiki)","https://es.wikipedia.org/wiki/Gran_Fuente_Prism%C3%A1tica"]]
+    links:[["Tiempo Old Faithful","https://forecast.weather.gov/MapClick.php?lat=44.4605&lon=-110.8281"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · carreteras","https://www.nps.gov/yell/planyourvisit/parkroads.htm"],["Alertas Yellowstone Lodges","https://www.yellowstonenationalparklodges.com/alerts/"],["Grand Prismatic (Wiki)","https://es.wikipedia.org/wiki/Gran_Fuente_Prism%C3%A1tica"]]
   },
 
   { n:9, date:"Lun 17 Ago", zone:"mam", tag:"Rafting", title:"Gardiner — Rafting Flying Pig · Mammoth Hot Springs · Lamar Valley",
@@ -1028,7 +1029,7 @@ const DAYS = [
         ["16:30 · Lamar Valley — tarde-atardecer ⭐","Bisontes en rut, coyotes, posibles osos desde arcenes habilitados. El parque se vacía después de las 17h. 100-400mm + bean bag ventanilla — apagar motor, bajar ventanilla, esperar. ⚠️ SALIR DE LAMAR MAX 20:15h. Conducción nocturna en Yellowstone peligrosa (bisontes sin reflectantes). ~21:00 vuelta a Gardiner. Cargar LP-E6 esta noche — mañana salida 05:00h."]],
     food:"❌ Yellowstone Village Inn sin desayuno incluido. Desayuno: ligero del coche antes del rafting (neopreno mojado y desayuno pesado no combinan). Comida post-rafting: The Corral (burger alce bun GF ⭐) o Follow Yer' Nose BBQ (carnes GF natural, cierra 20h). Cena si se vuelve tarde de Lamar: The Corral (hasta 22h) o provisiones GF del coche.",
     photo:"📸 Rafting: dejar la Canon R7 en el hotel — el río moja todo. Llevar GoPro o móvil en funda estanca si se quiere foto. Mammoth: 18-150mm + polarizador para las terrazas. Wapitis en Fort Yellowstone: 100-400mm. Lamar tarde: 100-400mm + bean bag ventanilla.",
-    warn:"Flying Pig Booking #368122032 · Check-in 08:45h (30min antes de la salida) · 511 Scott Street, Gardiner MT. Llevar ropa de recambio completa y toalla. No desayunar pesado antes. Cámaras dejarlas en el hotel — el agua del cañón es fría y los rápidos clase III mojan todo. VUELTA DE LAMAR MAX 20:15h sin excepción. Preparar maletas esta noche: check-out mañana 05:00h.",
+    warn:"Flying Pig Booking #368122032 · Check-in 08:45h (30min antes de la salida) · 511 Scott Street, Gardiner MT. Llevar ropa de recambio completa y toalla. No desayunar pesado antes. Cámaras dejarlas en el hotel — el agua del cañón es fría y los rápidos clase III mojan todo. 🚧 Obras puente Yellowstone River en Tower Junction (pavimentado nocturno 20:00-07:00h hasta 15 Ago, retrasos hasta 30min) — puede afectar la ruta hacia Lamar por Tower. VUELTA DE LAMAR MAX 20:15h sin excepción. Preparar maletas esta noche: check-out mañana 05:00h.",
     temp:"Gardiner ~29°C / 12°C · Río Yellowstone ~10-14°C (neopreno incluido) · Mammoth ~25°C / 8°C",
     places:[
       ["Flying Pig Adventure Company — rafting en Yellowstone River","La empresa de rafting más establecida de Gardiner, fundada en 1991. Opera en el tramo del Black Canyon del Yellowstone River, que discurre por el límite norte del parque con paredes de basalto de hasta 300m. Los rápidos clase II-III incluyen el Yankee Jim Canyon — un paso estrecho entre rocas donde el río se comprime y acelera — y varios rápidos nombrados con olas de 1-2 metros. El trip de medio día incluye neopreno, casco, chaleco y guía certificado. Fauna frecuente desde el agua: águila calva, garza real, nutria de río.",
@@ -1054,7 +1055,7 @@ const DAYS = [
       ],
       mapsUrl:"https://www.google.com/maps/dir/45.0317,-110.7064/44.9769,-110.7014/44.8983,-110.2217/45.0317,-110.7036"
     },
-    links:[["Flying Pig Rafting","https://www.flyingpigrafting.com/"],["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
+    links:[["Flying Pig Rafting","https://www.flyingpigrafting.com/"],["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Alertas Yellowstone Lodges","https://www.yellowstonenationalparklodges.com/alerts/"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
   },
 
   { n:10, date:"Mar 18 Ago", zone:"lamar", tag:"Lamar", title:"Gardiner → Lamar amanecer → Beartooth Hwy → Cody ⭐",
@@ -1287,8 +1288,8 @@ const HOTELS = [
 
 const PEND = [
   // ── PENDIENTES (orden cronológico del viaje) ──────────────────────
+  ["yel","Obras Yellowstone — revisar antes de entrar","Old Faithful Overpass (Día 8) y puente Tower Junction (Días 6-9): revisar yellowstonenationalparklodges.com/alerts antes de salir de España y de nuevo en destino."],
   ["yel","Bear spray — alquilar (Día 5 · 13 Ago)","Alquilar en Jackson. Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
-  ["yel","True Food Kitchen Día 2 — reservar","Cena antes del show MJ Live 19:00h. Reservar en OpenTable con antelación — agosto se llena."],
   ["yel","Cena Cody Día 10 — reservar antes del Rodeo","Cassie's Supper Club o Irma Hotel · cena antes 19:30h · Rodeo 20:00h. Reservar con antelación."],
   ["yel","Datos móvil EEUU — resolver antes de volar","eSIM americana (Airalo/Holafly) o roaming activado. Necesario para Uber, Maps y comunicación fuera de Yellowstone."],
   ["yel","Cody Nite Rodeo — entradas (Día 10 · 18 Ago)","codyniterodeo.com · 18 Ago 20:00h. Comprar con antelación."],
@@ -1299,6 +1300,7 @@ const PEND = [
   ["grn","Vuelos MAD→LAS · BA1781 (9 Ago)","Salida Madrid 13:00h → Las Vegas 19:56h. Emitido ✓."],
   ["grn","MGM Grand Las Vegas (Días 1-3 · 9-11 Ago)","3 noches. Reservado ✓."],
   ["grn","MJ Live · Harrah's (Día 2 · 10 Ago)","Show MJ Live a las 19:00h en Harrah's Las Vegas Showroom."],
+  ["grn","True Food Kitchen (Día 2 · 10 Ago)","Fashion Show Mall, 3200 Las Vegas Blvd S · 20:45h · 4 personas · Confirmado ✓. 100% GF, después del show."],
   ["grn","Coche Alamo (Días 3-11 · 11-19 Ago)","Alamo one-way LV→Bozeman. Voucher 414483892. Recogida 11 Ago 15:00h, devolución 19 Ago 14:00h."],
   ["grn","Zest Kitchen & Bar SLC (Día 4 · 12 Ago)","275 S 200 W, Salt Lake City · 19:45h · 4 personas · Confirmado ✓. Menú 100% GF y vegano."],
   ["grn","Holiday Inn Express SLC (Día 4 · 12 Ago)","1 noche. Reservado ✓ (IHG). Desayuno incluido."],
@@ -1842,45 +1844,64 @@ function renderConversores(){
     '</div>'+
 
     '<div class="cvcard">'+
-      '<div class="cvt">📏 Distancia</div>'+
-      '<div class="cv-row">'+
-        '<input class="cv-inp" id="cvMi" type="number" placeholder="millas" oninput="cvDist(\'mi\')">'+
-        '<span class="cv-lbl">mi</span>'+
+      '<div class="cvt">📏 Distancia — desliza para convertir</div>'+
+      '<div class="temp-slider-wrap">'+
+        '<div class="temp-slider-row">'+
+          '<label id="slMi">50 mi</label>'+
+          '<input type="range" id="distSlider" min="0" max="500" value="50" oninput="updateDistSlider()">'+
+          '<label id="slKm">80 km</label>'+
+        '</div>'+
+        '<div class="temp-result">'+
+          '<div class="temp-box"><b id="tbMi">50</b><span>Millas</span></div>'+
+          '<div class="temp-box"><b id="tbKm">80</b><span>Kilómetros</span></div>'+
+        '</div>'+
+        '<div class="temp-ref">'+
+          '<span class="temp-ref-pill" onclick="setDistMi(25)">25mi · 40km 🐻 fauna YS</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(45)">45mi · 72km interior YS</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(65)">65mi · 105km autopista</span>'+
+          '<span class="temp-ref-pill" onclick="setDistMi(80)">80mi · 129km I-15 máx</span>'+
+        '</div>'+
       '</div>'+
-      '<div class="cv-eq">⇅</div>'+
-      '<div class="cv-row" style="margin-top:6px">'+
-        '<input class="cv-inp" id="cvKm" type="number" placeholder="km" oninput="cvDist(\'km\')">'+
-        '<span class="cv-lbl">km</span>'+
-      '</div>'+
-      '<div class="cv-sub">1 milla = 1,609 km · 50 mph = 80 km/h · 75 mph = 120 km/h</div>'+
     '</div>'+
 
     '<div class="cvcard">'+
-      '<div class="cvt">⛽ Volumen (gasolina)</div>'+
-      '<div class="cv-row">'+
-        '<input class="cv-inp" id="cvGal" type="number" placeholder="galones" oninput="cvVol(\'gal\')">'+
-        '<span class="cv-lbl">gal</span>'+
+      '<div class="cvt">⛽ Volumen — desliza para convertir</div>'+
+      '<div class="temp-slider-wrap">'+
+        '<div class="temp-slider-row">'+
+          '<label id="slGal">10 gal</label>'+
+          '<input type="range" id="volSlider" min="0" max="20" value="10" step="0.5" oninput="updateVolSlider()">'+
+          '<label id="slLit">38 L</label>'+
+        '</div>'+
+        '<div class="temp-result">'+
+          '<div class="temp-box"><b id="tbGal">10</b><span>Galones</span></div>'+
+          '<div class="temp-box"><b id="tbLit">38</b><span>Litros</span></div>'+
+        '</div>'+
+        '<div class="temp-ref">'+
+          '<span class="temp-ref-pill" onclick="setVolGal(16)">16 gal · Depósito completo Rogue</span>'+
+          '<span class="temp-ref-pill" onclick="setVolGal(8)">8 gal · Medio depósito</span>'+
+        '</div>'+
       '</div>'+
-      '<div class="cv-eq">⇅</div>'+
-      '<div class="cv-row" style="margin-top:6px">'+
-        '<input class="cv-inp" id="cvL" type="number" placeholder="litros" oninput="cvVol(\'l\')">'+
-        '<span class="cv-lbl">L</span>'+
-      '</div>'+
-      '<div class="cv-sub">1 galón = 3,785 L · Nissan Rogue: ~60 L (≈ 16 gal)</div>'+
     '</div>'+
 
-    '<div class="cvcard">'+
-      '<div class="cvt">💵 Divisa (referencia)</div>'+
-      '<div class="cv-row">'+
-        '<input class="cv-inp" id="cvUsd" type="number" placeholder="USD $" oninput="cvMoney(\'usd\')">'+
-        '<span class="cv-lbl">$</span>'+
+    '<div class="cvcard" style="grid-column:span 2">'+
+      '<div class="cvt">💵 Divisa — desliza para convertir (referencia)</div>'+
+      '<div class="temp-slider-wrap">'+
+        '<div class="temp-slider-row">'+
+          '<label id="slUsd">50 $</label>'+
+          '<input type="range" id="moneySlider" min="0" max="500" value="50" step="5" oninput="updateMoneySlider()">'+
+          '<label id="slEur">46 €</label>'+
+        '</div>'+
+        '<div class="temp-result">'+
+          '<div class="temp-box"><b id="tbUsd">50</b><span>USD $</span></div>'+
+          '<div class="temp-box"><b id="tbEur">46</b><span>EUR €</span></div>'+
+        '</div>'+
+        '<div class="temp-ref">'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(20)">$20 · propina/día restaurante</span>'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(100)">$100 · billete grande</span>'+
+          '<span class="temp-ref-pill" onclick="setMoneyUsd(250)">$250 · America Pass 4p</span>'+
+        '</div>'+
+        '<div class="cv-sub" style="margin-top:8px">Tipo de cambio aproximado: 1 USD ≈ 0,92 € · Verificar tasa real del día</div>'+
       '</div>'+
-      '<div class="cv-eq">⇅</div>'+
-      '<div class="cv-row" style="margin-top:6px">'+
-        '<input class="cv-inp" id="cvEur" type="number" placeholder="EUR €" oninput="cvMoney(\'eur\')">'+
-        '<span class="cv-lbl">€</span>'+
-      '</div>'+
-      '<div class="cv-sub" id="cvRate">Tipo de cambio aproximado: 1 USD ≈ 0,92 € · Actualizar según tasa real del día</div>'+
     '</div>'+
 
   '</div>'+
@@ -2072,30 +2093,51 @@ function markToday(){
 /* init */
 // converter functions — global scope
 function r(v,d){return Math.round(v*(10**d))/(10**d);}
-function cvTemp(from){
-  const F=document.getElementById("cvF"),C=document.getElementById("cvC");
-  if(from==="F"&&F.value!==""){C.value=r((parseFloat(F.value)-32)*5/9,1);}
-  else if(from==="C"&&C.value!==""){F.value=r(parseFloat(C.value)*9/5+32,1);}
-  else{if(from==="F")C.value=""; else F.value="";}
+
+function updateDistSlider(){
+  const sl=document.getElementById("distSlider");
+  if(!sl) return;
+  const mi=parseFloat(sl.value);
+  const km=r(mi*1.60934,0);
+  document.getElementById("tbMi").textContent=mi;
+  document.getElementById("tbKm").textContent=km;
+  document.getElementById("slMi").textContent=mi+" mi";
+  document.getElementById("slKm").textContent=km+" km";
 }
-function cvDist(from){
-  const M=document.getElementById("cvMi"),K=document.getElementById("cvKm");
-  if(from==="mi"&&M.value!==""){K.value=r(parseFloat(M.value)*1.60934,1);}
-  else if(from==="km"&&K.value!==""){M.value=r(parseFloat(K.value)/1.60934,1);}
-  else{if(from==="mi")K.value=""; else M.value="";}
+function setDistMi(mi){
+  const sl=document.getElementById("distSlider");
+  if(sl){ sl.value=mi; updateDistSlider(); }
 }
-function cvVol(from){
-  const G=document.getElementById("cvGal"),L=document.getElementById("cvL");
-  if(from==="gal"&&G.value!==""){L.value=r(parseFloat(G.value)*3.78541,2);}
-  else if(from==="l"&&L.value!==""){G.value=r(parseFloat(L.value)/3.78541,2);}
-  else{if(from==="gal")L.value=""; else G.value="";}
+
+function updateVolSlider(){
+  const sl=document.getElementById("volSlider");
+  if(!sl) return;
+  const gal=parseFloat(sl.value);
+  const l=r(gal*3.78541,0);
+  document.getElementById("tbGal").textContent=gal;
+  document.getElementById("tbLit").textContent=l;
+  document.getElementById("slGal").textContent=gal+" gal";
+  document.getElementById("slLit").textContent=l+" L";
 }
-function cvMoney(from){
+function setVolGal(gal){
+  const sl=document.getElementById("volSlider");
+  if(sl){ sl.value=gal; updateVolSlider(); }
+}
+
+function updateMoneySlider(){
+  const sl=document.getElementById("moneySlider");
+  if(!sl) return;
   const rate=0.92;
-  const U=document.getElementById("cvUsd"),E=document.getElementById("cvEur");
-  if(from==="usd"&&U.value!==""){E.value=r(parseFloat(U.value)*rate,2);}
-  else if(from==="eur"&&E.value!==""){U.value=r(parseFloat(E.value)/rate,2);}
-  else{if(from==="usd")E.value=""; else U.value="";}
+  const usd=parseFloat(sl.value);
+  const eur=r(usd*rate,0);
+  document.getElementById("tbUsd").textContent=usd;
+  document.getElementById("tbEur").textContent=eur;
+  document.getElementById("slUsd").textContent=usd+" $";
+  document.getElementById("slEur").textContent=eur+" €";
+}
+function setMoneyUsd(usd){
+  const sl=document.getElementById("moneySlider");
+  if(sl){ sl.value=usd; updateMoneySlider(); }
 }
 
 renderSummary();
