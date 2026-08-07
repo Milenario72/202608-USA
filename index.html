@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.43</title>
+<title>2026 USA · v2.44</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -277,6 +277,17 @@ img{max-width:100%}
 .s-red{background:var(--red-bg);color:var(--red)}
 .s-violet{background:var(--violet-bg);color:var(--violet)}
 
+/* ---------- WEATHER WIDGET ---------- */
+.weather-bar{max-width:900px;margin:10px auto 0;padding:0 4px}
+.weather-card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px}
+.wt-icon{font-size:32px;flex-shrink:0}
+.wt-body{flex:1;min-width:0}
+.wt-zone{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-soft)}
+.wt-temp{font-size:26px;font-weight:800;color:var(--brand);line-height:1.1}
+.wt-desc{font-size:12px;color:var(--ink-soft);margin-top:2px}
+.wt-link{font-size:11px;font-weight:700;color:var(--brand);background:var(--ok-bg);
+  padding:4px 10px;border-radius:20px;border:1px solid var(--ok);text-decoration:none;white-space:nowrap;flex-shrink:0}
 /* ---------- COUNTDOWN / TODAY ---------- */
 .countdown{max-width:900px;margin:12px auto 0;padding:0 4px}
 .cd-card{background:var(--brand);color:#fff;border-radius:14px;padding:14px 18px;
@@ -540,7 +551,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.43</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.44</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -554,7 +565,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.43</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.44</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -578,6 +589,14 @@ img{max-width:100%}
         <div class="tonight"><div class="tonight-card" id="tonightCard"></div></div>
       </div>
 
+      <div id="weatherWrap" style="display:none">
+        <div class="tonight-h">🌤️ Tiempo ahora</div>
+        <div class="weather-bar"><div class="weather-card" id="weatherCard">
+          <div class="wt-icon">⏳</div>
+          <div class="wt-body"><div class="wt-zone">Cargando...</div><div class="wt-temp">—</div></div>
+        </div></div>
+      </div>
+
       <div class="stats">
         <div class="stat"><b>~2.400</b><span>km carretera</span></div>
         <div class="stat"><b>4</b><span>estados</span></div>
@@ -589,7 +608,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.43</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.44</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -2154,6 +2173,7 @@ function renderCountdown(){
     unit.textContent = d.date;
     renderTonightCard(dayN);
     updateHeroZone(d.zone);
+    fetchWeather(d.zone);
   } else {
     // After trip
     pre.textContent = "El viaje ha terminado";
@@ -2162,6 +2182,8 @@ function renderCountdown(){
     num.textContent = "✈";
     unit.textContent = "Home";
   }
+  // Pre-trip: show weather for Las Vegas (first destination)
+  if(today < t0) fetchWeather("lv");
 }
 
 // ── FEATURE 7: Tonight card ────────────────────────────────────────
@@ -2220,6 +2242,79 @@ function updateTempSlider(){
 function setTempF(f){
   const sl = document.getElementById("tempSlider");
   if(sl){ sl.value = f; updateTempSlider(); }
+}
+
+// ── FEATURE 10: Weather widget ─────────────────────────────────────
+const WEATHER_ZONES = {
+  lv:      {lat:36.17,  lon:-115.14, name:"Las Vegas NV",        nws:"https://forecast.weather.gov/MapClick.php?lat=36.1699&lon=-115.1398"},
+  zi:      {lat:37.20,  lon:-112.99, name:"Kolob · Zion UT",     nws:"https://forecast.weather.gov/MapClick.php?CityName=Kolob+Canyons&state=UT&site=SLC&textField1=37.4350&textField2=-113.2016"},
+  slc:     {lat:40.76,  lon:-111.89, name:"Salt Lake City UT",   nws:"https://forecast.weather.gov/MapClick.php?lat=40.7608&lon=-111.8910"},
+  cache:   {lat:41.74,  lon:-111.83, name:"Logan Canyon UT",     nws:"https://forecast.weather.gov/MapClick.php?CityName=Logan&state=UT&site=SLC&textField1=41.7355&textField2=-111.8343"},
+  tet:     {lat:43.66,  lon:-110.72, name:"Grand Teton NP",      nws:"https://forecast.weather.gov/MapClick.php?CityName=Moose&state=WY&site=RIW&textField1=43.6571&textField2=-110.7218"},
+  yell:    {lat:44.56,  lon:-110.40, name:"Yellowstone Lake",    nws:"https://www.nps.gov/features/yell/Kiosk/weather.html"},
+  mam:     {lat:44.98,  lon:-110.70, name:"Mammoth · Gardiner",  nws:"https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"},
+  lamar:   {lat:44.90,  lon:-110.22, name:"Lamar Valley · Cody", nws:"https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565"},
+  back:    {lat:45.78,  lon:-111.15, name:"Bozeman MT",          nws:"https://forecast.weather.gov/MapClick.php?lat=45.677&lon=-111.0429"}
+};
+
+const WMO_ICONS = {
+  0:"☀️",1:"🌤️",2:"⛅",3:"☁️",
+  45:"🌫️",48:"🌫️",
+  51:"🌦️",53:"🌦️",55:"🌧️",
+  61:"🌧️",63:"🌧️",65:"🌧️",
+  71:"🌨️",73:"🌨️",75:"❄️",
+  80:"🌦️",81:"🌧️",82:"⛈️",
+  95:"⛈️",96:"⛈️",99:"⛈️"
+};
+const WMO_DESC = {
+  0:"Despejado",1:"Mayormente despejado",2:"Parcialmente nublado",3:"Nublado",
+  45:"Niebla",48:"Niebla helada",
+  51:"Llovizna ligera",53:"Llovizna",55:"Llovizna fuerte",
+  61:"Lluvia ligera",63:"Lluvia moderada",65:"Lluvia fuerte",
+  71:"Nevada ligera",73:"Nevada",75:"Nevada fuerte",
+  80:"Chubascos ligeros",81:"Chubascos",82:"Chubascos fuertes",
+  95:"Tormenta",96:"Tormenta con granizo",99:"Tormenta fuerte"
+};
+
+function fetchWeather(zone){
+  const z = WEATHER_ZONES[zone];
+  if(!z) return;
+  const wrap = document.getElementById("weatherWrap");
+  const card = document.getElementById("weatherCard");
+  if(!wrap||!card) return;
+  wrap.style.display="block";
+
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${z.lat}&longitude=${z.lon}&current=temperature_2m,weathercode,windspeed_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto`;
+
+  fetch(url)
+    .then(r=>r.json())
+    .then(d=>{
+      const cur = d.current;
+      const temp = Math.round(cur.temperature_2m);
+      const tempF = Math.round(temp*9/5+32);
+      const code = cur.weathercode;
+      const wind = Math.round(cur.windspeed_10m);
+      const icon = WMO_ICONS[code]||"🌡️";
+      const desc = WMO_DESC[code]||"";
+      card.innerHTML =
+        '<div class="wt-icon">'+icon+'</div>'+
+        '<div class="wt-body">'+
+          '<div class="wt-zone">'+z.name+'</div>'+
+          '<div class="wt-temp">'+temp+'°C <span style="font-size:16px;opacity:.7">/ '+tempF+'°F</span></div>'+
+          '<div class="wt-desc">'+desc+(wind?' · Viento '+wind+' km/h':'')+'</div>'+
+        '</div>'+
+        '<a class="wt-link" href="'+z.nws+'" target="_blank" rel="noopener">Pronóstico ↗</a>';
+    })
+    .catch(()=>{
+      card.innerHTML =
+        '<div class="wt-icon">🌡️</div>'+
+        '<div class="wt-body">'+
+          '<div class="wt-zone">'+z.name+'</div>'+
+          '<div class="wt-temp">Sin conexión</div>'+
+          '<div class="wt-desc">Consulta el pronóstico online</div>'+
+        '</div>'+
+        '<a class="wt-link" href="'+z.nws+'" target="_blank" rel="noopener">Ver ↗</a>';
+    });
 }
 
 renderCountdown();
