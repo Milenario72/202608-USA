@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.42</title>
+<title>2026 USA · v2.43</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -277,7 +277,61 @@ img{max-width:100%}
 .s-red{background:var(--red-bg);color:var(--red)}
 .s-violet{background:var(--violet-bg);color:var(--violet)}
 
-/* ---------- INFO / PENDING ---------- */
+/* ---------- COUNTDOWN / TODAY ---------- */
+.countdown{max-width:900px;margin:12px auto 0;padding:0 4px}
+.cd-card{background:var(--brand);color:#fff;border-radius:14px;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--shadow2)}
+.cd-card.in-trip{background:linear-gradient(135deg,var(--brand),var(--accent))}
+.cd-left{flex:1;min-width:0}
+.cd-pre{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.85}
+.cd-main{font-size:22px;font-weight:800;line-height:1.2;margin:3px 0}
+.cd-sub{font-size:13px;opacity:.88}
+.cd-num{font-size:42px;font-weight:900;line-height:1;opacity:.95;flex-shrink:0}
+.cd-unit{font-size:11px;font-weight:700;text-transform:uppercase;opacity:.7;text-align:center;margin-top:2px}
+
+/* ---------- TONIGHT CARD ---------- */
+.tonight{max-width:900px;margin:10px auto 0;padding:0 4px}
+.tonight-card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px;box-shadow:var(--shadow);display:grid;
+  grid-template-columns:1fr 1fr;gap:10px}
+.tonight-card .tc-block{display:flex;flex-direction:column;gap:2px}
+.tonight-card .tc-label{font-size:10px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.8px;color:var(--ink-soft)}
+.tonight-card .tc-val{font-size:14px;font-weight:700;color:var(--ink)}
+.tonight-card .tc-sub{font-size:12px;color:var(--ink-soft)}
+.tonight-card .tc-dinner{grid-column:span 2;background:var(--violet-bg);
+  border-radius:10px;padding:8px 12px;border-left:3px solid var(--violet)}
+.tonight-h{max-width:900px;margin:12px auto 4px;padding:0 4px;
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-soft)}
+
+/* ---------- TEMP SLIDER ---------- */
+.temp-slider-wrap{padding:14px 16px}
+.temp-slider-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.temp-slider-row label{font-size:13px;font-weight:600;color:var(--ink-soft);white-space:nowrap;min-width:30px}
+.temp-slider-row input[type=range]{flex:1;accent-color:var(--brand)}
+.temp-result{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.temp-box{background:var(--bg);border-radius:10px;padding:10px;text-align:center;border:1px solid var(--line)}
+.temp-box b{display:block;font-size:26px;font-weight:800;color:var(--brand)}
+.temp-box span{font-size:11px;color:var(--ink-soft);font-weight:600}
+.temp-ref{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.temp-ref-pill{font-size:11px;background:var(--card);border:1px solid var(--line);
+  border-radius:20px;padding:3px 10px;cursor:pointer;color:var(--ink-soft);
+  -webkit-tap-highlight-color:transparent}
+.temp-ref-pill:active{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+/* ---------- HERO ZONE COLORS ---------- */
+.hero.zone-lv{background:linear-gradient(150deg,#c87d3a,#e8a055 55%,#3d5a73)}
+.hero.zone-zi{background:linear-gradient(150deg,#a84820,#c86040 55%,#8b6030)}
+.hero.zone-slc{background:linear-gradient(150deg,#2a5a8a,#4a83b8 55%,#3d5a73)}
+.hero.zone-cache{background:linear-gradient(150deg,#3a6830,#5a9848 55%,#2a5a73)}
+.hero.zone-tet{background:linear-gradient(150deg,#1e5040,#2a7858 55%,#1e3040)}
+.hero.zone-yell{background:linear-gradient(150deg,#8a6820,#c8a030 55%,#3d5a73)}
+.hero.zone-mam{background:linear-gradient(150deg,#6a3820,#9a5830 55%,#2a4050)}
+.hero.zone-lamar{background:linear-gradient(150deg,#3a2810,#6a4820 55%,#1e2a35)}
+.hero.zone-back{background:linear-gradient(150deg,#4a3070,#6a50a0 55%,#1e2a35)}
+[data-dark="1"] .hero.zone-lv{background:linear-gradient(150deg,#7a4a20,#a06030 55%,#1e3348)}
+[data-dark="1"] .hero.zone-yell{background:linear-gradient(150deg,#5a4010,#8a6820 55%,#1e2a35)}
+[data-dark="1"] .hero.zone-tet{background:linear-gradient(150deg,#0e3028,#1a5038 55%,#0e1820)}
 .info-block{max-width:900px;margin:0 auto 20px;padding:0 4px}
 .acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
 .acc>summary{padding:14px 16px;font-weight:700;font-size:15px;cursor:pointer;list-style:none;
@@ -486,7 +540,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.42</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.43</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -499,8 +553,8 @@ img{max-width:100%}
 
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
-      <div class="hero">
-        <div class="kicker">Road Trip · Oeste Americano · v2.42</div>
+      <div class="hero" id="heroBlock">
+        <div class="kicker">Road Trip · Oeste Americano · v2.43</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -508,6 +562,20 @@ img{max-width:100%}
           <span>🏔️ Alpine</span><i>›</i><span>🦌 Grand Teton</span><i>›</i><span>♨️ Yellowstone</span><i>›</i>
           <span>🐺 Gardiner</span><i>›</i><span>🤠 Cody</span><i>›</i><span>✈️ Bozeman</span>
         </div>
+      </div>
+
+      <div class="countdown"><div class="cd-card" id="cdCard">
+        <div class="cd-left">
+          <div class="cd-pre" id="cdPre">Cuenta atrás</div>
+          <div class="cd-main" id="cdMain">Calculando...</div>
+          <div class="cd-sub" id="cdSub"></div>
+        </div>
+        <div><div class="cd-num" id="cdNum">—</div><div class="cd-unit" id="cdUnit"></div></div>
+      </div></div>
+
+      <div id="tonightWrap" style="display:none">
+        <div class="tonight-h">🌙 Esta noche</div>
+        <div class="tonight"><div class="tonight-card" id="tonightCard"></div></div>
       </div>
 
       <div class="stats">
@@ -521,7 +589,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.42</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.43</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1731,18 +1799,27 @@ function renderConversores(){
   '<details class="acc"><summary><span>Conversores de unidades</span><span class="acc-arr">+</span></summary><div class="inner" style="padding:14px 16px">'+
   '<div class="conv-grid">'+
 
-    '<div class="cvcard">'+
-      '<div class="cvt">🌡️ Temperatura</div>'+
-      '<div class="cv-row">'+
-        '<input class="cv-inp" id="cvF" type="number" placeholder="°F" oninput="cvTemp(\'F\')">'+
-        '<span class="cv-lbl">°F</span>'+
+    '<div class="cvcard" style="grid-column:span 2">'+
+      '<div class="cvt">🌡️ Temperatura — desliza para convertir</div>'+
+      '<div class="temp-slider-wrap">'+
+        '<div class="temp-slider-row">'+
+          '<label id="slF">32°F</label>'+
+          '<input type="range" id="tempSlider" min="-4" max="120" value="72" oninput="updateTempSlider()">'+
+          '<label id="slC">0°C</label>'+
+        '</div>'+
+        '<div class="temp-result">'+
+          '<div class="temp-box"><b id="tbF">72</b><span>Fahrenheit (°F)</span></div>'+
+          '<div class="temp-box"><b id="tbC">22</b><span>Celsius (°C)</span></div>'+
+        '</div>'+
+        '<div class="temp-ref">'+
+          '<span class="temp-ref-pill" onclick="setTempF(32)">32°F · Agua congela</span>'+
+          '<span class="temp-ref-pill" onclick="setTempF(50)">50°F · 10°C fresco</span>'+
+          '<span class="temp-ref-pill" onclick="setTempF(68)">68°F · 20°C agradable</span>'+
+          '<span class="temp-ref-pill" onclick="setTempF(86)">86°F · 30°C calor</span>'+
+          '<span class="temp-ref-pill" onclick="setTempF(95)">95°F · 35°C LV</span>'+
+          '<span class="temp-ref-pill" onclick="setTempF(104)">104°F · 40°C extremo</span>'+
+        '</div>'+
       '</div>'+
-      '<div class="cv-eq">⇅</div>'+
-      '<div class="cv-row" style="margin-top:6px">'+
-        '<input class="cv-inp" id="cvC" type="number" placeholder="°C" oninput="cvTemp(\'C\')">'+
-        '<span class="cv-lbl">°C</span>'+
-      '</div>'+
-      '<div class="cv-sub">32°F = 0°C · 50°F = 10°C · 95°F = 35°C · 104°F = 40°C</div>'+
     '</div>'+
 
     '<div class="cvcard">'+
@@ -2044,6 +2121,108 @@ function updateThemeIcons(dark){
   }
 })();
 
+// ── FEATURE 1 & 2: Countdown + HOY indicator ──────────────────────
+function renderCountdown(){
+  const now = new Date();
+  const t0 = new Date(2026,7,9); // 9 Ago
+  const t1 = new Date(2026,7,19); // 19 Ago (fin)
+  const today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const daysToStart = Math.round((new Date(2026,7,9)-today)/86400000);
+  const card = document.getElementById("cdCard");
+  const pre  = document.getElementById("cdPre");
+  const main = document.getElementById("cdMain");
+  const sub  = document.getElementById("cdSub");
+  const num  = document.getElementById("cdNum");
+  const unit = document.getElementById("cdUnit");
+
+  if(today < t0){
+    // Before trip
+    pre.textContent = "Cuenta atrás";
+    main.textContent = daysToStart === 1 ? "¡Mañana salís!" : "Faltan "+daysToStart+" días";
+    sub.textContent = "Vuelo BA1781 · Madrid → Las Vegas · 9 de agosto";
+    num.textContent = daysToStart;
+    unit.textContent = daysToStart === 1 ? "día" : "días";
+  } else if(today <= t1){
+    // In trip
+    const dayN = Math.round((today-t0)/86400000)+1;
+    const d = DAYS[Math.min(dayN,DAYS.length)-1];
+    card.classList.add("in-trip");
+    pre.textContent = "Estás en el viaje 🎉";
+    main.textContent = "Día "+dayN+" de "+DAYS.length+" — "+d.title;
+    sub.textContent = d.quote || "";
+    num.textContent = "D"+dayN;
+    unit.textContent = d.date;
+    renderTonightCard(dayN);
+    updateHeroZone(d.zone);
+  } else {
+    // After trip
+    pre.textContent = "El viaje ha terminado";
+    main.textContent = "¡Fue un viaje increíble!";
+    sub.textContent = "Las Vegas → Yellowstone → Bozeman · Agosto 2026";
+    num.textContent = "✈";
+    unit.textContent = "Home";
+  }
+}
+
+// ── FEATURE 7: Tonight card ────────────────────────────────────────
+function renderTonightCard(dayN){
+  const wrap = document.getElementById("tonightWrap");
+  const card = document.getElementById("tonightCard");
+  if(!wrap||!card) return;
+  const d = DAYS[Math.min(dayN,DAYS.length)-1];
+  if(!d){ wrap.style.display="none"; return; }
+  wrap.style.display="block";
+
+  const hotelStatus = d.hotelStatus ? d.hotelStatus[1] : "";
+  const statusColor = d.hotelStatus && d.hotelStatus[0]==="ok" ? "var(--ok)" : "var(--pend)";
+
+  let html =
+    '<div class="tc-block">'+
+      '<div class="tc-label">🏨 Hotel esta noche</div>'+
+      '<div class="tc-val">'+d.hotel+'</div>'+
+      '<div class="tc-sub" style="color:'+statusColor+'">'+hotelStatus+'</div>'+
+    '</div>'+
+    '<div class="tc-block">'+
+      '<div class="tc-label">🌡️ Temperatura</div>'+
+      '<div class="tc-val">'+(d.temp||"—")+'</div>'+
+      '<div class="tc-sub">'+(d.zone||"")+'</div>'+
+    '</div>';
+
+  if(d.dinner){
+    html += '<div class="tc-dinner tc-block" style="grid-column:span 2">'+
+      '<div class="tc-label">🍽️ Cena</div>'+
+      '<div class="tc-val" style="font-size:13px;font-weight:600">'+d.dinner.replace(/🍽️ CENA RESERVADA · /,"")+'</div>'+
+    '</div>';
+  }
+  card.innerHTML = html;
+}
+
+// ── FEATURE 9: Hero zone color ─────────────────────────────────────
+function updateHeroZone(zone){
+  const hero = document.getElementById("heroBlock");
+  if(!hero||!zone) return;
+  const zones = ["lv","zi","slc","cache","tet","yell","mam","lamar","back"];
+  zones.forEach(z => hero.classList.remove("zone-"+z));
+  hero.classList.add("zone-"+zone);
+}
+
+// ── FEATURE 6: Temp slider ─────────────────────────────────────────
+function updateTempSlider(){
+  const sl = document.getElementById("tempSlider");
+  if(!sl) return;
+  const f = parseInt(sl.value);
+  const c = Math.round((f-32)*5/9);
+  document.getElementById("tbF").textContent = f+"°";
+  document.getElementById("tbC").textContent = c+"°";
+  document.getElementById("slF").textContent = f+"°F";
+  document.getElementById("slC").textContent = c+"°C";
+}
+function setTempF(f){
+  const sl = document.getElementById("tempSlider");
+  if(sl){ sl.value = f; updateTempSlider(); }
+}
+
+renderCountdown();
 // Register service worker for PWA
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
