@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.47</title>
+<title>2026 USA · v2.48</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -550,7 +550,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.47</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.48</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -564,7 +564,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.47</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.48</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -607,7 +607,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.47</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.48</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -715,9 +715,9 @@ const DAYS = [
     hotel:"MGM Grand Las Vegas", hotelStatus:["ok","Reservado ✓"],
     tl:[["Día","Vuelo Madrid 13:00 → Charlotte 15:55 (BA1612/AA0749). Escala ~2h25 en CLT."],
         ["Tarde","Charlotte 18:20 → Las Vegas 19:56 (BA1781/AA0596). Llegada a la T1 de Harry Reid."],
-        ["Noche","Traslado al MGM Grand y check-in. Cena ligera cerca del hotel para adaptarse al jet lag."]],
-    food:"❌ MGM sin desayuno incluido. Primera noche tranquila — cena ligera: Eggslut (The Cosmopolitan, 3708 LV Blvd S, 5min a pie, GF confirmado, abre hasta tarde) o servicio de habitaciones del MGM. No es noche de buscar restaurante: llegar, comer algo y dormir.",
-    photo:null, warn:"Vuelo emitido ✓ (BA operado por American). Llegada 19:56 hora local: noche solo para descansar, nada de conducir. Ojo al jet lag (+9h respecto a Madrid).",
+        ["Noche","Traslado al MGM Grand y check-in. 💳 Verificar en el check-in el crédito F&B $50/noche por habitación — confirmar si aplica ya esta primera noche (11 Ago, día de check-in) para usarlo en la cena. Cena ligera cerca del hotel para adaptarse al jet lag."]],
+    food:"❌ MGM sin desayuno incluido. 💳 Verificar al check-in si el crédito F&B aplica hoy — si es así, aprovecharlo para la cena. Primera noche tranquila: Eggslut (The Cosmopolitan, 3708 LV Blvd S, 5min a pie, GF confirmado, abre hasta tarde) o servicio de habitaciones del MGM (cargar a la habitación para redimir el crédito). No es noche de buscar restaurante: llegar, comer algo y dormir.",
+    photo:null, warn:"Vuelo emitido ✓ (BA operado por American). Llegada 19:56 hora local: noche solo para descansar, nada de conducir. Ojo al jet lag (+9h respecto a Madrid). 💳 Crédito F&B MGM: $50/noche por habitación, NO aplica el día de check-out (12 Ago) — verificar en recepción si aplica el 11 Ago (check-in) y los días 3-3 completos. Cargar el consumo a la habitación en restaurantes MGM, no cubre propinas.",
     temp:"~40°C / 27°C · Vegas, muy caluroso y seco",
     places:[
       ["Aeropuerto de Madrid Barajas T4S","La Terminal 4 Satélite de Barajas, donde sale el vuelo a Charlotte, fue diseñada por Richard Rogers y está unida a la T4 por un tren subterráneo de 2 minutos. Es una de las terminales más grandes de Europa con 470.000 m². El vuelo sale de T4S — llegar con tiempo suficiente para el tren interno y los controles, que en agosto con turismo masivo pueden tardar 45 minutos.",
@@ -1277,7 +1277,7 @@ const CAR = {
 };
 
 const HOTELS = [
-  ["MGM Grand Las Vegas","Días 1-3 · 3 noches","ok","Reservado ✓","3799 Las Vegas Blvd S, Las Vegas, NV","❌ Sin desayuno incluido. Numerosas opciones en el hotel y alrededores. Piscina incluida. Coche se recoge en Alamo (aeropuerto Harry Reid) el día 3 a las 15:00h."],
+  ["MGM Grand Las Vegas","Días 1-3 · 3 noches","ok","Reservado ✓","3799 Las Vegas Blvd S, Las Vegas, NV","❌ Sin desayuno incluido. 💳 Crédito F&B $50/noche por habitación incluido — VERIFICAR en el check-in que está cargado y confirmar si aplica también el día de check-in (11 Ago) para cenar algo esa noche. NO aplica el día de check-out (12 Ago). Cargar consumo a la habitación en restaurantes MGM para redimirlo — no cubre propinas. Piscina incluida. Coche se recoge en Alamo (aeropuerto Harry Reid) el día 3 a las 15:00h."],
   ["Holiday Inn Express SLC Downtown","Día 4 · 1 noche","ok","Reservado ✓ (IHG)","Salt Lake City, UT","✅ Desayuno incluido (buffet continental con opciones GF — confirmar al check-in qué opciones son seguras para alergia al trigo). Céntrico para cenar en SLC. A 5min a pie del Trader Joe's."],
   ["Flying Saddle Resort","Día 5 · 1 noche","ok","Reservado ✓","Alpine, WY","✅ Desayuno incluido — servicio desde las 07:00h. Confirmar opciones GF al check-in (preguntar qué es seguro para alergia al trigo). Pago en el hotel al check-in."],
   ["Lake Yellowstone Hotel and Cottages","Días 6-7 · 2 noches","ok","Reservado Xanterra ✓","Lake Village, Yellowstone NP","❌ Sin desayuno incluido. Desayuno disponible en el Dining Room (no incluido — reservar aparte). Llevar provisiones GF del coche para la mañana. Cenas reservadas 20:15h ambas noches ✓ Xanterra. Avisar alergia al trigo al llegar."],
@@ -1287,6 +1287,7 @@ const HOTELS = [
 
 const PEND = [
   // ── PENDIENTES (orden cronológico del viaje) ──────────────────────
+  ["yel","Crédito F&B MGM Grand — verificar al check-in","$50/noche por habitación incluido en la reserva. NO aplica el día de check-out (12 Ago). Confirmar en recepción si aplica el día de check-in (11 Ago) para usarlo esa misma noche en la cena. Cargar consumo a la habitación para redimir — no cubre propinas."],
   ["yel","Obras Yellowstone — revisar antes de entrar","Old Faithful Overpass (Día 8) y puente Tower Junction (Días 6-9): revisar yellowstonenationalparklodges.com/alerts antes de salir de España y de nuevo en destino."],
   ["yel","Bear spray — alquilar (Día 5 · 13 Ago)","Alquilar en Jackson. Obligatorio en Yellowstone y Grand Teton. ⚠️ NO va en avión."],
   ["yel","Cena Cody Día 10 — reservar antes del Rodeo","Cassie's Supper Club o Irma Hotel · cena antes 19:30h · Rodeo 20:00h. Reservar con antelación."],
