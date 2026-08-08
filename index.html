@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.54</title>
+<title>2026 USA · v2.55</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -550,7 +550,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.54</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.55</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -564,7 +564,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.54</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.55</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -607,7 +607,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.54</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.55</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1326,19 +1326,6 @@ const TRAILS = [
 ];
 
 const CHECKLIST = {
-  "📷 Fotografía":[
-    ["Canon EOS R7 + batería + cargador","Carga completa antes de cada día de parque"],
-    ["Sigma RF 18-50mm f/2.8","Vegas, paisajes urbanos y Grand Teton"],
-    ["Canon RF 18-150mm","Todo terreno. El más versátil del día a día"],
-    ["Canon RF 100-400mm","Imprescindible para fauna: bisontes, osos, lobos"],
-    ["Mochila Tenba Fulton 14L","Siempre en cabina, nunca en bodega"],
-    ["Tarjetas SD de repuesto (x3)","256GB mínimo total. Formatear antes de salir"],
-    ["Baterías extra LP-E6 (x2)","Con frío la batería dura menos"],
-    ["Prismáticos 8x42 / 10x42","Sin ellos no verás los lobos en Lamar"],
-    ["Filtro polarizador","Reduce reflejos en Grand Prismatic y lagos"],
-    ["Trípode ligero / gorillapod","Amaneceres en Lamar y géiseres"],
-    ["Bean bag / saco ventanilla","Clave para fauna desde el coche en Lamar"]
-  ],
   "👕 Ropa calor (Vegas + Zion)":[
     ["Camisetas (x4-5)","38-42°C. Mejor poliéster o merino"],
     ["Mudas de ropa interior","Una por día, más un par extra de repuesto"],
@@ -1362,6 +1349,21 @@ const CHECKLIST = {
     ["Zapatillas ligeras","Vegas, SLC y días de conducción"],
     ["Sandalias / chanclas","Piscina MGM y cenas informales"]
   ],
+  "🏊 Actividades acuáticas — piscina y rafting":[
+    ["Bañador + chanclas","Flying Pig proporciona escarpines de neopreno para el rafting — las chanclas son solo para piscina y hotel."],
+    ["Crema solar SPF50+ resistente al agua","Diferente a la normal. La estándar se lava en los rápidos y contamina el río. Reaplicar cada hora en la piscina del MGM."],
+    ["Toalla de microfibra","Seca rápido y ocupa poco. Válida tanto para la piscina como para después del rafting."],
+    ["Bolsa estanca pequeña (para móvil/GoPro)","Flying Pig las alquila in situ pero tener la propia es más cómodo. Para llevar algo al agua en los rápidos."],
+    ["Gafas de sol polarizadas con cordón","El cordón es el detalle clave — sin él se pierden en la piscina o en los rápidos."],
+    ["Botella agua 1,5L para la piscina MGM","El bar flotante sirve bebidas pero el calor seco de Las Vegas deshidrata incluso en el agua."]
+  ],
+  "📱 Tecnología":[
+    ["Cargadores (móvil, cámara, portátil)","Uno por dispositivo — fácil olvidar alguno"],
+    ["Adaptador corriente USA (x2)","Uno para cámara, otro para móvil"],
+    ["Power bank 20.000mAh","Días largos en parque sin enchufes"],
+    ["SIM/eSIM USA (T-Mobile)","Mejor cobertura rural en Wyoming"],
+    ["Cascos / auriculares","Vuelos largos, música en carretera"]
+  ],
   "🧴 Higiene y salud":[
     ["Protector solar SPF 50+","Reaplica cada 2h en parques"],
     ["Repelente insectos (DEET 30%+)","Mosquitos en Yellowstone Lake"],
@@ -1374,20 +1376,18 @@ const CHECKLIST = {
     ["Nevera de viaje (soft cooler)","Para picnics seguros en Yellowstone y Beartooth"],
     ["Antihistamínico acción rápida","Por contaminación cruzada. Consultar médico"]
   ],
-  "📱 Tecnología":[
-    ["Cargadores (móvil, cámara, portátil)","Uno por dispositivo — fácil olvidar alguno"],
-    ["Adaptador corriente USA (x2)","Uno para cámara, otro para móvil"],
-    ["Power bank 20.000mAh","Días largos en parque sin enchufes"],
-    ["SIM/eSIM USA (T-Mobile)","Mejor cobertura rural en Wyoming"],
-    ["Cascos / auriculares","Vuelos largos, música en carretera"]
-  ],
-  "🏊 Actividades acuáticas — piscina y rafting":[
-    ["Bañador + chanclas","Flying Pig proporciona escarpines de neopreno para el rafting — las chanclas son solo para piscina y hotel."],
-    ["Crema solar SPF50+ resistente al agua","Diferente a la normal. La estándar se lava en los rápidos y contamina el río. Reaplicar cada hora en la piscina del MGM."],
-    ["Toalla de microfibra","Seca rápido y ocupa poco. Válida tanto para la piscina como para después del rafting."],
-    ["Bolsa estanca pequeña (para móvil/GoPro)","Flying Pig las alquila in situ pero tener la propia es más cómodo. Para llevar algo al agua en los rápidos."],
-    ["Gafas de sol polarizadas con cordón","El cordón es el detalle clave — sin él se pierden en la piscina o en los rápidos."],
-    ["Botella agua 1,5L para la piscina MGM","El bar flotante sirve bebidas pero el calor seco de Las Vegas deshidrata incluso en el agua."]
+  "📷 Fotografía":[
+    ["Canon EOS R7 + batería + cargador","Carga completa antes de cada día de parque"],
+    ["Sigma RF 18-50mm f/2.8","Vegas, paisajes urbanos y Grand Teton"],
+    ["Canon RF 18-150mm","Todo terreno. El más versátil del día a día"],
+    ["Canon RF 100-400mm","Imprescindible para fauna: bisontes, osos, lobos"],
+    ["Mochila Tenba Fulton 14L","Siempre en cabina, nunca en bodega"],
+    ["Tarjetas SD de repuesto (x3)","256GB mínimo total. Formatear antes de salir"],
+    ["Baterías extra LP-E6 (x2)","Con frío la batería dura menos"],
+    ["Prismáticos 8x42 / 10x42","Sin ellos no verás los lobos en Lamar"],
+    ["Filtro polarizador","Reduce reflejos en Grand Prismatic y lagos"],
+    ["Trípode ligero / gorillapod","Amaneceres en Lamar y géiseres"],
+    ["Bean bag / saco ventanilla","Clave para fauna desde el coche en Lamar"]
   ],
   "📱 Apps iPhone — instalar antes de salir":[
     ["Google Maps — áreas offline","Descargar Nevada, Utah, Wyoming y Montana en WiFi"],
