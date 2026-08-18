@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="USA 2026">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 USA · v2.58</title>
+<title>2026 USA · v2.59</title>
 <style>
 :root{
   --bg:#f2f0eb; --card:#ffffff; --ink:#1e2a35; --ink-soft:#6b6560;
@@ -550,7 +550,7 @@ img{max-width:100%}
 
   <!-- SIDEBAR (desktop) -->
   <nav class="side">
-    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.58</span></div>
+    <div class="brand">✈️ USA Road Trip<span>Agosto 2026 · 11 días · 4 viajeros · v2.59</span></div>
     <button data-go="inicio" class="on"><span class="ico">🏠</span> Inicio</button>
     <button data-go="dias"><span class="ico">🗓️</span> Días</button>
     <button data-go="comer"><span class="ico">🌾</span> Comer sin trigo</button>
@@ -564,7 +564,7 @@ img{max-width:100%}
     <!-- ============ INICIO ============ -->
     <section id="inicio" class="section active">
       <div class="hero" id="heroBlock">
-        <div class="kicker">Road Trip · Oeste Americano · v2.58</div>
+        <div class="kicker">Road Trip · Oeste Americano · v2.59</div>
         <h1>Las Vegas → Yellowstone → Bozeman</h1>
         <div class="sub">Once días por Nevada, Utah, Wyoming y Montana. Desierto, parques nacionales, fauna salvaje y carretera abierta.</div>
         <div class="route">
@@ -607,7 +607,7 @@ img{max-width:100%}
         <button id="todayBtn" class="today-btn" type="button">📍 Ir a hoy</button></div>
       <div class="days-grid" id="summaryGrid"></div>
 
-      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.58</div>
+      <div class="foot">USA Road Trip · Agosto 2026 · Guía de viaje v2.59</div>
     </section>
 
     <!-- ============ DÍAS ============ -->
@@ -1057,25 +1057,27 @@ const DAYS = [
     links:[["Flying Pig Rafting","https://www.flyingpigrafting.com/"],["Tiempo Gardiner","https://forecast.weather.gov/MapClick.php?CityName=Gardiner&state=MT&site=TFX&textField1=45.0317&textField2=-110.7036"],["NPS Yellowstone Weather Live","https://www.nps.gov/features/yell/Kiosk/weather.html"],["Yellowstone · avisos","https://www.nps.gov/yell/planyourvisit/conditions.htm"],["Alertas Yellowstone Lodges","https://www.yellowstonenationalparklodges.com/alerts/"],["Mammoth Hot Springs (Wiki)","https://es.wikipedia.org/wiki/Mammoth_Hot_Springs"]]
   },
 
-  { n:10, date:"Mar 18 Ago", zone:"lamar", tag:"Lamar", title:"Gardiner → Lamar amanecer → Beartooth Hwy → Cody ⭐",
-    quote:"05:30h salida. Lamar al amanecer: los 3h más valiosos del viaje. Beartooth 3.333m. Rodeo 20h.",
-    drive:[{t:"~6h30 total"},{t:"Salida 05:30 ⚡",crit:true},{t:"Llegada ~16:30 Cody"}],
+  { n:10, date:"Mar 18 Ago", zone:"lamar", tag:"Lamar", title:"Gardiner → Lamar amanecer → Beartooth Hwy → Chief Joseph Byway → Cody ⭐",
+    quote:"05:30h salida. Lamar al amanecer: los 3h más valiosos del viaje. Beartooth 3.333m + Dead Indian Summit. Rodeo 20h.",
+    drive:[{t:"~5h30 total"},{t:"Salida 05:30 ⚡",crit:true},{t:"Llegada ~16:00 Cody"}],
     hotel:"Holiday Inn Cody Convention Center (IHG)", hotelStatus:["ok","Reservado Booking ✓"],
     tl:[["Madrugada","05:00 despertar. Café + barra GF. 05:30 salida hacia Lamar (~75km, ~1h por North Entrance → Tower Junction). Temperatura ~5°C 🥶 — forro polar, guantes, gorro imprescindibles. Termo con café."],
-        ["Mañana","06:30–09:30 Lamar Valley al amanecer: primera luz rasante sobre el valle. Lobos activos en las primeras horas (buscar coches parados con telescopios = señal de avistamiento). Bisontes en rut, coyotes, posibles osos. Las 3h más valiosas fotográficamente del viaje. Conducir lento (25mph), bean bag ventanilla. 09:30 hacia Cooke City (~55km). ⛽ GASOLINA EN COOKE CITY (OBLIGATORIO — no hay en 95km hasta Red Lodge)."],
-        ["Tarde","11:15 Beartooth Highway: ascenso de 2.200m a 3.333m — tundra ártica, lagos glaciales, vistas a glaciares. 12:00 Beartooth Pass Summit (3.333m, MAX 30min): marmotas, ptarmigan, panorámicas 360°. 13:30 Red Lodge, MT: parada y comida GF. 14:30 Red Lodge → Cody (~145km, ~2h). 16:30 check-in Holiday Inn Cody. 19:30 cena. 20:00 Cody Nite Rodeo 🤠."]],
-    food:"✅ Holiday Inn Cody incluye desayuno buffet — confirmar opciones GF al check-in (huevos, fruta y yogur suelen ser seguros). Cooke City: The Bistro o Beartooth Cafe (huevos/bacon GF). Red Lodge: Carbon County Steakhouse (carnes GF) o Red Lodge Pizza Co. (pizza GF). Cody cena antes 19:30h (rodeo 20h): Irma Hotel Restaurant (GF) o Cassie's Supper Club (GF).",
-    photo:"📸 Lamar amanecer: 100-400mm + bean bag ventanilla (apagar motor, bajar ventanilla, esperar). Para lobos: usar prismáticos primero para localizar, luego cámara. Beartooth: 18-50mm para tundra y panorámicas 360°; 100-400mm para marmotas y cabras montesas. Rodeo: ISO 3200-6400, Av f/5.6, 1/500s mínimo para congelar el movimiento con luz artificial.",
-    warn:"⛽ GASOLINA EN COOKE CITY OBLIGATORIO — no hay gasolinera en 95km hasta Red Lodge. Revisar Beartooth en wyoroad.info y mdt.mt.gov 24-48h antes (puede cerrar por nieve/viento incluso en agosto). Forro polar + cortavientos accesibles desde el asiento (no en la maleta). Rodeo entradas: codyniterodeo.com.",
-    temp:"Lamar amanecer ~5°C 🥶 · Beartooth Pass ~8-12°C 🥶 · Cody ~28°C / 11°C",
+        ["Mañana","06:30–09:30 Lamar Valley al amanecer: primera luz rasante sobre el valle. Lobos activos en las primeras horas (buscar coches parados con telescopios = señal de avistamiento). Bisontes en rut, coyotes, posibles osos. Las 3h más valiosas fotográficamente del viaje. Conducir lento (25mph), bean bag ventanilla. 09:30 hacia Cooke City (~55km). ⛽ GASOLINA EN COOKE CITY (OBLIGATORIO — no hay otra hasta Cody, ~150km)."],
+        ["Tarde — Beartooth + Chief Joseph (sin repetir carretera)","11:15 Beartooth Highway: ascenso de 2.200m a 3.333m — tundra ártica, marmotas, panorámicas 360°. 12:00 Beartooth Pass Summit (MAX 30min). 12:45 bajada por el lado Wyoming: Island Lake y Beartooth Lake — los dos lagos alpinos más fotogénicos de la carretera, con Beartooth Butte reflejada en el agua. Parada 20-30min. 13:45 cruce con el Chief Joseph Scenic Byway (WY-296, cerca de Beartooth Lake): girar hacia el sur — sin volver atrás, la carretera sigue hacia adelante. 14:15 Sunlight Basin y Cathedral Cliffs. 14:45 Dead Indian Summit Overlook (2.460m, parada 15min): vistas panorámicas del Clarks Fork, el North Absaroka Wilderness y la propia carretera serpenteando abajo — el segundo gran mirador del día, muy distinto al Beartooth. 15:15 Two-Dot Flats (fauna: alces, antílopes). 16:00 llegada a Cody. Check-in Holiday Inn. 19:30 cena. 20:00 Cody Nite Rodeo 🤠."]],
+    food:"✅ Holiday Inn Cody incluye desayuno buffet — confirmar opciones GF al check-in (huevos, fruta y yogur suelen ser seguros). Cooke City: The Bistro o Beartooth Cafe (huevos/bacon GF) — última opción antes del Beartooth. Cody cena antes 19:30h (rodeo 20h): Irma Hotel Restaurant (GF) o Cassie's Supper Club (GF).",
+    photo:"📸 Lamar amanecer: 100-400mm + bean bag ventanilla (apagar motor, bajar ventanilla, esperar). Para lobos: usar prismáticos primero para localizar, luego cámara. Beartooth: 18-50mm para tundra y panorámicas 360°; 100-400mm para marmotas y cabras montesas. Island Lake / Beartooth Lake: 18-150mm con polarizador para el reflejo de Beartooth Butte, mejor luz de mediodía. Dead Indian Summit: 18-50mm gran angular para el cañón del Clarks Fork. Rodeo: ISO 3200-6400, Av f/5.6, 1/500s mínimo para congelar el movimiento con luz artificial.",
+    warn:"⛽ GASOLINA EN COOKE CITY OBLIGATORIO — no hay otra gasolinera hasta Cody (~150km por esta ruta). Revisar Beartooth en wyoroad.info y mdt.mt.gov 24-48h antes (puede cerrar por nieve/viento incluso en agosto). Forro polar + cortavientos accesibles desde el asiento (no en la maleta). En el cruce con el Chief Joseph (WY-296, cerca de Beartooth Lake) girar hacia el sur — no seguir recto hacia Red Lodge. Rodeo entradas: codyniterodeo.com.",
+    temp:"Lamar amanecer ~5°C 🥶 · Beartooth Pass ~8-12°C 🥶 · Dead Indian Summit ~15°C · Cody ~28°C / 11°C",
     places:[
-      ["Cooke City — el pueblo al que solo se llega pasando por Yellowstone","Cooke City (75 habitantes) es uno de los pueblos más aislados de los EEUU continentales. En invierno solo es accesible desde Yellowstone por el noreste — la Beartooth Highway cierra completamente. Sus únicos ingresos son los viajeros que pasan hacia o desde el noreste de Yellowstone y los esquiadores de backcountry. Tiene una gasolinera, tres cafeterías y dos moteles. La gasolinera es la última antes de 95km de carretera de montaña sin servicios — llenar el depósito aquí es obligatorio.",
+      ["Cooke City — el pueblo al que solo se llega pasando por Yellowstone","Cooke City (75 habitantes) es uno de los pueblos más aislados de los EEUU continentales. En invierno solo es accesible desde Yellowstone por el noreste — la Beartooth Highway cierra completamente. Sus únicos ingresos son los viajeros que pasan hacia o desde el noreste de Yellowstone y los esquiadores de backcountry. Tiene una gasolinera, tres cafeterías y dos moteles. La gasolinera es la última antes de la larga travesía de montaña — llenar el depósito aquí es obligatorio.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Cooke_City,_Montana"]]],
       ["Lamar Valley al amanecer — por qué a esta hora","El Lamar Valley a las 06:30h de agosto es uno de los espectáculos naturales más accesibles del planeta. Los lobos son más activos en las dos horas después del amanecer — cazan, se comunican, marcan territorio. Los bisontes en rut empiezan a moverse antes de que el sol caliente la pradera. Los osos grizzly bajan de las laderas boscosas a las praderas abiertas del río. A las 09h la mayoría de los animales grandes ya se han retirado al frescor del bosque. La ventana de las 06:30–09:30h no es caprichosa — es el único momento del día en que todos los depredadores y presas del valle están activos simultáneamente.",
         [["Wikipedia — Lamar Valley","https://en.wikipedia.org/wiki/Lamar_Valley"]]],
-      ["Beartooth Highway — la carretera más bella de América","Declarada por el periodista Charles Kuralt como 'la carretera más bella de América', la US-212 asciende desde Cooke City (2.200m) hasta el Beartooth Pass (3.333m) en 30km. Técnicamente atraviesa el Shoshone National Forest, el bosque nacional más antiguo de EEUU (creado en 1891). Solo abre de mayo a octubre — en invierno la nieve la cubre completamente. Los quitanieves la abren cada mayo desde ambos extremos, tardando varias semanas.",
+      ["Beartooth Highway — la carretera más bella de América","Declarada por el periodista Charles Kuralt como 'la carretera más bella de América', la US-212 asciende desde Cooke City (2.200m) hasta el Beartooth Pass (3.337m). Técnicamente atraviesa el Shoshone National Forest, el bosque nacional más antiguo de EEUU (creado en 1891). Solo abre de mayo a octubre — en invierno la nieve la cubre completamente. Bajando por el lado wyoming tras el summit aparecen Island Lake y Beartooth Lake, dos de los lagos alpinos más fotografiados de la carretera, con la formación rocosa de Beartooth Butte reflejada en el agua.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Beartooth_Highway"]]],
-      ["Marmota de vientre amarillo (Marmota flaviventris)","Las marmotas son uno de los animales más visibles en el Beartooth Pass. Hibernan entre 7 y 8 meses al año — el periodo de hibernación más largo de cualquier mamífero norteamericano. Durante la hibernación su temperatura corporal baja de 37°C a 5°C, el corazón late 3 veces por minuto (en lugar de 100) y no orinan ni defecacan durante meses. El grito de alarma de la marmota (un silbido agudo) es el sistema de comunicación de peligro de todo el ecosistema alpino.",
+      ["Chief Joseph Scenic Byway y Dead Indian Summit","La WY-296 conecta el propio Beartooth Highway con Cody sin necesidad de bajar hasta Red Lodge — el cruce está cerca de Beartooth Lake, poco después del summit. Son 74km de carretera que atraviesan el Shoshone National Forest, con curvas cerradas tipo switchback subiendo hacia Dead Indian Summit (2.460m). El mirador ofrece vistas del Clarks Fork del río Yellowstone, el North Absaroka Wilderness y la propia carretera serpenteando por el cañón. La carretera lleva el nombre del jefe Joseph de los Nez Percé, que cruzó esta zona en 1877 intentando escapar hacia Canadá con su pueblo.",
+        [["Wikipedia","https://en.wikipedia.org/wiki/Wyoming_Highway_296"]]],
+      ["Marmota de vientre amarillo (Marmota flaviventris)","Las marmotas son uno de los animales más visibles en el Beartooth Pass. Hibernan entre 7 y 8 meses al año — el periodo de hibernación más largo de cualquier mamífero norteamericano. Durante la hibernación su temperatura corporal baja de 37°C a 5°C, el corazón late 3 veces por minuto (en lugar de 100) y no orinan ni defecan durante meses. El grito de alarma de la marmota (un silbido agudo) es el sistema de comunicación de peligro de todo el ecosistema alpino.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Yellow-bellied_marmot"]]],
       ["Cabra montesa americana (Oreamnos americanus)","La cabra montesa americana no es una cabra verdadera — está más emparentada con los chamois europeos. Sus pezuñas tienen un borde duro para agarrarse a la roca y un interior blando para amortiguación, como un zapato de montaña biológico. Pueden escalar paredes de roca casi verticales gracias a esta adaptación. En el Beartooth Pass se ven con frecuencia en los afloramientos rocosos junto a la carretera, a menudo a menos de 30 metros.",
         [["Wikipedia","https://en.wikipedia.org/wiki/Mountain_goat"]]],
@@ -1087,15 +1089,16 @@ const DAYS = [
     map:{
       stops:[
         {n:1, label:"Lamar Valley amanecer", lat:44.8983, lng:-110.2217, note:"06:30h · Lobos y bisontes · hasta 09:30h"},
-        {n:2, label:"Cooke City ⛽", lat:45.0194, lng:-109.9381, note:"Gasolina OBLIGATORIA antes de la Beartooth"},
+        {n:2, label:"Cooke City ⛽", lat:45.0194, lng:-109.9381, note:"Gasolina OBLIGATORIA — última hasta Cody"},
         {n:3, label:"Beartooth Pass Summit", lat:45.0028, lng:-109.4583, note:"3.333m · Tundra ártica · MAX 30min"},
-        {n:4, label:"Red Lodge MT", lat:45.1872, lng:-109.2450, note:"Comida GF · parada ~45min"},
-        {n:5, label:"Chief Joseph Hwy (WY-296)", lat:44.6917, lng:-109.7583, note:"Desvío escénico → Cody"},
-        {n:6, label:"Cody WY · Hotel", lat:44.5236, lng:-109.0565, note:"~16:30h · Holiday Inn · Rodeo 20:00h"}
+        {n:4, label:"Island Lake / Beartooth Lake", lat:44.9411, lng:-109.5814, note:"Lagos alpinos ⭐ · Beartooth Butte reflejada"},
+        {n:5, label:"Cruce Chief Joseph Byway (WY-296)", lat:44.8858, lng:-109.6222, note:"Girar al sur — sin volver atrás"},
+        {n:6, label:"Dead Indian Summit Overlook", lat:44.7186, lng:-109.4550, note:"2.460m · Vistas Clarks Fork · 15min"},
+        {n:7, label:"Cody WY · Hotel", lat:44.5236, lng:-109.0565, note:"~16:00h · Holiday Inn · Rodeo 20:00h"}
       ],
-      mapsUrl:"https://www.google.com/maps/dir/44.8983,-110.2217/45.0194,-109.9381/45.0028,-109.4583/45.1872,-109.2450/44.5236,-109.0565"
+      mapsUrl:"https://www.google.com/maps/dir/44.8983,-110.2217/45.0194,-109.9381/45.0028,-109.4583/44.9411,-109.5814/44.7186,-109.4550/44.5236,-109.0565"
     },
-    links:[["Beartooth · Wyoming (WYDOT)","https://www.wyoroad.info/"],["Beartooth · Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Tiempo Cody","https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565"],["Cody Nite Rodeo","https://codyniterodeo.com/"],["Beartooth Hwy (Wiki)","https://en.wikipedia.org/wiki/Beartooth_Highway"]]
+    links:[["Beartooth · Wyoming (WYDOT)","https://www.wyoroad.info/"],["Beartooth · Montana (MDT)","https://www.mdt.mt.gov/travinfo/"],["Chief Joseph Byway (Wiki)","https://en.wikipedia.org/wiki/Wyoming_Highway_296"],["Tiempo Cody","https://forecast.weather.gov/MapClick.php?CityName=Cody&state=WY&site=RIW&textField1=44.5236&textField2=-109.0565"],["Cody Nite Rodeo","https://codyniterodeo.com/"],["Beartooth Hwy (Wiki)","https://en.wikipedia.org/wiki/Beartooth_Highway"]]
   },
 
   { n:11, date:"Mié 19 Ago", zone:"back", tag:"Vuelta", title:"Cody → Bozeman → vuelo AA947 → Madrid",
